@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+************************************************************************
+Cessna Citation-X
+Started Oct 2005  Syd Adams   
+************************************************************************
+-->
+<PropertyList>
+  <sim>
+    <description>Cessna Citation-X</description>
+    <author>Syd Adams</author>
+    <status>devel</status>
+    <flight-model>yasim</flight-model>
+    <aero>CitationX</aero>
+    <fuel-fraction>0.8</fuel-fraction>
+    <startup>
+      <splash-texture>Aircraft/CitationX/CitationX-splash.rgb</splash-texture>
+    </startup>
+    <panel>
+    </panel>
+    <model>
+      <path>Aircraft/CitationX/Models/CitationX-anim.xml</path>
+    </model>
+    <view n="0">
+      <name>Cockpit</name>
+      <type>lookfrom</type>
+      <internal type="bool">true</internal>
+      <config>
+        <x-offset-m type="double">-0.30</x-offset-m>
+        <y-offset-m type="double">0.35</y-offset-m>
+        <z-offset-m type="double">-6.8</z-offset-m>
+        <pitch-offset-deg>-9</pitch-offset-deg>
+        <default-field-of-view-deg type="double">60.0</default-field-of-view-deg>
+      </config>
+    </view>
+    <current-view>
+      <field-of-view>60.0</field-of-view>
+    </current-view>
+
+    <systems>
+      <electrical>
+        <path></path>
+      </electrical>
+      <autopilot>
+        <path>Aircraft/CitationX/CitationX-autopilot.xml</path>
+      </autopilot>
+    </systems>
+    <sound>
+      <path>Aircraft/CitationX/CitationX-sound.xml</path>
+    </sound>
+    <hud>
+      <enable3d>false</enable3d>
+    </hud>
+	<virtual-cockpit archive="y">true</virtual-cockpit>
+
+        <weight n="0">
+        <name>Crew</name>
+        <weight-lb>180</weight-lb> 
+        <max-lb>400</max-lb>
+       <min-lb>180</min-lb>
+        </weight>
+
+        <weight n="1">
+        <name>Passengers</name>
+        <weight-lb>1000</weight-lb> 
+        <max-lb>14300</max-lb>
+        <min-lb>0</min-lb>      
+        </weight>
+
+        <replay>
+        <disable>1</disable>
+        </replay>
+
+        <multiplay>
+        <chat_display>1</chat_display>
+        </multiplay>
+
+  </sim>
+  <controls>
+    <gear>
+      <brake-parking>1</brake-parking>
+    </gear>
+    <engines>
+      <engine n="0">
+        <magnetos>3</magnetos>
+      </engine>
+      <engine n="1">
+        <magnetos>3</magnetos>
+      </engine>
+    </engines>
+  </controls>
+  <engines>
+    <engine n="0">
+      <rpm>1000</rpm>
+      <reverser-position type="double">0.000000</reverser-position>
+    </engine>
+    <engine n="1">
+      <rpm>1000</rpm>
+      <reverser-position type="double">0.000000</reverser-position>
+    </engine>
+  </engines>
+<!-- aircraft specific loading -->
+  <yasim>
+    <CitationX>
+      <pilot-lbs>380</pilot-lbs>
+      <passenger-lbs>400</passenger-lbs>
+    </CitationX>
+  </yasim>
+  <input>
+    <keyboard>
+      <key n="127">
+        <name>Delete</name>
+        <desc>Toggle Reversers</desc>
+        <binding>
+          <command>nasal</command>
+          <script>CitationX.togglereverser()</script>
+        </binding>
+      </key>
+    </keyboard>
+  </input>
+  <nasal>
+    <citation>
+      <file>Aircraft/CitationX/Nasal/CitationX.nas</file>
+      <file>Aircraft/CitationX/Nasal/electrical.nas</file>
+    </citation>
+  </nasal>
+</PropertyList>
