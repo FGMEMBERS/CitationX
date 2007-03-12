@@ -100,12 +100,6 @@ Started Oct 2005  Syd Adams
     </engine>
   </engines>
 <!-- aircraft specific loading -->
-  <yasim>
-    <CitationX>
-      <pilot-lbs>380</pilot-lbs>
-      <passenger-lbs>400</passenger-lbs>
-    </CitationX>
-  </yasim>
   <input>
     <keyboard>
       <key n="127">

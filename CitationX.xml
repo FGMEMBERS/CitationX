@@ -68,10 +68,12 @@
   <mstab x="-2.5" y="0.8" z="0.72" length="1.0" chord="3.0" incidence="5.0">
   </mstab>
 
-<!--    Total fuel = 13000 lbs   -->
-<tank x="-0.0" y="2.0" z="0.15" capacity="2000" jet="true"/>
-<tank x="-0.0" y="-2.0" z="0.15" capacity="2000" jet="true"/>
-
+<!--    Total fuel = 12931 lbs   -->
+<tank x="-0.0" y="2.0" z="0.15" capacity="4000" jet="true"/>
+<tank x="-0.0" y="-2.0" z="0.15" capacity="4000" jet="true"/>
+<tank x="0.1" y="0.0" z="0.15" capacity="4000" jet="true"/>
+<tank x="0" y="0" z="0" capacity="0"/>		
+<tank x="0" y="0" z="0" capacity="0"/>
 
   
   <gear x="8.13" y="0.00" z="-2.25" compression=".4" retract-time="5">
