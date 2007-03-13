@@ -112,24 +112,28 @@ Started Oct 2005  Syd Adams
 		</engine>
 	</engines>
   
-	<input>
-		<keyboard>
-			<key n="127">
-				<name>Delete</name>
-				<desc>Toggle Reversers</desc>
-				<binding>
-					<command>nasal</command>
-					<script>CitationX.togglereverser()</script>
-				</binding>
-			</key>
-		</keyboard>
-	</input>
-
 	<nasal>
 		<citation>
 			<file>Aircraft/CitationX/Nasal/CitationX.nas</file>
 			<file>Aircraft/CitationX/Nasal/electrical.nas</file>
 		</citation>
 	</nasal>
+
+	<input>
+		<keyboard>
+			<key n="127">
+				<name>Delete</name>
+				<desc>Toggle Reversers</desc>
+				<binding>
+					<command>property-toggle</command>
+					<property>controls/engines/engine[0]/reverser</property>
+				</binding>
+				<binding>
+					<command>property-toggle</command>
+					<property>controls/engines/engine[1]/reverser</property>
+				</binding>
+			</key>
+		</keyboard>
+	</input>
 
 </PropertyList>

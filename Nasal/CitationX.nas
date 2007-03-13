@@ -4,7 +4,10 @@ pph2=0.0;
 fuel_density=0.0;
 n_offset=0;
 nm_calc=0.0;
-
+engine_on = props.globals.getNode("/sim/sound/engine/on",1);
+E_volume = props.globals.getNode("/sim/sound/engine/volume",1);
+E_pitch = props.globals.getNode("/sim/sound/engine/pitch",1);
+Reverser = props.globals.getNode("/surface-positions/reverser-norm",1);
 
 strobe_switch = props.globals.getNode("controls/switches/strobe", 1);
 aircraft.light.new("sim/model/CitationX/lighting/strobe",[0.05, 1.50], strobe_switch);
@@ -15,28 +18,16 @@ setlistener("/sim/signals/fdm-initialized", func {
 	setup_start(); 
     });
 
-togglereverser = func {
-	r1 = "/controls/engines/engine"; 
-	r2 = "/controls/engines/engine[1]"; 
-	rv1 = "/engines/engine/reverser-position"; 
-	rv2 = "/engines/engine[1]/reverser-position"; 
-	val = getprop(rv1);
-	if (val == 0 or val == nil) {
-		interpolate(rv1, 1.0, 1.4);  
-		interpolate(rv2, 1.0, 1.4);  
-		setprop(r1,"reverser","true");
-		setprop(r2,"reverser", "true");
-		}else{
-		if (val == 1.0){
-		interpolate(rv1, 0.0, 1.4);  
-		interpolate(rv2, 0.0, 1.4);  
-		setprop(r1,"reverser",0);
-		setprop(r2,"reverser",0);
-		}
-	}
-}
+setlistener("/controls/engines/engine/reverser", func {
+    rvrs = cmdarg().getValue();
+    interpolate(Reverser,rvrs, 1.4);
+});	 
 
 setup_start = func{
+	engine_on.setBoolValue(1);
+	E_volume.setValue(0.3);
+	E_pitch.setValue(1);
+	Reverser.setValue(0.0);
 	setprop("/instrumentation/gps/wp/wp/waypoint-type","airport");
 	setprop("/instrumentation/gps/wp/wp/ID",getprop("/sim/tower/airport-id"));
 	setprop("/instrumentation/gps/serviceable","true");
@@ -55,6 +46,25 @@ setup_start = func{
 	setprop("/instrumentation/primus1000/alt-mode",0.0);
 	setprop("/instrumentation/primus1000/nav-dist-nm",0.0);
 	print("Aircraft systems initialized");
+}
+
+update_sounds = func{
+	var view0 = props.globals.getNode("/sim/current-view/view-number",0).getValue();
+	var sound_level = 0.7;
+	n1_rpm =props.globals.getNode("/engines/engine/n1",0); 
+	var test_rpm = n1_rpm.getValue();
+
+	if(test_rpm == nil){test_rpm = 0.0;}
+	if(test_rpm < 5 or test_rpm == nil){
+		engine_on.setBoolValue(0);
+		E_volume.setValue(0);
+		E_pitch.setValue(0.0);
+	}else{
+		engine_on.setBoolValue(1);
+		if(view0 == 0){sound_level = 0.25;}
+		E_volume.setValue(sound_level);
+		E_pitch.setValue((0.5)+(0.01 * test_rpm));
+		}
 }
 
 gforce = func {
@@ -80,6 +90,7 @@ gforce = func {
 	if(pph2 == nil){pph2 = 0.0};
 	setprop("engines/engine[0]/fuel-flow-pph",pph1* fuel_density);
 	setprop("engines/engine[1]/fuel-flow-pph",pph2* fuel_density);
+	update_sounds();
 	settimer(gforce, 0);
 }
 settimer(gforce, 0);
