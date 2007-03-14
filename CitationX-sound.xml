@@ -87,15 +87,17 @@
 				<property>/sim/sound/engine/on</property>
 				<greater-than>
 				<property>/surface-positions/reverser-norm</property>
-				<value>0.5</value>
+				<value>0.1</value>
 				</greater-than>
 			</and>
 		</condition>
 		<path>Sounds/exhaust_loop.wav</path>
 		<mode>looped</mode>
 		<volume>
+			<property>/surface-positions/reverser-norm</property>
+		</volume>
+		<volume>
 			<property>/sim/sound/engine/volume</property>
-			<factor>1.5</factor>
 		</volume>
 		<pitch>
 		<offset>1.5</offset>

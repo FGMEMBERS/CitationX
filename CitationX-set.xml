@@ -22,7 +22,7 @@ Started Oct 2005  Syd Adams
 		</panel>
 		
 		<model>
-			<path>Aircraft/CitationX/Models/CitationX-anim.xml</path>
+			<path>Aircraft/CitationX/Models/Citation-X.xml</path>
 		</model>
 		
 		<view n="0">
@@ -41,8 +41,8 @@ Started Oct 2005  Syd Adams
 		<current-view>
 			<field-of-view>60.0</field-of-view>
 		</current-view>
-
 		<allow-toggle-cockpit>true</allow-toggle-cockpit>
+		<chase-distance-m type="double">-35.0</chase-distance-m>
 
 		<systems>
 			<electrical>
@@ -84,6 +84,19 @@ Started Oct 2005  Syd Adams
         <multiplay>
 			<chat_display>1</chat_display>
         </multiplay>
+        
+        <help>
+			<title>Cessna Citation-X</title>
+			<line></line>
+      		<key>
+        		<name>Keypad Delete</name>
+        		<desc>Toggle thrust reversers</desc>
+			</key>
+			<key>
+				<name>Control B</name>	
+				<desc>Speedbrakes</desc>	
+			</key>
+    	</help>
 	
 	</sim>
 
