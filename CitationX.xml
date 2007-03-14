@@ -115,7 +115,7 @@
   </jet>
 
   <ballast x="2.5" y="0.0" z="-1.5" mass="5000"/>
-  <ballast x="7.0" y="0.0" z="-1.5" mass="4000"/>
+  <ballast x="7.0" y="0.0" z="-1.5" mass="4500"/>
  
 
   <weight x="7.0" y="0.0" z="0" mass-prop="/sim/weight[0]/weight-lb"/>
