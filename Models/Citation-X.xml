@@ -1,0 +1,326 @@
+<?xml version = '1.0'?>
+<PropertyList>
+
+<path>CitationX.ac</path>
+
+<animation>
+	<type>select</type>
+	<object-name>Glass</object-name>
+	<condition>
+		<not-equals>
+			<property>/sim/current-view/view-number</property>
+			<value>0</value>
+		</not-equals>	
+	</condition>
+</animation>
+
+<animation>
+	<type>select</type>
+	<object-name>Nosewheel</object-name>
+	<object-name>LHwheel</object-name>
+	<object-name>RHwheel</object-name>
+	<condition>
+		<property>/controls/gear/gear-down</property>
+	</condition>
+</animation>
+
+<animation>
+    <name>Stabilizer</name>
+  	<object-name>HStab</object-name>
+    <object-name>LHelevator</object-name>
+    <object-name>RHelevator</object-name>
+</animation>
+
+<!--    SURFACE POSITIONS-->
+
+<animation>
+	<type>rotate</type>
+  	<object-name>Rudder</object-name>
+	<property>/controls/flight/rudder</property>
+  	<factor>15</factor>
+  	<center>
+   		<x-m>6.626</x-m>
+   		<y-m>0</y-m>
+   		<z-m>0.686</z-m>
+  	</center>
+  	<axis>
+   		<x>0.715</x>
+   		<y>0</y>
+   		<z>0.699</z>
+  	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+	<object-name>Stabilizer</object-name>
+    <property>/controls/flight/elevator-trim</property>
+  	<factor>5</factor>
+  	<center>
+   		<x-m>8.362</x-m>
+   		<y-m>0.0</y-m>
+   		<z-m>2.929</z-m>
+  	</center>
+  	<axis>
+   		<x>0.0</x>
+   		<y>1.0</y>
+   		<z>0.0</z>
+  	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+  	<object-name>LHelevator</object-name>
+	<property>/controls/flight/elevator</property>
+  	<factor>-15</factor>
+  	<center>
+   		<x-m>8.979</x-m>
+   		<y-m>-0.358</y-m>
+   		<z-m>2.956</z-m>
+  	</center>
+  	<axis>
+   		<x>0.556</x>
+   		<y>-0.831</y>
+   		<z>0.009</z>
+  	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+  	<object-name>RHelevator</object-name>
+	<property>/controls/flight/elevator</property>
+  	<factor>15</factor>
+  	<center>
+   		<x-m>8.979</x-m>
+   		<y-m>0.358</y-m>
+   		<z-m>2.956</z-m>
+  	</center>
+  	<axis>
+   		<x>0.556</x>
+   		<y>0.831</y>
+   		<z>0.009</z>
+  	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+  	<object-name>LHFlap0</object-name>
+	<property>/surface-positions/flap-pos-norm</property>
+  	<factor>-35</factor>
+  	<center>
+   		<x-m>0.622</x-m>
+   		<y-m>-1.043</y-m>
+   		<z-m>-0.887</z-m>
+  	</center>
+  	<axis>
+   		<x>0.252</x>
+   		<y>-0.967</y>
+   		<z>0.034</z>
+  	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+  	<object-name>RHFlap0</object-name>
+	<property>/surface-positions/flap-pos-norm</property>
+  	<factor>35</factor>
+  	<center>
+   		<x-m>0.622</x-m>
+   		<y-m>1.043</y-m>
+   		<z-m>-0.887</z-m>
+  	</center>
+  	<axis>
+   		<x>0.252</x>
+   		<y>0.967</y>
+   		<z>0.034</z>
+  	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+  	<object-name>LHFlap1</object-name>
+	<property>/surface-positions/flap-pos-norm</property>
+  	<factor>-35</factor>
+  	<center>
+   		<x-m>1.297</x-m>
+   		<y-m>-3.384</y-m>
+   		<z-m>-0.825</z-m>
+  	</center>
+  	<axis>
+   		<x>0.487</x>
+   		<y>-0.873</y>
+   		<z>0.028</z>
+  	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+  	<object-name>RHFlap1</object-name>
+	<property>/surface-positions/flap-pos-norm</property>
+  	<factor>35</factor>
+  	<center>
+   		<x-m>1.297</x-m>
+   		<y-m>3.384</y-m>
+   		<z-m>-0.825</z-m>
+  	</center>
+  	<axis>
+   		<x>0.487</x>
+   		<y>0.873</y>
+   		<z>0.028</z>
+  	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+  	<object-name>LHAileron</object-name>
+	<property>/surface-positions/left-aileron-pos-norm</property>
+  	<factor>-15</factor>
+  	<center>
+   		<x-m>3.151</x-m>
+   		<y-m>-6.701</y-m>
+   		<z-m>-0.716</z-m>
+  	</center>
+  	<axis>
+   		<x>0.490</x>
+   		<y>-0.872</y>
+   		<z>0.022</z>
+  	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+  	<object-name>RHAileron</object-name>
+	<property>/surface-positions/right-aileron-pos-norm</property>
+  	<factor>15</factor>
+  	<center>
+   		<x-m>3.151</x-m>
+   		<y-m>6.701</y-m>
+   		<z-m>-0.716</z-m>
+  	</center>
+  	<axis>
+   		<x>0.490</x>
+   		<y>0.872</y>
+   		<z>0.022</z>
+  	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+  	<object-name>LHspeedbrake</object-name>
+	<property>/surface-positions/spoiler-pos-norm</property>
+  	<factor>35</factor>
+  	<center>
+   		<x-m>1.006</x-m>
+   		<y-m>-3.537</y-m>
+   		<z-m>-0.691</z-m>
+  	</center>
+  	<axis>
+   		<x>0.517</x>
+   		<y>-0.856</y>
+   		<z>0.014</z>
+  	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+  	<object-name>RHspeedbrake</object-name>
+	<property>/surface-positions/spoiler-pos-norm</property>
+  	<factor>-35</factor>
+  	<center>
+   		<x-m>1.006</x-m>
+   		<y-m>3.537</y-m>
+   		<z-m>-0.691</z-m>
+  	</center>
+  	<axis>
+   		<x>0.517</x>
+   		<y>0.856</y>
+   		<z>0.014</z>
+  	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+  	<object-name>UprReverser</object-name>
+	<property>/surface-positions/reverser-norm</property>
+  	<factor>74</factor>
+  	<center>
+   		<x-m>5.297</x-m>
+   		<y-m>0.0</y-m>
+   		<z-m>0.544</z-m>
+  	</center>
+  	<axis>
+   		<x>0.0</x>
+   		<y>1.0</y>
+   		<z>0.0</z>
+  	</axis>
+</animation>
+
+<animation>
+	<type>rotate</type>
+  	<object-name>LwrReverser</object-name>
+	<property>/surface-positions/reverser-norm</property>
+  	<factor>-72</factor>
+  	<center>
+   		<x-m>5.273</x-m>
+   		<y-m>0.0</y-m>
+   		<z-m>0.656</z-m>
+  	</center>
+  	<axis>
+   		<x>0.0</x>
+   		<y>1.0</y>
+   		<z>0.0</z>
+  	</axis>
+</animation>
+
+<!-- Instruments -->
+
+<model>
+	<path>Aircraft/Instruments-3d/primus-1000/primus1000-pfd.xml</path>
+	<offsets>
+		<x-m>-7.523</x-m>
+		<y-m>-0.380</y-m>
+		<z-m>0.020</z-m>
+		<pitch-deg>-10.0</pitch-deg>
+	</offsets>
+</model>
+
+<model>
+	<path>Aircraft/Instruments-3d/primus-1000/primus1000-mfd.xml</path>
+    <offsets>
+		<x-m>-7.523</x-m>
+        <y-m>-0.190</y-m>
+        <z-m>0.020</z-m>
+        <pitch-deg>-10.0</pitch-deg>
+	</offsets>
+</model>
+
+<model>
+	<path>Aircraft/Instruments-3d/primus-1000/primus2000-eicas.xml</path>
+    <offsets>
+		<x-m>-7.523</x-m>
+        <y-m>0</y-m>
+        <z-m>0.020</z-m>
+        <pitch-deg>-10.0</pitch-deg>
+	</offsets>
+</model>
+
+<model>
+	<path>Aircraft/Instruments-3d/primus-1000/primus1000-mfd.xml</path>
+	<offsets>
+		<x-m>-7.523</x-m>
+        <y-m>0.190</y-m>
+        <z-m>0.020</z-m>
+        <pitch-deg>-10.0</pitch-deg>
+	</offsets>
+</model>
+
+<model>
+	<path>Aircraft/Instruments-3d/primus-1000/primus1000-pfd.xml</path>
+	<offsets>
+		<x-m>-7.523</x-m>
+        <y-m>0.380</y-m>
+        <z-m>0.020</z-m>
+        <pitch-deg>-10.0</pitch-deg>
+	</offsets>
+</model>
+
+</PropertyList>
