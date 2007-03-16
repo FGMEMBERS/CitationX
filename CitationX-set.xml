@@ -100,6 +100,18 @@ Started Oct 2005  Syd Adams
 	
 	</sim>
 
+	<autopilot>
+		<locks>
+			<passive-mode type="bool">true</passive-mode>
+		</locks>
+	</autopilot>
+	
+	<instrumentation>
+		<primus1000>
+			<fdmode type="bool">true</fdmode>
+		</primus1000>
+	</instrumentation>	
+	
 	<controls>
 		<gear>
 			<brake-parking>1</brake-parking>
