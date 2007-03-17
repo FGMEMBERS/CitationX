@@ -1,9 +1,3 @@
-hpsi = 0.0;
-pph1=0.0;
-pph2=0.0;
-fuel_density=0.0;
-n_offset=0;
-nm_calc=0.0;
 engine_on = props.globals.getNode("/sim/sound/engine/on",1);
 E_volume = props.globals.getNode("/sim/sound/engine/volume",1);
 E_pitch = props.globals.getNode("/sim/sound/engine/pitch",1);
@@ -28,23 +22,9 @@ setup_start = func{
 	E_volume.setValue(0.3);
 	E_pitch.setValue(1);
 	Reverser.setValue(0.0);
-	setprop("/instrumentation/gps/wp/wp/waypoint-type","airport");
-	setprop("/instrumentation/gps/wp/wp/ID",getprop("/sim/tower/airport-id"));
-	setprop("/instrumentation/gps/serviceable","true");
-	setprop("/engines/engine[0]/fuel-flow-pph",0.0);
-	setprop("/engines/engine[1]/fuel-flow-pph",0.0);
 	setprop("/controls/engines/reverser-position",0.0);
 	setprop("/environment/turbulence/use-cloud-turbulence","true");
 	setprop("/instrumentation/annunciator/master-caution",0.0);
-	setprop("/systems/hydraulic/pump-psi[0]",0.0);
-	setprop("/systems/hydraulic/pump-psi[1]",0.0);
-	fuel_density=getprop("consumables/fuel/tank[0]/density-ppg");
-	setprop("/instrumentation/primus1000/nav1pointer",0.0);
-	setprop("/instrumentation/primus1000/nav2pointer",0.0);
-	setprop("/instrumentation/primus1000/nav1pointer-heading-offset",0.0);
-	setprop("/instrumentation/primus1000/nav2pointer-heading-offset",0.0);
-	setprop("/instrumentation/primus1000/alt-mode",0.0);
-	setprop("/instrumentation/primus1000/nav-dist-nm",0.0);
 	print("Aircraft systems initialized");
 }
 
@@ -75,21 +55,6 @@ gforce = func {
 	if(getprop("/sim/current-view/view-number") < 1){
 		setprop("/sim/current-view/y-offset-m",eyepoint);
 		}
-	hpsi = getprop("/engines/engine[0]/n2");
-	if(hpsi == nil){hpsi =0.0;}
-	if(hpsi > 30.0){setprop("/systems/hydraulic/pump-psi[0]",3000.0);}
-	else{setprop("/systems/hydraulic/pump-psi[0]",hpsi * 100);}
-
-	hpsi = getprop("/engines/engine[1]/n2");
-	if(hpsi == nil){hpsi =0.0;}
-	if(hpsi > 30.0){setprop("/systems/hydraulic/pump-psi[1]",3000.0);}
-	else{setprop("/systems/hydraulic/pump-psi[1]",hpsi * 100);}
-	pph1=getprop("/engines/engine[0]/fuel-flow-gph");
-	if(pph1 == nil){pph1 = 0.0};
-	pph2=getprop("/engines/engine[1]/fuel-flow-gph");
-	if(pph2 == nil){pph2 = 0.0};
-	setprop("engines/engine[0]/fuel-flow-pph",pph1* fuel_density);
-	setprop("engines/engine[1]/fuel-flow-pph",pph2* fuel_density);
 	update_sounds();
 	settimer(gforce, 0);
 }
