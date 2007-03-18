@@ -1,7 +1,6 @@
 engine_on = props.globals.getNode("/sim/sound/engine/on",1);
 E_volume = props.globals.getNode("/sim/sound/engine/volume",1);
 E_pitch = props.globals.getNode("/sim/sound/engine/pitch",1);
-Reverser = props.globals.getNode("/surface-positions/reverser-norm",1);
 
 strobe_switch = props.globals.getNode("controls/switches/strobe", 1);
 aircraft.light.new("sim/model/CitationX/lighting/strobe",[0.05, 1.50], strobe_switch);
@@ -12,17 +11,10 @@ setlistener("/sim/signals/fdm-initialized", func {
 	setup_start(); 
     });
 
-setlistener("/controls/engines/engine/reverser", func {
-    rvrs = cmdarg().getValue();
-    interpolate(Reverser,rvrs, 1.4);
-});	 
-
 setup_start = func{
 	engine_on.setBoolValue(1);
 	E_volume.setValue(0.3);
 	E_pitch.setValue(1);
-	Reverser.setValue(0.0);
-	setprop("/controls/engines/reverser-position",0.0);
 	setprop("/environment/turbulence/use-cloud-turbulence","true");
 	setprop("/instrumentation/annunciator/master-caution",0.0);
 	print("Aircraft systems initialized");
