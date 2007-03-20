@@ -322,6 +322,7 @@ if(master_av){
     setprop("/systems/electrical/outputs/transponder", Rmain_bus_volts);
     setprop("/systems/electrical/outputs/autopilot", Rmain_bus_volts);
     setprop("/systems/electrical/outputs/adf", Rmain_bus_volts);
+    setprop("/systems/electrical/outputs/mk-viii", Rmain_bus_volts);
 }
     return load;
 }
