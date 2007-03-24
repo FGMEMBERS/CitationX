@@ -47,6 +47,65 @@
       <pitch-deg>-15.0</pitch-deg>
     </offsets>
   </model>
+  <model>
+    <path>Aircraft/CitationX/Models/CDU.xml</path>
+    <offsets>
+      <x-m>-7.637</x-m>
+      <y-m>0.090</y-m>
+      <z-m>-0.169</z-m>
+      <pitch-deg>-70.0</pitch-deg>
+    </offsets>
+  </model>
+  <model>
+    <path>Aircraft/CitationX/Models/CDU.xml</path>
+    <offsets>
+      <x-m>-7.637</x-m>
+      <y-m>-0.084</y-m>
+      <z-m>-0.169</z-m>
+      <pitch-deg>-70.0</pitch-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/CitationX/Models/RMU.xml</path>
+    <offsets>
+      <x-m>-7.469</x-m>
+      <y-m>-0.103</y-m>
+      <z-m>-0.211</z-m>
+      <pitch-deg>-85.0</pitch-deg>
+    </offsets>
+  </model>
+
+  <model>
+    <path>Aircraft/CitationX/Models/RMU.xml</path>
+    <offsets>
+      <x-m>-7.469</x-m>
+      <y-m>0.106</y-m>
+      <z-m>-0.211</z-m>
+      <pitch-deg>-85.0</pitch-deg>
+    </offsets>
+  </model>
+
+	<model>
+    <path>Aircraft/CitationX/Models/gear-control.xml</path>
+    <offsets>
+      <x-m>-7.661</x-m>
+      <y-m>0.208</y-m>
+      <z-m>-0.174</z-m>
+      <pitch-deg>-60.0</pitch-deg>
+    </offsets>
+  </model>
+
+	<model>
+    <path>Aircraft/CitationX/Models/radio.xml</path>
+    <offsets>
+      <x-m>-7.502</x-m>
+      <y-m>0.002</y-m>
+      <z-m>-0.207</z-m>
+      <pitch-deg>-85.0</pitch-deg>
+    </offsets>
+  </model>
+
   <animation>
     <type>select</type>
     <object-name>Glass</object-name>
@@ -290,6 +349,57 @@
       <x-m>5.273</x-m>
       <y-m>0.0</y-m>
       <z-m>0.656</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+<animation>
+    <type>rotate</type>
+    <object-name>Speedbrk.lever</object-name>
+    <property>/surface-positions/spoiler-pos-norm</property>
+    <factor>30</factor>
+    <center>
+      <x-m>-7.306</x-m>
+      <y-m>0.0</y-m>
+      <z-m>-0.368</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+<animation>
+    <type>rotate</type>
+    <object-name>LHthrottle</object-name>
+    <property>/controls/engines/engine/throttle</property>
+    <factor>-48.5</factor>
+    <center>
+      <x-m>-7.306</x-m>
+      <y-m>0.0</y-m>
+      <z-m>-0.368</z-m>
+    </center>
+    <axis>
+      <x>0.0</x>
+      <y>1.0</y>
+      <z>0.0</z>
+    </axis>
+  </animation>
+
+<animation>
+    <type>rotate</type>
+    <object-name>RHthrottle</object-name>
+    <property>/controls/engines/engine[1]/throttle</property>
+    <factor>-48.5</factor>
+    <center>
+      <x-m>-7.306</x-m>
+      <y-m>0.0</y-m>
+      <z-m>-0.368</z-m>
     </center>
     <axis>
       <x>0.0</x>

@@ -30,7 +30,7 @@ Started Oct 2005  Syd Adams
 			<type>lookfrom</type>
 			<internal type="bool">true</internal>
 			<config>
-				<x-offset-m type="double">-0.30</x-offset-m>
+				<x-offset-m type="double">-0.375</x-offset-m>
 				<y-offset-m type="double">0.40</y-offset-m>
 				<z-offset-m type="double">-7.0</z-offset-m>
 				<pitch-offset-deg>-12</pitch-offset-deg>
