@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
+<!--    FLIGHT MANAGEMENT SYSTEM    -->
 <PropertyList>
 
-	<path>CDU.ac</path>
+	<path>FMS.ac</path>
 
 	<animation>
   		<type>material</type>
