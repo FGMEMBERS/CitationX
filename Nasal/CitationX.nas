@@ -8,8 +8,9 @@ beacon_switch = props.globals.getNode("controls/switches/beacon", 1);
 aircraft.light.new("sim/model/CitationX/lighting/beacon",[1.0, 1.0], beacon_switch);
 
 setlistener("/sim/signals/fdm-initialized", func {
-	setup_start(); 
-    });
+	setup_start();
+    settimer(update, 1);
+});
 
 setup_start = func{
 	engine_on.setBoolValue(1);
@@ -23,7 +24,7 @@ setup_start = func{
 update_sounds = func{
 	var view0 = props.globals.getNode("/sim/current-view/view-number",0).getValue();
 	var sound_level = 0.7;
-	n1_rpm =props.globals.getNode("/engines/engine/n1",0); 
+	n1_rpm =props.globals.getNode("/engines/engine/n1",0);
 	var test_rpm = n1_rpm.getValue();
 
 	if(test_rpm == nil){test_rpm = 0.0;}
@@ -39,7 +40,7 @@ update_sounds = func{
 		}
 }
 
-gforce = func {
+update = func {
 	force = getprop("/accelerations/pilot-g");
 	if(force == nil) {force = 1.0;}
 	eyepoint = getprop("sim/view/config/y-offset-m") +0.01;
@@ -48,7 +49,6 @@ gforce = func {
 		setprop("/sim/current-view/y-offset-m",eyepoint);
 		}
 	update_sounds();
-	settimer(gforce, 0);
+	settimer(update, 0);
 }
-settimer(gforce, 0);
 
