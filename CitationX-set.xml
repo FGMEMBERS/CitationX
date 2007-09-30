@@ -23,6 +23,7 @@ Started Oct 2005  Syd Adams
 		
 		<model>
 			<path>Aircraft/CitationX/Models/Citation-X.xml</path>
+            <variant type="int">0</variant>
 		</model>
 		
 		<view n="0">
