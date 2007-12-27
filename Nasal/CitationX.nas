@@ -7,12 +7,6 @@ aircraft.light.new("sim/model/CitationX/lighting/strobe",[0.05, 1.50], strobe_sw
 beacon_switch = props.globals.getNode("controls/switches/beacon", 1);
 aircraft.light.new("sim/model/CitationX/lighting/beacon",[1.0, 1.0], beacon_switch);
 
-var view_list =[];
-var Sview = props.globals.getNode("/sim").getChildren("view");
-foreach (v;Sview) {
-append(view_list,"sim/view["~v.getIndex()~"]/config/default-field-of-view-deg");
-}
-aircraft.data.add(view_list);
 
 setlistener("/sim/signals/fdm-initialized", func {
 	setup_start();
