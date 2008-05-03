@@ -6,169 +6,175 @@ Started Oct 2005  Syd Adams
 ************************************************************************
 -->
 <PropertyList>
-	<sim>
-		<description>Cessna Citation-X</description>
-		<author>Syd Adams</author>
-		<status>devel</status>
-		<flight-model>yasim</flight-model>
-		<aero>CitationX</aero>
-		<fuel-fraction>0.8</fuel-fraction>
-		
-		<startup>
-			<splash-texture>Aircraft/CitationX/CitationX-splash.rgb</splash-texture>
-		</startup>
-		
-		<panel>
-		</panel>
-		
-		<model>
-			<path>Aircraft/CitationX/Models/Citation-X.xml</path>
+    <sim>
+        <description>Cessna Citation-X</description>
+        <author>Syd Adams</author>
+        <status>devel</status>
+        <flight-model>yasim</flight-model>
+        <aero>CitationX</aero>
+        <fuel-fraction>0.8</fuel-fraction>
+        
+        <startup>
+            <splash-texture>Aircraft/CitationX/CitationX-splash.rgb</splash-texture>
+        </startup>
+        
+        <panel>
+        </panel>
+        
+        <model>
+            <path>Aircraft/CitationX/Models/Citation-X.xml</path>
             <variant type="int">0</variant>
-		</model>
-		
-		<view n="0">
-			<name>Cockpit</name>
-			<type>lookfrom</type>
-			<internal type="bool">true</internal>
-			<config>
-				<x-offset-m type="double">-0.375</x-offset-m>
-				<y-offset-m type="double">0.40</y-offset-m>
-				<z-offset-m type="double">-7.0</z-offset-m>
-				<pitch-offset-deg>-12</pitch-offset-deg>
-				<default-field-of-view-deg type="double">60.0</default-field-of-view-deg>
-			</config>
-		</view>
-		
-		<current-view>
-			<field-of-view>55.0</field-of-view>
-		</current-view>
-		<allow-toggle-cockpit>true</allow-toggle-cockpit>
-		<chase-distance-m type="double">-35.0</chase-distance-m>
+        </model>
+        
+        <view n="0">
+            <name>Cockpit</name>
+            <type>lookfrom</type>
+            <internal type="bool">true</internal>
+            <config>
+                <x-offset-m type="double">-0.375</x-offset-m>
+                <y-offset-m type="double">0.40</y-offset-m>
+                <z-offset-m type="double">-7.0</z-offset-m>
+                <pitch-offset-deg>-12</pitch-offset-deg>
+                <default-field-of-view-deg type="double">60.0</default-field-of-view-deg>
+            </config>
+        </view>
+        
+        <current-view>
+            <field-of-view>55.0</field-of-view>
+        </current-view>
+        <allow-toggle-cockpit>true</allow-toggle-cockpit>
+        <chase-distance-m type="double">-35.0</chase-distance-m>
 
-		<systems>
-			<electrical>
-				<path></path>
-			</electrical>
-			<autopilot>
-				<path>Aircraft/CitationX/CitationX-autopilot.xml</path>
-			</autopilot>
-		</systems>
-		
-		<sound>
-			<path>Aircraft/CitationX/CitationX-sound.xml</path>
-		</sound>
-		
-		<hud>
-			<enable3d>false</enable3d>
-		</hud>
+    <airport>
+        <runways>
+            <start-offset-m>20</start-offset-m>
+        </runways>
+    </airport>
 
-		<virtual-cockpit archive="y">true</virtual-cockpit>
+        <systems>
+            <electrical>
+                <path></path>
+            </electrical>
+            <autopilot>
+                <path>Aircraft/CitationX/CitationX-autopilot.xml</path>
+            </autopilot>
+        </systems>
+        
+        <sound>
+            <path>Aircraft/CitationX/CitationX-sound.xml</path>
+        </sound>
+        
+        <hud>
+            <enable3d>false</enable3d>
+        </hud>
 
-		<weight n="0">
-			<name>Crew</name>
-			<weight-lb>180</weight-lb> 
-			<max-lb>400</max-lb>
-			<min-lb>180</min-lb>
+        <virtual-cockpit archive="y">true</virtual-cockpit>
+
+        <weight n="0">
+            <name>Crew</name>
+            <weight-lb>180</weight-lb> 
+            <max-lb>400</max-lb>
+            <min-lb>180</min-lb>
         </weight>
 
         <weight n="1">
-			<name>Passengers</name>
-			<weight-lb>1000</weight-lb> 
-			<max-lb>14300</max-lb>
-			<min-lb>0</min-lb>      
+            <name>Passengers</name>
+            <weight-lb>1000</weight-lb> 
+            <max-lb>14300</max-lb>
+            <min-lb>0</min-lb>      
         </weight>
 
         <replay>
-			<disable>1</disable>
+            <disable>1</disable>
         </replay>
 
         <multiplay>
-			<chat_display>1</chat_display>
+            <chat_display>1</chat_display>
         </multiplay>
         
         <help>
-			<title>Cessna Citation-X</title>
-			<line></line>
-      		<key>
-        		<name>Keypad Delete</name>
-        		<desc>Toggle thrust reversers</desc>
-			</key>
-			<key>
-				<name>Control B</name>	
-				<desc>Speedbrakes</desc>	
-			</key>
-    	</help>
-    	
-		<flaps>
-   			<setting>0.0</setting> <!-- 0 -->
-   			<setting>0.142</setting> <!-- 5 -->
-   			<setting>0.428</setting> <!-- 15 -->
-   			<setting>1.0</setting> <!-- 35 -->
-		</flaps>
-	
-	</sim>
-	
-	<instrumentation>	
-		<mk-viii>
-        	<serviceable>true</serviceable>
+            <title>Cessna Citation-X</title>
+            <line></line>
+            <key>
+                <name>Keypad Delete</name>
+                <desc>Toggle thrust reversers</desc>
+            </key>
+            <key>
+                <name>Control B</name>	
+                <desc>Speedbrakes</desc>	
+            </key>
+        </help>
+        
+        <flaps>
+            <setting>0.0</setting> <!-- 0 -->
+            <setting>0.142</setting> <!-- 5 -->
+            <setting>0.428</setting> <!-- 15 -->
+            <setting>1.0</setting> <!-- 35 -->
+        </flaps>
+    
+    </sim>
+    
+    <instrumentation>	
+        <mk-viii>
+            <serviceable>true</serviceable>
             <configuration-module>
-            	<category-1>1</category-1>	<!-- GA Fast, 150' Mode 4B -->
+                <category-1>1</category-1>	<!-- GA Fast, 150' Mode 4B -->
             </configuration-module>
             <inputs>
-            	<arinc429>
-                	<decision-height-ncd>false</decision-height-ncd>
-                	<decision-height>200</decision-height>
+                <arinc429>
+                    <decision-height-ncd>false</decision-height-ncd>
+                    <decision-height>200</decision-height>
                 </arinc429>
             </inputs>
         </mk-viii>
-	</instrumentation>
+    </instrumentation>
 
-	<controls>
-		<gear>
-			<brake-parking>1</brake-parking>
-		</gear>
-		<engines>
-			<engine n="0">
-			<magnetos>3</magnetos>
-			</engine>
-			<engine n="1">
-			<magnetos>3</magnetos>
-			</engine>
-		</engines>
-	</controls>
+    <controls>
+        <gear>
+            <brake-parking>1</brake-parking>
+        </gear>
+        <engines>
+            <engine n="0">
+            <magnetos>3</magnetos>
+            </engine>
+            <engine n="1">
+            <magnetos>3</magnetos>
+            </engine>
+        </engines>
+    </controls>
 
-	<engines>
-		<engine n="0">
-			<rpm>1000</rpm>
-		</engine>
-		<engine n="1">
-			<rpm>1000</rpm>
-		</engine>
-	</engines>
+    <engines>
+        <engine n="0">
+            <rpm>1000</rpm>
+        </engine>
+        <engine n="1">
+            <rpm>1000</rpm>
+        </engine>
+    </engines>
   
-	<nasal>
-		<citation>
-			<file>Aircraft/CitationX/Nasal/CitationX.nas</file>
-			<file>Aircraft/CitationX/Nasal/electrical.nas</file>
-			<file>Aircraft/Instruments-3d/primus-1000/Primus1000.nas</file>
-		</citation>
-	</nasal>
+    <nasal>
+        <citation>
+            <file>Aircraft/CitationX/Nasal/CitationX.nas</file>
+            <file>Aircraft/CitationX/Nasal/electrical.nas</file>
+            <file>Aircraft/Instruments-3d/primus-1000/Primus1000.nas</file>
+        </citation>
+    </nasal>
 
-	<input>
-		<keyboard>
-			<key n="127">
-				<name>Delete</name>
-				<desc>Toggle Reversers</desc>
-				<binding>
-					<command>property-toggle</command>
-					<property>controls/engines/engine[0]/reverser</property>
-				</binding>
-				<binding>
-					<command>property-toggle</command>
-					<property>controls/engines/engine[1]/reverser</property>
-				</binding>
-			</key>
-		</keyboard>
-	</input>
+    <input>
+        <keyboard>
+            <key n="127">
+                <name>Delete</name>
+                <desc>Toggle Reversers</desc>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>controls/engines/engine[0]/reverser</property>
+                </binding>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>controls/engines/engine[1]/reverser</property>
+                </binding>
+            </key>
+        </keyboard>
+    </input>
 
 </PropertyList>
