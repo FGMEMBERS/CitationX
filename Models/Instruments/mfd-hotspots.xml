@@ -1,0 +1,135 @@
+<!--
+Syd Adams
+Primus 1000 MFD  hotspots
+-->
+
+<PropertyList>
+
+    <name>MFD hotspots</name>
+    <w-base>180</w-base>
+    <h-base>240</h-base>
+    <w>180</w>
+    <h>240</h>
+
+    <layers>
+
+    </layers>
+
+    <actions>
+
+<!--
+        <action>
+            <name>bezel outline</name>
+            <button>0</button>
+            <x>-90</x>
+            <y>-120</y>
+            <w>180</w>
+            <h>240</h>
+        </action>
+-->
+
+        <action>
+            <name>Alt decrease</name>
+            <button>0</button>
+            <x>67</x>
+            <y>-100</y>
+            <w>8</w>
+            <h>18</h>
+            <binding>
+                <command>nasal</command>
+                <script>bravo.primus.mfd_menu("alt-dec")</script>
+            </binding>
+        </action>
+
+        <action>
+            <name>Alt increase</name>
+            <button>0</button>
+            <x>75</x>
+            <y>-100</y>
+            <w>8</w>
+            <h>18</h>
+            <binding>
+                <command>nasal</command>
+                <script>bravo.primus.mfd_menu("alt-inc")</script>
+            </binding>
+        </action>
+
+        <action>
+            <name>setmode</name>
+            <button>0</button>
+            <x>-70</x>
+            <y>-100</y>
+            <w>14</w>
+            <h>10</h>
+            <binding>
+            </binding>
+        </action>
+
+        <action>
+            <name>mode2</name>
+            <button>0</button>
+            <x>-50</x>
+            <y>-100</y>
+            <w>18</w>
+            <h>18</h>
+            <binding>
+                <command>nasal</command>
+                <script>bravo.primus.mfd_menu("page0")</script>
+            </binding>
+        </action>
+
+        <action>
+            <name>mode3</name>
+            <button>0</button>
+            <x>-28</x>
+            <y>-100</y>
+            <w>18</w>
+            <h>18</h>
+            <binding>
+                <command>nasal</command>
+                <script>bravo.primus.mfd_menu("page1")</script>
+            </binding>
+        </action>
+
+        <action>
+            <name>mode4</name>
+            <button>0</button>
+            <x>-7</x>
+            <y>-100</y>
+            <w>18</w>
+            <h>18</h>
+            <binding>
+                <command>nasal</command>
+                <script>bravo.primus.mfd_menu("page2")</script>
+            </binding>
+        </action>
+
+        <action>
+            <name>mode5</name>
+            <button>0</button>
+            <x>14</x>
+            <y>-100</y>
+            <w>18</w>
+            <h>18</h>
+            <binding>
+                <command>nasal</command>
+                <script>bravo.primus.mfd_menu("page3")</script>
+            </binding>
+        </action>
+
+        <action>
+            <name>mode6</name>
+            <button>0</button>
+            <x>36</x>
+            <y>-100</y>
+            <w>18</w>
+            <h>18</h>
+            <binding>
+                <command>nasal</command>
+                <script>bravo.primus.mfd_menu("page4")</script>
+            </binding>
+        </action>
+
+    </actions>
+
+</PropertyList>
