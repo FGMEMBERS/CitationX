@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+    <name>MFD 2d Panel</name>
+    <background>Aircraft/CitationX/Panel/transparent-bg.rgb</background>
+    <w>300</w>
+    <h>200</h>
+
+    <instruments>
+
+        <instrument include="radar.xml">
+            <name>radar</name>
+            <condition>
+                <and>
+                    <property>instrumentation/primus1000/mfd/serviceable</property>
+                    <greater-than>
+                        <property>systems/electrical/ac-volts</property>
+                        <value>15</value>
+                    </greater-than>
+                </and>
+            </condition>
+            <x>150</x>
+            <y>118</y>
+            <w>260</w>
+            <h>130</h>
+        </instrument>
+
+        <instrument include="mfd-text.xml">
+            <name>MFD text</name>
+            <condition>
+                <and>
+                    <property>instrumentation/primus1000/mfd/serviceable</property>
+                    <greater-than>
+                        <property>systems/electrical/ac-volts</property>
+                        <value>15</value>
+                    </greater-than>
+                </and>
+            </condition>
+            <x>152</x>
+            <y>98</y>
+            <w>304</w>
+            <h>204</h>
+        </instrument>
+
+    </instruments>
+</PropertyList>

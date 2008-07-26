@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+    <name>DME</name>
+    <w-base>60</w-base>
+    <h-base>22</h-base>
+
+    <layers>
+    </layers>
+
+    <actions>
+
+        <action>
+            <name>Rotate knob left</name>
+            <button>0</button>
+            <x>-7</x>
+            <y>-11</y>
+            <w>8</w>
+            <h>8</h>
+            <binding>
+                <command>nasal</command>
+                <script>bravo.dme_step(-1)</script>
+            </binding>
+        </action>
+
+        <action>
+            <name>Rotate knob right</name>
+            <button>0</button>
+            <x>1</x>
+            <y>-11</y>
+            <w>8</w>
+            <h>8</h>
+            <binding>
+                <command>nasal</command>
+                <script>bravo.dme_step(1)</script>
+            </binding>
+        </action>
+
+    </actions>
+
+</PropertyList>

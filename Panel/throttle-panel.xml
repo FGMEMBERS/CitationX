@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+ <name>Throttle Panel</name>
+ <background>Aircraft/Citation-Bravo/Panel/transparent-bg.rgb</background>
+ <w>240</w>
+ <h>274</h>
+
+<instruments>
+
+<instrument>
+  <name>throttle panel hotspots</name>
+  <x>120</x>
+  <y>137</y>
+  <w>240</w>
+  <h>274</h>
+  <w-base>240</w-base>
+  <h-base>274</h-base>
+
+ <actions> 
+
+   <action>
+     <name>Toggle Ground Idle</name>
+     <button>0</button>
+     <x>-0</x>
+     <y>-0</y>
+     <w>12</w>
+     <h>12</h>
+     <binding>
+       <command>property-toggle</command>
+       <property>controls/engines/throttle_idle</property>
+     </binding>
+   </action>
+
+</actions>
+
+</instrument>
+</instruments>
+</PropertyList>
