@@ -1,9 +1,9 @@
 AC3Db
 MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 64  trans 0
-MATERIAL "dark.001" rgb 0.799894 0.799894 0.799894 amb 0 0 0 emis 0 0 0 spec 0.6 0.6 0.6 shi 17 trans 0
+MATERIAL "dark.001" rgb 0.799894 0.799894 0.799894 amb 0 0 0 emis 0.1 0.1 0.1 spec 0.6 0.6 0.6 shi 17 trans 0
 MATERIAL "inst-glow" rgb 0.8 0.8 0.8 amb 0 0 0 emis 0.454362 0.454362 0.454362 spec 0.511111 0.511111 0.511111 shi 32 trans 0
 MATERIAL "instr-lights.001" rgb 0.8 0.8 0.8 amb 0 0 0 emis 1.248255 1.248255 1.248255 spec 0 0 0 shi 32 trans 0
-MATERIAL "gloss" rgb 0.733333 0.733333 0.733333 amb 0 0 0 emis 0 0 0 spec 1 1 1 shi 64 trans 0
+MATERIAL "gloss" rgb 0.733333 0.733333 0.733333 amb 0 0 0 emis 0.1 0.1 0.1 spec 1 1 1 shi 64 trans 0
 OBJECT world
 kids 33
 OBJECT poly

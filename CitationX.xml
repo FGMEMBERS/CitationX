@@ -23,9 +23,9 @@ KG ==== Vref====Vapp
 Fuel 12938 lbs jet
 -->
 <airplane mass="21700">
-  <approach speed="110" aoa="5" fuel="0.5">
-    <control-setting axis="/controls/engines/engine[0]/throttle" value="0.3"/>
-    <control-setting axis="/controls/engines/engine[1]/throttle" value="0.3"/>
+  <approach speed="110" aoa="3" fuel="0.5">
+    <control-setting axis="/controls/engines/engine[0]/throttle" value="0.25"/>
+    <control-setting axis="/controls/engines/engine[1]/throttle" value="0.25"/>
     <control-setting axis="/controls/engines/engine[0]/condition" value="1.0"/>
     <control-setting axis="/controls/engines/engine[1]/condition" value="1.0"/>
     <control-setting axis="/controls/flight/flaps" value="1.0"/>
@@ -56,17 +56,11 @@ Fuel 12938 lbs jet
   <fuselage ax="-3.23" ay="0" az="0.0" bx="-7.57" by="0" bz="0.37"
   width="1.8" taper="0.2" midpoint="0.0"/><!--tail-->
 
-  <fuselage ax="-0.74" ay="1.67" az="0.6" bx="-5.43" by="1.67" bz="0.58"
-  width="1.3" taper="0.7" midpoint="0.3"/><!--LH engine-->
 
-  <fuselage ax="-0.74" ay="-1.67" az="0.6" bx="-5.43" by="-1.67" bz="0.58"
-  width="1.3" taper="0.7" midpoint="0.3"/><!--RH engine-->
-
-  
   <wing x="1.365" y="0.90" z="-1.0" length="10.5" chord="4.5" 
-  sweep="37" dihedral="3" taper="0.22" camber="0.075">
+  sweep="37" dihedral="3" taper="0.22" camber="0.05">
     <stall aoa="12" width="8" peak="1.5"/>
-    <flap0 start="0" end=".5" lift="1.6" drag="1.8"/>
+    <flap0 start="0" end=".5" lift="1.5" drag="1.5"/>
     <flap1 start=".52" end=".88" lift="1.2" drag="1.1"/>
     <slat start=".2" end=".8" aoa="25" drag="1.5"/>
     <spoiler start=".02" end=".3" lift="1" drag="6.0"/>
@@ -85,9 +79,9 @@ Fuel 12938 lbs jet
   </wing>
   
   <hstab x="-8.71" y="0.10" z="2.95" length="3.85" chord="2.0"
-  sweep="35" taper="0.75" dihedral="2.0" effectiveness="3.0">
+  sweep="35" taper="0.75" dihedral="2.0" camber="0.02">
     <stall aoa="16" width="4" peak="1.5"/>
-    <flap0 start="0" end="1" lift="1.5" drag="1.2"/>
+    <flap0 start="0" end="1" lift="1.7" drag="1.2"/>
     <control-input axis="/controls/flight/elevator" control="FLAP0"/>
     <control-input axis="/controls/flight/elevator-trim" control="FLAP0"/>
     <control-output control="FLAP0" prop="/surface-positions/elevator-pos-norm"/>
@@ -96,7 +90,7 @@ Fuel 12938 lbs jet
   <vstab x="-6.0" y="0.0" z="0.61" length="4.50" chord="3.2"
   sweep="35" taper="0.8">
     <stall aoa="16" width="4" peak="1.5"/>
-    <flap0 start="0" end="1" lift="1.3" drag="1.3"/>
+    <flap0 start="0" end="1" lift="1.4" drag="1.2"/>
     <control-input axis="/controls/flight/rudder" control="FLAP0" invert="true"/>
     <control-input axis="/controls/flight/rudder-trim" control="FLAP0" invert="true"/>
     <control-output control="FLAP0" prop="/surface-positions/rudder-pos-norm"/>
@@ -118,7 +112,7 @@ Fuel 12938 lbs jet
     <control-output control="EXTEND" prop="/gear/gear[0]/position-norm"/>
   </gear>
   
-  <gear x="-0.5" y="1.7" z="-2.5" compression=".7" retract-time="5.2">
+  <gear x="-0.5" y="1.7" z="-2.5" compression=".9" spring="2" retract-time="5.2">
     <control-input axis="/controls/gear/brake-left" control="BRAKE"/>
     <control-input axis="/controls/gear/brake-parking" control="BRAKE"/>
     <control-input axis="/controls/gear/gear-down" control="EXTEND"/>
@@ -126,7 +120,7 @@ Fuel 12938 lbs jet
     <control-output control="EXTEND" prop="/gear/gear[1]/position-norm"/>
   </gear>
   
-  <gear x="-0.5" y="-1.7" z="-2.5" compression=".7" retract-time="5.3">
+  <gear x="-0.5" y="-1.7" z="-2.5" compression=".9" spring="2" retract-time="5.3">
     <control-input axis="/controls/gear/brake-right" control="BRAKE"/>
     <control-input axis="/controls/gear/brake-parking" control="BRAKE"/>
     <control-input axis="/controls/gear/gear-down" control="EXTEND"/>
@@ -159,8 +153,7 @@ Takeoff thrust Fuel flow 0.3222 kg/s
     <actionpt x="-5.0" y="-1.5" z="0.72"/>
   </jet>
 
-<ballast x="-6.0" y="0.0" z="0.5" mass="-4200"/>
-<ballast x="6.0" y="0.0" z="0.5" mass="4200"/>
+<ballast x="6.0" y="0.0" z="0.5" mass="7200"/>
 
 <weight x="7.0" y="0.0" z="0" mass-prop="/sim/weight[0]/weight-lb"/>
   <weight x="0.0" y="0" z="0" mass-prop="/sim/weight[1]/weight-lb"/>

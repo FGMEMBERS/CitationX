@@ -254,7 +254,7 @@
         <prop>autopilot/settings/target-altitude-ft</prop>
     </reference>
     <output>
-        <prop>autopilot/settings/target-pitch-deg</prop>
+        <prop>autopilot/internal/target-pitch-deg</prop>
     </output>
     <config>
         <Kp>0.025</Kp>
@@ -286,7 +286,7 @@
 		<value>0</value>
 	</reference>
 	<output>
-		<prop>autopilot/settings/target-pitch-deg</prop>
+		<prop>autopilot/internal/target-pitch-deg</prop>
 	</output>
 	<config>
 		<Kp>-1.5</Kp>
@@ -319,10 +319,10 @@
         <scale>0.01667</scale>
     </reference>
     <output>
-        <prop>autopilot/settings/target-pitch-deg</prop>
+        <prop>autopilot/internal/target-pitch-deg</prop>
     </output>
     <config>
-        <Kp>1.0</Kp>
+        <Kp>0.015</Kp>
         <Ki>0.1</Ki>
         <u_min>
             <prop>instrumentation/flightdirector/pitch-min</prop>
@@ -347,7 +347,7 @@
         <prop>instrumentation/flightdirector/vnav-alt</prop>
     </reference>
     <output>
-        <prop>autopilot/settings/target-pitch-deg</prop>
+        <prop>autopilot/internal/target-pitch-deg</prop>
     </output>
     <config>
         <Kp>0.025</Kp>
@@ -366,7 +366,7 @@
 </pid-controller>
 
 <pid-controller>
-    <name>Elevator Trim Control</name>
+    <name>Elevator Control</name>
     <debug>false</debug>
     <enable>
         <prop>autopilot/locks/pitch-active</prop>
@@ -377,20 +377,20 @@
         <prop>orientation/pitch-deg</prop>
     </input>
     <reference>
-        <prop>autopilot/settings/target-pitch-deg</prop>
+        <prop>autopilot/internal/target-pitch-deg</prop>
     </reference>
     <output>
         <prop>controls/flight/elevator-trim</prop>
     </output>
     <config>
-        <Kp>-0.05</Kp>
+        <Kp>-0.50</Kp>
         <beta>1.0</beta>
         <alpha>0.1</alpha>
         <gamma>0.0</gamma>
-        <Ti>10.0</Ti>
-        <Td>0.2</Td>
-        <u_min>-0.7</u_min>
-        <u_max>0.7</u_max>
+        <Ti>80.0</Ti>
+        <Td>0.005</Td>
+        <u_min>-1.0</u_min>
+        <u_max>1.0</u_max>
     </config>
 </pid-controller>
 

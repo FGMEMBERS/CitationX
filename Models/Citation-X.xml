@@ -4,100 +4,39 @@
 
     <path>CitationX.ac</path>
 
-    <panel>
-        <path>Aircraft/CitationX/Panel/PFD-panel.xml</path>
-        <bottom-left>
-            <x-m>-7.746</x-m>
-            <y-m>-0.452</y-m>
-            <z-m>-0.078</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-7.746</x-m>
-            <y-m>-0.299</y-m>
-            <z-m>-0.078</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-7.794</x-m>
-            <y-m>-0.452</y-m>
-            <z-m>0.100</z-m>
-        </top-left>
-    </panel>
+    <nasal>
+        <load>
+            var livery_update = aircraft.livery_update.new("Aircraft/CitationX/Models/Liveries", 10);
+        </load>
 
-    <panel>
-        <path>Aircraft/CitationX/Panel/MFD-panel.xml</path>
-        <bottom-left>
-            <x-m>-7.746</x-m>
-            <y-m>-0.264</y-m>
-            <z-m>-0.078</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-7.746</x-m>
-            <y-m>-0.111</y-m>
-            <z-m>-0.078</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-7.794</x-m>
-            <y-m>-0.264</y-m>
-            <z-m>0.100</z-m>
-        </top-left>
-    </panel>
+        <unload>
+            livery_update.stop();
+        </unload>
+    </nasal>
 
-    <panel>
-        <path>Aircraft/CitationX/Panel/EICAS-panel.xml</path>
-        <bottom-left>
-            <x-m>-7.746</x-m>
-            <y-m>-0.072</y-m>
-            <z-m>-0.078</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-7.746</x-m>
-            <y-m>0.081</y-m>
-            <z-m>-0.078</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-7.794</x-m>
-            <y-m>-0.072</y-m>
-            <z-m>0.100</z-m>
-        </top-left>
-    </panel>
+    <animation>
+      <type>material</type>
+      <object-name>Engines</object-name>
+      <object-name>Fuselage</object-name>
+      <object-name>LHAileron</object-name>
+      <object-name>LHelevator</object-name>
+      <object-name>LHFlap0</object-name>
+      <object-name>LHFlap1</object-name>
+      <object-name>RHaileron</object-name>
+      <object-name>RHelevator</object-name>
+      <object-name>RHFlap0</object-name>
+      <object-name>RHFlap1</object-name>
+      <object-name>Rudder</object-name>
+      <object-name>HStab</object-name>
+      <object-name>LwrReverser</object-name>
+      <object-name>UprReverser</object-name>
+      <object-name>RHwing</object-name>
+      <object-name>LHwing</object-name>
+      <property-base>sim/model/livery</property-base>
+      <texture-prop>texture</texture-prop>
+      <texture>livery1.png</texture>
+    </animation>
 
-    <panel>
-        <path>Aircraft/CitationX/Panel/MFD-panel.xml</path>
-        <bottom-left>
-            <x-m>-7.746</x-m>
-            <y-m>0.119</y-m>
-            <z-m>-0.078</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-7.746</x-m>
-            <y-m>0.272</y-m>
-            <z-m>-0.078</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-7.794</x-m>
-            <y-m>0.119</y-m>
-            <z-m>0.100</z-m>
-        </top-left>
-    </panel>
-
-    <panel>
-        <path>Aircraft/CitationX/Panel/PFD-panel.xml</path>
-        <bottom-left>
-            <x-m>-7.746</x-m>
-            <y-m>0.307</y-m>
-            <z-m>-0.078</z-m>
-        </bottom-left>
-        <bottom-right>
-            <x-m>-7.746</x-m>
-            <y-m>0.460</y-m>
-            <z-m>-0.078</z-m>
-        </bottom-right>
-        <top-left>
-            <x-m>-7.794</x-m>
-            <y-m>0.307</y-m>
-            <z-m>0.100</z-m>
-        </top-left>
-    </panel>
 
 
 <!-- Instruments -->
@@ -133,7 +72,8 @@
     </model>
 
     <model>
-        <path>Aircraft/CitationX/Models/Instruments/pfd.xml</path>
+        <name>PFD1</name>
+        <path>Aircraft/CitationX/Models/Instruments/PFD/PFD.xml</path>
         <offsets>
             <x-m>-7.769</x-m>
             <y-m>-0.375</y-m>
@@ -143,7 +83,8 @@
     </model>
 
     <model>
-        <path>Aircraft/CitationX/Models/Instruments/mfd.xml</path>
+        <name>MFD1</name>
+        <path>Aircraft/CitationX/Models/Instruments/MFD/MFD.xml</path>
         <offsets>
             <x-m>-7.769</x-m>
             <y-m>-0.187</y-m>
@@ -153,7 +94,8 @@
     </model>
 
     <model>
-        <path>Aircraft/CitationX/Models/Instruments/eicas.xml</path>
+        <name>EICAS1</name>
+        <path>Aircraft/CitationX/Models/Instruments/EICAS/EICAS.xml</path>
         <offsets>
             <x-m>-7.769</x-m>
             <y-m>0.005</y-m>
@@ -163,7 +105,8 @@
     </model>
 
     <model>
-        <path>Aircraft/CitationX/Models/Instruments/mfd.xml</path>
+        <name>MFD2</name>
+        <path>Aircraft/CitationX/Models/Instruments/MFD/MFD.xml</path>
         <offsets>
             <x-m>-7.769</x-m>
             <y-m>0.195</y-m>
@@ -173,7 +116,8 @@
     </model>
 
     <model>
-        <path>Aircraft/CitationX/Models/Instruments/pfd.xml</path>
+        <name>PFD2</name>
+        <path>Aircraft/CitationX/Models/Instruments/PFD/PFD.xml</path>
         <offsets>
             <x-m>-7.769</x-m>
             <y-m>0.384</y-m>
@@ -183,6 +127,7 @@
     </model>
 
     <model>
+        <name>CDU1</name>
         <path>Aircraft/CitationX/Models/Instruments/CDU.xml</path>
         <offsets>
             <x-m>-7.647</x-m>
@@ -193,6 +138,7 @@
     </model>
 
     <model>
+        <name>CDU2</name>
         <path>Aircraft/CitationX/Models/Instruments/CDU.xml</path>
         <offsets>
             <x-m>-7.647</x-m>
@@ -352,24 +298,39 @@
         </offsets>
     </model>
 
+        <animation>
+        <type>select</type>
+        <object-name>PFD1</object-name>
+        <object-name>PFD2</object-name>
+        <object-name>MFD1</object-name>
+        <object-name>MFD2</object-name>
+        <object-name>EICAS1</object-name>
+        <object-name>CDU1</object-name>
+        <object-name>CDU2</object-name>
+        <condition>
+            <property>sim/current-view/internal</property>
+        </condition>
+    </animation>
+
+
     <animation>
         <type>shader</type>
         <shader>chrome</shader>
-        <texture>chrome.rgb</texture>
+        <texture>chrome.png</texture>
         <object-name>LwrReverser.001</object-name>
         <object-name>UprReverser.001</object-name>
         <object-name>Engines.chrome</object-name>
         <object-name>RHwing.heater</object-name>
-		<object-name>LHwing.heater</object-name>
-		<object-name>RHslat</object-name>
-		<object-name>LHslat</object-name>
-		<object-name>frtshock</object-name>
+        <object-name>LHwing.heater</object-name>
+        <object-name>RHslat</object-name>
+        <object-name>LHslat</object-name>
+        <object-name>frtshock</object-name>
     </animation>
 
     <animation>
         <type>shader</type>
         <shader>chrome</shader>
-        <texture>chrome1.rgb</texture>
+        <texture>chrome1.png</texture>
         <object-name>Glass</object-name>
     </animation>
 
@@ -600,7 +561,7 @@
     <animation>
         <type>rotate</type>
         <object-name>UprReverser</object-name>
-		<object-name>UprReverser.001</object-name>
+        <object-name>UprReverser.001</object-name>
         <property>surface-positions/reverser-norm</property>
         <factor>74</factor>
         <center>
@@ -618,7 +579,7 @@
     <animation>
         <type>rotate</type>
         <object-name>LwrReverser</object-name>
-		<object-name>LwrReverser.001</object-name>
+        <object-name>LwrReverser.001</object-name>
         <property>surface-positions/reverser-norm</property>
         <factor>-72</factor>
         <center>
@@ -789,8 +750,8 @@
     <animation>
         <type>rotate</type>
         <object-name>FrtStrut</object-name>
-		<object-name>Nosewheel</object-name>
-		<object-name>frtshock</object-name>
+        <object-name>Nosewheel</object-name>
+        <object-name>frtshock</object-name>
         <property>gear/gear[0]/position-norm</property>
         <interpolation>
             <entry>
@@ -824,7 +785,7 @@
         <type>translate</type>
         <object-name>LHwheel</object-name>
         <object-name>LHTarmU</object-name>
-		<object-name>LHTarmL</object-name>
+        <object-name>LHTarmL</object-name>
         <property>gear/gear[1]/compression-m</property>
         <axis>
             <x>0.0</x>
@@ -836,9 +797,9 @@
     <animation>
         <type>rotate</type>
         <object-name>LHwheel</object-name>
-		<object-name>LHshock</object-name>
-		<object-name>LHTarmU</object-name>
-		<object-name>LHTarmL</object-name>
+        <object-name>LHshock</object-name>
+        <object-name>LHTarmU</object-name>
+        <object-name>LHTarmL</object-name>
         <property>gear/gear[1]/position-norm</property>
         <interpolation>
             <entry>
@@ -866,7 +827,7 @@
         <type>translate</type>
         <object-name>RHwheel</object-name>
         <object-name>RHTarmU</object-name>
-		<object-name>RHTarmL</object-name>
+        <object-name>RHTarmL</object-name>
         <property>gear/gear[2]/compression-m</property>
         <axis>
             <x>0.0</x>
@@ -878,9 +839,9 @@
     <animation>
         <type>rotate</type>
         <object-name>RHwheel</object-name>
-		<object-name>RHshock</object-name>
-		<object-name>RHTarmU</object-name>
-		<object-name>RHTarmL</object-name>
+        <object-name>RHshock</object-name>
+        <object-name>RHTarmU</object-name>
+        <object-name>RHTarmL</object-name>
         <property>gear/gear[2]/position-norm</property>
         <interpolation>
             <entry>

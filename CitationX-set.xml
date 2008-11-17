@@ -23,7 +23,9 @@ Started Oct 2005  Syd Adams
         
         <model>
             <path>Aircraft/CitationX/Models/Citation-X.xml</path>
-            <variant type="int">0</variant>
+            <livery>
+                <file type="string">Blackstripes</file>
+            </livery>
         </model>
         
         <view n="0">
@@ -146,6 +148,13 @@ Started Oct 2005  Syd Adams
                         <command>property-toggle</command>
                         <property>controls/lighting/cabin-lights</property>
                     </binding>
+			</item>
+			<item>
+				<label>Select Livery</label>
+				<binding>
+					<command>nasal</command>
+                        <script>aircraft.livery.dialog.toggle()</script>
+                    </binding>
                 </item>
             </menu>
         </default>
@@ -228,8 +237,8 @@ Started Oct 2005  Syd Adams
             </font>
             <lightning type="bool" archive="y">true</lightning>
             <display-mode type="string" archive="y">plan</display-mode>
-            <radar-texture-path type="string" archive="y">Aircraft/Citation-Bravo/Models/Instruments/od_wxradar.rgb</radar-texture-path>
-            <echo-texture-path type="string" archive="y">Aircraft/Citation-Bravo/Models/Instruments/wxecho.rgb</echo-texture-path>
+            <radar-texture-path type="string" archive="y">Aircraft/CitationX/Models/Instruments/MFD/od_wxradar.png</radar-texture-path>
+            <echo-texture-path type="string" archive="y">Aircraft/CitationX/Models/Instruments/MFD/wxecho.png</echo-texture-path>
             <minimized type="bool" archive="y">false</minimized>
             <heading-marker type="bool" archive="y">true</heading-marker>
             <limit-deg type="int">360</limit-deg>

@@ -8,6 +8,7 @@ var Annun = props.globals.getNode("instrumentation/annunciators",1);
 var MstrWarn =Annun.getNode("master-warning",1);
 var MstrCaution = Annun.getNode("master-caution",1);
 var PWR2 =0;
+aircraft.livery.init("Aircraft/CitationX/Models/Liveries");
 
 #Jet Engine Helper class 
 # ie: var Eng = JetEngine.new(engine number);

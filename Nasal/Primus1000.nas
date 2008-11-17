@@ -40,33 +40,45 @@ var P1000 = {
         m.EICAS = m.primus.getNode("eicas",1);
         m.EICAS_serv = m.EICAS.getNode("serviceable",1);
         m.EICAS_serv.setBoolValue(1);
-        m.DC550 = m.primus.getNode("dc550",1);
-        m.dc550_hsi = m.DC550.getNode("hsi",1);
+        m.Control = m.primus.getNode("control",1);
+        m.dc550_tcas = m.Control.getNode("tcas",1);
+        m.dc550_tcas.setBoolValue(0);
+        m.dc550_hsi = m.Control.getNode("hsi",1);
         m.dc550_hsi.setBoolValue(0);
-        m.dc550_cp = m.DC550.getNode("cp",1);
+        m.dc550_cp = m.Control.getNode("cp",1);
         m.dc550_cp.setBoolValue(0);
-        m.dc550_hpa = m.DC550.getNode("hpa",1);
+        m.dc550_hpa = m.Control.getNode("hpa",1);
         m.dc550_hpa.setBoolValue(0);
-        m.dc550_gspd = m.DC550.getNode("timer",1);
+        m.dc550_gspd = m.Control.getNode("timer",1);
         m.dc550_gspd.setIntValue(0);
-        m.dc550_nav = m.DC550.getNode("nav",1);
+        m.dc550_nav = m.Control.getNode("nav",1);
         m.dc550_nav.setIntValue(0);
-        m.dc550_fms = m.DC550.getNode("fms",1);
+        m.dc550_fms = m.Control.getNode("fms",1);
         m.dc550_fms.setBoolValue(0);
-        m.dc550_RA = m.DC550.getNode("RA-alert",1);
+        m.dc550_RA = m.Control.getNode("RA-alert",1);
         m.dc550_RA.setBoolValue(1);
+        m.mc800_rng = m.Control.getNode("rng-switch",1);
+        m.mc800_rng.setDoubleValue(0);
         m.DH = props.globals.getNode("instrumentation/mk-viii/inputs/arinc429/decision-height",1);
         m.DH.setDoubleValue(200);
-        m.mc800_rng = m.primus.getNode("mc800/rng-switch",1);
-        m.mc800_rng.setDoubleValue(0);
-        m.NavPtr1 =m.DC550.getNode("nav1ptr",1);
+        m.NavPtr1 =m.Control.getNode("nav1ptr",1);
         m.NavPtr1.setDoubleValue(0);
-        m.NavPtr2 =m.DC550.getNode("nav2ptr",1);
+        m.NavPtr2 =m.Control.getNode("nav2ptr",1);
         m.NavPtr2.setDoubleValue(0);
-        m.NavPtr1_offset =m.DC550.getNode("nav1ptr-hdg-offset",1);
+        m.NavPtr1_offset =m.PFD.getNode("nav1ptr-hdg-offset",1);
         m.NavPtr1_offset.setDoubleValue(0);
-        m.NavPtr2_offset =m.DC550.getNode("nav2ptr-hdg-offset",1);
+        m.NavPtr2_offset =m.PFD.getNode("nav2ptr-hdg-offset",1);
         m.NavPtr2_offset.setDoubleValue(0);
+         m.CRStype =m.primus.getNode("course-string",1);
+        m.CRStype.setValue("CRS");
+         m.CRSheading =m.primus.getNode("course-heading",1);
+        m.CRSheading.setDoubleValue(0);
+         m.GS_inrange =m.primus.getNode("GS-in-range",1);
+        m.GS_inrange.setBoolValue(0);
+         m.GS_deflection =m.primus.getNode("GS-deflection",1);
+        m.GS_deflection.setDoubleValue(0);
+         m.CRSdeflection =m.primus.getNode("course-deflection",1);
+        m.CRSdeflection.setDoubleValue(0);
          m.NavDist =m.primus.getNode("nav-dist-nm",1);
         m.NavDist.setDoubleValue(0);
         m.NavType =m.primus.getNode("nav-type",1);
@@ -122,11 +134,9 @@ var P1000 = {
     dc550_set : func(dcmode){
         var tmp = 0;
         var dc = dcmode;
-        if(dc == "ra-dn"){
-            tmp = me.DH.getValue();
-            tmp -=5;
-            if(tmp<0)tmp=0;
-            me.DH.setValue(tmp);
+        if(dc == "tcas"){
+            tmp = me.dc550_tcas.getBoolValue();
+            me.dc550_tcas.setBoolValue(1-tmp);
         }elsif(dc == "ra-up"){
             tmp = me.DH.getValue();
             tmp +=5;
@@ -174,10 +184,19 @@ var P1000 = {
     },
 #### update nav info  ####
     update_nav : func{
+        me.GS_inrange.setValue(0);
+        me.GS_deflection.setValue(0);
         var nm_calc = 0;
         var id =" ";
         var ttg = "- - : - -";
         if(me.dc550_fms.getBoolValue()){
+            me.CRStype.setValue("DTK");
+            me.CRSdeflection.setValue(0);
+            var maghdg=getprop("autopilot/settings/true-heading-deg");
+            maghdg -=getprop("environment/magnetic-variation-deg");
+            if(maghdg>359)maghdg-=360;
+            if(maghdg<0)maghdg+=360;
+            me.CRSheading.setValue(maghdg);
             nm_calc = getprop("/autopilot/route-manager/wp/dist");
             if(nm_calc == nil)nm_calc = 0.0;
             id = getprop("autopilot/route-manager/wp/id");
@@ -185,13 +204,23 @@ var P1000 = {
             me.NavType.setValue(4);
             ttg=getprop("autopilot/route-manager/wp/eta");
         }else{
+            me.CRStype.setValue("CRS");
             nm_calc = 0;
             var nv = me.dc550_nav.getValue();
+            me.CRSdeflection.setValue(getprop("/instrumentation/nav["~nv~"]/heading-needle-deflection"));
+            me.CRSheading.setValue(getprop("/instrumentation/nav["~nv~"]/radials/selected-deg"));
             if(getprop("/instrumentation/nav["~nv~"]/data-is-valid")){
                 nm_calc = getprop("/instrumentation/nav["~nv~"]/nav-distance");
                 if(nm_calc == nil)nm_calc = 0.0;
                 nm_calc = 0.000539 * nm_calc;
-                if(getprop("/instrumentation/nav["~nv~"]/has-gs"))me.NavType.setValue(2);
+                if(getprop("/instrumentation/nav["~nv~"]/has-gs")){
+                    me.NavType.setValue(2);
+                    if(nm_calc<30)me.GS_inrange.setValue(1);
+                    var df = getprop("/instrumentation/nav["~nv~"]/gs-needle-deflection");
+                    if(df>10)df=10;
+                    if(df<-10)df=-10;
+                    me.GS_deflection.setValue(df);
+                }
                 id = getprop("instrumentation/nav["~nv~"]/nav-id");
                 if(id ==nil)id= "---";
                 ttg=getprop("instrumentation/dme/indicated-time-min");

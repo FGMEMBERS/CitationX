@@ -7,4 +7,56 @@ Primus 2000 DC850
 
 <path>DC840.ac</path>
 
+    <animation>
+        <type>pick</type>
+        <object-name>DC840.pfd-hsi</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+             <binding>
+             <command>property-toggle</command>
+            <property>instrumentation/primus1000/control/hsi</property>
+            </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>DC840.tcas</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+             <binding>
+             <command>property-toggle</command>
+            <property>instrumentation/primus1000/control/tcas</property>
+            </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>DC840.jstk</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+             <binding>
+             <command>nasal</command>
+            <script>citation.primus.mc800_input("radar-up")</script>
+            </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>DC840.jstk</object-name>
+        <action>
+            <button>1</button>
+            <repeatable>false</repeatable>
+             <binding>
+             <command>nasal</command>
+            <script>citation.primus.mc800_input("radar-dn")</script>
+            </binding>
+        </action>
+    </animation>
+
 </PropertyList>

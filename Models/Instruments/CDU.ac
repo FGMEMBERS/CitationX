@@ -1,6 +1,6 @@
 AC3Db
 MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 64  trans 0
-MATERIAL "gloss" rgb 0.733333 0.733333 0.733333 amb 0 0 0 emis 0 0 0 spec 1 1 1 shi 64 trans 0
+MATERIAL "gloss" rgb 0.733333 0.733333 0.733333 amb 0 0 0 emis 0.1 0.1 0.1 spec 1 1 1 shi 64 trans 0
 MATERIAL "instr-lights.003" rgb 1 1 1 amb 0 0 0 emis 0.8 0.8 0.8 spec 0 0 0 shi 32 trans 0
 MATERIAL "Black.005" rgb 0 0 0 amb 0 0 0 emis 0 0 0 spec 0 0 0 shi 32 trans 0
 MATERIAL "grn.003" rgb 0.137995 0.522494 0.354743 amb 0.5 0.5 0.5 emis 0 0 0 spec 1 1 1 shi 32 trans 0
@@ -10,7 +10,7 @@ OBJECT poly
 name "CDU"
 data 8
 Mesh.214
-texture "FMS.rgb"
+texture "FMS.png"
 texrep 1 1
 crease 30.000000
 numvert 32
@@ -240,7 +240,7 @@ OBJECT poly
 name "CDU-btn"
 data 8
 Mesh.213
-texture "FMS.rgb"
+texture "FMS.png"
 texrep 1 1
 crease 30.000000
 numvert 200
@@ -800,7 +800,7 @@ OBJECT poly
 name "CDU-btn.rnd"
 data 8
 Mesh.217
-texture "FMS.rgb"
+texture "FMS.png"
 texrep 1 1
 crease 30.000000
 numvert 156

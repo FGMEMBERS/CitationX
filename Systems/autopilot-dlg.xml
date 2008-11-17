@@ -75,7 +75,7 @@
    <width>14</width>
    <height>14</height>
    <label></label>
-   <property>instrumentation/primus1000/dc550/fms</property>
+   <property>instrumentation/primus1000/control/fms</property>
    <live>true</live>
    <binding>
     <command>dialog-update</command>
@@ -371,7 +371,7 @@
    <y>75</y>
    <label>-99.99</label> <!-- placeholder for width -->
    <format>% 3.0f</format>
-   <property>instrumentation/primus1000/dc550/nav</property>
+   <property>instrumentation/primus1000/control/nav</property>
    <live>true</live>
   </text>
 

@@ -74,8 +74,8 @@ var flightdirector = {
         m.navDist = props.globals.getNode("instrumentation/primus1000/nav-dist-nm",1);
         m.navCRS = m.node.getNode("nav-crs-offset",1);
         m.navCRS.setDoubleValue(0);
-        m.FMS = props.globals.getNode("instrumentation/primus1000/dc550/fms",1);
-        m.NAV = props.globals.getNode("instrumentation/primus1000/dc550/nav",1);
+        m.FMS = props.globals.getNode("instrumentation/primus1000/control/fms",1);
+        m.NAV = props.globals.getNode("instrumentation/primus1000/control/nav",1);
         m.AP_hdg = props.globals.getNode("/autopilot/locks/heading",1);
         m.AP_hdg.setValue(m.lnav_text[0]);
         m.AP_hdg_setting = props.globals.getNode("/autopilot/settings/heading",1);
@@ -161,7 +161,7 @@ var flightdirector = {
 ###########################
     set_course : func(crs){
         var rd =0;
-        var nvnum =getprop("instrumentation/primus1000/dc550/nav");
+        var nvnum =getprop("instrumentation/primus1000/control/nav");
         if(nvnum == nil)nvnum=0;
        
             rd = getprop("instrumentation/nav["~nvnum~"]/radials/selected-deg");
