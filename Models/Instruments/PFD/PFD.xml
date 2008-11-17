@@ -45,6 +45,30 @@ Primus 1000 Primary Flight Display
         </top-left>
     </panel>
 
+<animation>
+    <type>rotate</type>
+    <object-name>Slipball</object-name>
+    <property>instrumentation/slip-skid-ball/indicated-slip-skid</property>
+    <interpolation>
+        <entry>
+            <ind>-1.5</ind><dep>-4.5</dep>
+        </entry>
+        <entry>
+            <ind>1.5</ind><dep>4.5</dep>
+        </entry>
+    </interpolation>
+<center>
+            <x-m>0</x-m>
+            <y-m>0</y-m>
+            <z-m>0.077</z-m>
+        </center>
+    <axis>
+        <x>-1</x>
+        <y>0</y>
+        <z>0</z>
+    </axis>
+</animation>
+
 <!-- Hotspots -->
 
     <animation>

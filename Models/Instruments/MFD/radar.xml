@@ -9,9 +9,9 @@
     <layers>
 
         <layer>
-			<condition>
-				<property>instrumentation/primus1000/control/tcas</property>
-			</condition>
+            <condition>
+                <property>instrumentation/primus1000/control/tcas</property>
+            </condition>
             <name>radar data</name>
             <emissive>true</emissive>
             <w>512</w>
@@ -26,18 +26,5 @@
         </layer>
 
     </layers>
-
-    <actions>
-
-        <action>
-            <name>outline</name>
-            <button>0</button>
-            <x>-256</x>
-            <y>-256</y>
-            <w>512</w>
-            <h>512</h>
-        </action>
-
-    </actions>
 
 </PropertyList>
