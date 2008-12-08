@@ -60,7 +60,7 @@ FMC
             <repeatable>false</repeatable>
             <binding>
                 <command>nasal</command>
-                <script>citation.primus.dc550_set("nav");</script>
+                <script>efis.primus.ctl_set("nav");</script>
             </binding>
         </action>
     </animation>
@@ -74,80 +74,60 @@ FMC
             <repeatable>false</repeatable>
             <binding>
                 <command>nasal</command>
-                <script>citation.primus.dc550_set("fms");</script>
+                <script>efis.primus.ctl_set("fms");</script>
             </binding>
         </action>
     </animation>
 
     <animation>
         <type>pick</type>
-        <object-name>FMC.ptr1-dn</object-name>
-        <visible>false</visible>
+        <object-name>FMC.knob1</object-name>
         <action>
-            <button>0</button>
+            <button>1</button>
             <repeatable>false</repeatable>
-      <binding>
-       <command>property-adjust</command>
-       <property>instrumentation/primus1000/control/nav1ptr</property>
-       <step>-1</step>
-       <min>0</min>
-       <max>3</max>
-       <wrap>false</wrap>
-     </binding>
+            <binding>
+                <command>nasal</command>
+                <script>efis.primus.ctl_set("pointer1-dec");</script>
+            </binding>
         </action>
     </animation>
 
     <animation>
         <type>pick</type>
-        <object-name>FMC.ptr1-up</object-name>
-        <visible>false</visible>
+        <object-name>FMC.knob1</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
-     <binding>
-       <command>property-adjust</command>
-       <property>instrumentation/primus1000/control/nav1ptr</property>
-       <step>1</step>
-       <min>0</min>
-       <max>3</max>
-       <wrap>false</wrap>
-     </binding>
+            <binding>
+                <command>nasal</command>
+                <script>efis.primus.ctl_set("pointer1-inc");</script>
+            </binding>
         </action>
     </animation>
 
     <animation>
         <type>pick</type>
-        <object-name>FMC.ptr2-dn</object-name>
-        <visible>false</visible>
+        <object-name>FMC.knob2</object-name>
         <action>
-            <button>0</button>
+            <button>1</button>
             <repeatable>false</repeatable>
-     <binding>
-       <command>property-adjust</command>
-       <property>instrumentation/primus1000/control/nav2ptr</property>
-       <step>-1</step>
-       <min>0</min>
-       <max>3</max>
-       <wrap>false</wrap>
-     </binding>
+            <binding>
+                <command>nasal</command>
+                <script>efis.primus.ctl_set("pointer2-dec");</script>
+            </binding>
         </action>
     </animation>
 
     <animation>
         <type>pick</type>
-        <object-name>FMC.ptr2-up</object-name>
-        <visible>false</visible>
+        <object-name>FMC.knob2</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
-     <binding>
-       <command>property-adjust</command>
-       <property>instrumentation/primus1000/control/nav2ptr</property>
-       <step>1</step>
-       <min>0</min>
-       <max>3</max>
-       <wrap>false</wrap>
-     </binding>
+            <binding>
+                <command>nasal</command>
+                <script>efis.primus.ctl_set("pointer2-inc");</script>
+            </binding>
         </action>
     </animation>
 

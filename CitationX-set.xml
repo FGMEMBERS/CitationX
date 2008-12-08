@@ -2,7 +2,7 @@
 <!--
 ************************************************************************
 Cessna Citation-X
-Started Oct 2005  Syd Adams   
+Started Oct 2005  Syd Adams
 ************************************************************************
 -->
 <PropertyList>
@@ -13,21 +13,21 @@ Started Oct 2005  Syd Adams
         <flight-model>yasim</flight-model>
         <aero>CitationX</aero>
         <fuel-fraction>0.5</fuel-fraction>
-        
+
         <startup>
             <splash-texture>Aircraft/CitationX/CitationX-splash.rgb</splash-texture>
         </startup>
-        
+
         <panel>
         </panel>
-        
+
         <model>
             <path>Aircraft/CitationX/Models/Citation-X.xml</path>
             <livery>
                 <file type="string">Blackstripes</file>
             </livery>
         </model>
-        
+
         <view n="0">
             <name>Cockpit</name>
             <type>lookfrom</type>
@@ -53,7 +53,7 @@ Started Oct 2005  Syd Adams
                 </limits>
             </config>
         </view>
-        
+
         <current-view>
             <field-of-view>60.0</field-of-view>
         </current-view>
@@ -74,11 +74,11 @@ Started Oct 2005  Syd Adams
                 <path>Aircraft/CitationX/Systems/Citation-autopilot.xml</path>
             </autopilot>
         </systems>
-        
+
         <sound>
             <path>Aircraft/CitationX/CitationX-sound.xml</path>
         </sound>
-        
+
         <hud>
             <enable3d>false</enable3d>
         </hud>
@@ -87,16 +87,16 @@ Started Oct 2005  Syd Adams
 
         <weight n="0">
             <name>Crew</name>
-            <weight-lb>400</weight-lb> 
+            <weight-lb>400</weight-lb>
             <max-lb>400</max-lb>
             <min-lb>180</min-lb>
         </weight>
 
         <weight n="1">
             <name>Passengers</name>
-            <weight-lb>1900</weight-lb> 
+            <weight-lb>1900</weight-lb>
             <max-lb>14300</max-lb>
-            <min-lb>0</min-lb>      
+            <min-lb>0</min-lb>
         </weight>
 
         <replay>
@@ -148,11 +148,11 @@ Started Oct 2005  Syd Adams
                         <command>property-toggle</command>
                         <property>controls/lighting/cabin-lights</property>
                     </binding>
-			</item>
-			<item>
-				<label>Select Livery</label>
-				<binding>
-					<command>nasal</command>
+            </item>
+            <item>
+                <label>Select Livery</label>
+                <binding>
+                    <command>nasal</command>
                         <script>aircraft.livery.dialog.toggle()</script>
                     </binding>
                 </item>
@@ -168,11 +168,11 @@ Started Oct 2005  Syd Adams
                 <desc>Toggle thrust reversers</desc>
             </key>
             <key>
-                <name>Control B</name>	
-                <desc>Speedbrakes</desc>	
+                <name>Control B</name>
+                <desc>Speedbrakes</desc>
             </key>
         </help>
-        
+
         <flaps>
             <setting>0.0</setting> <!-- 0 -->
             <setting>0.142</setting> <!-- 5 -->
@@ -185,7 +185,7 @@ Started Oct 2005  Syd Adams
         </instrumentation>
 
     </sim>
-    
+
     <systems>
         <electrical>
             <ac-volts>0</ac-volts>
@@ -237,8 +237,8 @@ Started Oct 2005  Syd Adams
             </font>
             <lightning type="bool" archive="y">true</lightning>
             <display-mode type="string" archive="y">plan</display-mode>
-            <radar-texture-path type="string" archive="y">Aircraft/CitationX/Models/Instruments/MFD/od_wxradar.png</radar-texture-path>
-            <echo-texture-path type="string" archive="y">Aircraft/CitationX/Models/Instruments/MFD/wxecho.png</echo-texture-path>
+            <radar-texture-path type="string" archive="y">Aircraft/Instruments-3d/primus-1000/MFD/od_wxradar.png</radar-texture-path>
+            <echo-texture-path type="string" archive="y">Aircraft/Instruments-3d/primus-1000/MFD/wxecho.png</echo-texture-path>
             <minimized type="bool" archive="y">false</minimized>
             <heading-marker type="bool" archive="y">true</heading-marker>
             <limit-deg type="int">360</limit-deg>
@@ -324,15 +324,17 @@ Started Oct 2005  Syd Adams
             <rpm>1000</rpm>
         </engine>
     </engines>
-  
+
     <nasal>
         <citation>
             <file>Aircraft/CitationX/Nasal/CitationX.nas</file>
             <file>Aircraft/CitationX/Nasal/Electrical.nas</file>
             <file>Aircraft/CitationX/Nasal/flightdirector.nas</file>
-            <file>Aircraft/CitationX/Nasal/Primus1000.nas</file>
             <file>Aircraft/CitationX/Nasal/rmu.nas</file>
         </citation>
+            <efis>
+                <file>Aircraft/Instruments-3d/primus-1000/P1000.nas</file>
+            </efis>
     </nasal>
 
     <input>

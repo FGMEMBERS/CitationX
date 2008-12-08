@@ -13,10 +13,10 @@ Primus 2000 DC850
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
-             <binding>
-             <command>property-toggle</command>
-            <property>instrumentation/primus1000/control/hsi</property>
-            </binding>
+        <binding>
+            <command>nasal</command>
+            <script>efis.primus.ctl_set("hsi");</script>
+        </binding>
         </action>
     </animation>
 
@@ -26,9 +26,22 @@ Primus 2000 DC850
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
-             <binding>
-             <command>property-toggle</command>
-            <property>instrumentation/primus1000/control/tcas</property>
+            <binding>
+                <command>nasal</command>
+                <script>efis.primus.ctl_set("tcas");</script>
+            </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>DC840.et</object-name>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>efis.primus.ctl_set("et");</script>
             </binding>
         </action>
     </animation>
@@ -41,7 +54,7 @@ Primus 2000 DC850
             <repeatable>false</repeatable>
              <binding>
              <command>nasal</command>
-            <script>citation.primus.mc800_input("radar-up")</script>
+            <script>efis.primus.ctl_set("radar-up")</script>
             </binding>
         </action>
     </animation>
@@ -54,7 +67,7 @@ Primus 2000 DC850
             <repeatable>false</repeatable>
              <binding>
              <command>nasal</command>
-            <script>citation.primus.mc800_input("radar-dn")</script>
+            <script>efis.primus.ctl_set("radar-dn")</script>
             </binding>
         </action>
     </animation>

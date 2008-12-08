@@ -383,14 +383,14 @@
         <prop>controls/flight/elevator-trim</prop>
     </output>
     <config>
-        <Kp>-0.50</Kp>
+        <Kp>-0.05</Kp>
         <beta>1.0</beta>
         <alpha>0.1</alpha>
         <gamma>0.0</gamma>
-        <Ti>80.0</Ti>
-        <Td>0.005</Td>
-        <u_min>-1.0</u_min>
-        <u_max>1.0</u_max>
+        <Ti>10.0</Ti>
+        <Td>0.001</Td>
+        <u_min>-0.5</u_min>
+        <u_max>0.5</u_max>
     </config>
 </pid-controller>
 
@@ -411,14 +411,14 @@
         <prop>controls/flight/rudder</prop>
     </output>
     <config>
-        <Kp>0.25</Kp>
+        <Kp>0.5</Kp>
         <beta>1.0</beta>
         <alpha>0.1</alpha>
         <gamma>0.0</gamma>
-        <Ti>1.0</Ti>
-        <Td>0.0</Td>
-        <u_min>-0.5</u_min>
-        <u_max>0.5</u_max>
+        <Ti>10.0</Ti>
+        <Td>0.02</Td>
+        <u_min>-0.25</u_min>
+        <u_max>0.25</u_max>
     </config>
 </pid-controller>
 
