@@ -8,7 +8,55 @@ var Annun = props.globals.getNode("instrumentation/annunciators",1);
 var MstrWarn =Annun.getNode("master-warning",1);
 var MstrCaution = Annun.getNode("master-caution",1);
 var PWR2 =0;
+var counter=0;
 aircraft.livery.init("Aircraft/CitationX/Models/Liveries");
+
+#tire rotation per minute by circumference/groundspeed#
+TireSpeed = {
+    new : func(number){
+        m = { parents : [TireSpeed] };
+            m.num=number;
+            m.circumference=[];
+            m.tire=[];
+            m.rpm=[];
+            for(var i=0; i<m.num; i+=1) {
+                var diam =arg[i];
+                var circ=diam * math.pi;
+                append(m.circumference,circ);
+                append(m.tire,props.globals.initNode("gear/gear["~i~"]/tire-rpm",0,"DOUBLE"));
+                append(m.rpm,0);
+            }
+        m.count = 0;
+        return m;
+    },
+    #### calculate and write rpm ###########
+    get_rotation: func (fdm1){
+        var speed=0;
+        if(getprop("gear/gear["~me.count~"]/position-norm")==0){
+            return;
+        }
+        if(fdm1=="yasim"){ 
+            speed =getprop("gear/gear["~me.count~"]/rollspeed-ms") or 0;
+            speed=speed*60;
+            }elsif(fdm1=="jsb"){
+                speed =getprop("fdm/jsbsim/gear/unit["~me.count~"]/wheel-speed-fps") or 0;
+                speed=speed*18.288;
+            }
+        var wow = getprop("gear/gear["~me.count~"]/wow");
+        if(wow){
+            me.rpm[me.count] = speed / me.circumference[me.count];
+        }else{
+            if(me.rpm[me.count] > 0) me.rpm[me.count]=me.rpm[me.count]*0.95;
+        }
+        me.tire[me.count].setValue(me.rpm[me.count]);
+        me.count+=1;
+        if(me.count>=me.num)me.count=0;
+    },
+};
+
+
+#var tire=TireSpeed.new(# of gear,diam[0],diam[1],diam[2], ...);
+var tire=TireSpeed.new(3,0.430,0.615,0.615);
 
 #Jet Engine Helper class 
 # ie: var Eng = JetEngine.new(engine number);
@@ -167,9 +215,8 @@ setlistener("controls/gear/gear-down", func(grlock){
     }
 },0,0);
 
-setlistener("/sim/current-view/view-number", func(vw){
-    ViewNum= vw.getValue();
-    if(ViewNum ==0){
+setlistener("/sim/current-view/internal", func(vw){
+    if(!vw.getValue()){
     SndIn.setDoubleValue(0.75);
     SndOut.setDoubleValue(0.10);
     }else{
@@ -431,6 +478,8 @@ RHeng.update();
 
 FHupdate(0);
 
+        tire.get_rotation("yasim");
+
 var gr1=getprop("gear/gear[0]/position-norm");
 var gr2=getprop("gear/gear[1]/position-norm");
 var gr3=getprop("gear/gear[2]/position-norm");
@@ -461,4 +510,3 @@ setprop("instrumentation/alerts/gear-horn",Ghorn);
 annunciators_loop();
 settimer(update_systems,0);
 }
-

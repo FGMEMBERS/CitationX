@@ -837,8 +837,7 @@
     <animation>
         <type>spin</type>
         <object-name>Nosewheel</object-name>
-        <property>gear/gear/rollspeed-ms</property>
-        <factor>15</factor>
+        <property>gear/gear/tire-rpm</property>
         <center>
             <x-m>-8.098</x-m>
             <y-m>0</y-m>
@@ -957,8 +956,7 @@
     <animation>
         <type>spin</type>
         <object-name>LHwheel</object-name>
-        <property>gear/gear[1]/rollspeed-ms</property>
-        <factor>15</factor>
+        <property>gear/gear[1]/tire-rpm</property>
         <center>
             <x-m>0.122</x-m>
             <y-m>-1.638</y-m>
@@ -1077,8 +1075,7 @@
     <animation>
         <type>spin</type>
         <object-name>RHwheel</object-name>
-        <property>gear/gear[2]/rollspeed-ms</property>
-        <factor>15</factor>
+        <property>gear/gear[2]/tire-rpm</property>
         <center>
             <x-m>0.122</x-m>
             <y-m>1.638</y-m>

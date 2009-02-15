@@ -15,7 +15,7 @@ Started Oct 2005  Syd Adams
         <fuel-fraction>0.5</fuel-fraction>
 
         <startup>
-            <splash-texture>Aircraft/CitationX/CitationX-splash.rgb</splash-texture>
+            <splash-texture>Aircraft/CitationX/Splash.png</splash-texture>
         </startup>
 
         <panel>
@@ -37,7 +37,6 @@ Started Oct 2005  Syd Adams
                 <y-offset-m type="double">0.40</y-offset-m>
                 <z-offset-m type="double">-7.0</z-offset-m>
                 <pitch-offset-deg>-12</pitch-offset-deg>
-                <default-field-of-view-deg type="double">60.0</default-field-of-view-deg>
                 <limits>
                     <enabled type="bool">true</enabled>
                     <left>
@@ -54,9 +53,6 @@ Started Oct 2005  Syd Adams
             </config>
         </view>
 
-        <current-view>
-            <field-of-view>60.0</field-of-view>
-        </current-view>
         <allow-toggle-cockpit>true</allow-toggle-cockpit>
         <chase-distance-m type="double">-35.0</chase-distance-m>
 
@@ -98,14 +94,6 @@ Started Oct 2005  Syd Adams
             <max-lb>14300</max-lb>
             <min-lb>0</min-lb>
         </weight>
-
-        <replay>
-            <disable>1</disable>
-        </replay>
-
-        <multiplay>
-            <chat_display>1</chat_display>
-        </multiplay>
 
     <menubar>
         <default>
