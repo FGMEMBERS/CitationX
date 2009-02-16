@@ -206,14 +206,13 @@ setlistener("sim/model/autostart", func(strt){
     }
 },0,0);
 
-setlistener("controls/gear/gear-down", func(grlock){
-    var glk= grlock.getBoolValue();
-    if(!glk){
-    var GLH =getprop("gear/gear[1]/wow");
-    var GRH =getprop("gear/gear[2]/wow");
-    if(GLH or GRH)setprop("controls/gear/gear-down",1);
+controls.gearDown = func(v) {
+    if (v < 0) {
+        if(!getprop("gear/gear[1]/wow"))setprop("/controls/gear/gear-down", 0);
+    } elsif (v > 0) {
+      setprop("/controls/gear/gear-down", 1);
     }
-},0,0);
+}
 
 setlistener("/sim/current-view/internal", func(vw){
     if(!vw.getValue()){
@@ -459,16 +458,6 @@ var FHupdate = func(tenths){
         }
         setprop("instrumentation/clock/flight-meter-min",int(fmin));
     }
-
-var gearDown = func(v) {
-    if(!getprop("gear/gear[1]/wow") or !getprop("gear/gear[2]/wow")){
-        if (v < 0) {
-        setprop("/controls/gear/gear-down", 0);
-        } elsif (v > 0) {
-        setprop("/controls/gear/gear-down", 1);
-        }
-    }
-}
 
 ########## MAIN ##############
 
