@@ -1,8 +1,7 @@
 var FDM=0;
 var FDMjsb = 0;
 var ViewNum=0;
-var SndIn = props.globals.getNode("/sim/sound/Cvolume",1);
-var SndOut = props.globals.getNode("/sim/sound/Ovolume",1);
+var SndIn = props.globals.getNode("/sim/sound/cabin-volume",1);
 var Grd_Idle=1;
 var Annun = props.globals.getNode("instrumentation/annunciators",1);
 var MstrWarn =Annun.getNode("master-warning",1);
@@ -32,9 +31,6 @@ TireSpeed = {
     #### calculate and write rpm ###########
     get_rotation: func (fdm1){
         var speed=0;
-        if(getprop("gear/gear["~me.count~"]/position-norm")==0){
-            return;
-        }
         if(fdm1=="yasim"){ 
             speed =getprop("gear/gear["~me.count~"]/rollspeed-ms") or 0;
             speed=speed*60;
@@ -180,7 +176,6 @@ setlistener("/sim/crashed", func(cr){
 
 var fdm_init = func(){
     SndIn.setDoubleValue(0.75);
-    SndOut.setDoubleValue(0.15);
     MstrWarn.setBoolValue(0);
     MstrCaution.setBoolValue(0);
     if(getprop("/sim/flight-model")=="jsb"){FDMjsb=1;}
@@ -215,12 +210,10 @@ controls.gearDown = func(v) {
 }
 
 setlistener("/sim/current-view/internal", func(vw){
-    if(!vw.getValue()){
-    SndIn.setDoubleValue(0.75);
-    SndOut.setDoubleValue(0.10);
+    if(vw.getValue()){
+    SndIn.setDoubleValue(0.2);
     }else{
-    SndIn.setDoubleValue(0.10);
-    SndOut.setDoubleValue(0.75);
+    SndIn.setDoubleValue(1.0);
     }
 },1,0);
 

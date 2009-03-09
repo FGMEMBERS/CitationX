@@ -54,7 +54,7 @@ Cancels other lateral modes
         <h>10</h>
         <binding>
             <command>nasal</command>
-                <script>bravo.FlDr.toggle_autopilot("ap");</script>
+                <script>citation.FlDr.toggle_autopilot("ap");</script>
         </binding>
     </action>
 
@@ -67,7 +67,7 @@ Cancels other lateral modes
         <h>10</h>
         <binding>
             <command>nasal</command>
-                <script>bravo.FlDr.toggle_autopilot("bank");</script>
+                <script>citation.FlDr.toggle_autopilot("bank");</script>
         </binding>
     </action>
 
@@ -80,7 +80,7 @@ Cancels other lateral modes
         <h>10</h>
         <binding>
             <command>nasal</command>
-                <script>bravo.FlDr.toggle_autopilot("yd");</script>
+                <script>citation.FlDr.toggle_autopilot("yd");</script>
         </binding>
     </action>
 
@@ -93,7 +93,7 @@ Cancels other lateral modes
         <h>18</h>
         <binding>
             <command>nasal</command>
-                <script>bravo.FlDr.pitch_wheel(-1);</script>
+                <script>citation.FlDr.pitch_wheel(-1);</script>
         </binding>
     </action>
 
@@ -106,7 +106,7 @@ Cancels other lateral modes
         <h>18</h>
         <binding>
             <command>nasal</command>
-                <script>bravo.FlDr.pitch_wheel(1);</script>
+                <script>citation.FlDr.pitch_wheel(1);</script>
         </binding>
     </action>
 
@@ -119,7 +119,7 @@ Cancels other lateral modes
         <h>40</h>
         <binding>
             <command>nasal</command>
-                <script>bravo.FlDr.roll_knob(-1);</script>
+                <script>citation.FlDr.roll_knob(-1);</script>
         </binding>
     </action>
 
@@ -132,7 +132,7 @@ Cancels other lateral modes
         <h>40</h>
         <binding>
             <command>nasal</command>
-                <script>bravo.FlDr.roll_knob(1);</script>
+                <script>citation.FlDr.roll_knob(1);</script>
         </binding>
     </action>
 
