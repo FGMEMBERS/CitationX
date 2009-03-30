@@ -486,7 +486,7 @@ if(gr2 != 0.0)GLock =1;
 if(gr3 != 0.0)GLock =1;
 }
 
-setprop("instrumentation/annunciators/gear-unlocked",GLock);
+setprop("gear/unlocked",GLock);
 setprop("instrumentation/alerts/gear-horn",Ghorn);
 
 annunciators_loop();
