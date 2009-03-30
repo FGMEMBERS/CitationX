@@ -86,7 +86,7 @@ Started Oct 2005  Syd Adams
 
         <weight n="1">
             <name>Passengers</name>
-            <weight-lb>1900</weight-lb>
+            <weight-lb>6400</weight-lb>
             <max-lb>14300</max-lb>
             <min-lb>0</min-lb>
         </weight>
