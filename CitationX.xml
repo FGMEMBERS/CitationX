@@ -25,9 +25,9 @@ dihedral 2 degrees
 Fuel 12938 lbs jet
 -->
 <airplane mass="21700">
-  <approach speed="120" aoa="5" fuel="0.5">
-    <control-setting axis="/controls/engines/engine[0]/throttle-lever" value="0.3"/>
-    <control-setting axis="/controls/engines/engine[1]/throttle-lever" value="0.3"/>
+  <approach speed="110" aoa="5" fuel="0.5">
+    <control-setting axis="/controls/engines/engine[0]/throttle-lever" value="0.25"/>
+    <control-setting axis="/controls/engines/engine[1]/throttle-lever" value="0.25"/>
     <control-setting axis="/controls/engines/engine[0]/condition" value="0.0"/>
     <control-setting axis="/controls/engines/engine[1]/condition" value="1.0"/>
     <control-setting axis="/controls/flight/flaps" value="1"/>
@@ -37,8 +37,8 @@ Fuel 12938 lbs jet
     <solve-weight idx="1" weight="1900"/>
   </approach>
   <cruise speed="504" alt="41000" fuel="0.5">
-    <control-setting axis="/controls/engines/engine[0]/throttle-lever" value="0.9"/>
-    <control-setting axis="/controls/engines/engine[1]/throttle-lever" value="0.9"/>
+    <control-setting axis="/controls/engines/engine[0]/throttle-lever" value="0.7"/>
+    <control-setting axis="/controls/engines/engine[1]/throttle-lever" value="0.7"/>
     <control-setting axis="/controls/engines/engine[0]/condition" value="1.0"/>
     <control-setting axis="/controls/engines/engine[1]/condition" value="1.0"/>
     <control-setting axis="/controls/flight/flaps" value="0.0"/>
@@ -71,7 +71,7 @@ Fuel 12938 lbs jet
   <wing x="1.120" y="0.90" z="-1.0" length="11" chord="4.2"
   sweep="37" dihedral="2" taper="0.0822" camber="0.0">
     <stall aoa="12" width="5" peak="1.5"/>
-    <flap0 start="0" end=".67" lift="1.5" drag="1.7"/>
+    <flap0 start="0" end=".67" lift="1.5" drag="1.6"/>
     <flap1 start=".688" end=".858" lift="1.3" drag="1.1"/>
     <slat start=".2" end=".8" aoa="2" drag="1.2"/>
     <spoiler start=".02" end=".3" lift="0.0" drag="5.0"/>
@@ -90,9 +90,9 @@ Fuel 12938 lbs jet
   </wing>
 
   <hstab x="-8.562" y="0.15" z="2.98" length="4.95" chord="2.2"
-  sweep="40" taper="0.3" dihedral="2.0" effectiveness="1.5">
-    <stall aoa="14" width="4" peak="1.5"/>
-    <flap0 start="0" end="1" lift="1.6" drag="1.1"/>
+  sweep="40" taper="0.3" dihedral="2.0" incidence="-2" effectiveness="3.0">
+    <stall aoa="15" width="3" peak="1.2"/>
+    <flap0 start="0" end="1" lift="1.4" drag="1.1"/>
     <control-input axis="/controls/flight/elevator" control="FLAP0"/>
     <control-input axis="/controls/flight/elevator-trim" control="FLAP0"/>
     <control-output control="FLAP0" prop="/surface-positions/elevator-pos-norm"/>
@@ -146,8 +146,8 @@ Rolls Royce AE3007C1
 Takeoff thrust Fuel flow 0.3222 kg/s
 -->
   <jet x="-2.5" y="1.5" z="0.72" mass="1700" thrust="6764"
-  tsfc="0.3222" epr="23" rotate="0.0"
-  n1-idle="45" n1-max="105" n2-idle="70" n2-max="108">
+  tsfc="0.3222" epr="23" rotate="0.0" egt="840" spool-time="3"
+  n1-idle="50" n1-max="108" n2-idle="73" n2-max="108">
     <control-input axis="/controls/engines/engine[0]/throttle-lever" control="THROTTLE" src0="0.2" dst0="0" src1="1" dst1="1"/>
     <control-input axis="/controls/engines/engine[0]/reverser" control="REVERSE_THRUST"/>
     <control-output control="REVERSE_THRUST" prop="/surface-positions/reverser-norm[0]"/>
@@ -156,8 +156,8 @@ Takeoff thrust Fuel flow 0.3222 kg/s
   </jet>
 
   <jet x="-2.5" y="-1.5" z="0.72" mass="1700" thrust="6764"
-  tsfc="0.3222" epr="23" rotate="0.0"
-  n1-idle="45" n1-max="105" n2-idle="70" n2-max="108">
+  tsfc="0.3222" epr="23" rotate="0.0" egt="840" spool-time="3"
+  n1-idle="50" n1-max="108" n2-idle="73" n2-max="108">
     <control-input axis="/controls/engines/engine[1]/throttle-lever" control="THROTTLE" src0="0.2" dst0="0" src1="1" dst1="1"/>
     <control-input axis="/controls/engines/engine[1]/reverser" control="REVERSE_THRUST"/>
     <control-output control="REVERSE_THRUST" prop="/surface-positions/reverser-norm[1]"/>
@@ -167,7 +167,7 @@ Takeoff thrust Fuel flow 0.3222 kg/s
 
 
 <ballast x="2.0" y="0.0" z="-1.0" mass="5000"/>
-<ballast x="-7.0" y="0.0" z="0.5" mass="-3500"/>
+<ballast x="-7.0" y="0.0" z="0.5" mass="-3000"/>
 <ballast x="-0" y="-1.7" z="-2.5" mass="600"/>
 <ballast x="-0" y="1.7" z="-2.5" mass="600"/>
 <ballast x="8" y="0" z="-0.5" mass="600"/>

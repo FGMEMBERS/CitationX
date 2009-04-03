@@ -313,8 +313,7 @@
         <object-name>LwrReverser.001</object-name>
         <object-name>UprReverser.001</object-name>
         <object-name>Engines.chrome</object-name>
-        <object-name>RHwing.heater</object-name>
-        <object-name>LHwing.heater</object-name>
+        <object-name>wing.heater</object-name>
         <object-name>RHslat</object-name>
         <object-name>LHslat</object-name>
         <object-name>frtshock</object-name>
@@ -1248,6 +1247,180 @@
                 <value>1</value>
             </equals>
         </condition>
+    </animation>
+
+
+<!-- Ext Lights -->
+
+    <animation>
+        <type>select</type>
+        <object-name>navlights.on</object-name>
+        <object-name>redlamp.on</object-name>
+        <condition>
+            <greater-than>
+                <property>systems/electrical/outputs/nav-lights</property>
+                <value>1</value>
+            </greater-than>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>navlights.off</object-name>
+        <object-name>redlamp.off</object-name>
+        <condition>
+            <less-than>
+                <property>systems/electrical/outputs/nav-lights</property>
+                <value>1.001</value>
+            </less-than>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>Strb1</object-name>
+        <condition>
+            <greater-than>
+                <property>systems/electrical/outputs/strobe</property>
+                <value>1</value>
+            </greater-than>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>translate</type>
+        <object-name>Strb1</object-name>
+        <offset-m>11</offset-m>
+        <axis>
+            <x>0.431</x>
+            <y>0.9</y>
+            <z>-0.059</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>billboard</type>
+        <object-name>Strb1</object-name>
+    </animation>
+
+    <animation>
+        <type>dist-scale</type>
+        <object-name>Strb1</object-name>
+        <factor>0.01</factor>
+        <offset>1.0</offset>
+        <min>1.0</min>
+        <max>500.0</max>
+    </animation>
+
+
+    <animation>
+        <type>select</type>
+        <object-name>Strb2</object-name>
+        <condition>
+            <greater-than>
+                <property>systems/electrical/outputs/strobe</property>
+                <value>1</value>
+            </greater-than>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>translate</type>
+        <object-name>Strb2</object-name>
+        <offset-m>11</offset-m>
+        <axis>
+            <x>0.431</x>
+            <y>-0.9</y>
+            <z>-0.059</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>billboard</type>
+        <object-name>Strb2</object-name>
+    </animation>
+
+    <animation>
+        <type>dist-scale</type>
+        <object-name>Strb2</object-name>
+        <factor>0.01</factor>
+        <offset>1.0</offset>
+        <min>1.0</min>
+        <max>500.0</max>
+    </animation>
+
+
+    <animation>
+        <type>select</type>
+        <object-name>Bcn1</object-name>
+        <condition>
+            <greater-than>
+                <property>systems/electrical/outputs/beacon</property>
+                <value>1</value>
+            </greater-than>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>translate</type>
+        <object-name>Bcn1</object-name>
+        <offset-m>1.704</offset-m>
+        <axis>
+            <x>0.470</x>
+            <y>0</y>
+            <z>-0.883</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>billboard</type>
+        <object-name>Bcn1</object-name>
+    </animation>
+
+    <animation>
+        <type>dist-scale</type>
+        <object-name>Bcn1</object-name>
+        <factor>0.01</factor>
+        <offset>1.0</offset>
+        <min>1.0</min>
+        <max>500.0</max>
+    </animation>
+
+
+    <animation>
+        <type>select</type>
+        <object-name>Bcn2</object-name>
+        <condition>
+            <greater-than>
+                <property>systems/electrical/outputs/beacon</property>
+                <value>1</value>
+            </greater-than>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>translate</type>
+        <object-name>Bcn2</object-name>
+        <offset-m>9.486</offset-m>
+        <axis>
+            <x>0.918</x>
+            <y>0</y>
+            <z>0.396</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>billboard</type>
+        <object-name>Bcn2</object-name>
+    </animation>
+
+    <animation>
+        <type>dist-scale</type>
+        <object-name>Bcn2</object-name>
+        <factor>0.01</factor>
+        <offset>1.0</offset>
+        <min>1.0</min>
+        <max>500.0</max>
     </animation>
 
 
