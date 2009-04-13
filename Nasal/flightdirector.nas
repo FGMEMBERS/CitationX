@@ -23,20 +23,14 @@
 # SPD :
 # Hold current speed 
 # adjustable with pitch wheel
-#
-#############################################################################
+
 # lnav 
 #0=W-LVL , 1=HDG , 2=NAV Arm ,3=NAV Cap , 4=LOC arm , 5=LOC Cap , 6=FMS
 # vnav
 # 0=PITCH,  1=VNAV, 2=ALT hold , 3=VS , 4=GS arm ,5 = GS cap
-#FlightDirector/Autopilot 
-# ie: var fltdir = flightdirector.new(property);
-
-var ap_settings = gui.Dialog.new("/sim/gui/dialogs/primus-autopilot/dialog",
-        "Aircraft/CitationX/Systems/autopilot-dlg.xml");
 
 var flightdirector = {
-    new : func(fdprop){
+    new : func(){
         m = {parents : [flightdirector]};
         m.lnav_text=["ROLL","HDG","NAV-ARM","NAV","LOC-ARM","LOC","LNAV"];
         m.vnav_text=["PTCH","VNAV","ALT","VS","GS-ARM","GS"];
@@ -45,75 +39,44 @@ var flightdirector = {
         m.subLAT=["   ","   ","VOR","   ","LOC","   ","   "];
         m.VRT=["PIT","VNAV","ALT","VS","   ","GS"];
         m.subVRT=["   ","GS"];
-        m.node = props.globals.getNode(fdprop,1);
-        m.yawdamper = props.globals.getNode("autopilot/locks/yaw-damper",1);
-        m.yawdamper.setBoolValue(0);
-        m.lnav = m.node.getNode("lnav",1);
-        m.lnav.setIntValue(0);
-        m.vnav = m.node.getNode("vnav",1);
-        m.vnav.setIntValue(0);
-        m.gs_arm = m.node.getNode("gs-arm",1);
-        m.gs_arm.setBoolValue(0);
-        m.vnav_alt = m.node.getNode("vnav-alt",1);
-        m.vnav_alt.setDoubleValue(30000);
-        m.speed = m.node.getNode("spd",1);
-        m.speed.setDoubleValue(0);
-        m.crs = m.node.getNode("crs",1);
-        m.crs.setDoubleValue(0);
-        m.Defl = m.node.getNode("crs-deflection",1);
-        m.Defl.setDoubleValue(0);
-        m.DH= props.globals.getNode("instrumentation/mk-viii/inputs/arinc429/decision-height",1);
-        m.GSDefl = m.node.getNode("gs-deflection",1);
-        m.GSDefl.setDoubleValue(0);
-        m.NavLoc = m.node.getNode("localizer",1);
-        m.NavLoc.setBoolValue(0);
-        m.hasGS = m.node.getNode("glideslope",1);
-        m.hasGS.setBoolValue(0);
-        m.navValid = m.node.getNode("in-range",1);
-        m.navValid.setBoolValue(0);
-        m.navDist = props.globals.getNode("instrumentation/primus1000/nav-dist-nm",1);
-        m.navCRS = m.node.getNode("nav-crs-offset",1);
-        m.navCRS.setDoubleValue(0);
-        m.FMS = props.globals.getNode("instrumentation/primus1000/control/fms",1);
-        m.NAV = props.globals.getNode("instrumentation/primus1000/control/nav",1);
-        m.AP_hdg = props.globals.getNode("/autopilot/locks/heading",1);
-        m.AP_hdg.setValue(m.lnav_text[0]);
-        m.AP_hdg_setting = props.globals.getNode("/autopilot/settings/heading",1);
-        m.AP_hdg_setting.setDoubleValue(0);
-        m.AP_spd_setting = props.globals.getNode("/autopilot/settings/target-speed-kt",1);
-        m.AP_spd_setting.setDoubleValue(0);
-        m.AP_alt = props.globals.getNode("/autopilot/locks/altitude",1);
-        m.AP_alt.setValue(m.vnav_text[0]);
-        m.AP_spd = props.globals.getNode("/autopilot/locks/speed",1);
-        m.AP_spd.setValue(m.spd_text[0]);
-        m.AP_off = props.globals.getNode("/autopilot/locks/passive-mode",1);
-        m.AP_off.setBoolValue(1);
-    
-    m.AP_lat_annun = m.node.getNode("LAT-annun",1);
-        m.AP_lat_annun.setValue(" ");
-    m.AP_sublat_annun = m.node.getNode("LAT-arm-annun",1);
-        m.AP_sublat_annun.setValue(" ");
-    m.AP_vert_annun = m.node.getNode("VRT-annun",1);
-        m.AP_vert_annun.setValue(" ");
-    m.AP_subvert_annun = m.node.getNode("VRT-arm-annun",1);
-        m.AP_subvert_annun.setValue(" ");
+        m.node = props.globals.initNode("instrumentation/flightdirector");
+        m.yawdamper = props.globals.initNode("autopilot/locks/yaw-damper",0,"BOOL");
+        m.lnav = m.node.initNode("lnav",0,"INT");
+        m.vnav = m.node.initNode("vnav",0,"INT");
+        m.gs_arm = m.node.initNode("gs-arm",0,"BOOL");
+        m.vnav_alt = m.node.initNode("vnav-alt",30000.0);
+        m.speed = m.node.initNode("spd",0.0);
+        m.crs = m.node.initNode("crs",0.0);
+        m.Defl = m.node.initNode("crs-deflection",0.0);
+        m.DH= props.globals.initNode("instrumentation/mk-viii/inputs/arinc429/decision-height");
+        m.GSDefl = m.node.initNode("gs-deflection",0.0);
+        m.NavLoc = m.node.initNode("localizer",0,"BOOL");
+        m.hasGS = m.node.initNode("glideslope",0,"BOOL");
+        m.navValid = m.node.initNode("in-range",0,"BOOL");
+        m.navDist = props.globals.initNode("instrumentation/primus1000/nav-dist-nm");
+        m.navCRS = m.node.initNode("nav-crs-offset",0,"DOUBLE");
+        m.FMS = props.globals.initNode("instrumentation/primus1000/control/fms");
+        m.NAV = props.globals.initNode("instrumentation/primus1000/control/nav");
+        m.AP_hdg = props.globals.initNode("/autopilot/locks/heading",m.lnav_text[0]);
+        m.AP_hdg_setting = props.globals.initNode("/autopilot/settings/heading",0.0);
+        m.AP_spd_setting = props.globals.initNode("/autopilot/settings/target-speed-kt",0.0);
+        m.AP_alt = props.globals.initNode("/autopilot/locks/altitude",m.vnav_text[0]);
+        m.AP_spd = props.globals.initNode("/autopilot/locks/speed",m.spd_text[0]);
+        m.AP_off = props.globals.initNode("/autopilot/locks/passive-mode",1,"BOOL");
+        m.AP_lat_annun = m.node.initNode("LAT-annun","");
+        m.AP_sublat_annun = m.node.initNode("LAT-arm-annun","");
+        m.AP_vert_annun = m.node.initNode("VRT-annun","");
+        m.AP_subvert_annun = m.node.initNode("VRT-arm-annun","");
 
-        m.pitch_active=props.globals.getNode("/autopilot/locks/pitch-active",1);
-        m.pitch_active.setBoolValue(1);
-        m.roll_active=props.globals.getNode("/autopilot/locks/roll-active",1);
-        m.roll_active.setBoolValue(1);
-        m.bank_limit=m.node.getNode("bank-limit-switch",1);
-        m.bank_limit.setBoolValue(0);
+        m.pitch_active=props.globals.initNode("/autopilot/locks/pitch-active",1,"BOOL");
+        m.roll_active=props.globals.initNode("/autopilot/locks/roll-active",1,"BOOL");
+        m.bank_limit=m.node.initNode("bank-limit-switch",0,"BOOL");
 
-        m.max_pitch=m.node.getNode("pitch-max",1);
-        m.max_pitch.setDoubleValue(10);
-        m.min_pitch=m.node.getNode("pitch-min",1);
-        m.min_pitch.setDoubleValue(-10);
-        m.max_roll=m.node.getNode("roll-max",1);
-        m.max_roll.setDoubleValue(27);
-        m.min_roll=m.node.getNode("roll-min",1);
-        m.min_roll.setDoubleValue(-27);
-    return m;
+        m.max_pitch=m.node.initNode("pitch-max",10.0);
+        m.min_pitch=m.node.initNode("pitch-min",-10.0);
+        m.max_roll=m.node.initNode("roll-max",27.0);
+        m.min_roll=m.node.initNode("roll-min",-27.0);
+     return m;
     },
     ############################
     set_lateral_mode : func(lnv){
@@ -388,12 +351,16 @@ var flightdirector = {
     }
 };
 
-var FlDr=flightdirector.new("instrumentation/flightdirector");
 
-######################################
+##################################################
+##################################################
+
+var ap_settings = gui.Dialog.new("/sim/gui/dialogs/primus-autopilot/dialog",
+        "Aircraft/CitationX/Systems/autopilot-dlg.xml");
+var FlDr=flightdirector.new();
 
 setlistener("/sim/signals/fdm-initialized", func {
-    init();
+#    init();
     print("Flight Director ...Check");
     settimer(update_fd, 2);
 });
@@ -406,16 +373,16 @@ setlistener("autopilot/route-manager/route/num", func {
 FlDr.update_vnav_alt();
 },1,0);
 
-var init = func {
-    setprop("autopilot/settings/target-altitude-ft",10000);
-    setprop("autopilot/settings/heading-bug-deg",0);
-    setprop("autopilot/settings/vertical-speed-fpm",0);
-    setprop("autopilot/settings/target-pitch-deg",0);
-}
+#var init = func {
+#    setprop("autopilot/settings/target-altitude-ft",10000);
+#    setprop("autopilot/settings/heading-bug-deg",0);
+#    setprop("autopilot/settings/vertical-speed-fpm",0);
+#    setprop("autopilot/settings/target-pitch-deg",0);
+#};
 
 var update_fd = func {
 var APoff = FlDr.check_AP_limits();
 FlDr.update_lnav();
 FlDr.update_vnav();
 settimer(update_fd, 0);
-}
+};

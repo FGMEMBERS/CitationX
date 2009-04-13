@@ -87,6 +87,7 @@ Fuel 12938 lbs jet
     <control-input axis="/controls/flight/speedbrake" control="SPOILER"/>
     <control-speed control="SPOILER" transition-time="1"/>
     <control-output control="SPOILER" prop="/surface-positions/speedbrake-pos-norm"/>
+    <control-output control="SPOILER" prop="sim/multiplay/generic/float[1]"/>
   </wing>
 
   <hstab x="-8.562" y="0.15" z="2.98" length="4.95" chord="2.2"
@@ -150,7 +151,7 @@ Takeoff thrust Fuel flow 0.3222 kg/s
   n1-idle="50" n1-max="108" n2-idle="73" n2-max="108">
     <control-input axis="/controls/engines/engine[0]/throttle-lever" control="THROTTLE" src0="0.2" dst0="0" src1="1" dst1="1"/>
     <control-input axis="/controls/engines/engine[0]/reverser" control="REVERSE_THRUST"/>
-    <control-output control="REVERSE_THRUST" prop="/surface-positions/reverser-norm[0]"/>
+    <control-output control="REVERSE_THRUST" prop="sim/multiplay/generic/float[0]"/>
     <control-speed control="REVERSE_THRUST" transition-time="1.5"/>
     <actionpt x="-5.0" y="1.5" z="0.72"/>
   </jet>
@@ -160,7 +161,7 @@ Takeoff thrust Fuel flow 0.3222 kg/s
   n1-idle="50" n1-max="108" n2-idle="73" n2-max="108">
     <control-input axis="/controls/engines/engine[1]/throttle-lever" control="THROTTLE" src0="0.2" dst0="0" src1="1" dst1="1"/>
     <control-input axis="/controls/engines/engine[1]/reverser" control="REVERSE_THRUST"/>
-    <control-output control="REVERSE_THRUST" prop="/surface-positions/reverser-norm[1]"/>
+    <control-output control="REVERSE_THRUST" prop="surface-positions/reverser-norm"/>
     <control-speed control="REVERSE_THRUST" transition-time="1.5"/>
     <actionpt x="-5.0" y="-1.5" z="0.72"/>
   </jet>

@@ -21,9 +21,9 @@
             <factor>0.00035</factor>
         </volume>
         <position>
-            <x>10</x>
-            <y>1.3</y>
-            <z>1</z>
+            <x>4.5</x>
+            <y>1.7</y>
+            <z>0.6</z>
         </position>
         <reference-dist>150.0</reference-dist>
         <max-dist>500.0</max-dist>
@@ -45,15 +45,15 @@
         <pitch>
             <property>engines/engine/fan</property>
             <offset>0</offset>
-            <factor>0.01</factor>
+            <factor>0.02</factor>
         </pitch>
         <position>
-            <x>10</x>
-            <y>1.3</y>
-            <z>1</z>
+            <x>3</x>
+            <y>1.7</y>
+            <z>0.6</z>
         </position>
-        <reference-dist>10.0</reference-dist>
-        <max-dist>20.0</max-dist>
+        <reference-dist>20.0</reference-dist>
+        <max-dist>40.0</max-dist>
     </engine>
 
     <engine>
@@ -71,9 +71,9 @@
             <factor>0.00035</factor>
         </volume>
         <position>
-            <x>10</x>
-            <y>-1.3</y>
-            <z>1</z>
+            <x>4.5</x>
+            <y>-1.7</y>
+            <z>0.6</z>
         </position>
         <reference-dist>150.0</reference-dist>
         <max-dist>300.0</max-dist>
@@ -95,12 +95,12 @@
         <pitch>
             <property>engines/engine[1]/fan</property>
             <offset>0</offset>
-            <factor>0.01</factor>
+            <factor>0.02</factor>
         </pitch>
         <position>
-            <x>10</x>
-            <y>-1.3</y>
-            <z>1</z>
+            <x>3</x>
+            <y>-1.7</y>
+            <z>0.6</z>
         </position>
         <reference-dist>10.0</reference-dist>
         <max-dist>20.0</max-dist>
@@ -127,9 +127,9 @@
             <offset>1.6</offset>
         </pitch>
         <position>
-            <x>12</x>
+            <x>5</x>
             <y>0</y>
-            <z>1</z>
+            <z>0.6</z>
         </position>
         <reference-dist>100.0</reference-dist>
         <max-dist>500.0</max-dist>
@@ -153,7 +153,7 @@
             <max>0.5</max>
         </volume>
         <position>
-            <x>5</x>
+            <x>0</x>
             <y>0</y>
             <z>-2</z>
         </position>
@@ -172,12 +172,12 @@
             <factor>-0.001</factor>
         </pitch>
         <position>
-            <x>7</x>
+            <x>-3</x>
             <y>0</y>
             <z>-1</z>
         </position>
-        <reference-dist>5.0</reference-dist>
-        <max-dist>10.0</max-dist>
+        <reference-dist>10.0</reference-dist>
+        <max-dist>20.0</max-dist>
     </gear>
 
     <gear>
@@ -190,32 +190,32 @@
             </equals>
         </condition>
         <position>
-            <x>7</x>
+            <x>-3</x>
             <y>0</y>
             <z>-1</z>
         </position>
-        <reference-dist>5.0</reference-dist>
-        <max-dist>10.0</max-dist>
+        <reference-dist>10.0</reference-dist>
+        <max-dist>20.0</max-dist>
     </gear>
 
     <gear>
         <name>gear-horn</name>
         <path>Sounds/gear-hrn.wav</path>
         <condition>
-            <property>instrumentation/alerts/gear-horn</property>
+            <property>sim/sound/stall-horn</property>
         </condition>
         <mode>looped</mode>
         <volume>
-            <property>instrumentation/alerts/gear-horn</property>
+            <property>sim/sound/stall-horn</property>
             <factor>0.7</factor>
         </volume>
         <position>
-            <x>2.5</x>
+            <x>-3.3</x>
             <y>0</y>
             <z>0</z>
         </position>
-        <reference-dist>3</reference-dist>
-        <max-dist>6.0</max-dist>
+        <reference-dist>1</reference-dist>
+        <max-dist>5.0</max-dist>
     </gear>
 
     <squeal>
@@ -245,7 +245,7 @@
             <offset>1.2</offset>
         </pitch>
         <position>
-            <x>5</x>
+            <x>-4</x>
             <y>0</y>
             <z>-2</z>
         </position>
@@ -260,15 +260,14 @@
         <mode>in-transit</mode>
         <volume>
             <property>sim/sound/cabin-volume</property>
-            <factor>0.5</factor>
         </volume>
         <position>
-            <x>7</x>
+            <x>-8</x>
             <y>0</y>
-            <z>-1</z>
+            <z>0</z>
         </position>
-        <reference-dist>5.0</reference-dist>
-        <max-dist>10.0</max-dist>
+        <reference-dist>1.0</reference-dist>
+        <max-dist>2.0</max-dist>
     </flap>
 
     <speedbrake>
@@ -278,15 +277,14 @@
         <mode>in-transit</mode>
         <volume>
             <property>sim/sound/cabin-volume</property>
-            <factor>0.5</factor>
         </volume>
         <position>
-            <x>7</x>
+            <x>-8</x>
             <y>0</y>
-            <z>-1</z>
+            <z>0</z>
         </position>
-        <reference-dist>5.0</reference-dist>
-        <max-dist>10.0</max-dist>
+        <reference-dist>1.0</reference-dist>
+        <max-dist>2.0</max-dist>
     </speedbrake>
 
     <wind>
@@ -306,9 +304,9 @@
             <offset>1.25</offset>
         </pitch>
         <position>
-            <x>2</x>
+            <x>-7</x>
             <y>0</y>
-            <z>0</z>
+            <z>0.8</z>
         </position>
         <reference-dist>1</reference-dist>
         <max-dist>2.0</max-dist>
@@ -325,12 +323,12 @@
             <factor>0.3</factor>
         </volume>
         <position>
-            <x>5</x>
+            <x>-8</x>
             <y>0</y>
             <z>0</z>
         </position>
-        <reference-dist>2.5</reference-dist>
-        <max-dist>5.0</max-dist>
+        <reference-dist>1</reference-dist>
+        <max-dist>2.0</max-dist>
     </click>
 
     <click>
@@ -346,12 +344,12 @@
             <factor>0.3</factor>
         </volume>
         <position>
-            <x>2.5</x>
+            <x>-8</x>
             <y>0</y>
             <z>0</z>
         </position>
-        <reference-dist>2.5</reference-dist>
-        <max-dist>5.0</max-dist>
+        <reference-dist>1</reference-dist>
+        <max-dist>2.0</max-dist>
     </click>
 
 </fx>

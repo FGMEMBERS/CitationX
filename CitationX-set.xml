@@ -18,8 +18,10 @@ Started Oct 2005  Syd Adams
             <splash-texture>Aircraft/CitationX/Splash.png</splash-texture>
         </startup>
 
-        <panel>
-        </panel>
+        <tutorials>
+            <tutorial include="Tutorials/startup_tutorial.xml"/>
+            <tutorial include="Tutorials/navigation.xml"/>
+        </tutorials>
 
         <model>
             <path>Aircraft/CitationX/Models/Citation-X.xml</path>
@@ -41,7 +43,7 @@ Started Oct 2005  Syd Adams
                     <enabled type="bool">true</enabled>
                     <left>
                         <heading-max-deg type="double">120</heading-max-deg>
-                        <x-offset-max-m type="double">0.25</x-offset-max-m>
+                        <x-offset-max-m type="double">0.20</x-offset-max-m>
                         <x-offset-threshold-deg type="double">45</x-offset-threshold-deg>
                     </left>
                     <right>
@@ -62,20 +64,18 @@ Started Oct 2005  Syd Adams
         </runways>
     </airport>
 
-        <systems>
-            <electrical>
-                <path></path>
-            </electrical>
-            <autopilot>
-                <path>Aircraft/CitationX/Systems/Citation-autopilot.xml</path>
-            </autopilot>
-        </systems>
+    <systems>
+        <path>Aircraft/CitationX/Systems/systems.xml</path>
+        <autopilot>
+            <path>Aircraft/CitationX/Systems/Citation-autopilot.xml</path>
+        </autopilot>
+    </systems>
 
-        <sound>
-            <path>Aircraft/CitationX/CitationX-sound.xml</path>
-        </sound>
+    <sound>
+        <path>Aircraft/CitationX/CitationX-sound.xml</path>
+    </sound>
 
-        <virtual-cockpit archive="y">true</virtual-cockpit>
+    <virtual-cockpit archive="y">true</virtual-cockpit>
 
         <weight n="0">
             <name>Crew</name>
@@ -105,34 +105,6 @@ Started Oct 2005  Syd Adams
             <menu n="10">
                 <label>Citation-X</label>
                 <enabled type="bool">true</enabled>
-                <item>
-                    <label>Autostart</label>
-                    <binding>
-                        <command>property-toggle</command>
-                        <property>sim/model/autostart</property>
-                    </binding>
-                </item>
-                <item>
-                    <label>Yokes On/Off</label>
-                    <binding>
-                        <command>property-toggle</command>
-                        <property>sim/yokes-visible</property>
-                    </binding>
-                </item>
-                <item>
-                    <label>Map Lights</label>
-                    <binding>
-                        <command>property-toggle</command>
-                        <property>controls/lighting/map-lights</property>
-                    </binding>
-                </item>
-                <item>
-                    <label>Cabin Lights</label>
-                    <binding>
-                        <command>property-toggle</command>
-                        <property>controls/lighting/cabin-lights</property>
-                    </binding>
-            </item>
             <item>
                 <label>Select Livery</label>
                 <binding>
@@ -302,15 +274,6 @@ Started Oct 2005  Syd Adams
             <speedbrake type="double">0</speedbrake>
         </flight>
     </controls>
-
-    <engines>
-        <engine n="0">
-            <rpm>1000</rpm>
-        </engine>
-        <engine n="1">
-            <rpm>1000</rpm>
-        </engine>
-    </engines>
 
     <nasal>
         <citation>

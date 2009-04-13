@@ -1,36 +1,47 @@
 #Radio Management Unit 
-# ie: var RMU1 = RMU.new(unit,com number.nav number);
+# ie: var RMU1 = RMU.new(unit,com unit.nav unit);
 var RMU = {
     new : func(unit,com,nav){
         m = { parents : [RMU]};
-        var prp = props.globals.getNode("instrumentation/rmu",1);
-        m.RMU=prp.getNode("unit["~unit~"]",1);
-        m.com_num=m.RMU.getNode("com-num",1);
-        m.com_num.setIntValue(com);
-        m.nav_num=m.RMU.getNode("nav-num",1);
-        m.nav_num.setIntValue(nav);
-        m.adf_num=m.RMU.getNode("adf-num",1);
-        m.adf_num.setIntValue(0);
-        m.selected=m.RMU.getNode("selected",1);
-        m.selected.setValue("com");
-        m.selected_x=m.RMU.getNode("selected-xoffset",1);
-        m.selected_x.setDoubleValue(0);
-        m.selected_y=m.RMU.getNode("selected-yoffset",1);
-        m.selected_y.setDoubleValue(0);
-        m.com_freq=m.RMU.getNode("com-freq",1);
-        m.com_freq.setDoubleValue(999.99);
-        m.com_stby=m.RMU.getNode("com-stby",1);
-        m.com_stby.setDoubleValue(999.99);
-        m.nav_freq=m.RMU.getNode("nav-freq",1);
-        m.nav_freq.setDoubleValue(999.99);
-        m.nav_stby=m.RMU.getNode("nav-stby",1);
-        m.nav_stby.setDoubleValue(999.99);
-        m.adf_freq=m.RMU.getNode("adf-freq",1);
-        m.adf_freq.setDoubleValue(379.0);
-        m.atc_freq=m.RMU.getNode("atc-freq",1);
-        m.atc_freq.setDoubleValue(1200);
+        m.comnum=com;
+        m.navnum=nav;
+        m.com_sel=[];
+        m.com_sby=[];
+        m.nav_sel=[];
+        m.nav_sby=[];
+        m.RMU=props.globals.initNode("instrumentation/rmu/unit["~unit~"]");
+        m.com_num=m.RMU.initNode("com-num",com,"INT");
+        m.nav_num=m.RMU.initNode("nav-num",nav,"INT");
+        m.adf_num=m.RMU.initNode("adf-num",0,"INT");
+        m.selected=m.RMU.initNode("selected",com,"INT");
+        m.selected_x=m.RMU.initNode("selected-xoffset",0,"DOUBLE");
+        m.selected_y=m.RMU.initNode("selected-yoffset",0,"DOUBLE");
+        m.com_freq=m.RMU.initNode("com-freq",999.99,"DOUBLE");
+        m.com_stby=m.RMU.initNode("com-stby",999.99,"DOUBLE");
+        m.nav_freq=m.RMU.initNode("nav-freq",999.99,"DOUBLE");
+        m.nav_stby=m.RMU.initNode("nav-stby",999.99,"DOUBLE");
+        m.adf_freq=m.RMU.initNode("adf-freq",379.0,"DOUBLE");
+        m.atc_freq=m.RMU.initNode("atc-freq",1200,"DOUBLE");
+
+        append(m.com_sel,props.globals.getNode("instrumentation/comm[0]/frequencies/selected-mhz"));
+        append(m.com_sel,props.globals.getNode("instrumentation/comm[1]/frequencies/selected-mhz"));
+        append(m.com_sby,props.globals.getNode("instrumentation/comm[0]/frequencies/standby-mhz"));
+        append(m.com_sby,props.globals.getNode("instrumentation/comm[1]/frequencies/standby-mhz"));
+        append(m.nav_sel,props.globals.getNode("instrumentation/nav[0]/frequencies/selected-mhz"));
+        append(m.nav_sel,props.globals.getNode("instrumentation/nav[1]/frequencies/selected-mhz"));
+        append(m.nav_sby,props.globals.getNode("instrumentation/nav[0]/frequencies/standby-mhz"));
+        append(m.nav_sby,props.globals.getNode("instrumentation/nav[1]/frequencies/standby-mhz"));
+
     return m;
     },
+#### init ####
+
+    init_rmu :func(){
+        me.com_freq.setValue(me.com_sel[me.comnum].getValue());
+        me.com_stby.setValue(me.com_sby[me.comnum].getValue());
+        me.nav_freq.setValue(me.nav_sel[me.navnum].getValue());
+        me.nav_stby.setValue(me.nav_sby[me.navnum].getValue());
+},
 #### selector ####
     button : func(act){
         if(act=="com-swp"){
@@ -61,12 +72,10 @@ var RMU = {
     },
 #### copy frequencies to radios ####
     update : func(){
-        var num = me.com_num.getValue();
-        setprop("instrumentation/comm["~num~"]/frequencies/selected-mhz",me.com_freq.getValue());
-        setprop("instrumentation/comm["~num~"]/frequencies/standby-mhz",me.com_stby.getValue());
-        num = me.nav_num.getValue();
-        setprop("instrumentation/nav["~num~"]/frequencies/selected-mhz",me.nav_freq.getValue());
-        setprop("instrumentation/nav["~num~"]/frequencies/standby-mhz",me.nav_stby.getValue());
+        me.com_sel[me.comnum].setValue(me.com_freq.getValue());
+        me.com_sby[me.comnum].setValue(me.com_stby.getValue());
+        me.nav_sel[me.navnum].setValue(me.nav_freq.getValue());
+        me.nav_sby[me.navnum].setValue(me.nav_stby.getValue());
         setprop("instrumentation/adf/frequencies/selected-khz",me.adf_freq.getValue());
         setprop("instrumentation/kt-70/outputs/id-code",me.atc_freq.getValue());
     },
@@ -97,7 +106,7 @@ var RMU = {
             if(frq>118.000)frq-=10.000;
             if(frq<108.000)frq+=10.000;
             me.nav_stby.setValue(frq);
-        }elsif(slc=="atc"){
+            }elsif(slc=="atc"){
             frq=me.atc_freq.getValue();
             if(btn ==0){
                 val=1 * amt;
@@ -120,6 +129,7 @@ var RMU = {
             if(frq<190.0)frq+=1610.0;
             me.adf_freq.setValue(frq);
         }
+    me.update();
     },
 
 };
@@ -131,72 +141,11 @@ var RMU1 = RMU.new(0,0,0);
 var RMU2 = RMU.new(1,1,1);
 
 setlistener("/sim/signals/fdm-initialized", func {
-init_rmu();
+RMU1.init_rmu();
+RMU2.init_rmu();
 });
 
 setlistener("/sim/signals/reinit", func {
-init_rmu();
+RMU1.init_rmu();
+RMU2.init_rmu();
 });
-
-var init_rmu=func(){
-    RMU1.com_freq.setValue(120.500);
-    RMU1.com_stby.setValue(118.850);
-    RMU1.nav_freq.setValue(115.80);
-    RMU1.nav_stby.setValue(111.70);
-
-    RMU2.com_freq.setValue(118.300);
-    RMU2.com_stby.setValue(133.775);
-    RMU2.nav_freq.setValue(116.80);
-    RMU2.nav_stby.setValue(113.90);
-}
-
-######## unit 1 ############
-setlistener(RMU1.com_freq, func(){
-    RMU1.update();
-},1,0);
-
-setlistener(RMU1.com_stby, func(){
-    RMU1.update();
-},1,0);
-
-setlistener(RMU1.nav_freq, func(){
-    RMU1.update();
-},1,0);
-
-setlistener(RMU1.nav_stby, func(){
-    RMU1.update();
-},1,0);
-
-setlistener(RMU1.adf_freq, func(){
-    RMU1.update();
-},1,0);
-
-setlistener(RMU1.atc_freq, func(){
-    RMU1.update();
-},1,0);
-
-######## unit 2 ############
-
-setlistener(RMU2.com_freq, func(){
-    RMU2.update();
-},1,0);
-
-setlistener(RMU2.com_stby, func(){
-    RMU2.update();
-},1,0);
-
-setlistener(RMU2.nav_freq, func(){
-    RMU2.update();
-},1,0);
-
-setlistener(RMU2.nav_stby, func(){
-    RMU2.update();
-},1,0);
-
-setlistener(RMU2.adf_freq, func(){
-    RMU2.update();
-},1,0);
-
-setlistener(RMU2.atc_freq, func(){
-    RMU2.update();
-},1,0);

@@ -13,7 +13,7 @@
                 <and>
                     <property>instrumentation/primus1000/eicas/serviceable</property>
                     <greater-than>
-                        <property>systems/electrical/ac-volts</property>
+                        <property>systems/electrical/outputs/efis</property>
                         <value>15</value>
                     </greater-than>
                 </and>
