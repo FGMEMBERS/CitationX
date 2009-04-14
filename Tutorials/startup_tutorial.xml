@@ -64,6 +64,8 @@
     <step>
         <message>
             Set throttles to "IDLE" position{|.}
+            "OFF" position will shut down engines{|.}
+            with park brake set{|.}
         </message>
         <view>
             <heading-offset-deg>315</heading-offset-deg>
@@ -71,7 +73,11 @@
             <field-of-view>35</field-of-view>
         </view>
         <error>
-            <message>Set throttles to "IDLE" position{|.}</message>
+            <message>
+                Set throttles to "IDLE" position{|.}
+                "OFF" position will shut down engines{|.}
+                with park brake set{|.}
+            </message>
             <condition>
                 <or>
                     <less-than>
@@ -245,7 +251,7 @@
 
     <step>
         <message>
-            Switch on anti-collision and nav lights{|.}
+            Switch on grnd rec / anti-collision and nav lights{|.}
         </message>
         <view>
             <heading-offset-deg>311.83</heading-offset-deg>
@@ -253,7 +259,8 @@
             <field-of-view>13</field-of-view>
         </view>
         <error>
-            <message>Switch on anti-collision and nav lights{|.}
+            <message>
+                Switch on grnd rec / anti-collision and nav lights{|.}
             </message>
             <condition>
                 <not>
@@ -270,9 +277,37 @@
         </exit>
     </step>
 
+    <step>
+        <message>
+            Switch on taxi-light{|.}
+        </message>
+        <view>
+            <heading-offset-deg>295.66</heading-offset-deg>
+            <pitch-offset-deg>-54.89</pitch-offset-deg>
+            <field-of-view>16</field-of-view>
+        </view>
+        <error>
+            <message>
+                Switch on taxi-light{|.}
+            </message>
+            <condition>
+                <not>
+                        <property>controls/lighting/taxi-lights</property>
+                </not>
+            </condition>
+        </error>
+        <exit>
+            <condition>
+                <property>controls/lighting/taxi-lights</property>
+            </condition>
+        </exit>
+    </step>
+
     <end>
-        <message>Release Park brake (shift b){|.}
-        Ready to roll ! {|.}
+        <message>
+            Release Park brake (shift b){|.}
+            Set flaps to 15 degrees{|.}
+            and your ready  to roll ! {|.}
         </message>
         <view>
             <heading-offset-deg>0</heading-offset-deg>

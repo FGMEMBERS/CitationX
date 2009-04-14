@@ -42,6 +42,17 @@
 
 
 
+    <model>
+        <path>Aircraft/CitationX/Models/shadow.xml</path>
+        <offsets>
+            <x-m>0</x-m>
+            <y-m>0</y-m>
+            <z-m>-2.2</z-m>
+            <pitch-deg>0</pitch-deg>
+        </offsets>
+    </model>
+
+
 <!-- Instruments -->
 
     <model>
@@ -1438,7 +1449,6 @@
         <max>500.0</max>
     </animation>
 
-
     <animation>
         <type>select</type>
         <object-name>Bcn2</object-name>
@@ -1473,6 +1483,108 @@
         <offset>1.0</offset>
         <min>1.0</min>
         <max>500.0</max>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>Taxi</object-name>
+        <condition>
+            <and>
+                <greater-than>
+                    <property>sim/multiplay/generic/int[2]</property>
+                    <value>1</value>
+                </greater-than>
+                <equals>
+                    <property>gear/gear[0]/position-norm</property>
+                    <value>1</value>
+                </equals>
+            </and>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>flash</type>
+        <object-name>Taxi</object-name>
+        <center>
+            <x-m>-8.26</x-m>
+            <y-m>0</y-m>
+            <z-m>-1.236</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <power>10</power>
+        <factor>2</factor>
+        <offset>0</offset>
+        <two-sides type="bool">false</two-sides>
+        <min>0.05</min>
+        <max>5</max>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>Land1</object-name>
+        <condition>
+            <greater-than>
+                <property>sim/multiplay/generic/int[3]</property>
+                <value>1</value>
+            </greater-than>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>flash</type>
+        <object-name>Land1</object-name>
+        <center>
+            <x-m>-3.299</x-m>
+            <y-m>-1.185</y-m>
+            <z-m>-0.918</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <power>10</power>
+        <factor>2</factor>
+        <offset>0</offset>
+        <two-sides type="bool">false</two-sides>
+        <min>0.05</min>
+        <max>5</max>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>Land2</object-name>
+        <condition>
+            <greater-than>
+                <property>sim/multiplay/generic/int[4]</property>
+                <value>1</value>
+            </greater-than>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>flash</type>
+        <object-name>Land2</object-name>
+        <center>
+            <x-m>-3.299</x-m>
+            <y-m>1.185</y-m>
+            <z-m>-0.918</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <power>10</power>
+        <factor>2</factor>
+        <offset>0</offset>
+        <two-sides type="bool">false</two-sides>
+        <min>0.05</min>
+        <max>5</max>
     </animation>
 
 <!-- Panel animations -->

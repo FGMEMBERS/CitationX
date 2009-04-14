@@ -45,7 +45,7 @@
         <pitch>
             <property>engines/engine/fan</property>
             <offset>0</offset>
-            <factor>0.02</factor>
+            <factor>0.03</factor>
         </pitch>
         <position>
             <x>3</x>
@@ -95,7 +95,7 @@
         <pitch>
             <property>engines/engine[1]/fan</property>
             <offset>0</offset>
-            <factor>0.02</factor>
+            <factor>0.03</factor>
         </pitch>
         <position>
             <x>3</x>

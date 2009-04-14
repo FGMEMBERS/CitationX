@@ -62,30 +62,30 @@ var JetEngine = {
         m.throttle_lever = props.globals.initNode("controls/engines/engine["~eng_num~"]/throttle-lever",0,"DOUBLE");
         m.throttle = props.globals.initNode("controls/engines/engine["~eng_num~"]/throttle",0,"DOUBLE");
         m.ignition = props.globals.initNode("controls/engines/engine["~eng_num~"]/ignition",0,"DOUBLE");
-        m.cutoff = props.globals.initNode("controls/engines/engine["~eng_num~"]/cutoff",0,"BOOL");
+        m.cutoff = props.globals.initNode("controls/engines/engine["~eng_num~"]/cutoff",1,"BOOL");
         m.fuel_out = props.globals.initNode("engines/engine["~eng_num~"]/out-of-fuel",0,"BOOL");
         m.starter = props.globals.initNode("controls/engines/engine["~eng_num~"]/starter",0,"BOOL");
         m.fuel_pph=m.eng.initNode("fuel-flow_pph",0,"DOUBLE");
         m.fuel_gph=m.eng.initNode("fuel-flow-gph");
         m.hpump=props.globals.initNode("systems/hydraulics/pump-psi["~eng_num~"]",0,"DOUBLE");
 
-    m.Lfuel = setlistener(m.fuel_out, func(fl) {m.cutoff.setValue(fl.getValue())},1,0);
-    m.Lignition = setlistener(m.ignition, func (ig){m.cutoff.setValue(1)},1,0);
+    m.Lfuel = setlistener(m.fuel_out, func m.shutdown(m.fuel_out.getValue()),0,0);
     m.CutOff = setlistener(m.cutoff, func (ct){m.engine_off=ct.getValue()},1,0);
     return m;
     },
 #### update ####
     update : func{
-        if(!me.engine_off){
-        me.fan.setValue(me.n1.getValue());
-        me.turbine.setValue(me.n2.getValue());
-        if()me.throttle.setValue(me.throttle.getValue);
         var thr = me.throttle.getValue();
-        if(getprop("controls/engines/grnd_idle"))thr *=0.92;
-        me.throttle_lever.setValue(thr);
+        if(!me.engine_off){
+            me.fan.setValue(me.n1.getValue());
+            me.turbine.setValue(me.n2.getValue());
+            if(getprop("controls/engines/grnd_idle"))thr *=0.92;
+            me.throttle_lever.setValue(thr);
         }else{
             me.throttle_lever.setValue(0);
-            if(me.starter.getBoolValue())me.cycle_up=me.ignition.getValue();
+            if(me.starter.getBoolValue()){
+                if(me.cycle_up == 0)me.cycle_up=1;
+            }
             if(me.cycle_up>0){
                 me.spool_up(15);
             }else{
@@ -97,17 +97,20 @@ var JetEngine = {
                 }
             }
         }
-    me.fuel_pph.setValue(me.fuel_gph.getValue()*me.fdensity);
-    var hpsi =me.fan.getValue();
-    if(hpsi>60)hpsi = 60;
-    me.hpump.setValue(hpsi);
-    me.itt_c.setValue(me.fan.getValue() * me.ITTlimit);
+        if(thr<0.01){
+            if(getprop("gear/gear[0]/wow")){
+                if(getprop("controls/gear/brake-parking") == 1)me.cutoff.setValue(1);
+            }
+        }
+        me.fuel_pph.setValue(me.fuel_gph.getValue()*me.fdensity);
+        var hpsi =me.fan.getValue();
+        if(hpsi>60)hpsi = 60;
+        me.hpump.setValue(hpsi);
+        me.itt_c.setValue(me.fan.getValue() * me.ITTlimit);
     },
 
     spool_up : func(scnds){
-        if(!me.engine_off){
-        return;
-        }else{
+        if(me.engine_off){
         var n1=me.n1.getValue() ;
         var n1factor = n1/scnds;
         var n2=me.n2.getValue() ;
@@ -119,11 +122,19 @@ var JetEngine = {
             me.fan.setValue(tmprpm);
             me.turbine.setValue(tmprpm2);
             if(tmprpm >= me.n1.getValue()){
-            me.cutoff.setBoolValue(0);
-            cycle_up=0;
+                var ign=1-me.ignition.getValue();
+                me.cutoff.setBoolValue(ign);
+                me.cycle_up=0;
             }
         }
+    },
+
+    shutdown : func(b){
+        if(b!=0){
+            me.cutoff.setBoolValue(1);
+        }
     }
+
 };
 
 var FDM="";
@@ -146,18 +157,15 @@ var tire=TireSpeed.new(3,0.430,0.615,0.615);
 
 setlistener("/sim/signals/fdm-initialized", func {
     fdm_init();
-    Shutdown();
     settimer(update_systems,2);
 });
 
 setlistener("/sim/signals/reinit", func {
     fdm_init();
-    Shutdown();
 },0,0);
 
 setlistener("/sim/crashed", func(cr){
     if(cr.getBoolValue()){
-        Shutdown();
     }
 },1,0);
 
@@ -177,14 +185,6 @@ setlistener("/gear/gear[1]/wow", func(ww){
     }else{
         FHmeter.start();
         Grd_Idle.setBoolValue(0);
-    }
-},0,0);
-
-setlistener("sim/model/autostart", func(strt){
-    if(strt.getBoolValue()){
-        Startup();
-    }else{
-        Shutdown();
     }
 },0,0);
 
@@ -224,60 +224,6 @@ setlistener("/sim/freeze/fuel", func(ffr){
     }
 },0,0);
 
-var Startup = func{
-setprop("controls/electric/engine[0]/generator",1);
-setprop("controls/electric/engine[1]/generator",1);
-setprop("controls/electric/avionics-switch",1);
-setprop("controls/electric/battery-switch",1);
-setprop("controls/electric/battery-switch[1]",1);
-setprop("controls/lighting/instrument-lights",1);
-setprop("controls/lighting/nav-lights",1);
-setprop("controls/lighting/beacon",1);
-setprop("controls/lighting/strobe",1);
-setprop("controls/engines/engine[0]/cutoff",0);
-setprop("controls/engines/engine[1]/cutoff",0);
-setprop("controls/engines/engine[0]/ignition",1);
-setprop("controls/engines/engine[1]/ignition",1);
-setprop("engines/engine[0]/running",1);
-setprop("engines/engine[1]/running",1);
-setprop("controls/engines/throttle_idle",1);
-}
-
-var Shutdown = func{
-setprop("controls/electric/engine[0]/generator",0);
-setprop("controls/electric/engine[1]/generator",0);
-setprop("controls/electric/avionics-switch",0);
-setprop("controls/electric/battery-switch",0);
-setprop("controls/electric/battery-switch[1]",0);
-setprop("controls/lighting/instrument-lights",1);
-setprop("controls/lighting/nav-lights",0);
-setprop("controls/lighting/beacon",0);
-setprop("controls/lighting/strobe",0);
-setprop("controls/engines/engine[0]/cutoff",1);
-setprop("controls/engines/engine[1]/cutoff",1);
-setprop("controls/engines/engine[0]/ignition",0);
-setprop("controls/engines/engine[1]/ignition",0);
-setprop("engines/engine[0]/running",0);
-setprop("engines/engine[1]/running",0);
-}
-
-var dme_step = func(stp){
-    var swtch= getprop("instrumentation/dme/switch-position");
-    swtch += stp;
-    if(swtch >3)swtch=3;
-    if(swtch <0)swtch=0;
-    setprop("instrumentation/dme/switch-position",swtch);
-
-    if(swtch==0){
-        setprop("instrumentation/dme/frequencies/source","instrumentation/dme/frequencies/selected-mhz");
-    }elsif(swtch==1){
-        setprop("instrumentation/dme/frequencies/source","instrumentation/nav[0]/frequencies/selected-mhz");
-    }elsif(swtch==2){
-        setprop("instrumentation/dme/frequencies/source","instrumentation/dme/frequencies/selected-mhz");
-    }elsif(swtch==3){
-        setprop("instrumentation/dme/frequencies/source","instrumentation/nav[1]/frequencies/selected-mhz");
-    }
-}
 
 var FHupdate = func(tenths){
         var fmeter = getprop("/instrumentation/clock/flight-meter-sec");
@@ -322,5 +268,6 @@ var update_systems = func{
     stall_horn();
 
 #annunciators_loop();
+setprop("sim/multiplay/generic/float[2]",getprop("position/gear-agl-m"));
 settimer(update_systems,0);
 }
