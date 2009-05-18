@@ -69,9 +69,9 @@ var JetEngine = {
         m.fuel_gph=m.eng.initNode("fuel-flow-gph");
         m.hpump=props.globals.initNode("systems/hydraulics/pump-psi["~eng_num~"]",0,"DOUBLE");
 
-    m.Lfuel = setlistener(m.fuel_out, func m.shutdown(m.fuel_out.getValue()),0,0);
-    m.CutOff = setlistener(m.cutoff, func (ct){m.engine_off=ct.getValue()},1,0);
-    return m;
+        m.Lfuel = setlistener(m.fuel_out, func m.shutdown(m.fuel_out.getValue()),0,0);
+        m.CutOff = setlistener(m.cutoff, func (ct){m.engine_off=ct.getValue()},1,0);
+        return m;
     },
 #### update ####
     update : func{

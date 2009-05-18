@@ -43,6 +43,7 @@
 
 
     <model>
+        <name>shadow</name>
         <path>Aircraft/CitationX/Models/shadow.xml</path>
         <offsets>
             <x-m>0</x-m>
@@ -52,6 +53,13 @@
         </offsets>
     </model>
 
+    <animation>
+        <type>select</type>
+        <object-name>shadow</object-name>
+        <condition>
+            <property>sim/rendering/shadows-ac</property>
+        </condition>
+    </animation>
 
 <!-- Instruments -->
 
