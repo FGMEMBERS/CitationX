@@ -71,7 +71,7 @@ var JetEngine = {
 
         m.Lfuel = setlistener(m.fuel_out, func m.shutdown(m.fuel_out.getValue()),0,0);
         m.CutOff = setlistener(m.cutoff, func (ct){m.engine_off=ct.getValue()},1,0);
-        return m;
+	return m;
     },
 #### update ####
     update : func{
@@ -97,11 +97,7 @@ var JetEngine = {
                 }
             }
         }
-        if(thr<0.01){
-            if(getprop("gear/gear[0]/wow")){
-                if(getprop("controls/gear/brake-parking") == 1)me.cutoff.setValue(1);
-            }
-        }
+        
         me.fuel_pph.setValue(me.fuel_gph.getValue()*me.fdensity);
         var hpsi =me.fan.getValue();
         if(hpsi>60)hpsi = 60;
@@ -138,14 +134,13 @@ var JetEngine = {
 };
 
 var FDM="";
-var SndIn = props.globals.initNode("/sim/sound/cabin-volume",0.5);
+var SndIn = props.globals.initNode("/sim/sound/volume",0.5);
 var Grd_Idle=props.globals.initNode("controls/engines/grnd-idle",1,"BOOL");
 var Annun = props.globals.getNode("instrumentation/annunciators",1);
 var MstrWarn =Annun.getNode("master-warning",1);
 var MstrCaution = Annun.getNode("master-caution",1);
 var PWR2 =0;
 aircraft.livery.init("Aircraft/CitationX/Models/Liveries");
-
 aircraft.light.new("instrumentation/annunciators", [0.5, 0.5], MstrCaution);
 var cabin_door = aircraft.door.new("/controls/cabin-door", 2);
 var FHmeter = aircraft.timer.new("/instrumentation/clock/flight-meter-sec", 10,1);
@@ -198,7 +193,7 @@ controls.gearDown = func(v) {
 
 setlistener("/sim/current-view/internal", func(vw){
     if(vw.getValue()){
-    SndIn.setDoubleValue(0.5);
+    SndIn.setDoubleValue(0.3);
     }else{
     SndIn.setDoubleValue(1.0);
     }

@@ -55,6 +55,67 @@ Started Oct 2005  Syd Adams
             </config>
         </view>
 
+  <view n="100">
+    <name>Passenger 1</name>
+    <internal archive="y">true</internal>
+    <type>lookfrom</type>
+    <config>
+      <from-model type="bool">true</from-model>
+      <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+      <heading-offset-deg type="double">0</heading-offset-deg>
+      <x-offset-m archive="y" type="double">-0.38</x-offset-m> <!--Right-->
+      <y-offset-m archive="y" type="double">0.4</y-offset-m> <!--Up-->
+      <z-offset-m archive="y" type="double">-4.9</z-offset-m> <!--Back-->
+      <default-heading-offset-deg>0</default-heading-offset-deg>
+      <pitch-offset-deg>0</pitch-offset-deg>
+                <limits>
+                    <enabled type="bool">true</enabled>
+                    <left>
+                        <heading-max-deg type="double">120</heading-max-deg>
+                        <x-offset-max-m type="double">0.28</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
+                    </left>
+                    <right>
+                        <heading-max-deg type="double">170</heading-max-deg>
+                        <x-offset-max-m type="double">0.25</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
+                    </right>
+                </limits>
+      <dynamic-view type="bool">false</dynamic-view>
+    </config>
+    </view>
+
+  <view n="101">
+    <name>Passenger 2</name>
+    <internal archive="y">true</internal>
+    <type>lookfrom</type>
+    <config>
+      <from-model type="bool">true</from-model>
+      <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+      <heading-offset-deg type="double">0</heading-offset-deg>
+      <x-offset-m archive="y" type="double">0.41</x-offset-m> <!--Right-->
+      <y-offset-m archive="y" type="double">0.4</y-offset-m> <!--Up-->
+      <z-offset-m archive="y" type="double">-1.04</z-offset-m> <!--Back-->
+      <default-heading-offset-deg>0</default-heading-offset-deg>
+      <pitch-offset-deg>0</pitch-offset-deg>
+      <pitch-offset-deg>0</pitch-offset-deg>
+                <limits>
+                    <enabled type="bool">true</enabled>
+                    <left>
+                        <heading-max-deg type="double">120</heading-max-deg>
+                        <x-offset-max-m type="double">0.25</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">45</x-offset-threshold-deg>
+                    </left>
+                    <right>
+                        <heading-max-deg type="double">120</heading-max-deg>
+                        <x-offset-max-m type="double">0.28</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">45</x-offset-threshold-deg>
+                    </right>
+                </limits>
+      <dynamic-view type="bool">false</dynamic-view>
+    </config>
+    </view>
+
         <allow-toggle-cockpit>true</allow-toggle-cockpit>
         <chase-distance-m type="double">-30.0</chase-distance-m>
 
@@ -299,6 +360,14 @@ Started Oct 2005  Syd Adams
                 <binding>
                     <command>property-toggle</command>
                     <property>controls/engines/engine[1]/reverser</property>
+                </binding>
+            </key>
+            <key n="4">
+                <name>Ctrl-D</name>
+                <desc>Open/close door</desc>
+                <binding>
+                    <command>nasal</command>
+                    <script>citation.cabin_door.toggle();</script>
                 </binding>
             </key>
             <key n="267">

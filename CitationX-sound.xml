@@ -14,7 +14,7 @@
         </condition>
         <mode>looped</mode>
         <volume>
-            <property>sim/sound/cabin-volume</property>
+            <property>sim/sound/volume</property>
         </volume>
         <volume>
             <property>engines/engine[0]/thrust-lbs</property>
@@ -40,7 +40,7 @@
         </condition>
         <mode>looped</mode>
         <volume>
-            <property>sim/sound/cabin-volume</property>
+            <property>sim/sound/volume</property>
         </volume>
         <pitch>
             <property>engines/engine/fan</property>
@@ -64,7 +64,7 @@
         </condition>
         <mode>looped</mode>
         <volume>
-            <property>sim/sound/cabin-volume</property>
+            <property>sim/sound/volume</property>
         </volume>
         <volume>
             <property>engines/engine[1]/thrust-lbs</property>
@@ -90,7 +90,7 @@
         </condition>
         <mode>looped</mode>
         <volume>
-            <property>sim/sound/cabin-volume</property>
+            <property>sim/sound/volume</property>
         </volume>
         <pitch>
             <property>engines/engine[1]/fan</property>
@@ -121,7 +121,7 @@
             <factor>1.0</factor>
         </volume>
         <volume>
-            <property>sim/sound/cabin-volume</property>
+            <property>sim/sound/volume</property>
         </volume>
         <pitch>
             <offset>1.6</offset>
@@ -237,7 +237,7 @@
             <factor>0.01</factor>
         </volume>
         <volume>
-            <property>sim/sound/cabin-volume</property>
+            <property>sim/sound/volume</property>
         </volume>
         <pitch>
             <property>velocities/airspeed-kt</property>
@@ -259,7 +259,7 @@
         <property>surface-positions/flap-pos-norm</property>
         <mode>in-transit</mode>
         <volume>
-            <property>sim/sound/cabin-volume</property>
+            <property>sim/sound/volume</property>
         </volume>
         <position>
             <x>-8</x>
@@ -276,7 +276,7 @@
         <property>surface-positions/speedbrake-pos-norm</property>
         <mode>in-transit</mode>
         <volume>
-            <property>sim/sound/cabin-volume</property>
+            <property>sim/sound/volume</property>
         </volume>
         <position>
             <x>-8</x>
@@ -319,7 +319,7 @@
             <property>sim/sound/click</property>
         </condition>
         <volume>
-            <property>sim/sound/cabin-volume</property>
+            <property>sim/sound/volume</property>
             <factor>0.3</factor>
         </volume>
         <position>
@@ -340,7 +340,7 @@
             </not>
         </condition>
         <volume>
-            <property>sim/sound/cabin-volume</property>
+            <property>sim/sound/volume</property>
             <factor>0.3</factor>
         </volume>
         <position>
