@@ -134,7 +134,7 @@ var JetEngine = {
 };
 
 var FDM="";
-var SndIn = props.globals.initNode("/sim/sound/volume",0.5);
+var SndIn = props.globals.initNode("/sim/sound/volume",0.4);
 var Grd_Idle=props.globals.initNode("controls/engines/grnd-idle",1,"BOOL");
 var Annun = props.globals.getNode("instrumentation/annunciators",1);
 var MstrWarn =Annun.getNode("master-warning",1);
@@ -193,7 +193,7 @@ controls.gearDown = func(v) {
 
 setlistener("/sim/current-view/internal", func(vw){
     if(vw.getValue()){
-    SndIn.setDoubleValue(0.3);
+    SndIn.setDoubleValue(0.4);
     }else{
     SndIn.setDoubleValue(1.0);
     }

@@ -63,9 +63,9 @@ Started Oct 2005  Syd Adams
       <from-model type="bool">true</from-model>
       <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
       <heading-offset-deg type="double">0</heading-offset-deg>
-      <x-offset-m archive="y" type="double">-0.38</x-offset-m> <!--Right-->
+      <x-offset-m archive="y" type="double">-0.41</x-offset-m> <!--Right-->
       <y-offset-m archive="y" type="double">0.4</y-offset-m> <!--Up-->
-      <z-offset-m archive="y" type="double">-4.9</z-offset-m> <!--Back-->
+      <z-offset-m archive="y" type="double">-3.33</z-offset-m> <!--Back-->
       <default-heading-offset-deg>0</default-heading-offset-deg>
       <pitch-offset-deg>0</pitch-offset-deg>
                 <limits>
@@ -317,6 +317,26 @@ Started Oct 2005  Syd Adams
         <alerts>
             <gear-horn type="bool">0</gear-horn>
         </alerts>
+	<rmu>
+	<unit n="0">
+		<serviceable type="bool">1</serviceable>
+		<selected type="int">0</selected>
+		<selected-xoffset type="int">0</selected-xoffset>
+		<selected-yoffset type="int">0</selected-yoffset>
+		<com-num type="int">0</com-num>
+		<nav-num type="int">0</nav-num>
+		<adf-num type="int">0</adf-num>
+	</unit>
+	<unit n="1">
+		<serviceable type="bool">1</serviceable>
+		<selected type="int">0</selected>
+		<selected-xoffset type="int">0</selected-xoffset>
+		<selected-yoffset type="int">0</selected-yoffset>
+		<com-num type="int">1</com-num>
+		<nav-num type="int">1</nav-num>
+		<adf-num type="int">1</adf-num>
+	</unit>
+	</rmu>
     </instrumentation>
 
     <controls>
@@ -341,7 +361,6 @@ Started Oct 2005  Syd Adams
             <file>Aircraft/CitationX/Nasal/CitationX.nas</file>
             <file>Aircraft/CitationX/Nasal/Electrical.nas</file>
             <file>Aircraft/CitationX/Nasal/flightdirector.nas</file>
-            <file>Aircraft/CitationX/Nasal/rmu.nas</file>
         </citation>
             <efis>
                 <file>Aircraft/Instruments-3d/primus-1000/P1000.nas</file>
