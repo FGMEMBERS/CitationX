@@ -6,6 +6,52 @@
 
 <!-- Instruments -->
 
+	<model><!-- Pilot reg label-->
+		<path>Aircraft/CitationX/Models/registration.xml</path>
+		<offsets>
+			<x-m>-7.828</x-m>
+			<y-m>-0.246</y-m>
+			<z-m>0.219</z-m>
+			<roll-deg>0</roll-deg>
+			<pitch-deg>-10</pitch-deg>
+			<heading-deg>0</heading-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<size>0.04</size>
+				<alignment>yz-plane</alignment>
+				<color>
+					<red>0.8</red>
+					<green>0.8</green>
+					<blue>0.8</blue>
+				</color>
+			</params>
+		</overlay>
+	</model>
+
+	<model><!-- CoPilot reg label-->
+		<path>Aircraft/CitationX/Models/registration.xml</path>
+		<offsets>
+			<x-m>-7.828</x-m>
+			<y-m>0.267</y-m>
+			<z-m>0.219</z-m>
+			<roll-deg>0</roll-deg>
+			<pitch-deg>-10</pitch-deg>
+			<heading-deg>0</heading-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<size>0.04</size>
+				<alignment>yz-plane</alignment>
+				<color>
+					<red>0.8</red>
+					<green>0.8</green>
+					<blue>0.8</blue>
+				</color>
+			</params>
+		</overlay>
+	</model>
+
     <model>
         <path>Aircraft/CitationX/Models/Instruments/ALT.xml</path>
         <offsets>

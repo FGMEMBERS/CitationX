@@ -263,6 +263,5 @@ var update_systems = func{
     stall_horn();
 
 #annunciators_loop();
-setprop("sim/multiplay/generic/float[2]",getprop("position/gear-agl-m"));
 settimer(update_systems,0);
 }

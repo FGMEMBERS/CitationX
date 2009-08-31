@@ -2,18 +2,18 @@ AC3Db
 MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 64  trans 0
 MATERIAL "gloss" rgb 0.9 0.9 0.9 amb 0.9 0.9 0.9 emis 0 0 0 spec 1 1 1 shi 64 trans 0
 MATERIAL "DKgrey" rgb 0.1 0.1 0.1 amb 0.1 0.1 0.1 emis 0 0 0 spec 0.340523 0.340523 0.340523 shi 32 trans 0
-MATERIAL "Red" rgb 0.7 0.2 0.2 amb 0.303268 0.303268 0.303268 emis 0 0 0 spec 0.908092 0.723033 0.723033 shi 32 trans 0
-MATERIAL "whiteswitch" rgb 0.8 0.8 0.8 amb 1 1 1 emis 0 0 0 spec 1 1 1 shi 32 trans 0
+MATERIAL "Red" rgb 0.7 0.2 0.2 amb 0.7 0.2 0.2 emis 0 0 0 spec 0.908092 0.723033 0.723033 shi 32 trans 0
+MATERIAL "whiteswitch" rgb 0.8 0.8 0.8 amb 0.8 0.8 0.8 emis 0 0 0 spec 1 1 1 shi 32 trans 0
 MATERIAL "illum" rgb 1 1 1 amb 1 1 1 emis 1 1 1 spec 0 0 0 shi 0 trans 0
 MATERIAL "Black" rgb 0 0 0 amb 0 0 0 emis 0 0 0 spec 0 0 0 shi 32 trans 0
 MATERIAL "dark" rgb 0.8 0.8 0.8 amb 0.8 0.8 0.8 emis 0.1 0.1 0.1 spec 0.1 0.1 0.1 shi 5 trans 0
-MATERIAL "greenswitch" rgb 0.131303 0.514088 0.199519 amb 0.316329 0.316329 0.316329 emis 0 0 0 spec 1 1 1 shi 32 trans 0
-MATERIAL "instr-lights.001" rgb 0.8 0.8 0.8 amb 0.9 0.9 0.9 emis 1 1 1 spec 0 0 0 shi 32 trans 0
-MATERIAL "BlkMetal" rgb 0.057032 0.057032 0.057032 amb 0.122222 0.122222 0.122222 emis 0 0 0 spec 0.5 0.5 0.5 shi 32 trans 0
-MATERIAL "dark.001" rgb 0.665008 0.665008 0.665008 amb 1 1 1 emis 0.1 0.1 0.1 spec 0.6 0.6 0.6 shi 17 trans 0
-MATERIAL "BlkMetal.002" rgb 0.1 0.1 0.1 amb 0.066666 0.066666 0.066666 emis 0 0 0 spec 0.5 0.5 0.5 shi 32 trans 0
-MATERIAL "LIT" rgb 0.780308 0.696197 0.573169 amb 1 1 1 emis 0.7 0.7 0.7 spec 0 0 0 shi 0 trans 0
-MATERIAL "Material.002" rgb 0.852252 0.518829 0.202954 amb 1 1 1 emis 0 0 0 spec 1 1 1 shi 32 trans 0
+MATERIAL "greenswitch" rgb 0.131303 0.514088 0.199519 amb 0.131303 0.514088 0.199519 emis 0 0 0 spec 1 1 1 shi 32 trans 0
+MATERIAL "instr-lights.001" rgb 0.8 0.8 0.8 amb 0.8 0.8 0.8 emis 1 1 1 spec 0 0 0 shi 32 trans 0
+MATERIAL "BlkMetal" rgb 0.057032 0.057032 0.057032 amb 0.057032 0.057032 0.057032 emis 0 0 0 spec 0.5 0.5 0.5 shi 32 trans 0
+MATERIAL "dark.001" rgb 0.665008 0.665008 0.665008 amb 0.665008 0.665008 0.665008 emis 0.1 0.1 0.1 spec 0.6 0.6 0.6 shi 17 trans 0
+MATERIAL "BlkMetal.002" rgb 0.1 0.1 0.1 amb 0.1 0.1 0.1 emis 0 0 0 spec 0.5 0.5 0.5 shi 32 trans 0
+MATERIAL "LIT" rgb 0.780308 0.696197 0.573169 amb 0.780308 0.696197 0.573169 emis 0.7 0.7 0.7 spec 0 0 0 shi 0 trans 0
+MATERIAL "Material.002" rgb 0.852252 0.518829 0.202954 amb 0.852252 0.518829 0.202954 emis 0 0 0 spec 1 1 1 shi 32 trans 0
 OBJECT world
 kids 116
 OBJECT group

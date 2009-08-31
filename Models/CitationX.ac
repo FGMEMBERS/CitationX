@@ -3,8 +3,8 @@ MATERIAL "DefaultWhite" rgb 1 1 1  amb 1 1 1  emis 0 0 0  spec 0.5 0.5 0.5  shi 
 MATERIAL "illum" rgb 1 1 1 amb 1 1 1 emis 1 1 1 spec 0 0 0 shi 0 trans 0
 MATERIAL "gloss" rgb 0.9 0.9 0.9 amb 0.9 0.9 0.9 emis 0 0 0 spec 1 1 1 shi 64 trans 0
 MATERIAL "Black.003" rgb 0.5 0.5 0.5 amb 0.5 0.5 0.5 emis 0 0 0 spec 0 0 0 shi 0 trans 0
-MATERIAL "shade" rgb 0.2 0.2 0.2 amb 0 0 0 emis 0.1 0.1 0.1 spec 0 0 0 shi 0 trans 0
-MATERIAL "transp" rgb 0.5 0.5 0.5 amb 1 1 1 emis 0 0 0 spec 1 1 1 shi 32 trans 0.3
+MATERIAL "shade" rgb 0.2 0.2 0.2 amb 0.2 0.2 0.2 emis 0.1 0.1 0.1 spec 0 0 0 shi 0 trans 0
+MATERIAL "transp" rgb 0.5 0.5 0.5 amb 0.5 0.5 0.5 emis 0 0 0 spec 1 1 1 shi 32 trans 0.3
 MATERIAL "DefaultWhite" rgb 1 1 1 amb 1 1 1 emis 0 0 0 spec 0.5 0.5 0.5 shi 64 trans 0
 MATERIAL "dark" rgb 0.8 0.8 0.8 amb 0.8 0.8 0.8 emis 0.1 0.1 0.1 spec 0.1 0.1 0.1 shi 5 trans 0
 OBJECT world
@@ -5179,12 +5179,12 @@ numvert 825
 5.126903 1.464524 0.071541
 5.129965 1.463782 -0.074923
 5.333643 1.346756 -0.16607
-8.626725 2.549154 -0.107846
-8.621057 2.549446 0.105232
-7.032528 2.577668 0.163029
+8.626725 2.549154 -0.094907
+8.621057 2.549446 0.092267
+7.032528 2.577668 0.143038
 6.832669 2.693768 0.07154
 6.835731 2.693026 -0.074923
-7.039409 2.576001 -0.166069
+7.039409 2.576001 -0.146052
 7.422418 2.916256 0.163029
 7.222559 3.032357 0.07154
 7.225621 3.031615 -0.074923

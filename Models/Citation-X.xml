@@ -40,9 +40,53 @@
       <texture>livery1.png</texture>
     </animation>
 
+	<model><!-- LH tail reg-->
+		<path>Aircraft/CitationX/Models/registration.xml</path>
+		<offsets>
+			<x-m>7.0</x-m>
+			<y-m>-0.14</y-m>
+			<z-m>1.910</z-m>
+			<roll-deg>0</roll-deg>
+			<pitch-deg>0</pitch-deg>
+			<heading-deg>2</heading-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<size>1.0</size>
+				<alignment>xz-plane</alignment>
+				<color>
+					<red>0.02</red>
+					<green>0.02</green>
+					<blue>0.02</blue>
+				</color>
+			</params>
+		</overlay>
+	</model>
 
+	<model><!-- RH tail reg-->
+		<path>Aircraft/CitationX/Models/registration.xml</path>
+		<offsets>
+			<x-m>7.0</x-m>
+			<y-m>0.14</y-m>
+			<z-m>1.910</z-m>
+			<roll-deg>0</roll-deg>
+			<pitch-deg>0</pitch-deg>
+			<heading-deg>-2</heading-deg>
+		</offsets>
+		<overlay>
+			<params>
+				<size>1.0</size>
+				<alignment>reversed-xz-plane</alignment>
+				<color>
+					<red>0.02</red>
+					<green>0.02</green>
+					<blue>0.02</blue>
+				</color>
+			</params>
+		</overlay>
+	</model>
 
-    <model>
+    <!--model>
         <name>shadow</name>
         <path>Aircraft/CitationX/Models/shadow.xml</path>
         <offsets>
@@ -51,15 +95,15 @@
             <z-m>-2.2</z-m>
             <pitch-deg>0</pitch-deg>
         </offsets>
-    </model>
+    </model-->
 
-    <animation>
+    <!--animation>
         <type>select</type>
         <object-name>shadow</object-name>
         <condition>
             <property>sim/rendering/shadows-ac</property>
         </condition>
-    </animation>
+    </animation-->
 
     <model>
 	<name>cabin</name>
@@ -139,7 +183,7 @@
     <animation>
         <type>rotate</type>
         <object-name>Cabin.lwrdoor</object-name>
-        <property>controls/cabin-door/position-norm</property>
+        <property>sim/multiplay/generic/float</property>
         <interpolation>
             <entry><ind>0.0</ind><dep>0.0</dep></entry>
             <entry><ind>1.0</ind><dep>155.0</dep></entry>
@@ -159,7 +203,7 @@
 	<animation>
 	<type>translate</type>
         <object-name>Cabin.door</object-name>
-        <property>controls/cabin-door/position-norm</property>
+        <property>sim/multiplay/generic/float</property>
         <factor>0.4</factor>
         <axis>
             <x>0.0</x>
@@ -171,7 +215,7 @@
     <animation>
         <type>rotate</type>
         <object-name>Cabin.door</object-name>
-        <property>controls/cabin-door/position-norm</property>
+        <property>sim/multiplay/generic/float</property>
         <interpolation>
             <entry><ind>0.0</ind><dep>0.0</dep></entry>
             <entry><ind>1.0</ind><dep>140.0</dep></entry>
@@ -443,7 +487,7 @@
         <type>rotate</type>
         <object-name>UprReverser</object-name>
         <object-name>UprReverser.001</object-name>
-        <property>sim/multiplay/generic/float[0]</property>
+        <property>sim/multiplay/generic/float[2]</property>
         <factor>74</factor>
         <center>
             <x-m>5.368</x-m>
@@ -461,7 +505,7 @@
         <type>rotate</type>
         <object-name>LwrReverser</object-name>
         <object-name>LwrReverser.001</object-name>
-        <property>sim/multiplay/generic/float[0]</property>
+        <property>sim/multiplay/generic/float[2]</property>
         <factor>-72</factor>
         <center>
             <x-m>5.368</x-m>
@@ -964,7 +1008,7 @@
         <object-name>redlamp.on</object-name>
         <condition>
             <greater-than>
-                <property>systems/electrical/outputs/nav-lights</property>
+                <property>sim/multiplay/generic/int[6]</property>
                 <value>1</value>
             </greater-than>
         </condition>
@@ -976,7 +1020,7 @@
         <object-name>redlamp.off</object-name>
         <condition>
             <less-than>
-                <property>systems/electrical/outputs/nav-lights</property>
+                <property>sim/multiplay/generic/int[6]</property>
                 <value>1.001</value>
             </less-than>
         </condition>
