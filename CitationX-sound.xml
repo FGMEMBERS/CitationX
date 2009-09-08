@@ -205,12 +205,13 @@
             <y>0</y>
             <z>-2</z>
         </position>
-        <reference-dist>20.0</reference-dist>
+        <reference-dist>10.0</reference-dist>
         <max-dist>50.0</max-dist>
     </squeal>
 
     <rumble>
         <name>rumble</name>
+		<mode>looped</mode>
         <path>Sounds/rumble.wav</path>
         <condition>
             <or>
@@ -223,10 +224,10 @@
             <property>velocities/groundspeed-kt</property>
             <factor>0.05</factor>
 			<min>0</min>
-			<max>0.5</max>
+			<max>0.3</max>
         </volume>
         <position>
-            <x>-7</x>
+            <x>-8</x>
             <y>0</y>
             <z>-1</z>
         </position>
@@ -288,7 +289,7 @@
             <offset>1.0</offset>
         </pitch>
         <position>
-            <x>-7</x>
+            <x>-8</x>
             <y>0</y>
             <z>0.</z>
         </position>
