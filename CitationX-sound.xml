@@ -14,19 +14,19 @@
         </condition>
         <mode>looped</mode>
         <volume>
-            <property>sim/sound/volume</property>
+            <property>engines/engine[0]/turbine</property>
+            <factor>0.007</factor>
         </volume>
         <volume>
-            <property>engines/engine[0]/thrust-lbs</property>
-            <factor>0.00035</factor>
+            <property>sim/sound/ext-volume</property>
         </volume>
         <position>
             <x>4.5</x>
             <y>1.7</y>
             <z>0.6</z>
         </position>
-        <reference-dist>150.0</reference-dist>
-        <max-dist>500.0</max-dist>
+        <reference-dist>10.0</reference-dist>
+        <max-dist>50.0</max-dist>
     </engine>
 
     <engine>
@@ -40,7 +40,11 @@
         </condition>
         <mode>looped</mode>
         <volume>
-            <property>sim/sound/volume</property>
+            <property>engines/engine/fan</property>
+            <factor>0.005</factor>
+        </volume>
+        <volume>
+            <property>sim/sound/ext-volume</property>
         </volume>
         <pitch>
             <property>engines/engine/fan</property>
@@ -60,23 +64,25 @@
         <name>right engine</name>
         <path>Sounds/jet.wav</path>
         <condition>
-            <property>controls/engines/engine[1]/cutoff</property>
+            <not>
+                <property>controls/engines/engine[1]/cutoff</property>
+            </not>
         </condition>
         <mode>looped</mode>
         <volume>
-            <property>sim/sound/volume</property>
+            <property>engines/engine[1]/turbine</property>
+            <factor>0.007</factor>
         </volume>
         <volume>
-            <property>engines/engine[1]/thrust-lbs</property>
-            <factor>0.00035</factor>
+            <property>sim/sound/ext-volume</property>
         </volume>
         <position>
             <x>4.5</x>
-            <y>-1.7</y>
+            <y>1.7</y>
             <z>0.6</z>
         </position>
-        <reference-dist>150.0</reference-dist>
-        <max-dist>300.0</max-dist>
+        <reference-dist>10.0</reference-dist>
+        <max-dist>50.0</max-dist>
     </engine>
 
     <engine>
@@ -90,7 +96,11 @@
         </condition>
         <mode>looped</mode>
         <volume>
-            <property>sim/sound/volume</property>
+            <property>engines/engine[1]/fan</property>
+            <factor>0.005</factor>
+        </volume>
+        <volume>
+            <property>sim/sound/ext-volume</property>
         </volume>
         <pitch>
             <property>engines/engine[1]/fan</property>
@@ -99,67 +109,13 @@
         </pitch>
         <position>
             <x>3</x>
-            <y>-1.7</y>
+            <y>1.7</y>
             <z>0.6</z>
         </position>
-        <reference-dist>10.0</reference-dist>
-        <max-dist>20.0</max-dist>
+        <reference-dist>20.0</reference-dist>
+        <max-dist>40.0</max-dist>
     </engine>
 
-    <engine>
-        <name>reverser</name>
-        <path>Sounds/exhaust_loop.wav</path>
-        <condition>
-            <greater-than>
-                <property>surface-positions/reverser-norm</property>
-                <value>0</value>
-            </greater-than>
-        </condition>
-        <mode>looped</mode>
-        <volume>
-            <property>surface-positions/reverser-norm</property>
-            <factor>1.0</factor>
-        </volume>
-        <volume>
-            <property>sim/sound/volume</property>
-        </volume>
-        <pitch>
-            <offset>1.6</offset>
-        </pitch>
-        <position>
-            <x>5</x>
-            <y>0</y>
-            <z>0.6</z>
-        </position>
-        <reference-dist>100.0</reference-dist>
-        <max-dist>500.0</max-dist>
-    </engine>
-
-    <rumble>
-        <name>rumble</name>
-        <path>Sounds/rumble.wav</path>
-        <condition>
-            <or>
-                <property>gear/gear[0]/wow</property>
-                <property>gear/gear[1]/wow</property>
-                <property>gear/gear[2]/wow</property>
-            </or>
-        </condition>
-        <mode>looped</mode>
-        <volume>
-            <property>velocities/groundspeed-kt</property>
-            <factor>0.02</factor>
-            <min>0</min>
-            <max>0.5</max>
-        </volume>
-        <position>
-            <x>0</x>
-            <y>0</y>
-            <z>-2</z>
-        </position>
-        <reference-dist>10.0</reference-dist>
-        <max-dist>20.0</max-dist>
-    </rumble>
 
     <gear>
         <name>gear</name>
@@ -172,9 +128,9 @@
             <factor>-0.001</factor>
         </pitch>
         <position>
-            <x>-3</x>
+            <x>-7</x>
             <y>0</y>
-            <z>-1</z>
+            <z>0</z>
         </position>
         <reference-dist>10.0</reference-dist>
         <max-dist>20.0</max-dist>
@@ -190,9 +146,9 @@
             </equals>
         </condition>
         <position>
-            <x>-3</x>
+            <x>-7</x>
             <y>0</y>
-            <z>-1</z>
+            <z>0</z>
         </position>
         <reference-dist>10.0</reference-dist>
         <max-dist>20.0</max-dist>
@@ -210,7 +166,7 @@
             <factor>0.7</factor>
         </volume>
         <position>
-            <x>-3.3</x>
+            <x>-7</x>
             <y>0</y>
             <z>0</z>
         </position>
@@ -234,15 +190,15 @@
         </volume>
         <volume>
             <property>velocities/airspeed-kt</property>
-            <factor>0.01</factor>
+            <factor>0.05</factor>
         </volume>
         <volume>
-            <property>sim/sound/volume</property>
+            <property>sim/sound/ext-volume</property>
         </volume>
         <pitch>
             <property>velocities/airspeed-kt</property>
             <factor>0.0025</factor>
-            <offset>1.2</offset>
+            <offset>1.5</offset>
         </pitch>
         <position>
             <x>-4</x>
@@ -253,16 +209,41 @@
         <max-dist>50.0</max-dist>
     </squeal>
 
+    <rumble>
+        <name>rumble</name>
+        <path>Sounds/rumble.wav</path>
+        <condition>
+            <or>
+                <property>gear/gear[0]/wow</property>
+                <property>gear/gear[1]/wow</property>
+                <property>gear/gear[2]/wow</property>
+            </or>
+        </condition>
+        <volume>
+            <property>velocities/groundspeed-kt</property>
+            <factor>0.05</factor>
+			<min>0</min>
+			<max>0.5</max>
+        </volume>
+        <position>
+            <x>-7</x>
+            <y>0</y>
+            <z>-1</z>
+        </position>
+        <reference-dist>1.0</reference-dist>
+        <max-dist>2.0</max-dist>
+    </rumble>
+
     <flap>
         <name>flaps</name>
         <path>Sounds/flaps.wav</path>
         <property>surface-positions/flap-pos-norm</property>
         <mode>in-transit</mode>
         <volume>
-            <property>sim/sound/volume</property>
+            <property>sim/sound/ext-volume</property>
         </volume>
         <position>
-            <x>-8</x>
+            <x>-7</x>
             <y>0</y>
             <z>0</z>
         </position>
@@ -276,10 +257,10 @@
         <property>surface-positions/speedbrake-pos-norm</property>
         <mode>in-transit</mode>
         <volume>
-            <property>sim/sound/volume</property>
+            <property>sim/sound/ext-volume</property>
         </volume>
         <position>
-            <x>-8</x>
+            <x>-7</x>
             <y>0</y>
             <z>0</z>
         </position>
@@ -289,24 +270,27 @@
 
     <wind>
         <name>wind</name>
+		<condition>
+		<property>sim/current-view/internal</property>
+		</condition>
         <path>Sounds/wind.wav</path>
         <property>velocities/airspeed-kt</property>
         <mode>looped</mode>
         <volume>
             <property>velocities/airspeed-kt</property>
-            <factor>0.002</factor>
+            <factor>0.0005</factor>
             <min>0.0</min>
-            <max>0.15</max>
+            <max>0.3</max>
         </volume>
         <pitch>
             <property>velocities/airspeed-kt</property>
             <factor>0.01</factor>
-            <offset>1.25</offset>
+            <offset>1.0</offset>
         </pitch>
         <position>
             <x>-7</x>
             <y>0</y>
-            <z>0.8</z>
+            <z>0.</z>
         </position>
         <reference-dist>1</reference-dist>
         <max-dist>2.0</max-dist>
@@ -319,8 +303,7 @@
             <property>sim/sound/click</property>
         </condition>
         <volume>
-            <property>sim/sound/volume</property>
-            <factor>0.3</factor>
+            <property>sim/sound/ext-volume</property>
         </volume>
         <position>
             <x>-8</x>
@@ -340,8 +323,7 @@
             </not>
         </condition>
         <volume>
-            <property>sim/sound/volume</property>
-            <factor>0.3</factor>
+            <property>sim/sound/ext-volume</property>
         </volume>
         <position>
             <x>-8</x>

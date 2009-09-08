@@ -241,34 +241,84 @@
 <!-- ================================ -->
 
 <pid-controller>
+    <name>Pitch hold</name>
+    <debug>false</debug>
+    <enable>
+      <prop>/autopilot/locks/altitude</prop>
+      <value>PTCH</value>
+	  <honor-passive>true</honor-passive>
+	</enable>
+    <input>
+      <prop>/orientation/pitch-deg</prop>
+    </input>
+    <reference>
+      <prop>/autopilot/internal/target-pitch-deg</prop>
+    </reference>
+    <output>
+      <prop>controls/flight/elevator-trim</prop>
+    </output>
+    <config>
+      <Kp>-0.15</Kp>
+      <beta>1.0</beta>
+      <alpha>0.1</alpha>
+      <gamma>0.0</gamma>
+      <Ti>20.0</Ti>
+      <Td>0.00001</Td>
+      <u_min>-0.5</u_min>
+      <u_max>0.5</u_max>
+    </config>
+   </pid-controller>
+
+  <pi-simple-controller>
+    <name>Altitude Hold (Altimeter based) Stage 1</name>
+    <debug>false</debug>
+    <enable>
+      <prop>/autopilot/locks/altitude</prop>
+      <value>ALT</value>
+    </enable>
+    <input>
+      <prop>instrumentation/altimeter/indicated-altitude-ft</prop>
+    </input>
+    <reference>
+      <prop>/autopilot/settings/target-altitude-ft</prop>
+    </reference>
+    <output>
+      <prop>/autopilot/internal/target-climb-rate-fps</prop>
+    </output>
+    <config>
+      <Kp>0.1</Kp>
+      <Ki>0.0</Ki>
+      <u_min>-16.67</u_min>
+      <u_max>33.33</u_max>
+    </config>
+  </pi-simple-controller>
+
+<pid-controller>
     <name>Altitude Hold</name>
     <debug>false</debug>
     <enable>
         <prop>autopilot/locks/altitude</prop>
         <value>ALT</value>
-    </enable>
+		<honor-passive>true</honor-passive>
+	</enable>
     <input>
-        <prop>instrumentation/altimeter/indicated-altitude-ft</prop>
+      <prop>/velocities/vertical-speed-fps</prop>
     </input>
     <reference>
-        <prop>autopilot/settings/target-altitude-ft</prop>
+      <prop>/autopilot/internal/target-climb-rate-fps</prop>
     </reference>
     <output>
-        <prop>autopilot/internal/target-pitch-deg</prop>
+      <prop>controls/flight/elevator-trim</prop>
     </output>
     <config>
-        <Kp>-0.025</Kp>
-        <beta>1.0</beta>
-        <alpha>0.1</alpha>
-        <gamma>0.0</gamma>
-        <Ti>50.0</Ti>
-        <Td>0.0</Td>
-        <u_min>
-            <prop>instrumentation/flightdirector/pitch-min</prop>
-        </u_min>
-        <u_max>
-            <prop>instrumentation/flightdirector/pitch-max</prop>
-        </u_max>
+      <Kp>-0.01</Kp>
+      <beta>1.0</beta>
+      <alpha>0.1</alpha>
+      <gamma>0.0</gamma>
+      <Ti>20.0</Ti>
+      <Td>0.00001</Td>
+      <u_min>-0.5</u_min>
+      <u_max>0.5</u_max>
     </config>
 </pid-controller>
 
@@ -278,121 +328,113 @@
 	<enable>
 		<prop>/autopilot/locks/altitude</prop>
 		<value>GS</value>
+		<honor-passive>true</honor-passive>
 	</enable>
-	<input>
-		<prop>instrumentation/flightdirector/gs-deflection</prop>
-	</input>
-	<reference>
-		<value>0</value>
-	</reference>
-	<output>
-		<prop>autopilot/internal/target-pitch-deg</prop>
-	</output>
-	<config>
-		<Kp>-1.5</Kp>
-		<beta>1.0</beta>
-		<alpha>0.1</alpha>
-		<gamma>0.0</gamma>
-		<Ti>10.0</Ti>
-		<Td>0.00001</Td>
-		<u_min>
-			<value>-10</value>
-		</u_min>
-		<u_max>
-			<value>0</value>
-		</u_max>
-	</config>
+    <input>
+      <prop>/velocities/vertical-speed-fps</prop>
+    </input>
+    <reference>
+      <prop>/instrumentation/nav[0]/gs-rate-of-climb</prop>
+    </reference>
+     <output>
+      <prop>controls/flight/elevator-trim</prop>
+    </output>
+    <config>
+      <Kp>-0.15</Kp>
+      <beta>1.0</beta>
+      <alpha>0.1</alpha>
+      <gamma>0.0</gamma>
+      <Ti>20.0</Ti>
+      <Td>0.00001</Td>
+      <u_min>-1.0</u_min>
+      <u_max>1.0</u_max>
+    </config>
 </pid-controller>
 
-<pi-simple-controller>
+  <pid-controller>
     <name>Vertical Speed Hold</name>
     <debug>false</debug>
     <enable>
-        <prop>autopilot/locks/altitude</prop>
-        <value>VS</value>
-    </enable>
+      <prop>/autopilot/locks/altitude</prop>
+      <value>VS</value>
+	  <honor-passive>true</honor-passive>
+	</enable>
     <input>
-        <prop>velocities/vertical-speed-fps</prop>
+      <prop>/velocities/vertical-speed-fps</prop>
     </input>
     <reference>
-        <prop>autopilot/settings/vertical-speed-fpm</prop>
-        <scale>0.01667</scale>
+      <prop>/autopilot/settings/vertical-speed-fpm</prop>
+      <scale>0.01667</scale>
     </reference>
     <output>
-        <prop>autopilot/internal/target-pitch-deg</prop>
+      <prop>controls/flight/elevator-trim</prop>
     </output>
     <config>
-        <Kp>0.015</Kp>
-        <Ki>0.1</Ki>
-        <u_min>
-            <prop>instrumentation/flightdirector/pitch-min</prop>
-        </u_min>
-        <u_max>
-            <prop>instrumentation/flightdirector/pitch-max</prop>
-        </u_max>
+      <Kp>-0.01</Kp>
+      <beta>1.0</beta>
+      <alpha>0.1</alpha>
+      <gamma>0.0</gamma>
+      <Ti>20.0</Ti>
+      <Td>0.00001</Td>
+      <u_min>-0.5</u_min>
+      <u_max>0.5</u_max>
     </config>
-</pi-simple-controller>
+  </pid-controller>
 
-<pid-controller>
-    <name>VNAV altitude</name>
+
+  <pi-simple-controller>
+    <name>VNAV Hold (Altimeter based) Stage 1</name>
     <debug>false</debug>
     <enable>
-        <prop>autopilot/locks/altitude</prop>
-        <value>VNAV</value>
+      <prop>/autopilot/locks/altitude</prop>
+      <value>VNAV</value>
     </enable>
     <input>
-        <prop>instrumentation/altimeter/indicated-altitude-ft</prop>
+      <prop>instrumentation/altimeter/indicated-altitude-ft</prop>
     </input>
     <reference>
-        <prop>instrumentation/flightdirector/vnav-alt</prop>
+      <prop>instrumentation/flightdirector/vnav-alt</prop>
     </reference>
     <output>
-        <prop>autopilot/internal/target-pitch-deg</prop>
+      <prop>/autopilot/internal/target-climb-rate-fps</prop>
     </output>
     <config>
-        <Kp>0.015</Kp>
-        <beta>1.0</beta>
-        <alpha>0.1</alpha>
-        <gamma>0.0</gamma>
-        <Ti>20.0</Ti>
-        <Td>0.0</Td>
-        <u_min>
-            <prop>instrumentation/flightdirector/pitch-min</prop>
-        </u_min>
-        <u_max>
-            <prop>instrumentation/flightdirector/pitch-max</prop>
-        </u_max>
+      <Kp>0.1</Kp>
+      <Ki>0.0</Ki>
+      <u_min>-16.67</u_min>
+      <u_max>33.33</u_max>
     </config>
-</pid-controller>
+  </pi-simple-controller>
 
-<pid-controller>
-    <name>Elevator Control</name>
+    <pid-controller>
+    <name>VNAV Hold (Altimeter based) Stage 2</name>
     <debug>false</debug>
     <enable>
-        <prop>autopilot/locks/pitch-active</prop>
-        <value>true</value>
-        <honor-passive>true</honor-passive>
+      <prop>/autopilot/locks/altitude</prop>
+      <value>VNAV</value>
+	  <honor-passive>true</honor-passive>
     </enable>
     <input>
-        <prop>orientation/pitch-deg</prop>
+      <prop>/velocities/vertical-speed-fps</prop>
     </input>
     <reference>
-        <prop>autopilot/internal/target-pitch-deg</prop>
+      <prop>/autopilot/internal/target-climb-rate-fps</prop>
     </reference>
     <output>
-        <prop>controls/flight/elevator-trim</prop>
+      <prop>controls/flight/elevator-trim</prop>
     </output>
     <config>
-        <Kp>-0.15</Kp>
-        <beta>1.0</beta>
-        <alpha>0.1</alpha>
-        <gamma>0.0</gamma>
-        <Ti>10.0</Ti>
-        <Td>0.001</Td>
-        <u_min>-0.5</u_min>
-        <u_max>0.5</u_max>
+      <Kp>-0.01</Kp>
+      <beta>1.0</beta>
+      <alpha>0.1</alpha>
+      <gamma>0.0</gamma>
+      <Ti>10.0</Ti>
+      <Td>0.00001</Td>
+      <u_min>-0.5</u_min>
+      <u_max>0.5</u_max>
     </config>
-</pid-controller>
+  </pid-controller>
+
 
 <pid-controller>
     <name>Yaw Damper</name>
@@ -400,6 +442,7 @@
     <enable>
         <prop>autopilot/locks/yaw-damper</prop>
         <value>true</value>
+		<honor-passive>true</honor-passive>
     </enable>
     <input>
         <prop>orientation/side-slip-deg</prop>
@@ -429,11 +472,41 @@ Velocity Modes
 -->
 <!-- Simple Auto throttle -->
 <pid-controller>
-<name>Auto Throttle</name>
+<name>Auto Throttle (kt)</name>
 <debug>false</debug>
 <enable>
 <prop>/autopilot/locks/speed</prop>
 <value>IAS</value>
+<honor-passive>true</honor-passive>
+</enable>
+<input>
+<prop>/velocities/airspeed-kt</prop>
+</input>
+<reference>
+<prop>/autopilot/settings/target-speed-kt</prop>
+</reference>
+<output>
+<prop>/controls/engines/engine[0]/throttle</prop>
+<prop>/controls/engines/engine[1]/throttle</prop>
+</output>
+<config>
+<Kp>0.1</Kp>
+<beta>1.0</beta>
+<alpha>0.1</alpha>
+<gamma>0.0</gamma>
+<Ti>10.0</Ti>
+<Td>0.001</Td>
+<u_min>0.0</u_min>
+<u_max>1.0</u_max>
+</config>
+</pid-controller>
+
+<pid-controller>
+<name>Auto Throttle (mach)</name>
+<debug>false</debug>
+<enable>
+<prop>/autopilot/locks/speed</prop>
+<value>MACH</value>
 <honor-passive>true</honor-passive>
 </enable>
 <input>

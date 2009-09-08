@@ -25,7 +25,7 @@ dihedral 2 degrees
 Fuel 12938 lbs jet
 -->
 <airplane mass="21700">
-  <approach speed="105" aoa="13" fuel="0.5">
+  <approach speed="108" aoa="8.4" fuel="0.5">
     <control-setting axis="/controls/engines/engine[0]/throttle-lever" value="0.3"/>
     <control-setting axis="/controls/engines/engine[1]/throttle-lever" value="0.3"/>
     <control-setting axis="/controls/engines/engine[0]/condition" value="0.0"/>
@@ -70,9 +70,9 @@ Fuel 12938 lbs jet
 
 
   <wing x="1.120" y="0.90" z="-1.0" length="11" chord="4.2"
-  sweep="37" dihedral="2" taper="0.0822" camber="0.0">
+  sweep="37" dihedral="2" taper="0.0822" camber="0.01">
     <stall aoa="14" width="4" peak="1.5"/>
-    <flap0 start="0" end=".67" lift="1.5" drag="1.7"/>
+    <flap0 start="0" end=".67" lift="1.5" drag="1.5"/>
     <flap1 start=".688" end=".858" lift="1.3" drag="1.1"/>
     <slat start=".2" end=".8" aoa="2" drag="1.2"/>
     <spoiler start=".02" end=".3" lift="0.0" drag="5.0"/>
@@ -92,9 +92,9 @@ Fuel 12938 lbs jet
   </wing>
 
   <hstab x="-8.562" y="0.15" z="2.98" length="4.95" chord="2.2"
-  sweep="40" taper="0.3" dihedral="2.0" camber="-0.060" effectiveness="1.5">
-    <stall aoa="14" width="3" peak="1.5"/>
-    <flap0 start="0" end="1" lift="1.6" drag="1.2"/>
+  sweep="40" taper="0.3" dihedral="2.0" camber="-0.025" effectiveness="1.5">
+    <stall aoa="18" width="3" peak="1.5"/>
+    <flap0 start="0" end="1" lift="1.7" drag="1.1"/>
     <control-input axis="/controls/flight/elevator" control="FLAP0"/>
     <control-input axis="/controls/flight/elevator-trim" control="FLAP0"/>
     <control-output control="FLAP0" prop="/surface-positions/elevator-pos-norm"/>
@@ -118,7 +118,7 @@ Fuel 12938 lbs jet
   <tank x="0.8" y="0.0" z="-1.2" capacity="5980" jet="true"/>
   <tank x="0" y="0" z="0" capacity="0"/>
 
-<gear x="8.014" y="0.00" z="-2.2" compression="0.4" spring="0.5">
+<gear x="8.014" y="0.00" z="-2.2" compression="0.4" spring="0.7">
     <control-input axis="/controls/flight/rudder" control="STEER" square="true"/>
     <control-input axis="/controls/gear/gear-down" control="EXTEND"/>
     <control-output control="EXTEND" prop="/gear/gear[0]/position-norm"/>
@@ -126,7 +126,7 @@ Fuel 12938 lbs jet
     <control-output control="STEER" prop="controls/gear/steering"/>
   </gear>
 
-  <gear x="-0.2" y="1.7" z="-2.5" compression=".5" spring="1" >
+  <gear x="-1.5" y="1.7" z="-2.5" compression=".5" spring="2" >
     <control-input axis="/controls/gear/brake-left" control="BRAKE"/>
     <control-input axis="/controls/gear/brake-parking" control="BRAKE"/>
     <control-input axis="/controls/gear/gear-down" control="EXTEND"/>
@@ -134,7 +134,7 @@ Fuel 12938 lbs jet
     <control-output control="EXTEND" prop="/gear/gear[1]/position-norm"/>
   </gear>
 
-  <gear x="-0.2" y="-1.7" z="-2.5" compression=".5" spring="1">
+  <gear x="-1.5" y="-1.7" z="-2.5" compression=".5" spring="2">
     <control-input axis="/controls/gear/brake-right" control="BRAKE"/>
     <control-input axis="/controls/gear/brake-parking" control="BRAKE"/>
     <control-input axis="/controls/gear/gear-down" control="EXTEND"/>
@@ -168,8 +168,8 @@ Takeoff thrust Fuel flow 0.3222 kg/s
   </jet>
 
 
-<ballast x="1.0" y="0.0" z="-1.0" mass="7000"/>
-<ballast x="6.0" y="0.0" z="-1.0" mass="5000"/>
+<ballast x="1.0" y="0.0" z="-1.0" mass="4000"/>
+<ballast x="5.0" y="0.0" z="-1.0" mass="4000"/>
 
 <weight x="7.0" y="0.0" z="0" mass-prop="/sim/weight[0]/weight-lb"/>
   <weight x="0.0" y="0" z="0" mass-prop="/sim/weight[1]/weight-lb"/>

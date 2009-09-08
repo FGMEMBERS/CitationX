@@ -378,7 +378,20 @@ Started Oct 2005  Syd Adams
             <speedbrake type="double">0</speedbrake>
         </flight>
     </controls>
-
+	
+	<autopilot>
+		<settings>
+			<target-roll-deg>0</target-roll-deg>
+			<vertical-speed-fpm>0</vertical-speed-fpm>		
+		</settings>
+		<locks>
+			<heading>ROL</heading>
+			<altitude>PTCH</altitude>
+			<roll-active type="bool">1</roll-active>
+			<pitch-active type="bool">1</pitch-active>
+		</locks>
+	</autopilot>
+	
     <nasal>
         <citation>
             <file>Aircraft/CitationX/Nasal/CitationX.nas</file>
@@ -408,6 +421,12 @@ Started Oct 2005  Syd Adams
                 <name>Ctrl-D</name>
                 <desc>Open/close door</desc>
                 <binding>
+					<condition>
+						<less-than>
+							<property>velocities/airspeed-kt</property>
+							<value>40</value>
+						</less-than>
+					</condition>
                     <command>nasal</command>
                     <script>citation.cabin_door.toggle();</script>
                 </binding>

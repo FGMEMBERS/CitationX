@@ -134,7 +134,7 @@ var JetEngine = {
 };
 
 var FDM="";
-var SndIn = props.globals.initNode("/sim/sound/volume",0.4);
+var SndIn = props.globals.initNode("/sim/sound/ext-volume",0.1,"DOUBLE");
 var Grd_Idle=props.globals.initNode("controls/engines/grnd-idle",1,"BOOL");
 var Annun = props.globals.getNode("instrumentation/annunciators",1);
 var MstrWarn =Annun.getNode("master-warning",1);
@@ -151,7 +151,6 @@ var tire=TireSpeed.new(3,0.430,0.615,0.615);
 #######################################
 
 var fdm_init = func(){
-    SndIn.setValue(0.5);
     MstrWarn.setBoolValue(0);
     MstrCaution.setBoolValue(0);
     FDM=getprop("/sim/flight-model");
@@ -193,9 +192,9 @@ setlistener("/gear/gear[1]/wow", func(ww){
 
 setlistener("/sim/current-view/internal", func(vw){
     if(vw.getValue()){
-    SndIn.setDoubleValue(0.4);
+    SndIn.setDoubleValue(0.1);
     }else{
-    SndIn.setDoubleValue(1.0);
+    SndIn.setDoubleValue(0.7);
     }
 },1,0);
 
@@ -307,7 +306,7 @@ var update_systems = func{
     FHupdate(0);
     tire.get_rotation("yasim");
     stall_horn();
-
+	if(getprop("velocities/airspeed-kt")>40)cabin_door.close();
 #annunciators_loop();
 settimer(update_systems,0);
 }

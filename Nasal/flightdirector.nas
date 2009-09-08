@@ -46,6 +46,7 @@ var flightdirector = {
         m.gs_arm = m.node.initNode("gs-arm",0,"BOOL");
         m.vnav_alt = m.node.initNode("vnav-alt",30000.0);
         m.speed = m.node.initNode("spd",0.0);
+		m.co = m.node.initNode("co",0,"BOOL");
         m.crs = m.node.initNode("crs",0.0);
         m.Defl = m.node.initNode("crs-deflection",0.0);
         m.DH= props.globals.initNode("instrumentation/mk-viii/inputs/arinc429/decision-height");
@@ -60,6 +61,7 @@ var flightdirector = {
         m.AP_hdg = props.globals.initNode("/autopilot/locks/heading",m.lnav_text[0]);
         m.AP_hdg_setting = props.globals.initNode("/autopilot/settings/heading",0.0);
         m.AP_spd_setting = props.globals.initNode("/autopilot/settings/target-speed-kt",0.0);
+		m.AP_pitch_setting = props.globals.initNode("/autopilot/internal/target-pitch-deg",0.0);
         m.AP_alt = props.globals.initNode("/autopilot/locks/altitude",m.vnav_text[0]);
         m.AP_spd = props.globals.initNode("/autopilot/locks/speed",m.spd_text[0]);
         m.AP_off = props.globals.initNode("/autopilot/locks/passive-mode",1,"BOOL");
@@ -81,7 +83,7 @@ var flightdirector = {
     ############################
     set_lateral_mode : func(lnv){
     var tst =me.lnav.getValue();
-    if(lnv ==tst)lnv=0;
+    if(lnv ==tst){lnv=0;}
         if(lnv==4){
             if(!me.NavLoc.getBoolValue()){
                 lnv=2;
@@ -98,7 +100,10 @@ var flightdirector = {
 ###########################
     set_vertical_mode : func(vnv){
     var tst =me.vnav.getValue();
-    if(vnv ==tst)vnv=0;
+    if(vnv ==tst){
+		vnv=0;
+		setprop("autopilot/internal/target-pitch-deg",getprop("orientation/pitch-deg"));
+		}
         if(vnv==1){
             if(!me.FMS.getBoolValue()){
                 vnv = 0;
@@ -107,9 +112,7 @@ var flightdirector = {
             }
         }
         if(vnv==2){
-        var asel=getprop("instrumentation/altimeter/indicated-altitude-ft");
-        asel = int(asel * 0.01) * 100;
-        setprop("autopilot/settings/target-altitude-ft",asel);
+        setprop("autopilot/settings/target-altitude-ft",getprop("instrumentation/altimeter/mode-c-alt-ft"));
         }
         me.vnav.setValue(vnv);
         me.AP_alt.setValue(me.vnav_text[vnv]);
@@ -171,8 +174,11 @@ var flightdirector = {
             me.set_lateral_mode(1);
         }elsif(mode=="nav"){
             me.set_lateral_mode(2);
+        }elsif(mode=="co"){
+            me.co.setValue(1-me.co.getValue());
         }elsif(mode=="apr"){
             me.set_lateral_mode(4);
+			me.set_vertical_mode(4);
         }elsif(mode=="bc"){
             var tst=me.lnav.getValue();
             var bcb = getprop("instrumentation/nav/back-course-btn");
@@ -181,17 +187,20 @@ var flightdirector = {
             setprop("instrumentation/nav/back-course-btn",bcb);
         }elsif(mode=="vnav"){
             me.set_vertical_mode(1);
-        }elsif(mode=="alt"){
-            me.set_vertical_mode(2);
-        }elsif(mode=="vs"){
-            me.set_vertical_mode(3);
-        }elsif(mode=="ias"){
+		}elsif(mode=="flc"){
             var sp=me.speed.getValue();
             sp=1-sp;
             me.speed.setValue(sp);
             var kt= int(getprop("velocities/airspeed-kt"));
             me.AP_spd_setting.setValue(kt);
             me.AP_spd.setValue(me.spd_text[sp]);
+        }elsif(mode=="alt"){
+            me.set_vertical_mode(2);
+        }elsif(mode=="vs"){
+            me.set_vertical_mode(3);
+        }elsif(mode=="stby"){
+            me.set_lateral_mode(0);
+			me.set_vertical_mode(0);
         }
     },
 #### check AP errors####
@@ -204,9 +213,9 @@ var flightdirector = {
             me.Defl.setValue(getprop(tmp_nav~"heading-needle-deflection"));
             me.GSDefl.setValue(getprop(tmp_nav~"gs-needle-deflection"));
         if(getprop(tmp_nav~"data-is-valid")){
-            me.NavLoc.setValue(getprop(tmp_nav~"nav-loc"));
-            me.hasGS.setValue(getprop(tmp_nav~"has-gs"));
-            me.navValid.setValue(getprop(tmp_nav~"in-range"));
+            me.NavLoc.setValue(getprop(tmp_nav~"nav-loc") or 0);
+            me.hasGS.setValue(getprop(tmp_nav~"has-gs") or 0);
+            me.navValid.setValue(getprop(tmp_nav~"in-range") or 0);
          }else{
             me.NavLoc.setValue(0);
             me.hasGS.setValue(0);
@@ -320,12 +329,12 @@ var flightdirector = {
         if(vmd==0){
             mx=me.max_pitch.getValue();
             mn=me.min_pitch.getValue();
-            ptc = getprop("autopilot/settings/target-pitch-deg");
+            ptc = me.AP_pitch_setting.getValue();
             if(ptc==nil)ptc=0;
             ptc=ptc+0.10 *  amt;
             if(ptc>mx)ptc=mx;
             if(ptc<mn)ptc=mn;
-            setprop("autopilot/settings/target-pitch-deg",ptc);
+            me.AP_pitch_setting.setValue(ptc);
         }elsif(vmd==3){
             mx=6000;
             mn=-6000;

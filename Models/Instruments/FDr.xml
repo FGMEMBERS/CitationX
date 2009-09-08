@@ -20,7 +20,16 @@ Flight Director Control
         <type>select</type>
         <object-name>FD.stby-annun</object-name>
         <condition>
-            <property>autopilot/locks/passive-mode</property>
+			<and>
+				<equals>
+					<property>autopilot/locks/heading</property>
+					<value>ROLL</value>
+				</equals>
+				<equals>
+					<property>autopilot/locks/altitude</property>
+					<value>PTCH</value>
+				</equals>
+			</and>
         </condition>
     </animation>
 
@@ -104,10 +113,16 @@ Flight Director Control
         <type>select</type>
         <object-name>FD.flc-annun</object-name>
         <condition>
+			<or>
             <equals>
-                <property>instrumentation/flightdirector/vnav</property>
-                <value>6</value>
+                <property>autopilot/locks/speed</property>
+				<value>IAS</value>
             </equals>
+            <equals>
+                <property>autopilot/locks/speed</property>
+				<value>MACH</value>
+            </equals>
+			</or>
         </condition>
     </animation>
 
@@ -116,8 +131,8 @@ Flight Director Control
         <object-name>FD.co-annun</object-name>
         <condition>
             <equals>
-                <property>instrumentation/flightdirector/vnav</property>
-                <value>0</value>
+                <property>instrumentation/flightdirector/co</property>
+                <value>1</value>
             </equals>
         </condition>
     </animation>
