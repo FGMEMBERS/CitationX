@@ -269,12 +269,12 @@
     </config>
    </pid-controller>
 
-  <pi-simple-controller>
-    <name>Altitude Hold (Altimeter based) Stage 1</name>
+<pid-controller>
+    <name>Altitude Hold</name>
     <debug>false</debug>
     <enable>
-      <prop>/autopilot/locks/altitude</prop>
-      <value>ALT</value>
+        <prop>autopilot/locks/altitude</prop>
+        <value>ALT</value>
     </enable>
     <input>
       <prop>instrumentation/altimeter/indicated-altitude-ft</prop>
@@ -283,15 +283,19 @@
       <prop>/autopilot/settings/target-altitude-ft</prop>
     </reference>
     <output>
-      <prop>/autopilot/internal/target-climb-rate-fps</prop>
+      <prop>/autopilot/internal/target-pitch-deg</prop>
     </output>
     <config>
-      <Kp>0.1</Kp>
-      <Ki>0.0</Ki>
-      <u_min>-16.67</u_min>
-      <u_max>33.33</u_max>
+      <Kp>0.15</Kp>
+      <beta>1.0</beta>
+      <alpha>0.1</alpha>
+      <gamma>0.0</gamma>
+      <Ti>20.0</Ti>
+      <Td>0.0001</Td>
+      <u_min>-0.10</u_min>
+      <u_max>12.0</u_max>
     </config>
-  </pi-simple-controller>
+</pid-controller>
 
 <pid-controller>
     <name>Altitude Hold</name>
@@ -302,23 +306,23 @@
 		<honor-passive>true</honor-passive>
 	</enable>
     <input>
-      <prop>/velocities/vertical-speed-fps</prop>
+      <prop>/orientation/pitch-deg</prop>
     </input>
     <reference>
-      <prop>/autopilot/internal/target-climb-rate-fps</prop>
+      <prop>/autopilot/internal/target-pitch-deg</prop>
     </reference>
     <output>
       <prop>controls/flight/elevator-trim</prop>
     </output>
     <config>
-      <Kp>-0.01</Kp>
+      <Kp>0.15</Kp>
       <beta>1.0</beta>
       <alpha>0.1</alpha>
       <gamma>0.0</gamma>
       <Ti>20.0</Ti>
-      <Td>0.00001</Td>
-      <u_min>-0.5</u_min>
-      <u_max>0.5</u_max>
+      <Td>0.0001</Td>
+      <u_min>-0.2</u_min>
+      <u_max>0.2</u_max>
     </config>
 </pid-controller>
 

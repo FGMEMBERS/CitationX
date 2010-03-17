@@ -71,7 +71,7 @@ var JetEngine = {
 
         m.Lfuel = setlistener(m.fuel_out, func m.shutdown(m.fuel_out.getValue()),0,0);
         m.CutOff = setlistener(m.cutoff, func (ct){m.engine_off=ct.getValue()},1,0);
-	return m;
+    return m;
     },
 #### update ####
     update : func{
@@ -231,7 +231,7 @@ var Startup = func{
     setprop("controls/electric/engine[1]/generator",1);
     setprop("controls/electric/avionics-switch",1);
     setprop("controls/electric/battery-switch",1);
-	setprop("controls/electric/battery-switch[1]",1);
+    setprop("controls/electric/battery-switch[1]",1);
     setprop("controls/electric/inverter-switch",1);
     setprop("controls/lighting/instrument-lights",1);
     setprop("controls/lighting/nav-lights",1);
@@ -251,7 +251,7 @@ var Shutdown = func{
     setprop("controls/electric/engine[1]/generator",0);
     setprop("controls/electric/avionics-switch",0);
     setprop("controls/electric/battery-switch",0);
-	setprop("controls/electric/battery-switch[1]",0);
+    setprop("controls/electric/battery-switch[1]",0);
     setprop("controls/electric/inverter-switch",0);
     setprop("controls/lighting/instrument-lights",1);
     setprop("controls/lighting/nav-lights",0);
@@ -306,7 +306,7 @@ var update_systems = func{
     FHupdate(0);
     tire.get_rotation("yasim");
     stall_horn();
-	if(getprop("velocities/airspeed-kt")>40)cabin_door.close();
+    if(getprop("velocities/airspeed-kt")>40)cabin_door.close();
 #annunciators_loop();
 settimer(update_systems,0);
 }

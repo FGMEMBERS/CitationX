@@ -166,17 +166,17 @@ Started Oct 2005  Syd Adams
             <menu n="10">
                 <label>Citation-X</label>
                 <enabled type="bool">true</enabled>
-				<item>
-					<label>Autostart</label>
-					<binding>
-						<command>property-toggle</command>
-						<property>sim/model/autostart</property>
-					</binding>
-				</item>
-				<item>
-					<label>Select Livery</label>
-					<binding>
-						<command>nasal</command>
+                <item>
+                    <label>Autostart</label>
+                    <binding>
+                        <command>property-toggle</command>
+                        <property>sim/model/autostart</property>
+                    </binding>
+                </item>
+                <item>
+                    <label>Select Livery</label>
+                    <binding>
+                        <command>nasal</command>
                         <script>aircraft.livery.dialog.toggle()</script>
                     </binding>
                 </item>
@@ -205,22 +205,22 @@ Started Oct 2005  Syd Adams
         </flaps>
 
         <instrumentation>
-            <path>Aircraft/CitationX/instrumentation.xml</path>
+            <path>Aircraft/CitationX/Systems/instrumentation.xml</path>
         </instrumentation>
 
     <multiplay>
         <generic>
             <int n="0" alias="/systems/electrical/outputs/strobe"/>
-			<int n="1" alias="/systems/electrical/outputs/beacon"/>
-			<int n="2" alias="/systems/electrical/outputs/taxi-lights"/>
-			<int n="3" alias="/systems/electrical/outputs/landing-light[0]"/>
-			<int n="4" alias="/systems/electrical/outputs/landing-light[1]"/>
-			<int n="5" alias="/systems/electrical/outputs/recog-lights"/>
-			<int n="6" alias="/systems/electrical/outputs/navlights"/>
-			<float  alias="/controls/cabin-door/position-norm"/>
-			<float  n="1" alias="/surface-positions/speedbrake-pos-norm"/>
-			<float  n="2" alias="/surface-positions/reverser-norm"/>
-			<string  alias="/sim/multiplay/callsign"/>
+            <int n="1" alias="/systems/electrical/outputs/beacon"/>
+            <int n="2" alias="/systems/electrical/outputs/taxi-lights"/>
+            <int n="3" alias="/systems/electrical/outputs/landing-light[0]"/>
+            <int n="4" alias="/systems/electrical/outputs/landing-light[1]"/>
+            <int n="5" alias="/systems/electrical/outputs/recog-lights"/>
+            <int n="6" alias="/systems/electrical/outputs/navlights"/>
+            <float  alias="/controls/cabin-door/position-norm"/>
+            <float  n="1" alias="/surface-positions/speedbrake-pos-norm"/>
+            <float  n="2" alias="/surface-positions/reverser-norm"/>
+            <string  alias="/sim/multiplay/callsign"/>
         </generic>
     </multiplay>
 
@@ -340,26 +340,33 @@ Started Oct 2005  Syd Adams
         <alerts>
             <gear-horn type="bool">0</gear-horn>
         </alerts>
-	<rmu>
-	<unit n="0">
-		<serviceable type="bool">1</serviceable>
-		<selected type="int">0</selected>
-		<selected-xoffset type="int">0</selected-xoffset>
-		<selected-yoffset type="int">0</selected-yoffset>
-		<com-num type="int">0</com-num>
-		<nav-num type="int">0</nav-num>
-		<adf-num type="int">0</adf-num>
-	</unit>
-	<unit n="1">
-		<serviceable type="bool">1</serviceable>
-		<selected type="int">0</selected>
-		<selected-xoffset type="int">0</selected-xoffset>
-		<selected-yoffset type="int">0</selected-yoffset>
-		<com-num type="int">1</com-num>
-		<nav-num type="int">1</nav-num>
-		<adf-num type="int">1</adf-num>
-	</unit>
-	</rmu>
+    <rmu>
+    <unit n="0">
+        <serviceable type="bool">1</serviceable>
+        <selected type="int">0</selected>
+        <selected-xoffset type="int">0</selected-xoffset>
+        <selected-yoffset type="int">0</selected-yoffset>
+        <com-num type="int">0</com-num>
+        <nav-num type="int">0</nav-num>
+        <adf-num type="int">0</adf-num>
+    </unit>
+    <unit n="1">
+        <serviceable type="bool">1</serviceable>
+        <selected type="int">0</selected>
+        <selected-xoffset type="int">0</selected-xoffset>
+        <selected-yoffset type="int">0</selected-yoffset>
+        <com-num type="int">1</com-num>
+        <nav-num type="int">1</nav-num>
+        <adf-num type="int">1</adf-num>
+    </unit>
+    </rmu>
+    <airspeed-indicator>
+        <index n="0" type="double">100</index>
+        <index n="1" type="double">120</index>
+        <ias-limit>270.0</ias-limit>
+        <mach-limit>0.468</mach-limit>
+        <alt-threshold>8000.0</alt-threshold>
+    </airspeed-indicator>
     </instrumentation>
 
     <controls>
@@ -378,20 +385,20 @@ Started Oct 2005  Syd Adams
             <speedbrake type="double">0</speedbrake>
         </flight>
     </controls>
-	
-	<autopilot>
-		<settings>
-			<target-roll-deg>0</target-roll-deg>
-			<vertical-speed-fpm>0</vertical-speed-fpm>		
-		</settings>
-		<locks>
-			<heading>ROL</heading>
-			<altitude>PTCH</altitude>
-			<roll-active type="bool">1</roll-active>
-			<pitch-active type="bool">1</pitch-active>
-		</locks>
-	</autopilot>
-	
+    
+    <autopilot>
+        <settings>
+            <target-roll-deg>0</target-roll-deg>
+            <vertical-speed-fpm>0</vertical-speed-fpm>		
+        </settings>
+        <locks>
+            <heading>ROL</heading>
+            <altitude>PTCH</altitude>
+            <roll-active type="bool">1</roll-active>
+            <pitch-active type="bool">1</pitch-active>
+        </locks>
+    </autopilot>
+    
     <nasal>
         <citation>
             <file>Aircraft/CitationX/Nasal/CitationX.nas</file>
@@ -421,12 +428,12 @@ Started Oct 2005  Syd Adams
                 <name>Ctrl-D</name>
                 <desc>Open/close door</desc>
                 <binding>
-					<condition>
-						<less-than>
-							<property>velocities/airspeed-kt</property>
-							<value>40</value>
-						</less-than>
-					</condition>
+                    <condition>
+                        <less-than>
+                            <property>velocities/airspeed-kt</property>
+                            <value>40</value>
+                        </less-than>
+                    </condition>
                     <command>nasal</command>
                     <script>citation.cabin_door.toggle();</script>
                 </binding>

@@ -46,7 +46,7 @@ var flightdirector = {
         m.gs_arm = m.node.initNode("gs-arm",0,"BOOL");
         m.vnav_alt = m.node.initNode("vnav-alt",30000.0);
         m.speed = m.node.initNode("spd",0.0);
-		m.co = m.node.initNode("co",0,"BOOL");
+        m.co = m.node.initNode("co",0,"BOOL");
         m.crs = m.node.initNode("crs",0.0);
         m.Defl = m.node.initNode("crs-deflection",0.0);
         m.DH= props.globals.initNode("instrumentation/mk-viii/inputs/arinc429/decision-height");
@@ -61,7 +61,7 @@ var flightdirector = {
         m.AP_hdg = props.globals.initNode("/autopilot/locks/heading",m.lnav_text[0]);
         m.AP_hdg_setting = props.globals.initNode("/autopilot/settings/heading",0.0);
         m.AP_spd_setting = props.globals.initNode("/autopilot/settings/target-speed-kt",0.0);
-		m.AP_pitch_setting = props.globals.initNode("/autopilot/internal/target-pitch-deg",0.0);
+        m.AP_pitch_setting = props.globals.initNode("/autopilot/internal/target-pitch-deg",0.0);
         m.AP_alt = props.globals.initNode("/autopilot/locks/altitude",m.vnav_text[0]);
         m.AP_spd = props.globals.initNode("/autopilot/locks/speed",m.spd_text[0]);
         m.AP_off = props.globals.initNode("/autopilot/locks/passive-mode",1,"BOOL");
@@ -101,9 +101,9 @@ var flightdirector = {
     set_vertical_mode : func(vnv){
     var tst =me.vnav.getValue();
     if(vnv ==tst){
-		vnv=0;
-		setprop("autopilot/internal/target-pitch-deg",getprop("orientation/pitch-deg"));
-		}
+        vnv=0;
+        setprop("autopilot/internal/target-pitch-deg",getprop("orientation/pitch-deg"));
+        }
         if(vnv==1){
             if(!me.FMS.getBoolValue()){
                 vnv = 0;
@@ -178,7 +178,7 @@ var flightdirector = {
             me.co.setValue(1-me.co.getValue());
         }elsif(mode=="apr"){
             me.set_lateral_mode(4);
-			me.set_vertical_mode(4);
+            me.set_vertical_mode(4);
         }elsif(mode=="bc"){
             var tst=me.lnav.getValue();
             var bcb = getprop("instrumentation/nav/back-course-btn");
@@ -187,7 +187,7 @@ var flightdirector = {
             setprop("instrumentation/nav/back-course-btn",bcb);
         }elsif(mode=="vnav"){
             me.set_vertical_mode(1);
-		}elsif(mode=="flc"){
+        }elsif(mode=="flc"){
             var sp=me.speed.getValue();
             sp=1-sp;
             me.speed.setValue(sp);
@@ -200,7 +200,7 @@ var flightdirector = {
             me.set_vertical_mode(3);
         }elsif(mode=="stby"){
             me.set_lateral_mode(0);
-			me.set_vertical_mode(0);
+            me.set_vertical_mode(0);
         }
     },
 #### check AP errors####
@@ -369,7 +369,7 @@ var ap_settings = gui.Dialog.new("/sim/gui/dialogs/primus-autopilot/dialog",
 var FlDr=flightdirector.new();
 
 setlistener("/sim/signals/fdm-initialized", func {
-#    init();
+    init();
     print("Flight Director ...Check");
     settimer(update_fd, 2);
 });
@@ -382,12 +382,12 @@ setlistener("autopilot/route-manager/route/num", func {
 FlDr.update_vnav_alt();
 },1,0);
 
-#var init = func {
-#    setprop("autopilot/settings/target-altitude-ft",10000);
-#    setprop("autopilot/settings/heading-bug-deg",0);
-#    setprop("autopilot/settings/vertical-speed-fpm",0);
-#    setprop("autopilot/settings/target-pitch-deg",0);
-#};
+var init = func {
+    setprop("autopilot/settings/target-altitude-ft",10000);
+    setprop("autopilot/settings/heading-bug-deg",0);
+    setprop("autopilot/settings/vertical-speed-fpm",0);
+    setprop("autopilot/settings/target-pitch-deg",0);
+};
 
 var update_fd = func {
 var APoff = FlDr.check_AP_limits();
