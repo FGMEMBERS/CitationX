@@ -10,7 +10,7 @@ FMC
     <animation>
         <type>rotate</type>
         <object-name>FMC.knob1</object-name>
-        <property>instrumentation/primus1000/control/nav1ptr</property>
+        <property>instrumentation/primus2000/sc840/nav1ptr</property>
         <interpolation>
             <entry><ind>0.0</ind><dep>0.0</dep></entry>
             <entry><ind>1.0</ind><dep>25.0</dep></entry>
@@ -32,7 +32,7 @@ FMC
     <animation>
         <type>rotate</type>
         <object-name>FMC.knob2</object-name>
-        <property>instrumentation/primus1000/control/nav2ptr</property>
+        <property>instrumentation/primus2000/sc840/nav2ptr</property>
         <interpolation>
             <entry><ind>0.0</ind><dep>0.0</dep></entry>
             <entry><ind>1.0</ind><dep>25.0</dep></entry>
@@ -60,7 +60,7 @@ FMC
             <repeatable>false</repeatable>
             <binding>
                 <command>nasal</command>
-                <script>efis.primus.ctl_set("nav");</script>
+                <script>citation.nav_src_set("nav");</script>
             </binding>
         </action>
     </animation>
@@ -74,7 +74,7 @@ FMC
             <repeatable>false</repeatable>
             <binding>
                 <command>nasal</command>
-                <script>efis.primus.ctl_set("fms");</script>
+                <script>citation.nav_src_set("fms");</script>
             </binding>
         </action>
     </animation>
@@ -86,8 +86,12 @@ FMC
             <button>1</button>
             <repeatable>false</repeatable>
             <binding>
-                <command>nasal</command>
-                <script>efis.primus.ctl_set("pointer1-dec");</script>
+                <command>property-adjust</command>
+                <property>instrumentation/primus2000/sc840/nav1ptr</property>
+                <step>-1</step>
+                <min>0</min>
+                <max>4</max>
+                <wrap>0</wrap>
             </binding>
         </action>
     </animation>
@@ -98,10 +102,15 @@ FMC
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
-            <binding>
-                <command>nasal</command>
-                <script>efis.primus.ctl_set("pointer1-inc");</script>
+                        <binding>
+                <command>property-adjust</command>
+                <property>instrumentation/primus2000/sc840/nav1ptr</property>
+                <step>1</step>
+                <min>0</min>
+                <max>4</max>
+                <wrap>0</wrap>
             </binding>
+
         </action>
     </animation>
 
@@ -112,8 +121,12 @@ FMC
             <button>1</button>
             <repeatable>false</repeatable>
             <binding>
-                <command>nasal</command>
-                <script>efis.primus.ctl_set("pointer2-dec");</script>
+                <command>property-adjust</command>
+                <property>instrumentation/primus2000/sc840/nav2ptr</property>
+                <step>-1</step>
+                <min>0</min>
+                <max>4</max>
+                <wrap>0</wrap>
             </binding>
         </action>
     </animation>
@@ -125,8 +138,12 @@ FMC
             <button>0</button>
             <repeatable>false</repeatable>
             <binding>
-                <command>nasal</command>
-                <script>efis.primus.ctl_set("pointer2-inc");</script>
+                <command>property-adjust</command>
+                <property>instrumentation/primus2000/sc840/nav2ptr</property>
+                <step>1</step>
+                <min>0</min>
+                <max>4</max>
+                <wrap>0</wrap>
             </binding>
         </action>
     </animation>

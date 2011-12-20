@@ -6,51 +6,61 @@
 
 <!-- Instruments -->
 
-	<model><!-- Pilot reg label-->
-		<path>Aircraft/CitationX/Models/registration.xml</path>
-		<offsets>
-			<x-m>-7.828</x-m>
-			<y-m>-0.246</y-m>
-			<z-m>0.219</z-m>
-			<roll-deg>0</roll-deg>
-			<pitch-deg>-10</pitch-deg>
-			<heading-deg>0</heading-deg>
-		</offsets>
-		<overlay>
-			<params>
-				<size>0.04</size>
-				<alignment>yz-plane</alignment>
-				<color>
-					<red>0.8</red>
-					<green>0.8</green>
-					<blue>0.8</blue>
-				</color>
-			</params>
-		</overlay>
-	</model>
+    <model><!-- Pilot reg label-->
+        <path>Aircraft/CitationX/Models/registration.xml</path>
+        <offsets>
+            <x-m>-7.828</x-m>
+            <y-m>-0.246</y-m>
+            <z-m>0.219</z-m>
+            <roll-deg>0</roll-deg>
+            <pitch-deg>-10</pitch-deg>
+            <heading-deg>0</heading-deg>
+        </offsets>
+        <overlay>
+            <params>
+                <size>0.02</size>
+                <alignment>yz-plane</alignment>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.8</blue>
+                </color>
+            </params>
+        </overlay>
+    </model>
 
-	<model><!-- CoPilot reg label-->
-		<path>Aircraft/CitationX/Models/registration.xml</path>
-		<offsets>
-			<x-m>-7.828</x-m>
-			<y-m>0.267</y-m>
-			<z-m>0.219</z-m>
-			<roll-deg>0</roll-deg>
-			<pitch-deg>-10</pitch-deg>
-			<heading-deg>0</heading-deg>
-		</offsets>
-		<overlay>
-			<params>
-				<size>0.04</size>
-				<alignment>yz-plane</alignment>
-				<color>
-					<red>0.8</red>
-					<green>0.8</green>
-					<blue>0.8</blue>
-				</color>
-			</params>
-		</overlay>
-	</model>
+    <model><!-- CoPilot reg label-->
+        <path>Aircraft/CitationX/Models/registration.xml</path>
+        <offsets>
+            <x-m>-7.828</x-m>
+            <y-m>0.267</y-m>
+            <z-m>0.219</z-m>
+            <roll-deg>0</roll-deg>
+            <pitch-deg>-10</pitch-deg>
+            <heading-deg>0</heading-deg>
+        </offsets>
+        <overlay>
+            <params>
+                <size>0.02</size>
+                <alignment>yz-plane</alignment>
+                <color>
+                    <red>0.8</red>
+                    <green>0.8</green>
+                    <blue>0.8</blue>
+                </color>
+            </params>
+        </overlay>
+    </model>
+
+<model>
+        <path>Aircraft/CitationX/Models/Instruments/aoa.xml</path>
+        <offsets>
+            <x-m>-7.792</x-m>
+            <y-m>-0.506</y-m>
+            <z-m>0.082</z-m>
+            <pitch-deg>-15.0</pitch-deg>
+        </offsets>
+    </model>
 
     <model>
         <path>Aircraft/CitationX/Models/Instruments/ALT.xml</path>
@@ -84,7 +94,7 @@
 
     <model>
         <name>PFD1</name>
-        <path>Aircraft/Instruments-3d/primus-1000/PFD/PFD.xml</path>
+        <path>Aircraft/CitationX/Models/Instruments/PFD/PFD3d.xml</path>
         <offsets>
             <x-m>-7.769</x-m>
             <y-m>-0.375</y-m>
@@ -95,7 +105,7 @@
 
     <model>
         <name>MFD1</name>
-        <path>Aircraft/Instruments-3d/primus-1000/MFD/MFD.xml</path>
+        <path>Aircraft/CitationX/Models/Instruments/MFD/MFD3d.xml</path>
         <offsets>
             <x-m>-7.769</x-m>
             <y-m>-0.187</y-m>
@@ -106,7 +116,7 @@
 
     <model>
         <name>EICAS1</name>
-        <path>Aircraft/CitationX/Models/Instruments/EICAS/EICAS.xml</path>
+        <path>Aircraft/CitationX/Models/Instruments/EICAS/EICAS3d.xml</path>
         <offsets>
             <x-m>-7.769</x-m>
             <y-m>0.005</y-m>
@@ -117,7 +127,7 @@
 
     <model>
         <name>MFD2</name>
-        <path>Aircraft/Instruments-3d/primus-1000/MFD/MFD.xml</path>
+        <path>Aircraft/CitationX/Models/Instruments/MFD/MFD3d.xml</path>
         <offsets>
             <x-m>-7.769</x-m>
             <y-m>0.195</y-m>
@@ -128,7 +138,7 @@
 
     <model>
         <name>PFD2</name>
-        <path>Aircraft/Instruments-3d/primus-1000/PFD/PFD.xml</path>
+        <path>Aircraft/CitationX/Models/Instruments/PFD/PFD3d.xml</path>
         <offsets>
             <x-m>-7.769</x-m>
             <y-m>0.384</y-m>
@@ -142,7 +152,7 @@
         <path>Aircraft/CitationX/Models/Instruments/CDU.xml</path>
         <offsets>
             <x-m>-7.647</x-m>
-            <y-m>0.090</y-m>
+            <y-m>-0.084</y-m>
             <z-m>-0.188</z-m>
             <pitch-deg>-60.0</pitch-deg>
         </offsets>
@@ -150,10 +160,10 @@
 
     <model>
         <name>CDU2</name>
-        <path>Aircraft/CitationX/Models/Instruments/CDU.xml</path>
+        <path>Aircraft/CitationX/Models/Instruments/CDU1.xml</path>
         <offsets>
             <x-m>-7.647</x-m>
-            <y-m>-0.084</y-m>
+            <y-m>0.090</y-m>
             <z-m>-0.188</z-m>
             <pitch-deg>-60.0</pitch-deg>
         </offsets>
@@ -309,11 +319,11 @@
         <object-name>CDU1</object-name>
         <object-name>CDU2</object-name>
         <condition>
-		<equals>
-		<property>sim/current-view/name</property>
-		<value>Cockpit</value>
-		</equals>
-        </condition>
+            <equals>
+                <property>sim/current-view/name</property>
+                <value>Cockpit</value>
+            </equals>
+         </condition>
     </animation>
 
     <animation>
@@ -349,7 +359,7 @@
         <type>rotate</type>
         <object-name>LHthrottle</object-name>
         <property>controls/engines/engine/throttle</property>
-        <factor>61</factor>
+        <factor>65</factor>
         <center>
             <x-m>-7.316</x-m>
             <y-m>0.0</y-m>
@@ -366,7 +376,7 @@
         <type>rotate</type>
         <object-name>RHthrottle</object-name>
         <property>controls/engines/engine[1]/throttle</property>
-        <factor>61</factor>
+        <factor>65</factor>
         <center>
             <x-m>-7.316</x-m>
             <y-m>0.0</y-m>
@@ -871,7 +881,7 @@
             <command>property-toggle</command>
             <property>sim/sound/click</property>
         </binding>
-	</action>
+    </action>
     </animation>
 
     <animation>
@@ -883,7 +893,7 @@
                 <command>property-toggle</command>
                 <property>controls/electric/avionics-switch</property>
             </binding>
-	<binding>
+    <binding>
             <command>property-toggle</command>
             <property>sim/sound/click</property>
         </binding>
@@ -902,14 +912,14 @@
             <property>controls/engines/engine[0]/ignition</property>
         </binding>
         <binding>
-		<condition>
-			<not>
-				<property>controls/engines/engine[0]/ignition</property>
-			</not>
-		</condition>
+        <condition>
+            <not>
+                <property>controls/engines/engine[0]/ignition</property>
+            </not>
+        </condition>
             <command>property-assign</command>
             <property>controls/engines/engine[0]/cutoff</property>
-	    <value>1</value>
+        <value>1</value>
         </binding>
         <binding>
             <command>property-toggle</command>
@@ -929,14 +939,14 @@
             <property>controls/engines/engine[1]/ignition</property>
         </binding>
         <binding>
-		<condition>
-			<not>
-				<property>controls/engines/engine[1]/ignition</property>
-			</not>
-		</condition>
+        <condition>
+            <not>
+                <property>controls/engines/engine[1]/ignition</property>
+            </not>
+        </condition>
             <command>property-assign</command>
             <property>controls/engines/engine[1]/cutoff</property>
-	    <value>1</value>
+        <value>1</value>
         </binding>
         <binding>
             <command>property-toggle</command>
@@ -1208,5 +1218,202 @@
     </action>
 </animation>
 
+<animation>
+    <type>pick</type>
+    <object-name>RIC1.crs</object-name>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>property-assign</command>
+            <property>instrumentation/nav/radials/selected-deg</property>
+            <property>orientation/heading-magnetic-deg</property>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>RIC1.crs</object-name>
+    <action>
+        <button>3</button>
+        <repeatable>true</repeatable>
+        <binding>
+            <command>property-adjust</command>
+            <property>instrumentation/nav/radials/selected-deg</property>
+            <step>1</step>
+            <min>0</min>
+            <max>360</max>
+            <wrap>1</wrap>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>RIC1.crs</object-name>
+    <action>
+        <button>4</button>
+        <repeatable>true</repeatable>
+        <binding>
+            <command>property-adjust</command>
+            <property>instrumentation/nav/radials/selected-deg</property>
+            <step>-1</step>
+            <min>0</min>
+            <max>360</max>
+            <wrap>1</wrap>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>RIC2.crs</object-name>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>property-assign</command>
+            <property>instrumentation/nav[1]/radials/selected-deg</property>
+            <property>orientation/heading-magnetic-deg</property>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>RIC2.crs</object-name>
+    <action>
+        <button>3</button>
+        <repeatable>true</repeatable>
+        <binding>
+            <command>property-adjust</command>
+            <property>instrumentation/nav[1]/radials/selected-deg</property>
+            <step>1</step>
+            <min>0</min>
+            <max>360</max>
+            <wrap>1</wrap>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>RIC2.crs</object-name>
+    <action>
+        <button>4</button>
+        <repeatable>true</repeatable>
+        <binding>
+            <command>property-adjust</command>
+            <property>instrumentation/nav[1]/radials/selected-deg</property>
+            <step>-1</step>
+            <min>0</min>
+            <max>360</max>
+            <wrap>1</wrap>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>RIC1.alt</object-name>
+    <object-name>RIC2.alt</object-name>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>property-assign</command>
+            <property>autopilot/settings/asel</property>
+            <value>100</value>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>RIC1.alt</object-name>
+    <object-name>RIC2.alt</object-name>
+    <action>
+        <button>3</button>
+        <repeatable>true</repeatable>
+        <binding>
+            <command>property-adjust</command>
+            <property>autopilot/settings/asel</property>
+            <step>1</step>
+            <min>0</min>
+            <max>655</max>
+            <wrap>0</wrap>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>RIC1.alt</object-name>
+    <object-name>RIC2.alt</object-name>
+    <action>
+        <button>4</button>
+        <repeatable>true</repeatable>
+        <binding>
+            <command>property-adjust</command>
+            <property>autopilot/settings/asel</property>
+            <step>-1</step>
+            <min>0</min>
+            <max>655</max>
+            <wrap>0</wrap>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>RIC1.hdg</object-name>
+    <object-name>RIC2.hdg</object-name>
+    <action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+            <command>property-assign</command>
+            <property>autopilot/settings/heading-bug-deg</property>
+            <property>orientation/heading-magnetic-deg</property>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>RIC1.hdg</object-name>
+    <object-name>RIC2.hdg</object-name>
+    <action>
+        <button>3</button>
+        <repeatable>true</repeatable>
+        <binding>
+            <command>property-adjust</command>
+            <property>autopilot/settings/heading-bug-deg</property>
+            <step>1</step>
+            <min>0</min>
+            <max>360</max>
+            <wrap>1</wrap>
+        </binding>
+    </action>
+</animation>
+
+<animation>
+    <type>pick</type>
+    <object-name>RIC1.hdg</object-name>
+    <object-name>RIC2.hdg</object-name>
+    <action>
+        <button>4</button>
+        <repeatable>true</repeatable>
+        <binding>
+            <command>property-adjust</command>
+            <property>autopilot/settings/heading-bug-deg</property>
+            <step>-1</step>
+            <min>0</min>
+            <max>360</max>
+            <wrap>1</wrap>
+        </binding>
+    </action>
+</animation>
 
 </PropertyList>

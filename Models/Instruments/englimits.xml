@@ -2,249 +2,180 @@
 <PropertyList>
 
 <path>englimit.ac</path>
-<!--  N1  -->
-<animation>
-    <type>textranslate</type>
-    <object-name>LHn1.1</object-name>
-    <property>engines/engine/fan</property>
-    <factor>0.001</factor>
-    <step>100</step>
-    <axis>
-        <x>0</x>
-        <y>-1</y>
-        <z>0</z>
-    </axis>
-</animation>
 
-<animation>
-    <type>textranslate</type>
-    <object-name>LHn1.2</object-name>
-    <property>engines/engine/fan</property>
-    <factor>0.01</factor>
-    <step>10</step>
-    <axis>
-        <x>0</x>
-        <y>-1</y>
-        <z>0</z>
-    </axis>
-</animation>
+<text>
+        <name>LH N1</name>
+        <offsets>
+            <x-m>0.002</x-m>
+            <y-m>-0.016</y-m>
+            <z-m>0.026</z-m>
+        </offsets>
+        <alignment>right-center</alignment>
+        <axis-alignment>yz-plane</axis-alignment>
+        <type type="string">number-value</type>
+        <property>engines/engine/fan</property>
+        <format>%3.1f</format>
+        <font>led.txf</font>
+        <character-size>0.009</character-size>
+        <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+        <font-resolution>
+            <width type="int">64</width>
+            <height type="int">64</height>
+        </font-resolution>
+    </text>
 
-<animation>
-    <type>textranslate</type>
-    <object-name>LHn1.3</object-name>
-    <property>engines/engine/fan</property>
-    <factor>0.1</factor>
-    <step>1</step>
-    <axis>
-        <x>0</x>
-        <y>-1</y>
-        <z>0</z>
-    </axis>
-</animation>
+<text>
+        <name>RH N1</name>
+        <offsets>
+            <x-m>0.002</x-m>
+            <y-m>0.035</y-m>
+            <z-m>0.026</z-m>
+        </offsets>
+        <alignment>right-center</alignment>
+        <axis-alignment>yz-plane</axis-alignment>
+        <type type="string">number-value</type>
+        <property>engines/engine[1]/fan</property>
+        <format>%3.1f</format>
+        <font>led.txf</font>
+        <character-size>0.009</character-size>
+        <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+        <font-resolution>
+            <width type="int">64</width>
+            <height type="int">64</height>
+        </font-resolution>
+    </text>
 
-<animation>
-    <type>textranslate</type>
-    <object-name>RHn1.1</object-name>
-    <property>engines/engine[1]/fan</property>
-    <factor>0.001</factor>
-    <step>100</step>
-    <axis>
-        <x>0</x>
-        <y>-1</y>
-        <z>0</z>
-    </axis>
-</animation>
+<text>
+        <name>LH ITT</name>
+        <offsets>
+            <x-m>0.002</x-m>
+            <y-m>-0.016</y-m>
+            <z-m>0.011</z-m>
+        </offsets>
+        <alignment>right-center</alignment>
+        <axis-alignment>yz-plane</axis-alignment>
+        <type type="string">number-value</type>
+        <property>engines/engine/itt-norm</property>
+        <scale>888</scale>
+        <format>%4.0f</format>
+        <font>led.txf</font>
+        <character-size>0.009</character-size>
+        <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+        <font-resolution>
+            <width type="int">64</width>
+            <height type="int">64</height>
+        </font-resolution>
+    </text>
 
-<animation>
-    <type>textranslate</type>
-    <object-name>RHn1.2</object-name>
-    <property>engines/engine[1]/fan</property>
-    <factor>0.01</factor>
-    <step>10</step>
-    <axis>
-        <x>0</x>
-        <y>-1</y>
-        <z>0</z>
-    </axis>
-</animation>
+<text>
+        <name>RH ITT</name>
+        <offsets>
+            <x-m>0.002</x-m>
+            <y-m>0.035</y-m>
+            <z-m>0.011</z-m>
+        </offsets>
+        <alignment>right-center</alignment>
+        <axis-alignment>yz-plane</axis-alignment>
+        <type type="string">number-value</type>
+        <property>engines/engine[1]/itt-norm</property>
+        <scale>888</scale>
+        <format>%4.0f</format>
+        <font>led.txf</font>
+        <character-size>0.009</character-size>
+        <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+        <font-resolution>
+            <width type="int">64</width>
+            <height type="int">64</height>
+        </font-resolution>
+    </text>
 
-<animation>
-    <type>textranslate</type>
-    <object-name>RHn1.3</object-name>
-    <property>engines/engine[1]/fan</property>
-    <factor>0.1</factor>
-    <step>1</step>
-    <axis>
-        <x>0</x>
-        <y>-1</y>
-        <z>0</z>
-    </axis>
-</animation>
+<text>
+        <name>LH N2</name>
+        <offsets>
+            <x-m>0.002</x-m>
+            <y-m>-0.016</y-m>
+            <z-m>-0.005</z-m>
+        </offsets>
+        <alignment>right-center</alignment>
+        <axis-alignment>yz-plane</axis-alignment>
+        <type type="string">number-value</type>
+        <property>engines/engine/turbine</property>
+        <format>%3.1f</format>
+        <font>led.txf</font>
+        <character-size>0.009</character-size>
+        <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+        <font-resolution>
+            <width type="int">64</width>
+            <height type="int">64</height>
+        </font-resolution>
+    </text>
 
-<!--     ITT     -->
+<text>
+        <name>RH N2</name>
+        <offsets>
+            <x-m>0.002</x-m>
+            <y-m>0.035</y-m>
+            <z-m>-0.005</z-m>
+        </offsets>
+        <alignment>right-center</alignment>
+        <axis-alignment>yz-plane</axis-alignment>
+        <type type="string">number-value</type>
+        <property>engines/engine[1]/turbine</property>
+        <format>%3.1f</format>
+        <font>led.txf</font>
+        <character-size>0.009</character-size>
+        <character-aspect-ratio type="double">1.0</character-aspect-ratio>
+        <font-resolution>
+            <width type="int">64</width>
+            <height type="int">64</height>
+        </font-resolution>
+    </text>
 
-<animation>
-    <type>textranslate</type>
-    <object-name>LHitt.1</object-name>
-    <property>engines/engine/itt-celcius</property>
-    <factor>0.001</factor>
-    <step>100</step>
-    <axis>
-        <x>0</x>
-        <y>-1</y>
-        <z>0</z>
-    </axis>
-</animation>
+    <animation>
+        <type>select</type>
+        <object-name>LH N1</object-name>
+        <object-name>RH N1</object-name>
+        <object-name>LH ITT</object-name>
+        <object-name>RH ITT</object-name>
+        <object-name>LH N2</object-name>
+        <object-name>RH N2</object-name>
+        <condition>
+            <greater-than>
+                <property>systems/electrical/left-bus</property>
+                <value>5</value>
+            </greater-than>
+        </condition>
+    </animation>
 
-<animation>
-    <type>textranslate</type>
-    <object-name>LHitt.2</object-name>
-    <property>engines/engine/itt-celcius</property>
-    <factor>0.01</factor>
-    <step>10</step>
-    <axis>
-        <x>0</x>
-        <y>-1</y>
-        <z>0</z>
-    </axis>
-</animation>
-
-<animation>
-    <type>textranslate</type>
-    <object-name>LHitt.3</object-name>
-    <property>engines/engine/itt-celcius</property>
-    <factor>0.1</factor>
-    <step>1</step>
-    <axis>
-        <x>0</x>
-        <y>-1</y>
-        <z>0</z>
-    </axis>
-</animation>
-
-<animation>
-    <type>textranslate</type>
-    <object-name>RHitt.1</object-name>
-    <property>engines/engine[1]/itt-celcius</property>
-    <factor>0.001</factor>
-    <step>100</step>
-    <axis>
-        <x>0</x>
-        <y>-1</y>
-        <z>0</z>
-    </axis>
-</animation>
-
-<animation>
-    <type>textranslate</type>
-    <object-name>RHitt.2</object-name>
-    <property>engines/engine[1]/itt-celcius</property>
-    <factor>0.01</factor>
-    <step>10</step>
-    <axis>
-        <x>0</x>
-        <y>-1</y>
-        <z>0</z>
-    </axis>
-</animation>
-
-<animation>
-    <type>textranslate</type>
-    <object-name>RHitt.3</object-name>
-    <property>engines/engine[1]/itt-celcius</property>
-    <factor>0.1</factor>
-    <step>1</step>
-    <axis>
-        <x>0</x>
-        <y>-1</y>
-        <z>0</z>
-    </axis>
-</animation>
-
-<!--  N2  -->
-
-<animation>
-    <type>textranslate</type>
-    <object-name>LHn2.1</object-name>
-    <property>engines/engine/turbine</property>
-    <factor>0.001</factor>
-    <step>100</step>
-    <axis>
-        <x>0</x>
-        <y>-1</y>
-        <z>0</z>
-    </axis>
-</animation>
-
-<animation>
-    <type>textranslate</type>
-    <object-name>LHn2.2</object-name>
-    <property>engines/engine/turbine</property>
-    <factor>0.01</factor>
-    <step>10</step>
-    <axis>
-        <x>0</x>
-        <y>-1</y>
-        <z>0</z>
-    </axis>
-</animation>
-
-<animation>
-    <type>textranslate</type>
-    <object-name>LHn2.3</object-name>
-    <property>engines/engine/turbine</property>
-    <factor>0.1</factor>
-    <step>1</step>
-    <axis>
-        <x>0</x>
-        <y>-1</y>
-        <z>0</z>
-    </axis>
-</animation>
-
-<animation>
-    <type>textranslate</type>
-    <object-name>RHn2.1</object-name>
-    <property>engines/engine[1]/turbine</property>
-    <factor>0.001</factor>
-    <step>100</step>
-    <axis>
-        <x>0</x>
-        <y>-1</y>
-        <z>0</z>
-    </axis>
-</animation>
-
-<animation>
-    <type>textranslate</type>
-    <object-name>RHn2.2</object-name>
-    <property>engines/engine[1]/turbine</property>
-    <factor>0.01</factor>
-    <step>10</step>
-    <axis>
-        <x>0</x>
-        <y>-1</y>
-        <z>0</z>
-    </axis>
-</animation>
-
-<animation>
-    <type>textranslate</type>
-    <object-name>RHn2.3</object-name>
-    <property>engines/engine[1]/turbine</property>
-    <factor>0.1</factor>
-    <step>1</step>
-    <axis>
-        <x>0</x>
-        <y>-1</y>
-        <z>0</z>
-    </axis>
-</animation>
-
-
-
-
-
-
+    <animation>
+        <name>orange</name>
+        <type>material</type>
+        <object-name>LH N1</object-name>
+        <object-name>RH N1</object-name>
+        <object-name>LH ITT</object-name>
+        <object-name>RH ITT</object-name>
+        <object-name>LH N2</object-name>
+        <object-name>RH N2</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>0.4</green>
+            <blue>0.0</blue>
+        </emission>
+        <ambient>
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+        </ambient>
+        <diffuse>
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+        </diffuse>
+        <specular>
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+        </specular>
+    </animation>
 
 </PropertyList>

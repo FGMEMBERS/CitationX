@@ -156,8 +156,7 @@
     <animation>
         <type>textranslate</type>
         <object-name>kpa.001</object-name>
-        <property>instrumentation/altimeter/setting-inhg</property>
-        <scale>3.386389</scale>
+        <property>instrumentation/altimeter/setting-kpa</property>
         <factor>0.001</factor>
         <step>100</step>
         <axis>
@@ -170,7 +169,7 @@
     <animation>
         <type>textranslate</type>
         <object-name>kpa.002</object-name>
-        <property>instrumentation/altimeter/setting-inhg</property>
+        <property>instrumentation/altimeter/setting-kpa</property>
         <scale>3.386389</scale>
         <factor>0.01</factor>
         <step>10</step>
@@ -184,7 +183,7 @@
     <animation>
         <type>textranslate</type>
         <object-name>kpa.003</object-name>
-        <property>instrumentation/altimeter/setting-inhg</property>
+        <property>instrumentation/altimeter/setting-kpa</property>
         <scale>3.386389</scale>
         <factor>0.1</factor>
         <step>1</step>
@@ -198,7 +197,7 @@
     <animation>
         <type>textranslate</type>
         <object-name>kpa.004</object-name>
-        <property>instrumentation/altimeter/setting-inhg</property>
+        <property>instrumentation/altimeter/setting-kpa</property>
         <scale>3.386389</scale>
         <factor>1.0</factor>
         <step>0.1</step>

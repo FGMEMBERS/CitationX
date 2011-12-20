@@ -18,6 +18,7 @@ Started Oct 2005  Syd Adams
             <splash-texture>Aircraft/CitationX/Splash.png</splash-texture>
         </startup>
 
+
         <tutorials>
             <tutorial include="Tutorials/startup_tutorial.xml"/>
             <tutorial include="Tutorials/navigation.xml"/>
@@ -28,6 +29,7 @@ Started Oct 2005  Syd Adams
             <livery>
                 <file type="string">Blackstripes</file>
             </livery>
+            <gctest type="bool">1</gctest>
         </model>
 
         <view n="0">
@@ -117,13 +119,13 @@ Started Oct 2005  Syd Adams
     </view>
 
         <allow-toggle-cockpit>true</allow-toggle-cockpit>
-        <chase-distance-m type="double">-30.0</chase-distance-m>
+        <chase-distance-m type="double">-40.0</chase-distance-m>
 
-    <airport>
+    <!--airport>
         <runways>
             <start-offset-m>20</start-offset-m>
         </runways>
-    </airport>
+    </airport-->
 
     <systems>
         <path>Aircraft/CitationX/Systems/systems.xml</path>
@@ -133,7 +135,7 @@ Started Oct 2005  Syd Adams
     </systems>
 
     <sound>
-        <path>Aircraft/CitationX/CitationX-sound.xml</path>
+        <path>Aircraft/CitationX/Sounds/CitationX-sound.xml</path>
     </sound>
 
     <virtual-cockpit archive="y">true</virtual-cockpit>
@@ -154,15 +156,6 @@ Started Oct 2005  Syd Adams
 
     <menubar>
         <default>
-            <menu n="3">
-                <item n="0">
-                <label>Autopilot Settings</label>
-                    <binding>
-                        <command>nasal</command>
-                        <script>citation.ap_settings.open()</script>
-                    </binding>
-                </item>
-            </menu>
             <menu n="10">
                 <label>Citation-X</label>
                 <enabled type="bool">true</enabled>
@@ -216,13 +209,65 @@ Started Oct 2005  Syd Adams
             <int n="3" alias="/systems/electrical/outputs/landing-light[0]"/>
             <int n="4" alias="/systems/electrical/outputs/landing-light[1]"/>
             <int n="5" alias="/systems/electrical/outputs/recog-lights"/>
-            <int n="6" alias="/systems/electrical/outputs/navlights"/>
+            <int n="6" alias="/systems/electrical/outputs/nav-lights"/>
             <float  alias="/controls/cabin-door/position-norm"/>
             <float  n="1" alias="/surface-positions/speedbrake-pos-norm"/>
             <float  n="2" alias="/surface-positions/reverser-norm"/>
             <string  alias="/sim/multiplay/callsign"/>
         </generic>
     </multiplay>
+
+    <color-set>
+        <white>
+            <r type="float">0.9</r>
+            <g type="float">0.9</g>
+            <b type="float">0.9</b>
+            <a type="float">1.0</a>
+        </white>
+        <red>
+            <r type="float">0.9</r>
+            <g type="float">0.0</g>
+            <b type="float">0.0</b>
+            <a type="float">1.0</a>
+        </red>
+        <yellow>
+            <r type="float">0.9</r>
+            <g type="float">0.9</g>
+            <b type="float">0.0</b>
+            <a type="float">1.0</a>
+        </yellow>
+        <green>
+            <r type="float">0.0</r>
+            <g type="float">0.9</g>
+            <b type="float">0.0</b>
+            <a type="float">1.0</a>
+        </green>
+        <cyan>
+            <r type="float">0.0</r>
+            <g type="float">0.9</g>
+            <b type="float">0.9</b>
+            <a type="float">1.0</a>
+        </cyan>
+        <blue>
+            <r type="float">0.0</r>
+            <g type="float">0.0</g>
+            <b type="float">0.9</b>
+            <a type="float">1.0</a>
+        </blue>
+        <magenta>
+            <r type="float">0.9</r>
+            <g type="float">0.0</g>
+            <b type="float">0.9</b>
+            <a type="float">1.0</a>
+        </magenta>
+        <amber>
+            <r type="float">0.9</r>
+            <g type="float">0.5</g>
+            <b type="float">0.0</b>
+            <a type="float">1.0</a>
+        </amber>
+    </color-set>
+
 
     </sim>
 
@@ -253,96 +298,59 @@ Started Oct 2005  Syd Adams
            </speaker>
         </mk-viii>
 
-        <radar>
-            <switch type="string" archive="y">on</switch>
-            <mode-control type="int" archive="y">1</mode-control>
-            <display-controls>
-                <WX type="bool" archive="y">false</WX>
-                <pos type="bool" archive="y">true</pos>
-                <data type="bool" archive="y">true</data>
-                <symbol type="bool" archive="y">true</symbol>
-                <rotate type="bool" archive="y">true</rotate>
-            </display-controls>
+        <tcas>
             <serviceable type="bool">true</serviceable>
-            <range type="int" archive="y">5</range>
-            <reference-range-nm type="double" archive="y">640</reference-range-nm>
-            <mode type="string" archive="y">WX</mode>
+            <inputs>
+                <mode type="int">0</mode>       <!-- 0=off, 1=standby, 2=TA-only, 3=auto(TA/RA) -->
+            </inputs>
+            <!--voice>
+                <file-prefix type="string">Sounds/tcas/</file-prefix>
+            </voice-->
+            <speaker>                           <!-- Speaker Configuration -->
+                <max-dist type="double">6</max-dist>        <!-- Max. distance where speaker is heard -->
+                <reference-dist type="double"> 2 </reference-dist> <!-- Distance to pilot -->
+                <volume type="double"> 1 </volume>          <!-- Volume at reference distance -->
+            </speaker>
+            <range type="int">6</range>
+        </tcas>
+
+        <nd>
+            <radar-texture-path type="string">Aircraft/CitationX/Models/Instruments/MFD/radar.png</radar-texture-path>
+            <symbol-texture-path type="string">Aircraft/CitationX/Models/Instruments/MFD/symbols.png</symbol-texture-path>
             <font>
-                <name type="string">typewriter.txf</name>
-                <size type="float">6</size>
-                <line-spacing type="float">0.4</line-spacing>
                 <color>
                     <red type="float">0.7</red>
                     <green type="float">0.7</green>
                     <blue type="float">0.7</blue>
                     <alpha type="float">1</alpha>
                 </color>
-            </font>
-            <lightning type="bool" archive="y">true</lightning>
-            <display-mode type="string" archive="y">plan</display-mode>
-            <radar-texture-path type="string" archive="y">Aircraft/Instruments-3d/primus-1000/MFD/od_wxradar.png</radar-texture-path>
-            <echo-texture-path type="string" archive="y">Aircraft/Instruments-3d/primus-1000/MFD/wxecho.png</echo-texture-path>
-            <minimized type="bool" archive="y">false</minimized>
-            <heading-marker type="bool" archive="y">true</heading-marker>
-            <limit-deg type="int">360</limit-deg>
-        </radar>
 
-        <annunciators>
-            <master-warning type="bool">0</master-warning>
-            <master-caution type="bool">0</master-caution>
-            <LHign type="bool">0</LHign>
-            <RHign type="bool">0</RHign>
-            <batt type="bool">0</batt>
-            <batt160 type="bool">0</batt160>
-            <cab-alt type="bool">0</cab-alt>
-            <ac-fail type="bool">0</ac-fail>
-            <oil-psi type="bool">0</oil-psi>
-            <fire-det type="bool">0</fire-det>
-            <oil-fltr-bp type="bool">0</oil-fltr-bp>
-            <fuel-gauge type="bool">0</fuel-gauge>
-            <fuel-boost type="bool">0</fuel-boost>
-            <fuel-lo type="bool">0</fuel-lo>
-            <fuel-psi type="bool">0</fuel-psi>
-            <fuel-fltr-bp type="bool">0</fuel-fltr-bp>
-            <gen-off type="bool">0</gen-off>
-            <invtr-fail type="bool">0</invtr-fail>
-            <lo-brk-psi type="bool">0</lo-brk-psi>
-            <antiskid type="bool">0</antiskid>
-            <emer-psi type="bool">0</emer-psi>
-            <spd-brk type="bool">0</spd-brk>
-            <hyd-flow type="bool">0</hyd-flow>
-            <lo-hyd-lvl type="bool">0</lo-hyd-lvl>
-            <hyd-psi type="bool">0</hyd-psi>
-            <eng-vib type="bool">0</eng-vib>
-            <door-seal type="bool">0</door-seal>
-            <bld-air-gnd type="bool">0</bld-air-gnd>
-            <bagg-door type="bool">0</bagg-door>
-            <cabin-door type="bool">0</cabin-door>
-            <aft-bagg-door type="bool">0</aft-bagg-door>
-            <ap-pitch-trim type="bool">0</ap-pitch-trim>
-            <ap-roll-trim type="bool">0</ap-roll-trim>
-            <chk-pfd-1 type="bool">0</chk-pfd-1>
-            <chk-pfd-2 type="bool">0</chk-pfd-2>
-            <nose-av-fan type="bool">0</nose-av-fan>
-            <grnd-idle type="bool">0</grnd-idle>
-            <tas-htr type="bool">0</tas-htr>
-            <fw-shutoff type="bool">0</fw-shutoff>
-            <stby-ps-htr type="bool">0</stby-ps-htr>
-            <aoa-htr type="bool">0</aoa-htr>
-            <ps-htr type="bool">0</ps-htr>
-            <eng-antice type="bool">0</eng-antice>
-            <ws-oheat type="bool">0</ws-oheat>
-            <surf-deice type="bool">0</surf-deice>
-            <air-dct-oheat type="bool">0</air-dct-oheat>
-            <acm-psi type="bool">0</acm-psi>
-            <gear-unlocked type="bool">0</gear-unlocked>
-            <gear-N type="bool">0</gear-N>
-            <gear-L type="bool">0</gear-L>
-            <gear-R type="bool">0</gear-R>
-        </annunciators>
+                <name type="string">helvetica_bold.txf</name>
+                <size type="float">14</size>
+                <line-spacing type="float">0.01</line-spacing>
+            </font>
+            
+            <serviceable type="bool">true</serviceable>
+            <range type="int" archive="y">10</range>
+            <aircraft-heading-up type="bool">true</aircraft-heading-up>
+            <heading-up-deg type="float">0.01</heading-up-deg>
+            <x-center type="float">0.5</x-center>
+            <y-center type="float">0.5</y-center>
+            <display>
+                <arpt type="bool">1</arpt>
+                <vor type="bool">1</vor>
+                <fix type="bool">0</fix>
+                <tcas type="bool">0</tcas>
+            </display>
+            <line-width type="double">3</line-width>
+        </nd>
+
         <alerts>
             <gear-horn type="bool">0</gear-horn>
+            <master-warning type="bool">0</master-warning>
+            <master-caution type="bool">0</master-caution>
         </alerts>
+
     <rmu>
     <unit n="0">
         <serviceable type="bool">1</serviceable>
@@ -363,13 +371,108 @@ Started Oct 2005  Syd Adams
         <adf-num type="int">1</adf-num>
     </unit>
     </rmu>
+
     <airspeed-indicator>
         <index n="0" type="double">100</index>
         <index n="1" type="double">120</index>
-        <ias-limit>270.0</ias-limit>
-        <mach-limit>0.468</mach-limit>
+        <ias-limit>350.0</ias-limit>
+        <mach-limit>0.85</mach-limit>
         <alt-threshold>8000.0</alt-threshold>
     </airspeed-indicator>
+
+    <kr-87>
+        <inputs>
+            <audio-btn>0</audio-btn>
+        </inputs>
+    </kr-87>
+
+<primus2000>
+    <dc840>
+        <hsi type="bool">0</hsi>
+        <wx type="bool">0</wx>
+        <et type="bool">0</et>
+        <tcas type="bool">0</tcas>
+        <acft-sys type="bool">0</acft-sys>
+        <mfd-map type="bool">0</mfd-map>
+        <mfd-wx type="bool">0</mfd-wx>
+        <norm type="bool">0</norm>
+        <abn type="bool">0</abn>
+        <emer type="bool">0</emer>
+        <skp type="bool">0</skp>
+        <pag type="bool">0</pag>
+        <rcl type="bool">0</rcl>
+        <ent type="bool">0</ent>
+    </dc840>
+    <sc840>
+        <nav1ptr type="double">0</nav1ptr>
+        <nav2ptr type="double">0</nav2ptr>
+    </sc840>
+    <eicas>
+        <serviceable type="bool">1</serviceable>
+    </eicas>
+    <mfd>
+        <menu-num type="int">0</menu-num>
+        <menu>
+            <header type="string">MENU 1/2</header>
+            <entry type="string" n="0"></entry>
+            <entry type="string" n="1">PFD
+SETUP</entry>
+            <entry type="string" n="2">MFD
+SETUP</entry>
+            <entry type="string" n="3">ET SET
+FT TIMER</entry>
+            <entry type="string" n="4">EICAS
+SYS</entry>
+            <entry type="string" n="5">V
+SPEEDS</entry>
+            <entry type="string" n="6">RNG</entry>
+        </menu>
+        <dim type="double">1</dim>
+    </mfd>
+    <pfd>
+    </pfd>
+</primus2000>
+
+    <groundradar>
+        <range type="double">5</range>
+    </groundradar>
+
+    <cdu n="0">
+        <page type="string">PROGRESS</page>
+        <L type="string" n="0"></L>
+        <L type="string" n="1"></L>
+        <L type="string" n="2"></L>
+        <L type="string" n="3"></L>
+        <L type="string" n="4"></L>
+        <L type="string" n="5"></L>
+        <R type="string" n="0"></R>
+        <R type="string" n="1"></R>
+        <R type="string" n="2"></R>
+        <R type="string" n="3"></R>
+        <R type="string" n="4"></R>
+        <R type="string" n="5"></R>
+        <S type="string" n="0"></S>
+        <S type="string" n="1"></S>
+    </cdu>
+
+    <cdu n="1">
+        <page type="string">ACTIVE FLT PLAN</page>
+        <L type="string" n="0"></L>
+        <L type="string" n="1"></L>
+        <L type="string" n="2"></L>
+        <L type="string" n="3"></L>
+        <L type="string" n="4"></L>
+        <L type="string" n="5"></L>
+        <R type="string" n="0"></R>
+        <R type="string" n="1"></R>
+        <R type="string" n="2"></R>
+        <R type="string" n="3"></R>
+        <R type="string" n="4"></R>
+        <R type="string" n="5"></R>
+        <S type="string" n="0"></S>
+        <S type="string" n="1"></S>
+    </cdu>
+
     </instrumentation>
 
     <controls>
@@ -387,31 +490,50 @@ Started Oct 2005  Syd Adams
         <flight>
             <speedbrake type="double">0</speedbrake>
         </flight>
+        <cabin-door>
+            <open type="bool">0</open>
+        </cabin-door>
     </controls>
-    
+
     <autopilot>
         <settings>
-            <target-roll-deg>0</target-roll-deg>
-            <vertical-speed-fpm>0</vertical-speed-fpm>		
+            <minimums type="int">200</minimums>
+            <target-roll-deg type="double">0</target-roll-deg>
+            <target-pitch-deg type="double">0</target-pitch-deg>
+            <vertical-speed-fpm type="int">0</vertical-speed-fpm>
+            <low-bank type="bool">0</low-bank>
+            <nav-source type="string">NAV1</nav-source>
+            <bank-limit type="int">27</bank-limit>
+            <target-speed-kt type="int">80</target-speed-kt>
+            <target-speed-mach type="double">0.40</target-speed-mach>
+            <changeover type="bool">0</changeover>
+            <heading-bug-deg type="int">0</heading-bug-deg>
+            <vertical-speed-fpm type="int">0</vertical-speed-fpm>
+            <asel type="int">100</asel>
         </settings>
         <locks>
-            <heading>ROL</heading>
+            <heading>ROLL</heading>
+            <heading-arm type="string"></heading-arm>
             <altitude>PTCH</altitude>
-            <roll-active type="bool">1</roll-active>
-            <pitch-active type="bool">1</pitch-active>
+            <altitude-arm type="string"></altitude-arm>
+            <AP-status type="string"></AP-status>
+            <FD-status type="bool">1</FD-status>
+            <yaw-damper type="bool">0</yaw-damper>
+            <m-trim type="bool">0</m-trim>
         </locks>
+        <internal>
+            <selected-crs type="int">0</selected-crs>
+            <nav-distance type="double">0</nav-distance>
+            <nav-type type="string"></nav-type>
+            <nav-id type="string"></nav-id>
+            <course-deflection type="double">0.0</course-deflection>
+            <gs-valid type="bool">0</gs-valid>
+            <gs-deflection type="double">0.0</gs-deflection>
+            <in-range type="bool">0</in-range>
+            <gs-in-range type="bool">0</gs-in-range>
+        </internal>
     </autopilot>
-    
-    <nasal>
-        <citation>
-            <file>Aircraft/CitationX/Nasal/CitationX.nas</file>
-            <file>Aircraft/CitationX/Nasal/Electrical.nas</file>
-            <file>Aircraft/CitationX/Nasal/flightdirector.nas</file>
-        </citation>
-            <efis>
-                <file>Aircraft/Instruments-3d/primus-1000/P1000.nas</file>
-            </efis>
-    </nasal>
+
 
     <input>
         <keyboard>
@@ -423,8 +545,9 @@ Started Oct 2005  Syd Adams
                     <property>controls/engines/engine[0]/reverser</property>
                 </binding>
                 <binding>
-                    <command>property-toggle</command>
+                    <command>property-assign</command>
                     <property>controls/engines/engine[1]/reverser</property>
+                    <property>controls/engines/engine[0]/reverser</property>
                 </binding>
             </key>
             <key n="4">
@@ -437,8 +560,8 @@ Started Oct 2005  Syd Adams
                             <value>40</value>
                         </less-than>
                     </condition>
-                    <command>nasal</command>
-                    <script>citation.cabin_door.toggle();</script>
+                    <command>property-toggle</command>
+                    <property>controls/cabin-door/open</property>
                 </binding>
             </key>
             <key n="267">
@@ -446,10 +569,29 @@ Started Oct 2005  Syd Adams
                 <desc>Pop up autopilot dialog</desc>
                 <binding>
                     <command>nasal</command>
-                    <script>citation.ap_settings.toggle()</script>
+                    <script>dialogs.ap_settings.toggle()</script>
+                </binding>
+            </key>
+            <key n="268">
+                <name>F12</name>
+                <desc>Pop up radio dialog</desc>
+                <binding>
+                    <command>nasal</command>
+                    <script>dialogs.Radio.toggle()</script>
                 </binding>
             </key>
         </keyboard>
     </input>
+
+    <nasal>
+        <citation>
+            <file>Aircraft/CitationX/Nasal/CitationX.nas</file>
+            <file>Aircraft/CitationX/Nasal/Electrical.nas</file>
+            <file>Aircraft/CitationX/Nasal/flightdirector.nas</file>
+        </citation>
+        <dialogs>
+            <file>Aircraft/CitationX/Nasal/dialogs.nas</file>
+        </dialogs>
+    </nasal>
 
 </PropertyList>

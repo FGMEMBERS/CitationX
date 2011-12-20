@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<!--
+Author : Syd Adams
+Primus 2000 MFD
+-->
+<PropertyList>
+
+    <path>mfd3d.ac</path>
+
+<model>
+        <name>Mtext3d</name>
+        <path>Aircraft/CitationX/Models/Instruments/MFD/Mtext3d.xml</path>
+        <offsets>
+            <x-m>0.0035</x-m>
+            <y-m>0</y-m>
+            <z-m>0</z-m>
+            <pitch-deg>0</pitch-deg>
+        </offsets>
+    </model>
+
+    <panel>
+        <name>panel-area</name>
+        <path>Aircraft/CitationX/Models/Instruments/MFD/nd.xml</path>
+        <bottom-left>
+            <x-m>0.0020</x-m>
+            <y-m>-0.076</y-m>
+            <z-m>-0.057</z-m>
+        </bottom-left>
+        <bottom-right>
+            <x-m>0.0020</x-m>
+            <y-m>0.076</y-m>
+            <z-m>-0.057</z-m>
+        </bottom-right>
+        <top-left>
+            <x-m>0.0020</x-m>
+            <y-m>-0.076</y-m>
+            <z-m>0.094</z-m>
+        </top-left>
+    </panel>
+
+    <animation>
+        <type>select</type>
+        <object-name>MFD.off</object-name>
+        <condition>
+            <less-than>
+                <property>systems/electrical/outputs/efis</property>
+                <value>15</value>
+            </less-than>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>Mtext3d</object-name>
+        <condition>
+            <greater-than>
+                <property>systems/electrical/outputs/efis</property>
+                <value>15</value>
+            </greater-than>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>texrotate</type>
+        <object-name>MFD.hsi</object-name>
+        <property>orientation/heading-magnetic-deg</property>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>-1</z>
+        </axis>
+        <center>
+            <x>0.5</x>
+            <y>0.5</y>
+        </center>
+    </animation>
+
+
+
+    <animation>
+        <type>select</type>
+        <object-name>TCAS.screen</object-name>
+        <condition>
+            <less-than>
+                <property>instrumentation/tcas/inputs/mode</property>
+                <value>0</value>
+            </less-than>
+        </condition>
+    </animation>
+
+
+<!-- OSG hotspots-->
+
+    <animation>
+        <type>pick</type>
+        <object-name>MFD.knob</object-name>
+        <action>
+            <button>3</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-multiply</command>
+                <property>instrumentation/nd/range</property>
+                <factor>2</factor>
+                <min>5</min>
+                <max>640</max>
+                <mask>all</mask>
+                <wrap>false</wrap>
+            </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>MFD.knob</object-name>
+        <action>
+            <button>4</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-multiply</command>
+                <property>instrumentation/nd/range</property>
+                <factor>0.5</factor>
+                <min>5</min>
+                <max>640</max>
+                <mask>all</mask>
+                <wrap>false</wrap>
+            </binding>
+        </action>
+    </animation>
+
+</PropertyList>

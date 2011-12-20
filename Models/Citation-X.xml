@@ -40,51 +40,51 @@
       <texture>livery1.png</texture>
     </animation>
 
-	<model><!-- LH tail reg-->
-		<path>Aircraft/CitationX/Models/registration.xml</path>
-		<offsets>
-			<x-m>7.0</x-m>
-			<y-m>-0.14</y-m>
-			<z-m>1.910</z-m>
-			<roll-deg>0</roll-deg>
-			<pitch-deg>0</pitch-deg>
-			<heading-deg>2</heading-deg>
-		</offsets>
-		<overlay>
-			<params>
-				<size>1.0</size>
-				<alignment>xz-plane</alignment>
-				<color>
-					<red>0.02</red>
-					<green>0.02</green>
-					<blue>0.02</blue>
-				</color>
-			</params>
-		</overlay>
-	</model>
+    <model><!-- LH tail reg-->
+        <path>Aircraft/CitationX/Models/registration.xml</path>
+        <offsets>
+            <x-m>7.0</x-m>
+            <y-m>-0.14</y-m>
+            <z-m>1.910</z-m>
+            <roll-deg>0</roll-deg>
+            <pitch-deg>0</pitch-deg>
+            <heading-deg>2</heading-deg>
+        </offsets>
+        <overlay>
+            <params>
+                <size>0.5</size>
+                <alignment>xz-plane</alignment>
+                <color>
+                    <red>0.02</red>
+                    <green>0.02</green>
+                    <blue>0.02</blue>
+                </color>
+            </params>
+        </overlay>
+    </model>
 
-	<model><!-- RH tail reg-->
-		<path>Aircraft/CitationX/Models/registration.xml</path>
-		<offsets>
-			<x-m>7.0</x-m>
-			<y-m>0.14</y-m>
-			<z-m>1.910</z-m>
-			<roll-deg>0</roll-deg>
-			<pitch-deg>0</pitch-deg>
-			<heading-deg>-2</heading-deg>
-		</offsets>
-		<overlay>
-			<params>
-				<size>1.0</size>
-				<alignment>reversed-xz-plane</alignment>
-				<color>
-					<red>0.02</red>
-					<green>0.02</green>
-					<blue>0.02</blue>
-				</color>
-			</params>
-		</overlay>
-	</model>
+    <model><!-- RH tail reg-->
+        <path>Aircraft/CitationX/Models/registration.xml</path>
+        <offsets>
+            <x-m>7.0</x-m>
+            <y-m>0.14</y-m>
+            <z-m>1.910</z-m>
+            <roll-deg>0</roll-deg>
+            <pitch-deg>0</pitch-deg>
+            <heading-deg>-2</heading-deg>
+        </offsets>
+        <overlay>
+            <params>
+                <size>0.5</size>
+                <alignment>reversed-xz-plane</alignment>
+                <color>
+                    <red>0.02</red>
+                    <green>0.02</green>
+                    <blue>0.02</blue>
+                </color>
+            </params>
+        </overlay>
+    </model>
 
     <!--model>
         <name>shadow</name>
@@ -106,7 +106,7 @@
     </animation-->
 
     <model>
-	<name>cabin</name>
+    <name>cabin</name>
         <path>Aircraft/CitationX/Models/cabin.xml</path>
         <offsets>
             <x-m>0</x-m>
@@ -117,7 +117,7 @@
     </model>
 
     <model>
-	<name>flightdeck</name>
+    <name>flightdeck</name>
         <path>Aircraft/CitationX/Models/flightdeck.xml</path>
         <offsets>
             <x-m>0</x-m>
@@ -200,8 +200,8 @@
         </axis>
     </animation>
 
-	<animation>
-	<type>translate</type>
+    <animation>
+    <type>translate</type>
         <object-name>Cabin.door</object-name>
         <property>sim/multiplay/generic/float</property>
         <factor>0.4</factor>
@@ -690,8 +690,8 @@
         <object-name>FUdamper</object-name>
         <object-name>frtshock</object-name>
         <object-name>Nosewheel</object-name>
-        <property>gear/gear/caster-angle-deg</property>
-        <factor>-0.5</factor>
+        <property>controls/gear/steering</property>
+        <factor>60</factor>
         <center>
             <x-m>-8.149</x-m>
             <y-m>0</y-m>
@@ -1005,7 +1005,6 @@
     <animation>
         <type>select</type>
         <object-name>navlights.on</object-name>
-        <object-name>redlamp.on</object-name>
         <condition>
             <greater-than>
                 <property>sim/multiplay/generic/int[6]</property>
@@ -1017,7 +1016,6 @@
     <animation>
         <type>select</type>
         <object-name>navlights.off</object-name>
-        <object-name>redlamp.off</object-name>
         <condition>
             <less-than>
                 <property>sim/multiplay/generic/int[6]</property>
@@ -1103,6 +1101,7 @@
     <animation>
         <type>select</type>
         <object-name>Bcn1</object-name>
+        <object-name>redlamp.on</object-name>
         <condition>
             <greater-than>
                 <property>sim/multiplay/generic/int[1]</property>
@@ -1139,6 +1138,7 @@
     <animation>
         <type>select</type>
         <object-name>Bcn2</object-name>
+        <object-name>redlamp.on</object-name>
         <condition>
             <greater-than>
                 <property>sim/multiplay/generic/int[1]</property>

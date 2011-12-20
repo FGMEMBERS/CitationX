@@ -13,7 +13,7 @@ Syd Adams
         <transform>
             <property>instrumentation/attitude-indicator/indicated-pitch-deg</property>
             <subtype>textranslate</subtype>
-            <factor>0.003667</factor>
+            <factor>0.00423</factor>
             <axis>
                 <x>0</x>
                 <y>1</y>
@@ -52,6 +52,23 @@ Syd Adams
     </animation>
 
     <animation>
+        <type>rotate</type>
+        <object-name>cage.flag</object-name>
+        <property>instrumentation/attitude-indicator/caged-flag</property>
+        <factor>35</factor>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0.031</y-m>
+            <z-m>0.013</z-m>
+        </center>
+    </animation>
+
+    <animation>
         <type>pick</type>
         <object-name>STBYai.cage</object-name>
         <visible>true</visible>
@@ -60,7 +77,7 @@ Syd Adams
             <repeatable>false</repeatable>
             <binding>
                 <command>property-toggle</command>
-                <property>instrumentation/attitude-indicator/caged</property>
+                <property>instrumentation/attitude-indicator/caged-flag</property>
             </binding>
         </action>
     </animation>

@@ -47,12 +47,9 @@ var TireSpeed = {
 var JetEngine = {
     new : func(eng_num){
         m = { parents : [JetEngine]};
-        m.ITTlimit=8.9;
         m.fdensity = getprop("consumables/fuel/tank/density-ppg") or 6.72;
         m.eng = props.globals.getNode("engines/engine["~eng_num~"]",1);
         m.running = m.eng.initNode("running",0,"BOOL");
-        m.itt=m.eng.getNode("itt-norm");
-        m.itt_c=m.eng.initNode("itt-celcius",0,"DOUBLE");
         m.n1 = m.eng.getNode("n1",1);
         m.n2 = m.eng.getNode("n2",1);
         m.fan = m.eng.initNode("fan",0,"DOUBLE");
@@ -67,7 +64,6 @@ var JetEngine = {
         m.starter = props.globals.initNode("controls/engines/engine["~eng_num~"]/starter",0,"BOOL");
         m.fuel_pph=m.eng.initNode("fuel-flow_pph",0,"DOUBLE");
         m.fuel_gph=m.eng.initNode("fuel-flow-gph");
-        m.hpump=props.globals.initNode("systems/hydraulics/pump-psi["~eng_num~"]",0,"DOUBLE");
 
         m.Lfuel = setlistener(m.fuel_out, func m.shutdown(m.fuel_out.getValue()),0,0);
         m.CutOff = setlistener(m.cutoff, func (ct){m.engine_off=ct.getValue()},1,0);
@@ -99,10 +95,6 @@ var JetEngine = {
         }
         
         me.fuel_pph.setValue(me.fuel_gph.getValue()*me.fdensity);
-        var hpsi =me.fan.getValue();
-        if(hpsi>60)hpsi = 60;
-        me.hpump.setValue(hpsi);
-        me.itt_c.setValue(me.fan.getValue() * me.ITTlimit);
     },
 
     spool_up : func(scnds){
@@ -134,7 +126,6 @@ var JetEngine = {
 };
 
 var FDM="";
-var SndIn = props.globals.initNode("/sim/sound/ext-volume",0.1,"DOUBLE");
 var Grd_Idle=props.globals.initNode("controls/engines/grnd-idle",1,"BOOL");
 var Annun = props.globals.getNode("instrumentation/annunciators",1);
 var MstrWarn =Annun.getNode("master-warning",1);
@@ -142,7 +133,6 @@ var MstrCaution = Annun.getNode("master-caution",1);
 var PWR2 =0;
 aircraft.livery.init("Aircraft/CitationX/Models/Liveries");
 aircraft.light.new("instrumentation/annunciators", [0.5, 0.5], MstrCaution);
-var cabin_door = aircraft.door.new("/controls/cabin-door", 2);
 var FHmeter = aircraft.timer.new("/instrumentation/clock/flight-meter-sec", 10,1);
 var LHeng= JetEngine.new(0);
 var RHeng= JetEngine.new(1);
@@ -154,8 +144,7 @@ var fdm_init = func(){
     MstrWarn.setBoolValue(0);
     MstrCaution.setBoolValue(0);
     FDM=getprop("/sim/flight-model");
-    setprop("/sim/model/start-idling",0);
-    setprop("controls/engines/N1-limit",90.0);
+    setprop("controls/engines/N1-limit",95.0);
 }
 
 setlistener("/sim/signals/fdm-initialized", func {
@@ -180,6 +169,31 @@ setlistener("sim/model/autostart", func(strt){
     }
 },0,0);
 
+setlistener("instrumentation/tcas/inputs/mode", func(tcas){
+    var mode=tcas.getValue();
+    var dsp =0;
+    var msg="TCAS OFF";
+    if(mode==0){
+        msg="TCAS OFF";
+    }elsif(mode==1){
+        msg="TCAS STBY";
+    }elsif(mode==2){
+        msg="TCAS TA";
+        dsp=1;
+    }elsif(mode==3){
+        msg="TCAS AUTO";
+        dsp=1;
+    }
+    setprop("instrumentation/tcas/inputs/message",msg);
+        setprop("instrumentation/nd/display/tcas",dsp);
+},1,0);
+
+setlistener("instrumentation/nd/range", func(rng){
+    var rng=rng.getValue();
+    var midrange=sprintf("%3.1f",rng*0.5);
+    setprop("instrumentation/nd/midrange",midrange);
+},1,0);
+
 setlistener("/gear/gear[1]/wow", func(ww){
     if(ww.getBoolValue()){
         FHmeter.stop();
@@ -190,14 +204,6 @@ setlistener("/gear/gear[1]/wow", func(ww){
     }
 },0,0);
 
-setlistener("/sim/current-view/internal", func(vw){
-    if(vw.getValue()){
-    SndIn.setDoubleValue(0.1);
-    }else{
-    SndIn.setDoubleValue(0.7);
-    }
-},1,0);
-
 setlistener("/controls/gear/antiskid", func(as){
     var test=as.getBoolValue();
     if(!test){
@@ -207,6 +213,10 @@ setlistener("/controls/gear/antiskid", func(as){
     Annun.getNode("antiskid").setBoolValue(0);
     }
 },0,0);
+
+setlistener("instrumentation/altimeter/setting-inhg", func(inhg){
+    setprop("instrumentation/altimeter/setting-kpa",inhg.getValue()*3.386389)
+},1,0);
 
 setlistener("/sim/freeze/fuel", func(ffr){
     var test=ffr.getBoolValue();
@@ -306,7 +316,7 @@ var update_systems = func{
     FHupdate(0);
     tire.get_rotation("yasim");
     stall_horn();
-    if(getprop("velocities/airspeed-kt")>40)cabin_door.close();
+    if(getprop("velocities/airspeed-kt")>40)setprop("controls/cabin-door/open",0);
 #annunciators_loop();
 settimer(update_systems,0);
 }

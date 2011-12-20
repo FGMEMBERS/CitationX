@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+<name>Nav Panel</name>
+<background>Aircraft/CitationX/Models/Instruments/MFD/transparent.png</background>
+<w>512</w>
+<h>512</h>
+
+<instruments>
+
+    <instrument>
+        <condition>
+            <property>instrumentation/nd/serviceable</property>
+        </condition>
+        <name>nav display</name>
+        <w-base>512</w-base>
+        <h-base>345</h-base>
+        <x>256</x>
+        <y>340</y>
+        <layers>
+            <layer>
+                <w>512</w>
+                <h>345</h>
+                <texture>
+                    <path>Aircraft/CitationX/Models/Instruments/MFD/radar.png</path>
+                    <x1>0.0</x1>
+                    <y1>0.326</y1>
+                    <x2>1</x2>
+                    <y2>1</y2>
+                </texture>
+                <emissive>true</emissive>
+            </layer>
+        </layers>
+    </instrument>
+
+    <instrument>
+        <condition>
+            <property>instrumentation/nd/serviceable</property>
+        </condition>
+        <name>nav display btm</name>
+        <w-base>324</w-base>
+        <h-base>167</h-base>
+        <x>256</x>
+        <y>84</y>
+        <layers>
+            <layer>
+                <w>324</w>
+                <h>167</h>
+                <texture>
+                    <path>Aircraft/CitationX/Models/Instruments/MFD/radar.png</path>
+                    <x1>0.184</x1>
+                    <y1>0.0</y1>
+                    <x2>0.816</x2>
+                    <y2>0.326</y2>
+                </texture>
+                <emissive>true</emissive>
+            </layer>
+        </layers>
+    </instrument>
+
+</instruments>
+
+</PropertyList>
