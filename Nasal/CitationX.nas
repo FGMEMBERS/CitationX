@@ -169,30 +169,6 @@ setlistener("sim/model/autostart", func(strt){
     }
 },0,0);
 
-setlistener("instrumentation/tcas/inputs/mode", func(tcas){
-    var mode=tcas.getValue();
-    var dsp =0;
-    var msg="TCAS OFF";
-    if(mode==0){
-        msg="TCAS OFF";
-    }elsif(mode==1){
-        msg="TCAS STBY";
-    }elsif(mode==2){
-        msg="TCAS TA";
-        dsp=1;
-    }elsif(mode==3){
-        msg="TCAS AUTO";
-        dsp=1;
-    }
-    setprop("instrumentation/tcas/inputs/message",msg);
-        setprop("instrumentation/nd/display/tcas",dsp);
-},1,0);
-
-setlistener("instrumentation/nd/range", func(rng){
-    var rng=rng.getValue();
-    var midrange=sprintf("%3.1f",rng*0.5);
-    setprop("instrumentation/nd/midrange",midrange);
-},1,0);
 
 setlistener("/gear/gear[1]/wow", func(ww){
     if(ww.getBoolValue()){
@@ -318,5 +294,13 @@ var update_systems = func{
     stall_horn();
     if(getprop("velocities/airspeed-kt")>40)setprop("controls/cabin-door/open",0);
 #annunciators_loop();
+    var grspd =getprop("velocities/groundspeed-kt");
+    var wspd = (45-grspd) * 0.022222;
+    if(wspd>1.0)wspd=1.0;
+    if(wspd<0.001)wspd=0.001;
+    var rudder_pos=getprop("controls/flight/rudder") or 0;
+    var str=-(rudder_pos*wspd);
+
+    setprop("/controls/gear/steering",str);
 settimer(update_systems,0);
 }

@@ -10,16 +10,19 @@ var Vertical = "autopilot/locks/altitude";
 var Vertical_arm = "autopilot/locks/altitude-arm";
 var AP = "autopilot/locks/AP-status";
 var NAVprop="autopilot/settings/nav-source";
+var AutoCoord="sim/auto-coordination";
 var NAVSRC= getprop(NAVprop);
 var count=0;
+var Coord = 0;
 var minimums=getprop("autopilot/settings/minimums");
-
-
+var wx_range=[10,25,50,100,200,300];
+var wx_index=3;
 
 
 #####################################
 
 setlistener("/sim/signals/fdm-initialized", func {
+    setprop("instrumentation/nd/range",wx_range[wx_index]);
     print("Flight Director ...Check");
     settimer(update_fd, 30);
 });
@@ -34,12 +37,14 @@ var FD_set_mode = func(btn){
 
 
     if(btn=="ap"){
+        Coord = getprop(AutoCoord);
         if(getprop(AP)!="AP1"){
             setprop(Lateral_arm,"");setprop(Vertical_arm,"");
             if(Vmode=="PTCH")set_pitch();
             if(Lmode=="ROLL")set_roll();
-            if(getprop("position/altitude-agl-ft") > minimums) setprop(AP,"AP1");
-        } else setprop(AP,"");
+            if(getprop("position/altitude-agl-ft") > minimums) {
+                setprop(AP,"AP1");setprop(AutoCoord,0);}
+        } else kill_Ap("");
     }elsif(btn=="hdg"){
         if(Lmode!="HDG") setprop(Lateral,"HDG") else set_roll();
         setprop(Lateral_arm,"");setprop(Vertical_arm,"");
@@ -193,10 +198,6 @@ setlistener("autopilot/settings/minimums", func(mn) {
     minimums=mn.getValue();
 },1,0);
 
-setlistener("/autopilot/settings/low-bank", func(Bk) {
-    var lmt = [27,17];
-    setprop("autopilot/settings/bank-limit",lmt[Bk.getValue()]);
-},1,0);
 
 setlistener(NAVprop, func(Nv) {
     NAVSRC=Nv.getValue();
@@ -247,6 +248,13 @@ var update_nav=func{
         setprop("autopilot/internal/to-flag",getprop("instrumentation/gps/wp/wp[1]/to-flag"));
         setprop("autopilot/internal/from-flag",getprop("instrumentation/gps/wp/wp[1]/from-flag"));
     }
+}
+
+var set_range = func(dir){
+    wx_index+=dir;
+    if(wx_index>5)wx_index=5;
+    if(wx_index<0)wx_index=0;
+    setprop("instrumentation/nd/range",wx_range[wx_index]);
 }
 
 var course_offset = func(src){
@@ -308,11 +316,16 @@ var monitor_V_armed = func{
 
 var monitor_AP_errors= func{
     var ralt=getprop("position/altitude-agl-ft");
-    if(ralt<minimums)setprop(AP,"");
+    if(ralt<minimums)kill_Ap("");
     var rlimit=getprop("orientation/roll-deg");
-    if(rlimit > 40 or rlimit< -40)setprop(AP,"AP FAIL");
+    if(rlimit > 45 or rlimit< -45)kill_Ap("AP-FAIL");
     var plimit=getprop("orientation/pitch-deg");
-    if(plimit > 25 or plimit< -25)setprop(AP,"AP FAIL");
+    if(plimit > 30 or plimit< -30)kill_Ap("AP-FAIL");
+}
+
+var kill_Ap = func(msg){
+    setprop(AP,msg);
+    setprop(AutoCoord,Coord);
 }
 
 var get_ETE= func{

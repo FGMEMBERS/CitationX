@@ -12,10 +12,11 @@
                         <property>position/gear-agl-ft</property>
                         <value>1000</value>
                     </less-than>
-                    <less-than>
-                        <property>sim/time/sun-angle-rad</property>
-                        <value>1.25</value>
-                    </less-than>
+                    <greater-than>
+                        <property>rendering/scene/ambient/blue</property>
+                        <value>0.25</value>
+                    </greater-than>
+                    <property>sim/model/shadow-2d</property>
                 </and>
             </condition>
         </animation>

@@ -30,22 +30,25 @@ Started Oct 2005  Syd Adams
                 <file type="string">Blackstripes</file>
             </livery>
             <gctest type="bool">1</gctest>
+            <shadow-2d  type="bool" userarchive="y">0</shadow-2d>
+            <shadeless  type="bool" userarchive="y">0</shadeless>
         </model>
 
         <view n="0">
-            <name>Cockpit</name>
+            <name>Pilot</name>
             <type>lookfrom</type>
             <internal type="bool">true</internal>
             <config>
+                <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
                 <x-offset-m type="double">-0.375</x-offset-m>
                 <y-offset-m type="double">0.41</y-offset-m>
                 <z-offset-m type="double">-7.0</z-offset-m>
                 <pitch-offset-deg>-12</pitch-offset-deg>
                 <limits>
-                    <enabled type="bool">true</enabled>
+                    <enabled type="bool">false</enabled>
                     <left>
                         <heading-max-deg type="double">120</heading-max-deg>
-                        <x-offset-max-m type="double">0.20</x-offset-max-m>
+                        <x-offset-max-m type="double">0.10</x-offset-max-m>
                         <x-offset-threshold-deg type="double">45</x-offset-threshold-deg>
                     </left>
                     <right>
@@ -57,6 +60,43 @@ Started Oct 2005  Syd Adams
             </config>
         </view>
 
+        <view n="1">
+            <config>
+                <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+            </config>
+        </view>
+
+        <view n="2">
+            <config>
+                <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+            </config>
+        </view>
+
+        <view n="3">
+            <config>
+                <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+            </config>
+        </view>
+
+        <view n="4">
+            <config>
+                <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+            </config>
+        </view>
+
+        <view n="5">
+            <config>
+                <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+            </config>
+        </view>
+
+        <view n="6">
+            <config>
+                <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+            </config>
+        </view>
+
+
   <view n="100">
     <name>Passenger 1</name>
     <internal archive="y">true</internal>
@@ -65,13 +105,13 @@ Started Oct 2005  Syd Adams
       <from-model type="bool">true</from-model>
       <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
       <heading-offset-deg type="double">0</heading-offset-deg>
-      <x-offset-m archive="y" type="double">-0.41</x-offset-m> <!--Right-->
-      <y-offset-m archive="y" type="double">0.4</y-offset-m> <!--Up-->
-      <z-offset-m archive="y" type="double">-3.33</z-offset-m> <!--Back-->
+      <x-offset-m archive="y" type="double">-0.41</x-offset-m>
+      <y-offset-m archive="y" type="double">0.4</y-offset-m>
+      <z-offset-m archive="y" type="double">-3.33</z-offset-m>
       <default-heading-offset-deg>0</default-heading-offset-deg>
       <pitch-offset-deg>0</pitch-offset-deg>
                 <limits>
-                    <enabled type="bool">true</enabled>
+                    <enabled type="bool">false</enabled>
                     <left>
                         <heading-max-deg type="double">120</heading-max-deg>
                         <x-offset-max-m type="double">0.28</x-offset-max-m>
@@ -95,12 +135,11 @@ Started Oct 2005  Syd Adams
       <from-model type="bool">true</from-model>
       <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
       <heading-offset-deg type="double">0</heading-offset-deg>
-      <x-offset-m archive="y" type="double">0.41</x-offset-m> <!--Right-->
-      <y-offset-m archive="y" type="double">0.4</y-offset-m> <!--Up-->
-      <z-offset-m archive="y" type="double">-1.04</z-offset-m> <!--Back-->
+      <x-offset-m archive="y" type="double">0.41</x-offset-m>
+      <y-offset-m archive="y" type="double">0.4</y-offset-m>
+      <z-offset-m archive="y" type="double">-1.04</z-offset-m>
       <default-heading-offset-deg>0</default-heading-offset-deg>
-      <pitch-offset-deg>0</pitch-offset-deg>
-      <pitch-offset-deg>0</pitch-offset-deg>
+    <pitch-offset-deg>0</pitch-offset-deg>
                 <limits>
                     <enabled type="bool">true</enabled>
                     <left>
@@ -118,14 +157,69 @@ Started Oct 2005  Syd Adams
     </config>
     </view>
 
+  <view n="102">
+    <name>Copilot</name>
+    <internal archive="y">true</internal>
+    <type>lookfrom</type>
+    <config>
+      <from-model type="bool">true</from-model>
+      <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+      <heading-offset-deg type="double">0</heading-offset-deg>
+      <x-offset-m archive="y" type="double">0.38</x-offset-m>
+      <y-offset-m archive="y" type="double">0.4</y-offset-m>
+      <z-offset-m archive="y" type="double">-7.0</z-offset-m>
+      <default-heading-offset-deg>0</default-heading-offset-deg>
+      <pitch-offset-deg>-12.0</pitch-offset-deg>
+                <limits>
+                    <enabled type="bool">false</enabled>
+                    <left>
+                        <heading-max-deg type="double">120</heading-max-deg>
+                        <x-offset-max-m type="double">0.28</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
+                    </left>
+                    <right>
+                        <heading-max-deg type="double">170</heading-max-deg>
+                        <x-offset-max-m type="double">0.25</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
+                    </right>
+                </limits>
+      <dynamic-view type="bool">false</dynamic-view>
+    </config>
+    </view>
+
+  <view n="103">
+    <name>Panel</name>
+    <internal archive="y">true</internal>
+    <type>lookfrom</type>
+    <config>
+      <from-model type="bool">true</from-model>
+      <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+      <heading-offset-deg type="double">0</heading-offset-deg>
+      <x-offset-m archive="y" type="double">-0.2</x-offset-m>
+      <y-offset-m archive="y" type="double">0.2</y-offset-m>
+      <z-offset-m archive="y" type="double">-7.20</z-offset-m>
+      <default-heading-offset-deg>0</default-heading-offset-deg>
+      <pitch-offset-deg>-12.0</pitch-offset-deg>
+                <limits>
+                    <enabled type="bool">false</enabled>
+                </limits>
+      <dynamic-view type="bool">false</dynamic-view>
+    </config>
+    </view>
+
         <allow-toggle-cockpit>true</allow-toggle-cockpit>
         <chase-distance-m type="double">-40.0</chase-distance-m>
 
-    <!--airport>
+    <airport>
         <runways>
             <start-offset-m>20</start-offset-m>
         </runways>
-    </airport-->
+    </airport>
+
+        <instrumentation>
+            <path>Aircraft/CitationX/Systems/instrumentation.xml</path>
+        </instrumentation>
+
 
     <systems>
         <path>Aircraft/CitationX/Systems/systems.xml</path>
@@ -167,6 +261,13 @@ Started Oct 2005  Syd Adams
                     </binding>
                 </item>
                 <item>
+                    <label>Options</label>
+                    <binding>
+                        <command>nasal</command>
+                        <script>dialogs.options.open()</script>
+                    </binding>
+                </item>
+                <item>
                     <label>Select Livery</label>
                     <binding>
                         <command>nasal</command>
@@ -192,14 +293,12 @@ Started Oct 2005  Syd Adams
 
         <flaps>
             <setting>0.0</setting> <!-- 0 -->
+            <setting>0.0428</setting> <!-- slats -->
             <setting>0.142</setting> <!-- 5 -->
             <setting>0.428</setting> <!-- 15 -->
             <setting>1.0</setting> <!-- 35 -->
         </flaps>
 
-        <instrumentation>
-            <path>Aircraft/CitationX/Systems/instrumentation.xml</path>
-        </instrumentation>
 
     <multiplay>
         <generic>
@@ -268,7 +367,6 @@ Started Oct 2005  Syd Adams
         </amber>
     </color-set>
 
-
     </sim>
 
     <systems>
@@ -276,6 +374,27 @@ Started Oct 2005  Syd Adams
             <ac-volts>0</ac-volts>
         </electrical>
     </systems>
+
+
+    <consumables>
+        <fuel>
+            <tank n="0">
+                <name>LH tank</name>
+                <level-lbs>2000.0</level-lbs>
+                <selected type="bool">1</selected>
+            </tank>
+            <tank n="1">
+                <name>RH tank</name>
+                <level-lbs>2000.0</level-lbs>
+                <selected type="bool">1</selected>
+            </tank>
+            <tank n="2">
+                <name>CTR tank</name>
+                <level-lbs>2000.0</level-lbs>
+                <selected type="bool">1</selected>
+            </tank>
+        </fuel>
+    </consumables>
 
     <instrumentation>
 
@@ -307,8 +426,8 @@ Started Oct 2005  Syd Adams
                 <file-prefix type="string">Sounds/tcas/</file-prefix>
             </voice-->
             <speaker>                           <!-- Speaker Configuration -->
-                <max-dist type="double">6</max-dist>        <!-- Max. distance where speaker is heard -->
-                <reference-dist type="double"> 2 </reference-dist> <!-- Distance to pilot -->
+                <max-dist type="double">7</max-dist>        <!-- Max. distance where speaker is heard -->
+                <reference-dist type="double">5</reference-dist> <!-- Distance to pilot -->
                 <volume type="double"> 1 </volume>          <!-- Volume at reference distance -->
             </speaker>
             <range type="int">6</range>
@@ -324,14 +443,12 @@ Started Oct 2005  Syd Adams
                     <blue type="float">0.7</blue>
                     <alpha type="float">1</alpha>
                 </color>
-
                 <name type="string">helvetica_bold.txf</name>
                 <size type="float">14</size>
                 <line-spacing type="float">0.01</line-spacing>
             </font>
-            
             <serviceable type="bool">true</serviceable>
-            <range type="int" archive="y">10</range>
+            <range type="int" archive="y">100</range>
             <aircraft-heading-up type="bool">true</aircraft-heading-up>
             <heading-up-deg type="float">0.01</heading-up-deg>
             <x-center type="float">0.5</x-center>
@@ -344,6 +461,31 @@ Started Oct 2005  Syd Adams
             </display>
             <line-width type="double">3</line-width>
         </nd>
+
+        <tcas-display>
+            <radar-texture-path type="string">Aircraft/CitationX/Models/Instruments/MFD/tcas-display.png</radar-texture-path>
+            <symbol-texture-path type="string">Aircraft/CitationX/Models/Instruments/MFD/symbols.png</symbol-texture-path>
+            <font>
+                <color>
+                    <red type="float">0.7</red>
+                    <green type="float">0.7</green>
+                    <blue type="float">0.7</blue>
+                    <alpha type="float">1</alpha>
+                </color>
+                <name type="string">helvetica_bold.txf</name>
+                <size type="float">14</size>
+                <line-spacing type="float">0.01</line-spacing>
+            </font>
+            <serviceable type="bool">true</serviceable>
+            <range type="int" archive="y">6</range>
+            <aircraft-heading-up type="bool">true</aircraft-heading-up>
+            <heading-up-deg type="float">0.01</heading-up-deg>
+            <x-center type="float">0.5</x-center>
+            <y-center type="float">0.5</y-center>
+            <display>
+            </display>
+            <line-width type="double">3</line-width>
+        </tcas-display>
 
         <alerts>
             <gear-horn type="bool">0</gear-horn>
@@ -393,7 +535,7 @@ Started Oct 2005  Syd Adams
         <et type="bool">0</et>
         <tcas type="bool">0</tcas>
         <acft-sys type="bool">0</acft-sys>
-        <mfd-map type="bool">0</mfd-map>
+        <mfd-map type="bool">1</mfd-map>
         <mfd-wx type="bool">0</mfd-wx>
         <norm type="bool">0</norm>
         <abn type="bool">0</abn>
@@ -412,30 +554,10 @@ Started Oct 2005  Syd Adams
     </eicas>
     <mfd>
         <menu-num type="int">0</menu-num>
-        <menu>
-            <header type="string">MENU 1/2</header>
-            <entry type="string" n="0"></entry>
-            <entry type="string" n="1">PFD
-SETUP</entry>
-            <entry type="string" n="2">MFD
-SETUP</entry>
-            <entry type="string" n="3">ET SET
-FT TIMER</entry>
-            <entry type="string" n="4">EICAS
-SYS</entry>
-            <entry type="string" n="5">V
-SPEEDS</entry>
-            <entry type="string" n="6">RNG</entry>
-        </menu>
-        <dim type="double">1</dim>
     </mfd>
     <pfd>
     </pfd>
 </primus2000>
-
-    <groundradar>
-        <range type="double">5</range>
-    </groundradar>
 
     <cdu n="0">
         <page type="string">PROGRESS</page>
@@ -493,6 +615,12 @@ SPEEDS</entry>
         <cabin-door>
             <open type="bool">0</open>
         </cabin-door>
+        <APU>
+            <master type="bool">0</master>
+            <battery type="double">28.0</battery>
+            <running type="bool">0</running>
+            <off-start-run type="int">1</off-start-run>
+        </APU>
     </controls>
 
     <autopilot>
@@ -501,7 +629,6 @@ SPEEDS</entry>
             <target-roll-deg type="double">0</target-roll-deg>
             <target-pitch-deg type="double">0</target-pitch-deg>
             <vertical-speed-fpm type="int">0</vertical-speed-fpm>
-            <low-bank type="bool">0</low-bank>
             <nav-source type="string">NAV1</nav-source>
             <bank-limit type="int">27</bank-limit>
             <target-speed-kt type="int">80</target-speed-kt>

@@ -31,17 +31,6 @@ Primus 2000 EICAS
 
     <animation>
         <type>select</type>
-        <object-name>EICAS.off</object-name>
-        <condition>
-            <less-than>
-                <property>systems/electrical/outputs/efis</property>
-                <value>15</value>
-            </less-than>
-        </condition>
-    </animation>
-
-    <animation>
-        <type>select</type>
         <object-name>gear0.annun</object-name>
         <condition>
             <equals>
@@ -95,12 +84,14 @@ Primus 2000 EICAS
         <property>surface-positions/flap-pos-norm</property>
         <interpolation>
             <entry><ind>0.0</ind><dep>0.0</dep></entry>
-            <entry><ind>1.0</ind><dep>70.0</dep></entry>
+            <entry><ind>0.1428</ind><dep>20.0</dep></entry>
+            <entry><ind>0.4285</ind><dep>45.0</dep></entry>
+            <entry><ind>1.0</ind><dep>85.0</dep></entry>
         </interpolation>
         <center>
-            <x-m>0.003</x-m>
-            <y-m>-0.065</y-m>
-            <z-m>-0.0415</z-m>
+            <x-m>0.00</x-m>
+            <y-m>-0.064</y-m>
+            <z-m>-0.042</z-m>
         </center>
         <axis>
             <x>-1.0</x>

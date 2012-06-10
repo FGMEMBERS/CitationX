@@ -328,34 +328,45 @@
 
     <animation>
         <type>select</type>
-        <object-name>PFD.off</object-name>
-        <condition>
-            <less-than>
-                <property>systems/electrical/outputs/efis</property>
-                <value>15</value>
-            </less-than>
-        </condition>
-    </animation>
-
-    <animation>
-        <type>select</type>
         <object-name>ptr1</object-name>
         <condition>
             <greater-than>
-            <property>instrumentation/primus2000/sc840/nav1ptr</property>
-            <value>0</value>
-        </greater-than>
+                <property>instrumentation/primus2000/sc840/nav1ptr</property>
+                <value>0</value>
+            </greater-than>
         </condition>
     </animation>
 
     <animation>
         <type>select</type>
-        <object-name>ptr2</object-name>
+        <object-name>ptr1label-vor</object-name>
         <condition>
-            <greater-than>
-            <property>instrumentation/primus2000/sc840/nav2ptr</property>
-            <value>0</value>
-        </greater-than>
+            <equals>
+            <property>instrumentation/primus2000/sc840/nav1ptr</property>
+            <value>1</value>
+        </equals>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>ptr1label-adf</object-name>
+        <condition>
+            <equals>
+            <property>instrumentation/primus2000/sc840/nav1ptr</property>
+            <value>2</value>
+        </equals>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>ptr1label-fms</object-name>
+        <condition>
+            <equals>
+            <property>instrumentation/primus2000/sc840/nav1ptr</property>
+            <value>3</value>
+        </equals>
         </condition>
     </animation>
 
@@ -375,7 +386,51 @@
         </center>
     </animation>
 
-<animation>
+    <animation>
+        <type>select</type>
+        <object-name>ptr2</object-name>
+        <condition>
+            <greater-than>
+                <property>instrumentation/primus2000/sc840/nav2ptr</property>
+                <value>0</value>
+            </greater-than>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>ptr2label-vor</object-name>
+        <condition>
+            <equals>
+                <property>instrumentation/primus2000/sc840/nav2ptr</property>
+                <value>1</value>
+            </equals>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>ptr2label-adf</object-name>
+        <condition>
+            <equals>
+                <property>instrumentation/primus2000/sc840/nav2ptr</property>
+                <value>2</value>
+            </equals>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>ptr2label-fms</object-name>
+        <condition>
+            <equals>
+                <property>instrumentation/primus2000/sc840/nav2ptr</property>
+                <value>3</value>
+            </equals>
+        </condition>
+    </animation>
+
+    <animation>
         <type>rotate</type>
         <object-name>ptr2</object-name>
         <property>autopilot/internal/nav2-pointer</property>
@@ -436,30 +491,6 @@
     </animation>
 
     <animation>
-        <type>textranslate</type>
-        <object-name>ptr1label</object-name>
-        <property>instrumentation/primus2000/sc840/nav1ptr</property>
-        <factor>0.0355</factor>
-        <axis>
-            <x>0</x>
-            <y>-1</y>
-            <z>0</z>
-        </axis>
-    </animation>
-
-    <animation>
-        <type>textranslate</type>
-        <object-name>ptr2label</object-name>
-        <property>instrumentation/primus2000/sc840/nav2ptr</property>
-        <factor>0.0355</factor>
-        <axis>
-            <x>0</x>
-            <y>-1</y>
-            <z>0</z>
-        </axis>
-    </animation>
-
-    <animation>
         <type>select</type>
         <object-name>gs.scale</object-name>
         <object-name>gs.needle</object-name>
@@ -484,27 +515,6 @@
         </axis>
     </animation>
 
-<animation>
-        <type>rotate</type>
-        <object-name>Slipball</object-name>
-        <property>instrumentation/slip-skid-ball/indicated-slip-skid</property>
-				<interpolation>
-            <entry><ind>-2.0</ind><dep>-3.65</dep></entry>
-            <entry><ind>2.0</ind><dep>3.65</dep></entry>
-        </interpolation>
-        <axis>
-            <x>-1</x>
-            <y>0</y>
-            <z>0</z>
-        </axis>
-        <center>
-            <x-m>0</x-m>
-            <y-m>0</y-m>
-            <z-m>0.134</z-m>
-        </center>
-    </animation>
-
-
 <!-- Text -->
 
 <model>
@@ -520,17 +530,6 @@
 
     <animation>
         <type>select</type>
-        <object-name>text3d</object-name>
-        <condition>
-            <greater-than>
-                <property>systems/electrical/outputs/efis</property>
-                <value>15</value>
-            </greater-than>
-        </condition>
-    </animation>
-
-    <animation>
-        <type>select</type>
         <object-name>VSbox</object-name>
         <condition>
             <equals>
@@ -540,58 +539,28 @@
         </condition>
     </animation>
 
-<!-- Hotspots -->
-
     <animation>
-        <type>pick</type>
-        <object-name>PFD.std</object-name>
-        <visible>true</visible>
-        <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>property-assign</command>
-                <property>instrumentation/altimeter/setting-inhg</property>
-                <value>29.92</value>
-            </binding>
-        </action>
-    </animation>
-
-
-    <animation>
-        <type>pick</type>
-        <object-name>PFD.baro</object-name>
-        <action>
-            <button>3</button>
-            <repeatable>true</repeatable>
-            <interval-sec>0.2</interval-sec>
-            <binding>
-                <command>property-adjust</command>
-                <property>instrumentation/altimeter/setting-inhg</property>
-                <step>0.01</step>
-                <min>26.0</min>
-                <max>33.0</max>
-                <wrap>false</wrap>
-            </binding>
-        </action>
+        <type>select</type>
+        <object-name>Omarker</object-name>
+        <condition>
+            <property>instrumentation/marker-beacon/outer</property>
+         </condition>
     </animation>
 
     <animation>
-        <type>pick</type>
-        <object-name>PFD.baro</object-name>
-        <action>
-            <button>4</button>
-            <repeatable>true</repeatable>
-            <interval-sec>0.2</interval-sec>
-            <binding>
-                <command>property-adjust</command>
-                <property>instrumentation/altimeter/setting-inhg</property>
-                <step>-0.01</step>
-                <min>26.0</min>
-                <max>33.0</max>
-                <wrap>false</wrap>
-            </binding>
-        </action>
+        <type>select</type>
+        <object-name>Mmarker</object-name>
+        <condition>
+            <property>instrumentation/marker-beacon/middle</property>
+         </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>Imarker</object-name>
+        <condition>
+            <property>instrumentation/marker-beacon/inner</property>
+         </condition>
     </animation>
 
 </PropertyList>

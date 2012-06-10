@@ -8,12 +8,6 @@ This file selects the instrumentation modules that should be available.
 
 <PropertyList>
 
-    <groundradar>
-        <name>groundradar</name>
-        <!--airport-id-source>instrumentation/groundradar/id</airport-id-source-->
-        <range-source>instrumentation/groundradar/range</range-source>
-    </groundradar>
-
     <adf>
         <name>adf</name>
         <number>0</number>
@@ -50,11 +44,6 @@ This file selects the instrumentation modules that should be available.
         <suction>/systems/vacuum/suction-inhg</suction>
     </heading-indicator>
 
-    <heading-indicator-dg>
-        <name>heading-indicator-dg</name>
-        <number>0</number>
-    </heading-indicator-dg>
-
     <magnetic-compass>
         <name>magnetic-compass</name>
         <number>0</number>
@@ -85,11 +74,6 @@ This file selects the instrumentation modules that should be available.
         <number>0</number>
     </turn-indicator>
 
-    <radar>
-        <name>radar</name>
-        <number>0</number>
-    </radar>
-
     <KT-70>
         <name>kt-70</name>
         <number>0</number>
@@ -105,21 +89,36 @@ This file selects the instrumentation modules that should be available.
         <number>0</number>
     </KR-87>
 
+    <marker-beacon>
+        <name>marker-beacon</name>
+        <number>0</number>
+    </marker-beacon>
+
     <mk-viii>
         <name>mk-viii</name>
         <number>0</number>
     </mk-viii>
+
+    <radar>
+        <name>radar</name>
+        <number>0</number>
+    </radar>
 
     <tcas>
         <name>tcas</name>
         <number>0</number>
     </tcas>
 
-
     <navigation-display>
         <name>nd</name>
         <number>0</number>
         <symbols include="nav-display.xml"/>
+    </navigation-display>
+
+   <navigation-display>
+        <name>tcas-display</name>
+        <number>0</number>
+        <symbols include="tcas-display.xml"/>
     </navigation-display>
 
 </PropertyList>

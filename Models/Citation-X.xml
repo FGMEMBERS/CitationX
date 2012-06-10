@@ -40,6 +40,38 @@
       <texture>livery1.png</texture>
     </animation>
 
+    <!--effect>
+      <inherits-from>Aircraft/CitationX/Models/Effects/skin-reflect</inherits-from>
+      <object-name>Fuselage</object-name>
+      <object-name>RHfrt.geardoor</object-name>
+      <object-name>LHfrt.geardoor</object-name>
+      <object-name>RRfrt.geardoor</object-name>
+      <object-name>LGeardoor</object-name>
+      <object-name>RGeardoor</object-name>
+      <object-name>LGeardoor.001</object-name>
+      <object-name>RGeardoor.001</object-name>
+      <object-name>Cabin.door</object-name>
+      <object-name>Cabin.lwrdoor</object-name>
+      <object-name>LHwing</object-name>
+      <object-name>RHwing</object-name>
+      <object-name>Engines</object-name>
+      <object-name>Rudder</object-name>
+      <object-name>HStab</object-name>
+      <object-name>LHelevator</object-name>
+      <object-name>RHelevator</object-name>
+      <object-name>RHFlap0</object-name>
+      <object-name>LHFlap0</object-name>
+      <object-name>RHFlap1</object-name>
+      <object-name>LHFlap1</object-name>
+      <object-name>RHAileron</object-name>
+      <object-name>LHAileron</object-name>
+      <object-name>RHspeedbrake</object-name>
+      <object-name>LHspeedbrake</object-name>
+      <object-name>UprReverser</object-name>
+      <object-name>LwrReverser</object-name>
+    </effect-->
+
+
     <model><!-- LH tail reg-->
         <path>Aircraft/CitationX/Models/registration.xml</path>
         <offsets>
@@ -86,7 +118,7 @@
         </overlay>
     </model>
 
-    <!--model>
+    <model>
         <name>shadow</name>
         <path>Aircraft/CitationX/Models/shadow.xml</path>
         <offsets>
@@ -95,15 +127,8 @@
             <z-m>-2.2</z-m>
             <pitch-deg>0</pitch-deg>
         </offsets>
-    </model-->
+    </model>
 
-    <!--animation>
-        <type>select</type>
-        <object-name>shadow</object-name>
-        <condition>
-            <property>sim/rendering/shadows-ac</property>
-        </condition>
-    </animation-->
 
     <model>
     <name>cabin</name>
@@ -120,9 +145,9 @@
     <name>flightdeck</name>
         <path>Aircraft/CitationX/Models/flightdeck.xml</path>
         <offsets>
-            <x-m>0</x-m>
+            <x-m>-6.613</x-m>
             <y-m>0</y-m>
-            <z-m>0</z-m>
+            <z-m>-0.564</z-m>
             <pitch-deg>0</pitch-deg>
         </offsets>
     </model>
@@ -439,7 +464,7 @@
     <animation>
         <type>rotate</type>
         <object-name>RHAileron</object-name>
-        <property>surface-positions/right-aileron-pos-norm</property>
+        <property>/surface-positions/right-aileron-pos-norm</property>
         <factor>15</factor>
         <center>
             <x-m>3.247</x-m>
@@ -470,9 +495,39 @@
 
     <animation>
         <type>rotate</type>
+        <object-name>LHspoiler</object-name>
+        <property>/surface-positions/lh-roll-spoiler</property>
+        <factor>-40</factor>
+        <axis>
+            <x1-m>3.064</x1-m>
+            <y1-m>-6.981</y1-m>
+            <z1-m>-0.693</z1-m>
+            <x2-m>1.090</x2-m>
+            <y2-m>-3.632</y2-m>
+            <z2-m>-0.785</z2-m>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
         <object-name>RHspeedbrake</object-name>
         <property>sim/multiplay/generic/float[1]</property>
         <factor>-45</factor>
+        <axis>
+            <x1-m>1.090</x1-m>
+            <y1-m>3.632</y1-m>
+            <z1-m>-0.785</z1-m>
+            <x2-m>3.064</x2-m>
+            <y2-m>6.981</y2-m>
+            <z2-m>-0.693</z2-m>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>RHspoiler</object-name>
+        <property>surface-positions/rh-roll-spoiler</property>
+        <factor>-40</factor>
         <axis>
             <x1-m>1.090</x1-m>
             <y1-m>3.632</y1-m>
@@ -1272,6 +1327,150 @@
         <two-sides type="bool">false</two-sides>
         <min>0.05</min>
         <max>5</max>
+    </animation>
+
+    <animation>
+        <name>shadeless</name>
+        <condition>
+            <property>sim/model/shadeless</property>
+        </condition>
+        <type>material</type>
+        <object-name>flightdeck</object-name>
+        <object-name>Console</object-name>
+        <object-name>RHbreakers</object-name>
+        <object-name>Panel</object-name>
+        <object-name>Panel.001</object-name>
+        <object-name>Seat</object-name>
+        <object-name>magcompass</object-name>
+        <object-name>Glareshield</object-name>
+        <object-name>instruments</object-name>
+        <object-name>Console.001</object-name>
+        <object-name>Throttle.base</object-name>
+        <object-name>RIC1</object-name>
+        <object-name>RIC2</object-name>
+        <object-name>Cnsl.001</object-name>
+        <object-name>LHthrottle</object-name>
+        <object-name>RHthrottle</object-name>
+        <object-name>Speedbrk.lever</object-name>
+        <object-name>FlapLever</object-name>
+        <object-name>Gear.lever</object-name>
+        <object-name>STBYai.bezel</object-name>
+        <object-name>Englimits</object-name>
+        <object-name>HSI</object-name>
+        <object-name>PFDBezel</object-name>
+        <object-name>EICAS</object-name>
+        <object-name>MFD</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>1.0</green>
+            <blue>1.0</blue>
+            <factor-prop>rendering/scene/ambient/blue</factor-prop>
+        </emission>
+        <ambient>
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+        </ambient>
+        <diffuse>
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+        </diffuse>
+        <specular>
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+        </specular>
+    </animation>
+
+
+  <model>
+    <path>Aircraft/CitationX/Models/Effects/contrail1.xml</path>
+    <offsets>
+      <x-m>20.0</x-m>
+      <y-m>-1.69</y-m>
+      <z-m>0.62</z-m>
+      <roll-deg>0</roll-deg>
+      <pitch-deg>0</pitch-deg>
+      <heading-deg>0</heading-deg>
+    </offsets>
+  </model>
+  <model>
+    <path>Aircraft/CitationX/Models/Effects/contrail2.xml</path>
+    <offsets>
+      <x-m>20</x-m>
+      <y-m>1.69</y-m>
+      <z-m>0.62</z-m>
+      <roll-deg>0</roll-deg>
+      <pitch-deg>0</pitch-deg>
+      <heading-deg>0</heading-deg>
+    </offsets>
+  </model>
+
+<!-- MATERIALS -->
+
+    <animation>
+        <name>orange illum</name>
+        <type>material</type>
+        <object-name>LH N1</object-name>
+        <object-name>RH N1</object-name>
+        <object-name>LH ITT</object-name>
+        <object-name>RH ITT</object-name>
+        <object-name>LH N2</object-name>
+        <object-name>RH N2</object-name>
+        <object-name>APUrpm</object-name>
+        <object-name>APUegt</object-name>
+        <object-name>APUvolts</object-name>
+        <emission>
+            <red>1.0</red>
+            <green>0.4</green>
+            <blue>0.0</blue>
+        </emission>
+        <ambient>
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+        </ambient>
+        <diffuse>
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+        </diffuse>
+        <specular>
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+        </specular>
+    </animation>
+
+    <animation>
+        <name>white amb</name>
+        <type>material</type>
+        <object-name>CoPilot-reg</object-name>
+        <object-name>Pilot-reg</object-name>
+        <object-name>labels</object-name>
+         <object-name>lines</object-name>
+         <object-name>FLmeter</object-name>
+        <emission>
+            <red>0.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
+        <ambient>
+            <red>1</red>
+            <green>1</green>
+            <blue>1</blue>
+        </ambient>
+        <diffuse>
+            <red>1</red>
+            <green>1</green>
+            <blue>1</blue>
+        </diffuse>
+        <specular>
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+        </specular>
     </animation>
 
 </PropertyList>
