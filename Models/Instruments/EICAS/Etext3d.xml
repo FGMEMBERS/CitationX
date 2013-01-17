@@ -261,13 +261,13 @@
         <name>Lfan</name>
         <offsets>
             <x-m>0.0</x-m>
-            <y-m>-0.069</y-m>
+            <y-m>-0.059</y-m>
             <z-m>0.027</z-m>
         </offsets>
         <alignment>center-center</alignment>
         <axis-alignment>yz-plane</axis-alignment>
         <type type="string">number-value</type>
-        <property>engines/engine[1]/fan</property>
+        <property>engines/engine/fan</property>
         <format>%03.1f</format>
         <font>helvetica_bold.txf</font>
         <character-size>0.006</character-size>
@@ -330,7 +330,7 @@
         <alignment>center-center</alignment>
         <axis-alignment>yz-plane</axis-alignment>
         <type type="string">number-value</type>
-        <property>engines/engine/turbine</property>
+        <property>engines/engine[1]/turbine</property>
         <format>%3.0f</format>
         <font>helvetica_bold.txf</font>
         <character-size>0.006</character-size>
