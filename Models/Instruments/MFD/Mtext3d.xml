@@ -155,8 +155,7 @@
         <alignment>right-center</alignment>
         <axis-alignment>yz-plane</axis-alignment>
         <type>number-value</type>
-        <property>velocities/uBody-fps</property>
-        <scale>0.59248380</scale>
+        <property>instrumentation/airspeed-indicator/true-speed-kt</property>
         <format>%3.0f</format>
         <font>helvetica_bold.txf</font>
         <character-size>0.005</character-size>
