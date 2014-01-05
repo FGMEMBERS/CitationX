@@ -738,9 +738,9 @@
                 <binding>
                     <command>property-adjust</command>
                     <property>autopilot/settings/asel</property>
-                    <step>-1000</step>
+                    <step>-10</step>
                     <min>0</min>
-                    <max>65500</max>
+                    <max>510</max>
                     <wrap>0</wrap>
                 </binding>
                 <binding>
@@ -757,9 +757,9 @@
                 <binding>
                     <command>property-adjust</command>
                     <property>autopilot/settings/asel</property>
-                    <step>-100</step>
+                    <step>-1</step>
                     <min>0</min>
-                    <max>65500</max>
+                    <max>510</max>
                     <wrap>0</wrap>
                 </binding>
                 <binding>
@@ -768,9 +768,9 @@
             </button>
 
             <input>
-                <x>135</x>
+                <x>140</x>
                 <y>25</y>
-                <width>60</width>
+                <width>50</width>
                 <height>20</height>
                 <property>autopilot/settings/asel</property>
                 <live>true</live>
@@ -788,9 +788,9 @@
                 <binding>
                     <command>property-adjust</command>
                     <property>autopilot/settings/asel</property>
-                    <step>100</step>
+                    <step>1</step>
                     <min>0</min>
-                    <max>65500</max>
+                    <max>510</max>
                     <wrap>0</wrap>
                 </binding>
                 <binding>
@@ -807,9 +807,9 @@
                 <binding>
                     <command>property-adjust</command>
                     <property>autopilot/settings/asel</property>
-                    <step>1000</step>
+                    <step>10</step>
                     <min>0</min>
-                    <max>65500</max>
+                    <max>510</max>
                     <wrap>0</wrap>
                 </binding>
                 <binding>
@@ -826,7 +826,7 @@
                 <binding>
                     <command>property-assign</command>
                     <property>autopilot/settings/asel</property>
-                    <value>10000</value>
+                    <value>100</value>
                 </binding>
                 <binding>
                     <command>dialog-update</command>
