@@ -115,6 +115,12 @@
         <config>
             <Kp>-1.5</Kp>
             <Ki>0.0</Ki>
+            <min>
+                <value>-30</value>
+            </min>
+            <max>
+                <value>30</value>
+            </max>
         </config>
     </pi-simple-controller>
 
