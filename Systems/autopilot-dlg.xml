@@ -222,7 +222,7 @@
                     <legend>APP</legend>
                     <binding>
                         <command>nasal</command>
-                        <script>citation.FD_set_mode("apr")</script>
+                        <script>citation.FD_set_mode("app")</script>
                     </binding>
                 </button>
 
