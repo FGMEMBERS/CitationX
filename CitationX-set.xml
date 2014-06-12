@@ -14,6 +14,16 @@ Started Oct 2005  Syd Adams
         <aero>CitationX</aero>
         <fuel-fraction>0.5</fuel-fraction>
 
+        <tags>
+            <tag>bizjet</tag>
+            <tag>cessna</tag>
+            <tag>jet</tag>
+            <tag>retractable-gear</tag>
+            <tag>ifr</tag>
+            <tag>twin-engine</tag>
+            <tag>glass-cockpit</tag>
+        </tags>
+        
         <startup>
             <splash-texture>Aircraft/CitationX/Splash.png</splash-texture>
         </startup>
