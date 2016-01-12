@@ -1,14 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 
 <PropertyList>
 
     <path>CitationX.ac</path>
+		<offsets>
+    	<pitch-deg>0.4</pitch-deg>   
+    	<heading-deg></heading-deg>
+    	<roll-deg>0</roll-deg>
+    	<x-m>0</x-m>
+    	<y-m>0</y-m>
+    	<z-m>-0.07</z-m>
+  	</offsets>
 
+  <!-- Tutorial marker -->
+  <model>
+    <path>Models/Aircraft/marker.xml</path>
+  </model>
     <nasal>
         <load>
             var livery_update = aircraft.livery_update.new("Aircraft/CitationX/Models/Liveries", 10);
         </load>
-
         <unload>
             livery_update.stop();
         </unload>
@@ -35,6 +46,8 @@
       <object-name>RRfrt.geardoor</object-name>
       <object-name>RHfrt.geardoor</object-name>
       <object-name>LHfrt.geardoor</object-name>
+      <object-name>Cabin.door</object-name>
+      <object-name>Cabin.lwrdoor</object-name>
       <property-base>sim/model/livery</property-base>
       <texture-prop>texture</texture-prop>
       <texture>livery1.png</texture>
@@ -575,7 +588,7 @@
     </animation>
 
 <!-- Gear-->
-<!-- nose-->
+			<!-- nose-->
 
     <animation>
         <type>rotate</type>
@@ -906,7 +919,7 @@
         <center>
             <x-m>0.122</x-m>
             <y-m>-1.354</y-m>
-            <z-m>-2.226</z-m>
+            <z-m>-2.145</z-m>
         </center>
         <axis>
             <x>0</x>
@@ -1046,7 +1059,7 @@
         <center>
             <x-m>0.122</x-m>
             <y-m>1.354</y-m>
-            <z-m>-2.226</z-m>
+            <z-m>-2.145</z-m>
         </center>
         <axis>
             <x>0</x>
@@ -1407,6 +1420,36 @@
     </offsets>
   </model>
 
+  <model>
+      <name>tyre-smoke-n</name>
+      <path>Aircraft/CitationX/Models/Effects/tyre-smoke-nose.xml</path>
+      <offsets>
+          <x-m>-8.098</x-m>
+          <y-m> 0.0</y-m>
+          <z-m>-2.003</z-m>
+      </offsets>
+  </model>
+
+  <model>
+      <name>tyre-smoke-n</name>
+      <path>Aircraft/CitationX/Models/Effects/tyre-smoke-left.xml</path>
+      <offsets>
+          <x-m> 0.122</x-m>
+          <y-m>-1.354</y-m>
+          <z-m>-2.145</z-m>
+      </offsets>
+  </model>
+
+  <model>
+      <name>tyre-smoke-n</name>
+      <path>Aircraft/CitationX/Models/Effects/tyre-smoke-right.xml</path>
+      <offsets>
+          <x-m> 0.122</x-m>
+          <y-m> 1.354</y-m>
+          <z-m>-2.145</z-m>
+      </offsets>
+  </model>
+
 <!-- MATERIALS -->
 
     <animation>
@@ -1419,9 +1462,13 @@
         <object-name>LH N2</object-name>
         <object-name>RH N2</object-name>
         <object-name>APUrpm</object-name>
+        <object-name>APUrpmTest</object-name>
         <object-name>APUegt</object-name>
+        <object-name>APUegtTest</object-name>
         <object-name>APUvolts</object-name>
-        <emission>
+        <object-name>APUready</object-name> 
+        <object-name>APUbleed</object-name> 
+       <emission>
             <red>1.0</red>
             <green>0.4</green>
             <blue>0.0</blue>
@@ -1442,7 +1489,6 @@
             <blue>0</blue>
         </specular>
     </animation>
-
     <animation>
         <name>white amb</name>
         <type>material</type>
@@ -1465,6 +1511,105 @@
             <red>1</red>
             <green>1</green>
             <blue>1</blue>
+        </diffuse>
+        <specular>
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+        </specular>
+    </animation>
+
+    <animation>
+        <name>Red illum</name>
+        <type>material</type>
+        <object-name>APU.test</object-name>
+					<condition>
+						<equals>
+							<property>controls/APU/test</property> 
+							<value>1</value>
+						</equals>
+					</condition> 
+	      <emission>
+            <red>1.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
+        <ambient>
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+        </ambient>
+        <diffuse>
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+        </diffuse>
+        <specular>
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+        </specular>
+    </animation>
+
+    <animation>
+        <name>Red illum</name>
+        <type>material</type>
+        <object-name>light-R</object-name>
+					<condition>
+						<and>
+							<equals>
+								<property>controls/electric/std-by-pwr</property> 
+									<value>1</value>
+							</equals>
+                <property>controls/electric/battery-switch[0]</property>
+						</and>
+					</condition> 
+      	<emission>
+            <red>1.0</red>
+            <green>0.0</green>
+            <blue>0.0</blue>
+        </emission>
+        <ambient>
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+        </ambient>
+        <diffuse>
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+        </diffuse>
+        <specular>
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+        </specular>
+    </animation>
+
+    <animation>
+        <name>Green illum</name>
+        <type>material</type>
+        <object-name>light-G</object-name>
+					<condition>
+						<equals>
+							<property>controls/electric/std-by-pwr</property> 
+								<value>-1</value>
+						</equals>
+					</condition> 
+      	<emission>
+            <red>0.0</red>
+            <green>1.0</green>
+            <blue>0.0</blue>
+        </emission>
+        <ambient>
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
+        </ambient>
+        <diffuse>
+            <red>0</red>
+            <green>0</green>
+            <blue>0</blue>
         </diffuse>
         <specular>
             <red>0</red>

@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
 <PropertyList>
 
 <text>
@@ -12,7 +14,7 @@
         <type type="string">text-value</type>
         <property>autopilot/locks/AP-status</property>
         <font>helvetica_bold.txf</font>
-        <character-size>0.007</character-size>
+        <character-size>0.009</character-size>
         <character-aspect-ratio type="double">1.4</character-aspect-ratio>
         <font-resolution>
             <width type="int">64</width>
@@ -32,7 +34,7 @@
         <type type="string">text-value</type>
         <property>autopilot/locks/heading</property>
         <font>helvetica_bold.txf</font>
-        <character-size>0.007</character-size>
+        <character-size>0.008</character-size>
         <character-aspect-ratio type="double">1.4</character-aspect-ratio>
         <font-resolution>
             <width type="int">64</width>
@@ -52,7 +54,7 @@
         <type type="string">text-value</type>
         <property>autopilot/locks/altitude</property>
         <font>helvetica_bold.txf</font>
-        <character-size>0.007</character-size>
+        <character-size>0.008</character-size>
         <character-aspect-ratio type="double">1.4</character-aspect-ratio>
         <font-resolution>
             <width type="int">64</width>
@@ -64,15 +66,15 @@
         <name>AP-lat-armed</name>
         <offsets>
             <x-m>0.00</x-m>
-            <y-m>-0.031</y-m>
-            <z-m>0.101</z-m>
+            <y-m>-0.017</y-m>
+            <z-m>0.094</z-m>
         </offsets>
         <alignment>center-center</alignment>
         <axis-alignment>yz-plane</axis-alignment>
         <type type="string">text-value</type>
         <property>autopilot/locks/heading-arm</property>
         <font>helvetica_bold.txf</font>
-        <character-size>0.007</character-size>
+        <character-size>0.008</character-size>
         <character-aspect-ratio type="double">1.4</character-aspect-ratio>
         <font-resolution>
             <width type="int">64</width>
@@ -84,15 +86,15 @@
         <name>AP-vert-armed</name>
         <offsets>
             <x-m>0.0</x-m>
-            <y-m>0.025</y-m>
-            <z-m>0.101</z-m>
+            <y-m>0.012</y-m>
+            <z-m>0.094</z-m>
         </offsets>
         <alignment>center-center</alignment>
         <axis-alignment>yz-plane</axis-alignment>
         <type type="string">text-value</type>
         <property>autopilot/locks/altitude-arm</property>
         <font>helvetica_bold.txf</font>
-        <character-size>0.007</character-size>
+        <character-size>0.008</character-size>
         <character-aspect-ratio type="double">1.4</character-aspect-ratio>
         <font-resolution>
             <width type="int">64</width>
@@ -110,10 +112,10 @@
         <alignment>right-center</alignment>
         <axis-alignment>yz-plane</axis-alignment>
         <type type="string">number-value</type>
-        <property>instrumentation/gps/wp/wp[1]/altitude-ft</property>
+        <property>autopilot/settings/target-altitude-ft</property> -->
         <format>%5.0f</format>
         <font>helvetica_bold.txf</font>
-        <character-size>0.006</character-size>
+        <character-size>0.007</character-size>
         <character-aspect-ratio type="double">1.3</character-aspect-ratio>
         <font-resolution>
             <width type="int">64</width>
@@ -126,14 +128,14 @@
         <offsets>
             <x-m>0.00</x-m>
             <y-m>-0.059</y-m>
-            <z-m>-0.014</z-m>
+            <z-m>-0.020</z-m>
         </offsets>
         <alignment>center-center</alignment>
         <axis-alignment>yz-plane</axis-alignment>
         <type>literal</type>
         <text>CRS</text>
         <font>helvetica_bold.txf</font>
-        <character-size>0.006</character-size>
+        <character-size>0.007</character-size>
         <character-aspect-ratio type="double">1.3</character-aspect-ratio>
         <font-resolution>
             <width type="int">64</width>
@@ -147,7 +149,7 @@
         <offsets>
             <x-m>0.0</x-m>
             <y-m>-0.059</y-m>
-            <z-m>-0.020</z-m>
+            <z-m>-0.028</z-m>
         </offsets>
         <alignment>center-center</alignment>
         <axis-alignment>yz-plane</axis-alignment>
@@ -156,7 +158,7 @@
         <format>%03.0f</format>
         <truncate>true</truncate>
         <font>helvetica_bold.txf</font>
-        <character-size>0.008</character-size>
+        <character-size>0.009</character-size>
         <character-aspect-ratio type="double">1.3</character-aspect-ratio>
         <font-resolution>
             <width type="int">64</width>
@@ -170,14 +172,14 @@
         <offsets>
             <x-m>0.0</x-m>
             <y-m>-0.059</y-m>
-            <z-m>-0.064</z-m>
+            <z-m>-0.063</z-m>
         </offsets>
         <alignment>center-center</alignment>
         <axis-alignment>yz-plane</axis-alignment>
         <type>literal</type>
         <text>HDG</text>
         <font>helvetica_bold.txf</font>
-        <character-size>0.006</character-size>
+        <character-size>0.007</character-size>
         <character-aspect-ratio type="double">1.3</character-aspect-ratio>
         <font-resolution>
             <width type="int">64</width>
@@ -200,14 +202,13 @@
         <format>%03.0f</format>
         <truncate>true</truncate>
         <font>helvetica_bold.txf</font>
-        <character-size>0.008</character-size>
+        <character-size>0.009</character-size>
         <character-aspect-ratio type="double">1.3</character-aspect-ratio>
         <font-resolution>
             <width type="int">64</width>
             <height type="int">64</height>
         </font-resolution>
     </text>
-
 
     <text>
         <name>VSI-annun</name>
@@ -223,7 +224,7 @@
         <format>%-.0f</format>
         <truncate>true</truncate>
         <font>helvetica_bold.txf</font>
-        <character-size>0.005</character-size>
+        <character-size>0.006</character-size>
         <character-aspect-ratio type="double">1.3</character-aspect-ratio>
         <font-resolution>
             <width type="int">64</width>
@@ -236,15 +237,36 @@
         <offsets>
             <x-m>0.0</x-m>
             <y-m>-0.058</y-m>
-            <z-m>0.003</z-m>
+            <z-m>0.002</z-m>
         </offsets>
         <alignment>center-center</alignment>
         <axis-alignment>yz-plane</axis-alignment>
         <type type="string">number-value</type>
         <property>velocities/mach</property>
-        <format>%.3fM</format>
+        <format>%.3f M</format>
         <font>helvetica_bold.txf</font>
-        <character-size>0.006</character-size>
+        <character-size>0.008</character-size>
+        <character-aspect-ratio type="double">1.3</character-aspect-ratio>
+        <font-resolution>
+            <width type="int">64</width>
+            <height type="int">64</height>
+        </font-resolution>
+    </text>
+
+    <text>
+        <name>Kt</name>
+        <offsets>
+            <x-m>0.0</x-m>
+            <y-m>-0.058</y-m>
+            <z-m>-0.006</z-m>
+        </offsets>
+        <alignment>center-center</alignment>
+        <axis-alignment>yz-plane</axis-alignment>
+        <type type="string">number-value</type>
+        <property>velocities/groundspeed-kt</property>
+        <format>%03.0f kt</format>
+        <font>helvetica_bold.txf</font>
+        <character-size>0.008</character-size>
         <character-aspect-ratio type="double">1.3</character-aspect-ratio>
         <font-resolution>
             <width type="int">64</width>
@@ -266,7 +288,7 @@
         <property>instrumentation/altimeter/setting-inhg</property>
         <format>%2.2f</format>
         <font>helvetica_bold.txf</font>
-        <character-size>0.007</character-size>
+        <character-size>0.008</character-size>
         <character-aspect-ratio type="double">1.3</character-aspect-ratio>
         <font-resolution>
             <width type="int">64</width>
@@ -288,7 +310,7 @@
         <format>%03.0f</format>
         <truncate>true</truncate>
         <font>helvetica_bold.txf</font>
-        <character-size>0.01</character-size>
+        <character-size>0.010</character-size>
         <character-aspect-ratio type="double">1.2</character-aspect-ratio>
         <font-resolution>
             <width type="int">64</width>
@@ -372,7 +394,7 @@
         <type type="string">text-value</type>
         <property>autopilot/internal/nav-type</property>
         <font>helvetica_bold.txf</font>
-        <character-size>0.006</character-size>
+        <character-size>0.008</character-size>
         <character-aspect-ratio type="double">1.3</character-aspect-ratio>
         <font-resolution>
             <width type="int">64</width>
@@ -393,7 +415,7 @@
         <property>autopilot/internal/nav-distance</property>
         <format>%3.1f NM</format>
         <font>helvetica_bold.txf</font>
-        <character-size>0.006</character-size>
+        <character-size>0.008</character-size>
         <character-aspect-ratio type="double">1.3</character-aspect-ratio>
         <font-resolution>
             <width type="int">64</width>
@@ -406,15 +428,15 @@
         <offsets>
             <x-m>0.0</x-m>
             <y-m>0.025	</y-m>
-            <z-m>-0.014</z-m>
+            <z-m>-0.015</z-m>
         </offsets>
         <alignment>left-center</alignment>
         <axis-alignment>yz-plane</axis-alignment>
         <type>text-value</type>
         <property>autopilot/internal/nav-id</property>
-        <format>%0.5s</format>
+        <format>%0.8s</format>
         <font>helvetica_bold.txf</font>
-        <character-size>0.006</character-size>
+        <character-size>0.008</character-size>
         <character-aspect-ratio type="double">1.3</character-aspect-ratio>
         <font-resolution>
             <width type="int">64</width>
@@ -427,7 +449,7 @@
         <name>Ralt</name>
         <offsets>
             <x-m>0.0</x-m>
-            <y-m>0.025	</y-m>
+            <y-m>0.023	</y-m>
             <z-m>0.010</z-m>
         </offsets>
         <alignment>left-center</alignment>
@@ -436,7 +458,7 @@
         <property>autopilot/settings/minimums</property>
         <format>%3.0f RA</format>
         <font>helvetica_bold.txf</font>
-        <character-size>0.005</character-size>
+        <character-size>0.007</character-size>
         <character-aspect-ratio type="double">1.3</character-aspect-ratio>
         <font-resolution>
             <width type="int">64</width>
@@ -457,6 +479,15 @@
                     <property>autopilot/locks/altitude</property>
                     <value>VFLC</value>
                 </equals>
+                <equals>
+                    <property>instrumentation/primus2000/sc840/nav1ptr</property>
+                    <value>3</value>
+                </equals>
+                <equals>
+                    <property>instrumentation/primus2000/sc840/nav2ptr</property>
+                    <value>3</value>
+                </equals>
+
             </or>
         </condition>
     </animation>
@@ -599,6 +630,7 @@
         <object-name>SPD-annun</object-name>
         <object-name>VSI-tgt</object-name>
         <object-name>inhg</object-name>
+        <object-name>Kt</object-name>
         <emission>
             <red-prop>sim/color-set/cyan/r</red-prop>
             <green-prop>sim/color-set/cyan/g</green-prop>

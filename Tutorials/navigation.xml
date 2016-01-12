@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
 <PropertyList>
     <name>FMS Navigation</name>
     <description>FMS how to</description>
@@ -71,7 +73,7 @@
             </message>
             <condition>
                 <not-equals>
-                    <property>instrumentation/primus1000/fms-mode</property>
+                    <property>autopilot/settings/nav-source</property>
                     <value>FMS</value>
                 </not-equals>
             </condition>
@@ -79,7 +81,7 @@
         <exit>
             <condition>
                 <equals>
-                    <property>instrumentation/primus1000/fms-mode</property>
+                    <property>autopilot/settings/nav-source</property>
                     <value>FMS</value>
                 </equals>
             </condition>

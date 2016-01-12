@@ -1,7 +1,7 @@
 #############################################################################
 # Flight Director/Autopilot controller.
 # Syd Adams
-#
+# C. Le Moigne (2015)
 ###  Initialization #######
 
 var Lateral = "autopilot/locks/heading";
@@ -17,7 +17,7 @@ var Coord = 0;
 var minimums=getprop("autopilot/settings/minimums");
 var wx_range=[10,25,50,100,200,300];
 var wx_index=3;
-
+var TOD = 0;
 
 #####################################
 
@@ -35,88 +35,113 @@ var FD_set_mode = func(btn){
     var Vmode=getprop(Vertical);
     var VAmode=getprop(Vertical_arm);
 
+		if(btn=="ap"){
+			Coord = getprop(AutoCoord);
+			if(getprop(AP)!="AP"){
+				setprop(Lateral_arm,"");
+				setprop(Vertical_arm,"");
+        if(Vmode=="PTCH")set_pitch();
+        if(Lmode=="ROLL")set_roll(); 
+        if(getprop("position/altitude-agl-ft") > minimums) {
+					setprop(AP,"AP");
+					setprop(AutoCoord,0);
+				}
+			}	else {kill_Ap("")}
 
-    if(btn=="ap"){
-        Coord = getprop(AutoCoord);
-        if(getprop(AP)!="AP1"){
-            setprop(Lateral_arm,"");setprop(Vertical_arm,"");
-            if(Vmode=="PTCH")set_pitch();
-            if(Lmode=="ROLL")set_roll();
-            if(getprop("position/altitude-agl-ft") > minimums) {
-                setprop(AP,"AP1");setprop(AutoCoord,0);}
-        } else kill_Ap("");
-    }elsif(btn=="hdg"){
-        if(Lmode!="HDG") setprop(Lateral,"HDG") else set_roll();
-        setprop(Lateral_arm,"");setprop(Vertical_arm,"");
+    }elsif(btn=="hdg") {
+			if(Lmode!="HDG") {setprop(Lateral,"HDG")}
+			else {
+				set_roll();
+      	setprop(Lateral_arm,"");setprop(Vertical_arm,"");
+			}
     }elsif(btn=="alt"){
-        setprop(Lateral_arm,"");setprop(Vertical_arm,"");
-        if(Vmode!="ALT"){
-            setprop(Vertical,"ALT");setprop("autopilot/settings/asel",(getprop("instrumentation/altimeter/mode-c-alt-ft") * 0.01));
-        } else set_pitch();
+			setprop(Lateral_arm,"");
+			setprop(Vertical_arm,"");
+			if(Vmode!="ALT"){
+        setprop(Vertical,"ALT");
+      } else {set_pitch()}
+
     }elsif(btn=="flc"){
-        var flcmode = "FLC";
-        var asel = "ASEL";
-        if(NAVSRC=="FMS"){flcmode="VFLC";asel = "VASEL";}
-        if(Vmode!=flcmode){
-            var mc =getprop("instrumentation/airspeed-indicator/indicated-mach");
-            var kt=int(getprop("instrumentation/airspeed-indicator/indicated-speed-kt"));
-            if(!getprop("autopilot/settings/changeover")){
-                if(kt > 80 and kt <340){
-                    setprop(Vertical,flcmode);
-                    setprop(Vertical_arm,asel);
-                    setprop("autopilot/settings/target-speed-kt",kt);
-                    setprop("autopilot/settings/target-speed-mach",mc);
-                }
-            }else{
-                if(mc > 0.40 and mc <0.85){
-                    setprop(Vertical,flcmode);
-                    setprop(Vertical_arm,asel);
-                    setprop("autopilot/settings/target-speed-kt",kt);
-                    setprop("autopilot/settings/target-speed-mach",mc);
-                }
-            }
-        } else set_pitch();
-    }elsif(btn=="nav"){
-        set_nav_mode();
-        setprop("autopilot/settings/low-bank",0);
-    }elsif(btn=="vnav"){
-        if(Vmode!="VALT"){
-            if(NAVSRC=="FMS"){
-                setprop(Vertical,"VALT");
-                setprop(Lateral,"LNAV");
-            }
-            }else set_pitch();
+			var flcmode = "FLC";
+			var asel = "ASEL";
+			if(left(NAVSRC,3)=="FMS"){flcmode="VFLC";asel = "VASEL";}
+			if(Vmode!=flcmode){
+				var mc =getprop("instrumentation/airspeed-indicator/indicated-mach");
+				var kt=int(getprop("instrumentation/airspeed-indicator/indicated-speed-kt"));
+				if(!getprop("autopilot/settings/changeover")){
+					if(kt > 80 and kt <340){
+						setprop(Vertical,flcmode);
+						setprop(Vertical_arm,asel);
+						setprop("autopilot/settings/target-speed-kt",kt);
+						setprop("autopilot/settings/target-speed-mach",mc);
+          }
+				}else{
+					if(mc > 0.40 and mc <0.85){
+						setprop(Vertical,flcmode);
+						setprop(Vertical_arm,asel);
+						setprop("autopilot/settings/target-speed-kt",kt);
+						setprop("autopilot/settings/target-speed-mach",mc);
+					}
+        }
+			} else set_pitch();
+
+		}elsif(btn=="nav"){
+			set_nav_mode();
+			setprop("autopilot/settings/low-bank",0);
+
+		}elsif(btn=="vnav"){
+			if(Vmode!="VALT"){
+				if(left(NAVSRC,3)=="FMS"){
+					setprop(Vertical,"VALT");
+					setprop(Lateral,"LNAV");
+         }
+      }else set_pitch();
+
     }elsif(btn=="app"){
-        setprop(Lateral_arm,"");setprop(Vertical_arm,"");
-        set_apr();
-        setprop("autopilot/settings/low-bank",0);
+			if (Vmode!="GS") {
+				setprop(Lateral_arm,"");
+				setprop(Vertical_arm,"");
+				set_apr();
+				setprop("autopilot/settings/low-bank",0);
+			} else {
+				setprop(Vertical,"ALT");
+				setprop(Vertical_arm,"");
+			}
+
     }elsif(btn=="vs"){
-        setprop(Lateral_arm,"");setprop(Vertical_arm,"");
-         if(Vmode!="VS"){
-            var tgt_vs = (int(getprop("autopilot/internal/vert-speed-fpm") * 0.01)) * 100;
-            setprop(Vertical,"VS");setprop("autopilot/settings/vertical-speed-fpm",tgt_vs);
-        } else set_pitch();
+			setprop(Lateral_arm,"");
+			setprop(Vertical_arm,"");
+			if(Vmode!="VS"){
+				var tgt_vs = (int(getprop("autopilot/internal/vert-speed-fpm") * 0.01)) * 100;
+				setprop(Vertical,"VS");setprop("autopilot/settings/vertical-speed-fpm",tgt_vs);
+			} else set_pitch();
+
     }elsif(btn=="stby"){
-        setprop(Lateral_arm,"");setprop(Vertical_arm,"");
-        set_pitch();
-        set_roll();
-        setprop("autopilot/settings/low-bank",0);
+			setprop(Lateral_arm,"");
+			setprop(Vertical_arm,"");
+			set_pitch();
+			set_roll();
+			setprop("autopilot/settings/low-bank",0);
+
     }elsif(btn=="bank"){
-        var Bnk="autopilot/settings/low-bank";
-        if(Lmode=="HDG")setprop(Bnk,1-getprop(Bnk));
+			var Bnk="autopilot/settings/low-bank";
+			if(Lmode=="HDG")setprop(Bnk,1-getprop(Bnk));
+
     }elsif(btn=="co"){
-        var Co= 1- getprop("autopilot/settings/changeover");
-         if(Vmode!="FLC") Co=0;
-         setprop("autopilot/settings/changeover",Co);
+			var Co= 1- getprop("autopilot/settings/changeover");
+			if(Vmode!="FLC") Co=0;
+			setprop("autopilot/settings/changeover",Co);
     }
 }
 
 ########  FMS/NAV BUTTONS  ############
 var nav_src_set=func(src){
-    setprop(Lateral_arm,"");setprop(Vertical_arm,"");
-    set_pitch();set_roll();
+    setprop(Lateral_arm,"");
+		setprop(Vertical_arm,"");
     if(src=="fms"){
-        if(getprop("autopilot/route-manager/route/num")>0)setprop(NAVprop,"FMS");
+			if(getprop("autopilot/route-manager/route/num")>0) {
+        if (NAVSRC!="FMS1")setprop(NAVprop,"FMS1") else setprop(NAVprop,"FMS2");
+			}
     }else{
         if (NAVSRC!="NAV1")setprop(NAVprop,"NAV1") else setprop(NAVprop,"NAV2");
     }
@@ -125,20 +150,31 @@ var nav_src_set=func(src){
 ########### ARM VALID NAV MODE ################
 
 var set_nav_mode=func{
-    setprop(Lateral_arm,"");setprop(Vertical_arm,"");
+    setprop(Lateral_arm,"");
+		setprop(Vertical_arm,"");
     if(NAVSRC=="NAV1"){
-        if(getprop("instrumentation/nav/data-is-valid")){
-            if(getprop("instrumentation/nav/nav-loc"))setprop(Lateral_arm,"LOC") else setprop(Lateral_arm,"VOR");
-            setprop(Lateral,"HDG");
+			if(getprop("instrumentation/nav/data-is-valid")){
+				if(getprop("instrumentation/nav/nav-loc")) {
+					setprop(Lateral_arm,"LOC");
+				} else {
+					setprop(Lateral_arm,"VOR");
+          setprop(Lateral,"HDG");
         }
-    }elsif(NAVSRC=="NAV2"){
-        if(getprop("instrumentation/nav[1]/data-is-valid")){
-            if(getprop("instrumentation/nav[1]/nav-loc"))setprop(Lateral_arm,"LOC") else setprop(Lateral_arm,"VOR");
+			}
+    } else if(NAVSRC=="NAV2"){
+       if(getprop("instrumentation/nav[1]/data-is-valid")){
+          if(getprop("instrumentation/nav[1]/nav-loc")) {
+						setprop(Lateral_arm,"LOC");
+					} else { 
+						setprop(Lateral_arm,"VOR");
             setprop(Lateral,"HDG");
+					}
         }
-    }elsif(NAVSRC=="FMS"){
-        if(getprop("autopilot/route-manager/active"))setprop(Lateral,"LNAV");
-    }
+    } else if(left(NAVSRC,3)=="FMS"){
+        if (getprop("autopilot/route-manager/active")) {
+					setprop(Lateral,"LNAV");
+		    }
+		}
 }
 
 #######  PITCH WHEEL ACTIONS #############
@@ -170,28 +206,44 @@ var pitch_wheel=func(dir){
 
 ########    FD INTERNAL ACTIONS  #############
 
-var set_pitch=func{
-    setprop(Vertical,"PTCH");setprop("autopilot/settings/target-pitch-deg",getprop("orientation/pitch-deg"));
+var set_pitch = func{
+    setprop(Vertical,"PTCH");
+		setprop("autopilot/settings/target-pitch-deg",getprop("orientation/pitch-deg"));
 }
 
-var set_roll=func{
-    setprop(Lateral,"ROLL");setprop("autopilot/settings/target-roll-deg",0.0);
+var set_roll = func{
+    setprop(Lateral,"ROLL");
+		setprop("autopilot/settings/target-roll-deg",0.0);
 }
 
-var set_apr=func{
-    if(NAVSRC == "NAV1"){
-        if(getprop("instrumentation/nav/nav-loc") and getprop("instrumentation/nav/has-gs")){
-            setprop(Lateral_arm,"LOC");
-            setprop(Vertical_arm,"GS");
-            setprop(Lateral,"HDG");
-        }
-    }elsif(NAVSRC == "NAV2"){
-    if(getprop("instrumentation/nav[1]/nav-loc") and getprop("instrumentation/nav[1]/has-gs")){
-            setprop(Lateral_arm,"LOC");
-            setprop(Vertical_arm,"GS");
-            setprop(Lateral,"HDG");
-        }
-    }
+var set_apr = func{
+    if(NAVSRC == "NAV1" or NAVSRC == "FMS2"){
+			if(getprop("instrumentation/nav/nav-loc") and getprop("instrumentation/nav/has-gs")){
+				setprop(Lateral_arm,"LOC");
+				setprop(Vertical_arm,"GS");
+				setprop(Lateral,"HDG");
+				setprop(Vertical,"GS"); 
+			}
+		}else if(NAVSRC == "NAV2" or NAVSRC == "FMS1"){
+			if(getprop("instrumentation/nav[1]/nav-loc") and getprop("instrumentation/nav[1]/has-gs")){
+				setprop(Lateral_arm,"LOC");
+				setprop(Vertical_arm,"GS");
+				setprop(Lateral,"");
+				setprop(Vertical,"");
+				setprop(Lateral,"HDG");
+				setprop(Vertical,"GS");
+      }
+		}
+}
+
+var set_alt = func {
+				var n=(getprop("instrumentation/altimeter/mode-c-alt-ft"))*0.01;
+				var m=int(n/10);
+				var p=(n/10)-m;
+				if (p>0 and p<0.5) {p=0.5;m=m+p}
+				else if(p>=0.5 and p<1) {m=m+1}
+				else {p=0}
+				setprop("autopilot/settings/asel",m*10);
 }
 
 setlistener("autopilot/settings/minimums", func(mn) {
@@ -206,40 +258,30 @@ setlistener(NAVprop, func(Nv) {
 var update_nav=func{
     var sgnl = "- - -";
     var gs =0;
-    if(NAVSRC == "NAV1"){
-        if(getprop("instrumentation/nav/data-is-valid"))sgnl="VOR1";
-        setprop("autopilot/internal/in-range",getprop("instrumentation/nav/in-range"));
-        setprop("autopilot/internal/gs-in-range",getprop("instrumentation/nav/gs-in-range"));
-        var dst=getprop("instrumentation/nav/nav-distance") or 0;
+		var ind = 0;
+		var nb = "";
+    if(NAVSRC == "NAV1" or NAVSRC == "NAV2"){
+			if (NAVSRC == "NAV1") {ind = 0;nb = "1"}
+			if (NAVSRC == "NAV2") {ind = 1;nb = "2"}
+        if(getprop("instrumentation/nav["~ind~"]/data-is-valid"))sgnl="VOR"~nb;
+        setprop("autopilot/internal/in-range",getprop("instrumentation/nav["~ind~"]/in-range"));
+        setprop("autopilot/internal/gs-in-range",getprop("instrumentation/nav["~ind~"]/gs-in-range"));
+        var dst=getprop("instrumentation/nav["~ind~"]/nav-distance") or 0;
         dst*=0.000539;
         setprop("autopilot/internal/nav-distance",dst);
-        setprop("autopilot/internal/nav-id",getprop("instrumentation/nav/nav-id"));
-        if(getprop("instrumentation/nav/nav-loc"))sgnl="LOC1";
-        if(getprop("instrumentation/nav/has-gs"))sgnl="ILS1";
-        if(sgnl=="ILS1")gs = 1;
+        setprop("autopilot/internal/nav-id",getprop("instrumentation/nav["~ind~"]/nav-id"));
+        if(getprop("instrumentation/nav["~ind~"]/nav-loc"))sgnl="LOC"~nb;
+        if(getprop("instrumentation/nav["~ind~"]/has-gs"))sgnl="ILS"~nb;
+        if(sgnl==("ILS"~nb))gs = 1;
         setprop("autopilot/internal/gs-valid",gs);
         setprop("autopilot/internal/nav-type",sgnl);
-        course_offset("instrumentation/nav[0]/radials/selected-deg");
-        setprop("autopilot/internal/to-flag",getprop("instrumentation/nav/to-flag"));
-        setprop("autopilot/internal/from-flag",getprop("instrumentation/nav/from-flag"));
-    }elsif(NAVSRC == "NAV2"){
-        if(getprop("instrumentation/nav[1]/data-is-valid"))sgnl="VOR2";
-        setprop("autopilot/internal/in-range",getprop("instrumentation/nav[1]/in-range"));
-        setprop("autopilot/internal/gs-in-range",getprop("instrumentation/nav[1]/gs-in-range"));
-        var dst=getprop("instrumentation/nav[1]/nav-distance") or 0;
-        dst*=0.000539;
-        setprop("autopilot/internal/nav-distance",dst);
-        setprop("autopilot/internal/nav-id",getprop("instrumentation/nav[1]/nav-id"));
-        if(getprop("instrumentation/nav[1]/nav-loc"))sgnl="LOC2";
-        if(getprop("instrumentation/nav[1]/has-gs"))sgnl="ILS2";
-        if(sgnl=="ILS2")gs = 1;
-        setprop("autopilot/internal/gs-valid",gs);
-        setprop("autopilot/internal/nav-type",sgnl);
-        course_offset("instrumentation/nav[1]/radials/selected-deg");
-        setprop("autopilot/internal/to-flag",getprop("instrumentation/nav[1]/to-flag"));
-        setprop("autopilot/internal/from-flag",getprop("instrumentation/nav[1]/from-flag"));
-    }elsif(NAVSRC == "FMS"){
-        setprop("autopilot/internal/nav-type","FMS1");
+        course_offset("instrumentation/nav["~ind~"]/radials/selected-deg");
+        setprop("autopilot/internal/to-flag",getprop("instrumentation/nav["~ind~"]/to-flag"));
+        setprop("autopilot/internal/from-flag",getprop("instrumentation/nav["~ind~"]/from-flag"));
+
+    }elsif(NAVSRC == "FMS1" or NAVSRC == "FMS2"){
+				if (NAVSRC == "FMS1") {ind = 1} else {ind = 2}
+        setprop("autopilot/internal/nav-type","FMS"~ind);
         setprop("autopilot/internal/in-range",1);
         setprop("autopilot/internal/gs-in-range",0);
         setprop("autopilot/internal/nav-distance",getprop("instrumentation/gps/wp/wp[1]/distance-nm"));
@@ -303,7 +345,7 @@ var monitor_V_armed = func{
             if(getprop("autopilot/internal/gs-in-range")){
                 var gs_err=getprop("autopilot/internal/gs-deflection");
                 var gs_dst=getprop("autopilot/internal/nav-distance");
-                if(gs_dst <= 7.0){
+                if(gs_dst <= 15.0){ ### old = 7.0 ###
                     if(gs_err >-0.25 and gs_err < 0.25){
                         setprop(Vertical,"GS");
                         setprop(Vertical_arm,"");
@@ -352,7 +394,7 @@ var get_ETE= func{
             min=int(tmpmin);
         }
         ttw=sprintf("ETE %s:%02i",hr,min);
-    }elsif(NAVSRC == "FMS"){
+    }elsif(left(NAVSRC,3) == "FMS"){
         min = getprop("autopilot/route-manager/ete");
         min=int(min * 0.016666);
         if(min>60){
@@ -366,15 +408,111 @@ var get_ETE= func{
     setprop("autopilot/internal/nav-ttw",ttw);
 }
 
+### FMS Speed & Altitude Controls ###
 
+var speed_Control = func {
+	var lock_alt = getprop("autopilot/locks/altitude");
+	var ap_stat = getprop("autopilot/locks/AP-status");
+	var tot_dist = getprop("autopilot/route-manager/total-distance");
+	var dist_rem = getprop("autopilot/route-manager/distance-remaining-nm");
+	var dist_dep = tot_dist-dist_rem;
+	var alt_ind = getprop("instrumentation/altimeter/indicated-altitude-ft");
+	var cruise_alt = getprop("autopilot/route-manager/cruise/altitude-ft");
+	var cruise_spd = getprop("autopilot/settings/cruise-speed-kt");
+	var target_spd = "autopilot/settings/target-speed-kt";
+	var dep_spd = getprop("autopilot/settings/dep-speed-kt");
+	var dep_agl = getprop("autopilot/settings/dep-agl-limit-ft");
+	var dep_lim = getprop("autopilot/settings/dep-limit-nm");
+	var climb_spd = getprop("autopilot/settings/climb-speed-kt");
+	var descent_spd = getprop("autopilot/settings/descent-speed-kt");
+	var app_spd = getprop("autopilot/settings/app-speed-kt"); 
+	var app_dist_set = getprop("autopilot/settings/dist-to-dest-nm");
+	var app5_spd = getprop("autopilot/settings/app5-speed-kt");
+	var app15_spd = getprop("autopilot/settings/app15-speed-kt");
+	var app39_spd = getprop("autopilot/settings/app39-speed-kt");
+	var target_alt = "autopilot/settings/target-altitude-ft";
+	var tg_alt = getprop(target_alt);
+	var wp_alt = getprop("autopilot/route-manager/wp/altitude-ft");
+	var next_wp = "autopilot/route-manager/route/wp[";
+	var curr_wp = getprop("autopilot/route-manager/current-wp");
+	var num = getprop("autopilot/route-manager/route/num");
+	var asel = getprop("autopilot/settings/asel");
+	var fms = getprop("instrumentation/primus2000/sc840/nav1ptr");
+
+		### Takeoff ###
+	if (left(NAVSRC,3) == "FMS" and lock_alt == "VALT") {
+		if (curr_wp==-1) {curr_wp=0}
+		if (dist_dep < dep_lim and alt_ind < dep_agl) {setprop(target_spd,dep_spd)}
+		if (getprop(next_wp~curr_wp~"]/altitude-ft") <= 0.0) {
+			setprop(target_alt, getprop(next_wp~(curr_wp+1)~"]/altitude-ft"));
+		} else {
+			setprop(target_alt, getprop(next_wp~curr_wp~"]/altitude-ft"));
+		}
+	}
+		### En route ###
+	if (ap_stat == "AP") {
+		if (left(NAVSRC,3) == "FMS" and lock_alt == "VALT") {
+			setprop("autopilot/route-manager/cruise/altitude-ft",asel*100);
+			if (dist_rem <= alt_ind/300) {TOD = 1}
+			if (dist_dep < dep_lim and alt_ind < dep_agl) {setprop(target_spd,dep_spd)}
+
+				### Approach ###
+			else if (dist_rem <= app_dist_set or TOD == 1) {
+				if (getprop(next_wp~curr_wp~"]/id") == "APP-4") {
+					setprop(target_alt,getprop(next_wp~(curr_wp+1)~"]/altitude-ft"));
+					setprop(target_spd,app_spd);
+				}
+				if (dist_rem <= 7) {
+					if (NAVSRC == "FMS1") {setprop(NAVprop,"NAV2")}
+					if (NAVSRC == "FMS2") {setprop(NAVprop,"NAV1")}
+					set_apr();
+				}
+
+				### Cruise ###
+			}	else {
+							### WP without altitude ###
+				if (getprop(next_wp~curr_wp~"]/altitude-ft") <= 0.0) {
+					setprop(target_alt,cruise_alt);
+				} else {
+							### WP with altitude ###
+					setprop(target_alt,getprop(next_wp~curr_wp~"]/altitude-ft"));
+				}
+
+							### Climb ###
+				if (tg_alt > (alt_ind+5000)) {
+					setprop(target_spd,climb_spd);
+				} else if (tg_alt < (alt_ind-1000)) {
+						setprop(target_spd,descent_spd);
+				}	else {
+					if (cruise_spd != 0) {
+						if (getprop(next_wp~curr_wp~"]/speed")) {
+							setprop("autopilot/settings/cruise-speed-kt",getprop(next_wp~curr_wp~"]/speed"));
+						}	
+						setprop(target_spd,cruise_spd);			
+					}
+				}	
+			}
+		}
+		if (fms == 3 and (NAVSRC == "NAV1" or NAVSRC == "NAV2")) {
+			if (getprop("controls/flight/flaps")==0.142) {
+				setprop(target_spd,app5_spd);
+			} else if (getprop("controls/flight/flaps")==0.428) {
+				setprop(target_spd,app15_spd);
+			} else if (getprop("controls/flight/flaps")==1) {
+				setprop(target_spd,app39_spd);
+			}	else {setprop(target_spd,app_spd)}
+		}			
+	}
+}
 ###  Main loop ###
 
 var update_fd = func {
     update_nav();
+		speed_Control();
     if(count==0)monitor_AP_errors();
     if(count==1)monitor_L_armed();
     if(count==2)monitor_V_armed();
-     if(count==3)get_ETE();
+    if(count==3)get_ETE();
     count+=1;
     if(count>3)count=0;
     settimer(update_fd, 0);
