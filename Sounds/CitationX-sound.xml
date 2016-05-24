@@ -586,6 +586,120 @@
         </condition>
     </click>
 
+    <!-- DOORS -->
+
+        <doors>
+            <name>separation-door-open</name>
+            <mode>once</mode>
+            <path>Aircraft/CitationX/Sounds/cabin-door.wav</path>
+            <condition>
+                <greater-than>
+                    <property>controls/separation-door/open</property>
+                    <value>0.01</value>
+                </greater-than>
+                <less-than>
+                    <property>controls/separation-door/open</property>>
+                    <value>0.99</value>
+                </less-than>
+            </condition>
+            <volume>
+                <property>sim/signals/fdm-initialized</property>
+                <factor>1</factor>
+            </volume>
+            <position>
+                <x>-6.6 </x>
+                <y> 0.0 </y>
+                <z> 0.6 </z>
+            </position>
+        </doors>
+
+        <doors>
+            <name>separation-door-closed</name>
+            <mode>once</mode>
+            <path>Aircraft/CitationX/Sounds/cabin-door.wav</path>
+            <condition>
+              <and>
+                <less-than>
+                    <property>controls/separation-door/open</property>>
+                    <value>1</value>
+                </less-than>
+             </and>                          
+            </condition>
+           <volume>
+                <property>sim/signals/fdm-initialized</property>
+                <factor>1</factor>
+            </volume>
+            <position>
+                <x>-6.6 </x>
+                <y> 0.0 </y>
+                <z> 0.6 </z>
+            </position>
+        </doors>
+
+        <doors>
+            <name>toilet-door-open</name>
+            <mode>once</mode>
+            <path>Aircraft/CitationX/Sounds/cabin-door.wav</path>
+            <condition>
+                <greater-than>
+                    <property>controls/toilet-door/open</property>
+                    <value>0.01</value>
+                </greater-than>
+            </condition>
+            <volume>
+                <property>sim/signals/fdm-initialized</property>
+                <factor>1</factor>
+            </volume>
+            <position>
+                <x>-0.6 </x>
+                <y> 0.0 </y>
+                <z> 0.6 </z>
+            </position>
+        </doors>
+
+        <doors>
+            <name>toilet-door-closed</name>
+            <mode>once</mode>
+            <path>Aircraft/CitationX/Sounds/cabin-door.wav</path>
+            <condition>
+              <and>
+                <less-than>
+                    <property>controls/toilet-door/open</property>>
+                    <value>1</value>
+                </less-than>
+                <greater-than>
+                    <property>controls/toilet-door/open</property>>
+                    <value>0.01</value>
+                </greater-than>
+              </and>                          
+            </condition>
+            <volume>
+                <property>sim/signals/fdm-initialized</property>
+                <factor>1</factor>
+            </volume>
+            <position>
+                <x>-0.6 </x>
+                <y> 0.0 </y>
+                <z> 0.6 </z>
+            </position>
+        </doors>
+
+
+    <!-- ALARMS -->
+    <alarm>
+        <name>Master warning</name>
+        <mode>once</mode>
+        <path>Aircraft/CitationX/Sounds/chime2.wav</path>
+        <condition>
+					<and>
+            <property>instrumentation/annunciators/master-warning</property>
+						<not>
+            	<property>instrumentation/annunciators/ack-warning</property>
+						</not>
+					</and>
+        </condition>
+    </alarm>
+
     <warnings>
         <name>chime1</name>
         <type>avionics</type>
