@@ -5,6 +5,38 @@
 <path>alt.ac</path>
 
     <animation>
+        <type>material</type>
+        <object-name>iastape</object-name>
+        <object-name>ALT.face</object-name>
+        <object-name>ALT.needle</object-name>
+        <object-name>alttxt.001</object-name>
+        <object-name>alttxt.002</object-name>
+        <object-name>alttxt.003</object-name>
+        <object-name>alttxt.004</object-name>
+        <object-name>alttxt</object-name>
+        <object-name>inhg.001</object-name>
+        <object-name>inhg.002</object-name>
+        <object-name>inhg.003</object-name>
+        <object-name>inhg.004</object-name>
+        <object-name>kpa.001</object-name>
+        <object-name>kpa.002</object-name>
+        <object-name>kpa.003</object-name>
+        <object-name>kpa.004</object-name>
+        <condition>
+						<or>
+	           	<property>systems/electrical/left-emer-bus</property>
+	           	<property>systems/electrical/left-bus-norm</property>
+						</or>
+        </condition>
+        <emission>
+            <red>1</red>
+            <green>1</green>
+            <blue>1</blue>
+            <factor-prop>controls/lighting/instruments-norm</factor-prop>
+        </emission>
+    </animation>
+
+    <animation>
         <type>textranslate</type>
         <object-name>iastape</object-name>
         <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
@@ -119,7 +151,7 @@
         <type>textranslate</type>
         <object-name>inhg.002</object-name>
         <property>instrumentation/altimeter/setting-inhg</property>
-        <factor>0.1</factor>
+       <factor>0.1</factor>
         <step>1</step>
         <axis>
             <x>0</x>
@@ -132,7 +164,7 @@
         <type>textranslate</type>
         <object-name>inhg.003</object-name>
         <property>instrumentation/altimeter/setting-inhg</property>
-        <factor>1.0</factor>
+       <factor>1.0</factor>
         <step>0.1</step>
         <axis>
             <x>0</x>
@@ -145,7 +177,7 @@
         <type>textranslate</type>
         <object-name>inhg.004</object-name>
         <property>instrumentation/altimeter/setting-inhg</property>
-        <factor>10.0</factor>
+      <factor>10.0</factor>
         <step>0.01</step>
         <axis>
             <x>0</x>
@@ -213,7 +245,6 @@
     <type>rotate</type>
     <object-name>inhg.knob</object-name>
     <property>instrumentation/altimeter/setting-hpa</property>
-    <factor>5</factor>
     <center>
       <x-m>  0.00925 </x-m>
       <y-m> -0.03106 </y-m>
@@ -227,53 +258,19 @@
   </animation>
 
   <animation>
-    <type>knob</type>
+    <type>pick</type>
+    <visible>true</visible>
     <object-name>inhg.knob</object-name>
     <action>
-      <binding>
-        <command>property-adjust</command>
-        <property>/instrumentation/altimeter/setting-hpa</property>
-        <factor>1</factor>
-        <min>950.0</min>
-        <max>1050.0</max>
-        <wrap>false</wrap>
-      </binding>
-    </action>
-    <hovered>
-      <binding>
-        <command>set-tooltip</command>
-        <tooltip-id>alt-setting</tooltip-id>
-        <label>QNH: %.0f</label>
-        <property>instrumentation/altimeter/setting-hpa</property>
-      </binding>
-    </hovered>   
-  </animation>
-
-  <animation>
-    <type>pick</type>
-    <visible>false</visible>
-    <object-name>inhg.dn</object-name>
-    <action>
-      <button>0</button>
+      <name>decrease</name>
+      <button>3</button>
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>instrumentation/altimeter/setting-hpa</property>
-        <step>-1</step>
-        <min>950.0</min>
-        <max>1050.0</max>
-        <wrap>0</wrap>
-      </binding>
-    </action>
-    <action>
-      <button>1</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property>instrumentation/altimeter/setting-hpa</property>
-        <step>-5</step>
-        <min>950.0</min>
-        <max>1050.0</max>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step>-0.01</step>
+        <min>26</min>
+        <max>33</max>
         <wrap>0</wrap>
       </binding>
     </action>
@@ -283,86 +280,10 @@
       <repeatable>true</repeatable>
       <binding>
         <command>property-adjust</command>
-        <property>instrumentation/altimeter/setting-hpa</property>
-        <step>1</step>
-        <min>950.0</min>
-        <max>1050.0</max>
-        <wrap>0</wrap>
-      </binding>
-    </action>
-    <action>
-      <name>decrease</name>
-      <button>3</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property>instrumentation/altimeter/setting-hpa</property>
-        <step>-1</step>
-        <min>950.0</min>
-        <max>1050.0</max>
-        <wrap>0</wrap>
-      </binding>
-    </action>
-    <hovered>
-      <binding>
-        <command>set-tooltip</command>
-        <tooltip-id>alt-setting</tooltip-id>
-        <label>QNH: %.0f</label>
-        <property>instrumentation/altimeter/setting-hpa</property>
-      </binding>
-    </hovered>   
-  </animation>
-  <animation>
-    <type>pick</type>
-    <visible>false</visible>
-    <object-name>inhg.up</object-name>
-    <action>
-      <button>0</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property>instrumentation/altimeter/setting-hpa</property>
-        <step>1</step>
-        <min>950.0</min>
-        <max>1050.0</max>
-        <wrap>0</wrap>
-      </binding>
-    </action>
-    <action>
-      <button>1</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property>instrumentation/altimeter/setting-hpa</property>
-        <step>5</step>
-        <min>950.0</min>
-        <max>1050.0</max>
-        <wrap>0</wrap>
-      </binding>
-    </action>
-    <action>
-      <name>increase</name>
-      <button>4</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property>instrumentation/altimeter/setting-hpa</property>
-        <step>1</step>
-        <min>950.0</min>
-        <max>1050.0</max>
-        <wrap>0</wrap>
-      </binding>
-    </action>
-    <action>
-      <name>decrease</name>
-      <button>3</button>
-      <repeatable>true</repeatable>
-      <binding>
-        <command>property-adjust</command>
-        <property>instrumentation/altimeter/setting-hpa</property>
-        <step>-1</step>
-        <min>950.0</min>
-        <max>1050.0</max>
+        <property>instrumentation/altimeter/setting-inhg</property>
+        <step>0.01</step>
+        <min>26</min>
+        <max>33</max>
         <wrap>0</wrap>
       </binding>
     </action>

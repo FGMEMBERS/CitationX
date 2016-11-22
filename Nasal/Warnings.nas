@@ -58,13 +58,15 @@ var EICAS = {
 				EICAS.update_listeners()},1,0);
 			setlistener("controls/gear/brake-parking", func {
 				EICAS.update_listeners()},1,0);
+			setlistener("controls/gear/emer-brake", func {
+				EICAS.update_listeners()},1,0);
 			setlistener("controls/electric/APU-generator", func {
 				EICAS.update_listeners()},1,0);
 			setlistener("controls/electric/external-power", func {
 				EICAS.update_listeners()},1,0);
 			setlistener("controls/cabin-door/open", func {
 				EICAS.update_listeners()},1,0);
-			setlistener("position/altitude-ft", func {
+			setlistener("systems/pressurization/cabin-altitude-ft", func {
 				EICAS.update_listeners()},1,0);
 			setlistener("controls/fuel/tank[0]/boost_pump", func {
 				EICAS.update_listeners()},1,0);
@@ -78,9 +80,9 @@ var EICAS = {
 				EICAS.update_listeners()},1,0);
 			setlistener("controls/fuel/gravity-xflow", func {
 				EICAS.update_listeners()},1,0);
-			setlistener("controls/engines/engine[0]/feed_tank", func {
+			setlistener("controls/engines/engine[0]/feed-tank", func {
 				EICAS.update_listeners()},1,0);
-			setlistener("controls/engines/engine[1]/feed_tank", func {
+			setlistener("controls/engines/engine[1]/feed-tank", func {
 				EICAS.update_listeners()},1,0);
 			setlistener("controls/fuel/xfer-L", func {
 				EICAS.update_listeners()},1,0);
@@ -108,6 +110,8 @@ var EICAS = {
 				EICAS.update_listeners()},1,0);
 			setlistener("instrumentation/annunciators/test-select", func {
 				EICAS.update_listeners()},1,0);
+			setlistener("instrumentation/pfd/vmo-diff", func {
+				EICAS.update_listeners()},1,0);
 
 			me.my_caution = 0;
 			me.my_warning = 0;
@@ -117,18 +121,19 @@ var EICAS = {
 				me.eng0_shutdown = getprop("controls/engines/engine[0]/cutoff");
 				me.eng1_shutdown = getprop("controls/engines/engine[1]/cutoff");
 				me.parkbrake = getprop("controls/gear/brake-parking");
+				me.emerbrake = getprop("controls/gear/emer-brake");
 				me.apu_running = getprop("controls/electric/APU-generator");
 				me.ext_pwr = getprop("controls/electric/external-power");
 				me.cabin_door = getprop("controls/cabin-door/open");
-				me.altitude = getprop("position/altitude-ft");
+				me.altitude = getprop("systems/pressurization/cabin-altitude-ft");
 				me.boost_pump_L = getprop("controls/fuel/tank[0]/boost_pump");
 				me.boost_pump_R = getprop("controls/fuel/tank[1]/boost_pump");
 				me.level_tank_L = getprop("consumables/fuel/tank[0]/level-lbs");
 				me.level_tank_R = getprop("consumables/fuel/tank[1]/level-lbs");
 				me.total_fuel = getprop("consumables/fuel/total-ctrtk-lbs");
 				me.grav_xflow = getprop("controls/fuel/gravity-xflow");
-				me.xfeed_L = getprop("controls/engines/engine[0]/feed_tank");
-				me.xfeed_R = getprop("controls/engines/engine[1]/feed_tank");
+				me.xfeed_L = getprop("controls/engines/engine[0]/feed-tank");
+				me.xfeed_R = getprop("controls/engines/engine[1]/feed-tank");
 				me.xfer_L = getprop("controls/fuel/xfer-L");
 				me.xfer_R = getprop("controls/fuel/xfer-R");
 				me.gen_L = getprop("controls/electric/engine[0]/generator");
@@ -141,6 +146,8 @@ var EICAS = {
 				me.throttle_R = getprop("controls/engines/engine[1]/throttle");
 				me.wow = getprop("gear/gear[0]/wow");
 				me.test = getprop("instrumentation/annunciators/test-select");
+				me.vmo = getprop("instrumentation/pfd/vmo-diff");
+				me.stall = getprop("sim/sound/stall-horn");
 		},
 
 		update : func {
@@ -154,11 +161,13 @@ var EICAS = {
 			me.msg_l3 = [];
 			me.nb_warning = 0;
 			me.nb_caution = 0;
+			me.nb_l1 = 0;
+			me.nb_l0 = 0;
 
 			if (me.enabled and me.test == 0) {		
 
 					### lEVEL 3 ###
-				if (me.altitude > 51000) {
+				if (me.altitude > 10000) {
           append(me.msg_l3,"CABIN ALTITUDE");
 					me.nb_warning +=1;
 				}
@@ -168,7 +177,7 @@ var EICAS = {
 				}
 				if (me.oil_L < 0.080 and me.oil_R < 0.080) {
           append(me.msg_l3,"OIL PRESS LOW L-R");
-					me.nb_warning +=2;
+					me.nb_warning +=1;
 				}	else if(me.oil_L < 0.4) {
           append(me.msg_l3,"OIL PRESS LOW L");
 					me.nb_warning +=1;
@@ -179,11 +188,23 @@ var EICAS = {
 				if(me.wow and !me.eng0_shutdown and !me.eng1_shutdown and (
 						me.ext_pwr
 						or me.parkbrake 
+						or me.emerbrake 
 						or me.speedbrake
 						or me.total_fuel <= 500)) {
 					append(me.msg_l3,"NO TAKEOFF");
 					me.nb_warning +=1;
 				}			
+				if(me.vmo >= -59) {
+					append(me.msg_l3,"OVERSPEED");
+					setprop("sim/alarms/overspeed-alarm",1);
+					me.nb_warning +=1;
+				} else {
+					setprop("sim/alarms/overspeed-alarm",0);
+				}
+				if(me.stall and me.altitude > 35000) {
+					append(me.msg_l3,"MINIMUM SPEED");
+					me.nb_warning +=1;
+				}
 
 					### LEVEL 2 ###
 				if(!me.gen_L and me.gen_R) {
@@ -197,7 +218,7 @@ var EICAS = {
           append(me.msg_l2,"CABIN DOOR OPEN");
 					me.nb_caution +=1;
 				}
-				if (me.altitude > 50000) {
+				if (me.altitude > 8500) {
           append(me.msg_l2,"CABIN ALTITUDE");
 					me.nb_caution +=1;
 				}
@@ -219,46 +240,67 @@ var EICAS = {
 					### LEVEL 1 ###
 				if (me.eng0_shutdown and me.eng1_shutdown){
 					append(me.msg_l1,"ENG SHUTDWN L-R");
+					me.nb_l1 +=1;
 				} else if (me.eng0_shutdown) {
 						append(me.msg_l1,"ENG SHUTDWN L");
+						me.nb_l1 +=1;
 				}	else if (me.eng1_shutdown) {
 						append(me.msg_l1,"ENG SHUTDWN R");
+						me.nb_l1 +=1;
 				}
 				if (me.parkbrake) {
 					append(me.msg_l1,"PARK BRK SET");
+					me.nb_l1 +=1;
+				}
+				if (me.emerbrake) {
+					append(me.msg_l1,"EMERGENCY BRAKE");
+					me.nb_l1 +=1;
 				}
 				if(me.wow and (me.flaps < 0.140	or me.flaps > 0.430)) {
 					append(me.msg_l1,"NO TAKEOFF");
+					me.nb_l1 +=1;
 				}			
 
 					### LEVEL 0 ###
 				if (me.apu_running) {
           append(me.msg_l0,"APU RUNNING");
+				#	me.nb_l0 +=1;
 				}
 				if (me.boost_pump_L and me.boost_pump_R) {
           	append(me.msg_l0,"BOOST PUMP L-R");
+						me.nb_l0 +=1;
 				}	else if (me.boost_pump_L) {
           	append(me.msg_l0,"BOOST PUMP L");
+						me.nb_l0 +=1;
 				}	else if (me.boost_pump_R) {
           	append(me.msg_l0,"BOOST PUMP R");
+						me.nb_l0 +=1;
 				}
 				if (me.xfer_L and me.xfer_R) {
           	append(me.msg_l0,"CTR XFER XSIT L-R");
+						me.nb_l0 +=1;
 				}	else if (me.xfer_L) {
           	append(me.msg_l0,"CTR XFER XSIT L");
+						me.nb_l0 +=1;
 				}	else if (me.xfer_R) {
           	append(me.msg_l0,"CTR XFER XSIT R");
+						me.nb_l0 +=1;
 				}
 				if (me.xfeed_L or me.xfeed_R) {
           	append(me.msg_l0,"FUEL XFEED OPEN");
+						me.nb_l0 +=1;
 				}
 				if (me.grav_xflow) {
           	append(me.msg_l0,"FUEL XFLOW OPEN");
+						me.nb_l0 +=1;
 				}
 				if (me.ext_pwr) {
 						append(me.msg_l0,"EXT POWER ON");
+						me.nb_l0 +=1;
 				}
 
+			nb_msg = me.nb_warning + me.nb_caution + me.nb_l1 + me.nb_l0;
+			setprop("instrumentation/annunciators/nb-warning",nb_msg);
 			me.AnnunOutput();
 
 			### TESTS ###
@@ -334,6 +376,7 @@ var EICAS = {
 				}
 			}
 			me.EicasOutput();			
+			stall_speed();
 			settimer(func {me.update();},0);
 		},
 
@@ -414,6 +457,7 @@ var EICAS = {
 				}
 				me.my_caution = me.nb_caution;
 		},
+
 };
 
 var annun_timer = func {
@@ -423,25 +467,48 @@ var annun_timer = func {
 	},3);
 }
 
-var stall_horn = func {
+var	stall_speed = func {
     var alert=0;
     var kias=getprop("velocities/airspeed-kt");
-    if(kias>150){setprop("sim/sound/stall-horn",alert);return;};
     var wow1=getprop("gear/gear[1]/wow");
-    var wow2=getprop("gear/gear[2]/wow");
-    if(!wow1 or !wow2){
-        var grdn=getprop("controls/gear/gear-down");
-        var flap=getprop("controls/flight/flaps");
-        if(kias<100){
-            alert=1;
-        }elsif(kias<120){
-            if(!grdn )alert=1;
-        }else{
-            if(flap==0)alert=1;
-        }
+    var wow2=getprop("gear/gear[2]/wow");;
+		var stall_warn=getprop("instrumentation/pfd/stall-warning");
+    var grdn=getprop("controls/gear/gear-down");
+    var flap=getprop("controls/flight/flaps");
+
+		### Activation Stall System ###
+		if (getprop("position/altitude-agl-ft") > 400) {
+			setprop("instrumentation/pfd/stall-warning",1);
+		} else if (wow1 or wow2){
+				setprop("instrumentation/pfd/stall-warning",0);		
+		}
+		### Set Stall Speed Alarm / Flaps ###
+    if(stall_warn and (!wow1 or !wow2)){
+			if (flap == 0.0){
+				setprop("instrumentation/pfd/stall-speed",145);			
+      	if(kias<=145){
+					alert=1;
+					setprop("controls/flight/flaps",0.0428); ### Extension Slats ###
+				}
+			}
+			if (flap == 0.0428){
+				setprop("instrumentation/pfd/stall-speed",135);
+				if (kias<=135){alert=1}
+			}
+			if (flap == 0.142){
+				setprop("instrumentation/pfd/stall-speed",130);
+				if (kias<=130){alert=1}
+			}
+			if (flap == 0.428){
+				setprop("instrumentation/pfd/stall-speed",125);
+				if (kias<=125){alert=1}
+			}
+			if (flap == 1){
+				setprop("instrumentation/pfd/stall-speed",115);
+				if (kias<=115){alert=1}
+			}
     }
-    setprop("sim/sound/stall-horn",alert);
-		settimer(stall_horn,0);
+   setprop("sim/sound/stall-horn",alert);
 }
 
 ### MAIN ###
@@ -449,5 +516,4 @@ var alarms = EICAS.new();
 	setlistener("/sim/signals/fdm-initialized", func {
 		alarms.init();
 		alarms.update();	
-    stall_horn();
 	},0,0);

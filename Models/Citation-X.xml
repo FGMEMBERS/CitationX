@@ -165,6 +165,53 @@
         </offsets>
     </model>
 
+  <model>
+    <name>Lights</name>
+    <path>Aircraft/CitationX/Models/Lights/Lights.xml</path>
+    <offsets>
+      <x-m>0</x-m>
+      <y-m>0</y-m>
+      <z-m>0</z-m>
+      <pitch-deg>0</pitch-deg>
+    </offsets>
+  </model>
+
+<!-- ################################## -->
+<!-- ####### REMBRANDT LIGHTING ####### -->
+<!-- ################################## -->
+	<model>
+        <name>TaxiLight</name>
+        <path>Aircraft/CitationX/Models/Lights/taxilight.xml</path>
+        <offsets>
+            <x-m>-8.259</x-m>
+            <y-m> 0.000</y-m>
+            <z-m>-1.235</z-m>
+            <pitch-deg>0</pitch-deg>
+        </offsets>
+    </model>
+
+	<model>
+        <name>RLandingLight</name>
+        <path>Aircraft/CitationX/Models/Lights/Rlandinglight.xml</path>
+        <offsets>
+            <x-m>-3.298</x-m>
+            <y-m> 1.173</y-m>
+            <z-m>-0.918</z-m>
+            <pitch-deg>0</pitch-deg>
+        </offsets>
+    </model>
+
+	<model>
+        <name>RLandingLight</name>
+        <path>Aircraft/CitationX/Models/Lights/Llandinglight.xml</path>
+        <offsets>
+            <x-m>-3.298</x-m>
+            <y-m> 1.185</y-m>
+            <z-m>-0.918</z-m>
+            <pitch-deg>0</pitch-deg>
+        </offsets>
+    </model>
+
     <animation>
         <type>range</type>
         <object-name>cabin</object-name>
@@ -216,7 +263,6 @@
         <object-name>LHelevator</object-name>
         <object-name>RHelevator</object-name>
     </animation>
-
 
     <animation>
         <type>rotate</type>
@@ -1070,14 +1116,83 @@
 
 <!-- Ext Lights -->
 
+     <effect>
+       <inherits-from>Effects/model-transparent</inherits-from>
+         <object-name>navlights.on</object-name>
+       <condition>
+         <property>sim/rendering/rembrandt/enabled</property>
+       </condition>
+     </effect> 
+
+     <effect>
+       <inherits-from>Effects/model-transparent</inherits-from>
+         <object-name>navlights.off</object-name>
+       <condition>
+         <property>sim/rendering/rembrandt/enabled</property>
+       </condition>
+     </effect> 
+
+     <effect>
+       <inherits-from>Effects/model-transparent</inherits-from>
+         <object-name>Strb1</object-name>
+       <condition>
+         <property>sim/rendering/rembrandt/enabled</property>
+       </condition>
+     </effect> 
+
+     <effect>
+       <inherits-from>Effects/model-transparent</inherits-from>
+         <object-name>Strb2</object-name>
+       <condition>
+         <property>sim/rendering/rembrandt/enabled</property>
+       </condition>
+     </effect>
+
+     <effect>
+       <inherits-from>Effects/model-transparent</inherits-from>
+         <object-name>Bcn1</object-name>
+       <condition>
+         <property>sim/rendering/rembrandt/enabled</property>
+       </condition>
+     </effect>
+
+     <effect>
+       <inherits-from>Effects/model-transparent</inherits-from>
+         <object-name>Bcn2</object-name>
+       <condition>
+         <property>sim/rendering/rembrandt/enabled</property>
+       </condition>
+     </effect>
+
+     <effect>
+       <inherits-from>Effects/model-transparent</inherits-from>
+         <object-name>Taxi</object-name>
+       <condition>
+         <property>sim/rendering/rembrandt/enabled</property>
+       </condition>
+     </effect>
+
+     <effect>
+       <inherits-from>Effects/model-transparent</inherits-from>
+         <object-name>Land1</object-name>
+       <condition>
+         <property>sim/rendering/rembrandt/enabled</property>
+       </condition>
+     </effect>
+
+    <effect>
+       <inherits-from>Effects/model-transparent</inherits-from>
+         <object-name>Land2</object-name>
+       <condition>
+         <property>sim/rendering/rembrandt/enabled</property>
+       </condition>
+     </effect>
+
     <animation>
         <type>select</type>
         <object-name>navlights.on</object-name>
         <condition>
-            <greater-than>
-                <property>sim/multiplay/generic/int[6]</property>
-                <value>1</value>
-            </greater-than>
+            <property>sim/multiplay/generic/int[6]</property>
         </condition>
     </animation>
 
@@ -1085,10 +1200,9 @@
         <type>select</type>
         <object-name>navlights.off</object-name>
         <condition>
-            <less-than>
+            <not>
                 <property>sim/multiplay/generic/int[6]</property>
-                <value>1.001</value>
-            </less-than>
+            </not>
         </condition>
     </animation>
 
@@ -1468,6 +1582,13 @@
         <object-name>APUvolts</object-name>
         <object-name>APUready</object-name> 
         <object-name>APUbleed</object-name> 
+        <object-name>pilotAPUrpm</object-name>
+        <object-name>pilotAPUrpmTest</object-name>
+        <object-name>pilotAPUegt</object-name>
+        <object-name>pilotAPUegtTest</object-name>
+        <object-name>pilotAPUvolts</object-name>
+        <object-name>pilotAPUready</object-name> 
+        <object-name>pilotAPUbleed</object-name> 
        <emission>
             <red>1.0</red>
             <green>0.4</green>
@@ -1497,6 +1618,7 @@
         <object-name>labels</object-name>
          <object-name>lines</object-name>
          <object-name>FLmeter</object-name>
+         <object-name>pilotFLmeter</object-name>
         <emission>
             <red>0.0</red>
             <green>0.0</green>
@@ -1523,6 +1645,7 @@
         <name>Red illum</name>
         <type>material</type>
         <object-name>APU.test</object-name>
+        <object-name>pilotAPU.test</object-name>
 					<condition>
 						<equals>
 							<property>controls/APU/test</property> 
@@ -1559,15 +1682,18 @@
 						<and>
 							<equals>
 								<property>controls/electric/std-by-pwr</property> 
-									<value>1</value>
+								<value>1</value>
 							</equals>
-                <property>controls/electric/battery-switch[0]</property>
+							<greater-than>
+	              <property>systems/electrical/right-bus</property>
+								<value>12</value>
+							</greater-than>
 						</and>
 					</condition> 
       	<emission>
-            <red>1.0</red>
-            <green>0.0</green>
-            <blue>0.0</blue>
+		        <red>1.0</red>
+		        <green>0.0</green>
+		        <blue>0.0</blue>
         </emission>
         <ambient>
             <red>0</red>
@@ -1591,10 +1717,16 @@
         <type>material</type>
         <object-name>light-G</object-name>
 					<condition>
-						<equals>
-							<property>controls/electric/std-by-pwr</property> 
+						<and>
+							<equals>
+								<property>controls/electric/std-by-pwr</property> 
 								<value>-1</value>
-						</equals>
+							</equals>
+							<greater-than>
+	              <property>systems/electrical/right-bus</property>
+								<value>12</value>
+							</greater-than>
+						</and>
 					</condition> 
       	<emission>
             <red>0.0</red>

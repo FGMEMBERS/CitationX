@@ -7,8 +7,52 @@
   <!-- Chrome Effect for interior parts -->
   <animation>
     <type>material</type>
-    <object-name>Cabin-LightsSup</object-name>
-    <object-name>Sphere</object-name>
+    <object-name>poignees</object-name>
+    <object-name>baguette</object-name>
+    <object-name>seau</object-name>
+    <object-name>bouteille1</object-name>
+    <object-name>R-bar</object-name>
+    <object-name>1-R-bar-door</object-name>
+    <object-name>2-R-bar-door</object-name>
+    <object-name>3-R-bar-door</object-name>
+    <object-name>4-R-bar-door</object-name>
+    <object-name>R-bar-UL</object-name>
+    <object-name>R-bar-UR</object-name>
+    <object-name>R-bar-DL</object-name>
+    <object-name>R-bar-DR</object-name>
+    <object-name>bar-L</object-name>
+    <object-name>H-bar-door</object-name>
+    <object-name>R-H-bar-door</object-name>
+    <object-name>L-H-bar-door</object-name>
+    <object-name>L-Low-bar-door</object-name>
+    <object-name>R-Low-bar-door</object-name>
+    <object-name>meubles</object-name>
+    <object-name>meubles4</object-name>
+    <object-name>L-cabin-door</object-name>
+    <object-name>R-cabin-door</object-name>
+    <object-name>L-toilet-door</object-name>
+    <object-name>R-toilet-door</object-name>
+    <object-name>plinthe</object-name>
+    <object-name>cache-table1</object-name>
+    <object-name>cache-table2</object-name>
+    <object-name>cache-table3</object-name>
+    <object-name>cache-table4</object-name>
+    <object-name>console-tablette</object-name>
+    <object-name>table1-1</object-name>
+    <object-name>table1-2</object-name>
+    <object-name>table2-1</object-name>
+    <object-name>table2-2</object-name>
+    <object-name>table3-1</object-name>
+    <object-name>table3-2</object-name>
+    <object-name>table4-1</object-name>
+    <object-name>table4-2</object-name>
+    <object-name>porte-gobelet</object-name>
+    <object-name>baguette</object-name>
+    <object-name>bouteille1</object-name>
+    <object-name>Bouteille</object-name>
+    <object-name>bouchon-bouteille</object-name>
+    <object-name>étiquette-bouteille</object-name>
+    <object-name>stock-Bouteille</object-name>
     <emission>
       <red>   0.32 </red>
       <green> 0.25 </green>
@@ -16,17 +60,183 @@
     </emission>
   </animation>
 
+  <animation>
+    <type>material</type>
+    <object-name>Cabin-LightsSup</object-name>
+    <object-name>Sphere</object-name>
+    <emission>
+      <red>   0.50 </red>
+      <green> 0.55 </green>
+      <blue>  0.18 </blue>
+    </emission>
+  </animation>
+
     <effect>
       <inherits-from>Aircraft/CitationX/Models/Effects/test_reflect</inherits-from>
     <object-name>Cabin-LightsSup</object-name>
     <object-name>Sphere</object-name>
+    <object-name>poignees</object-name>
+    <object-name>baguette</object-name>
+    <object-name>seau</object-name>
+    <object-name>bouteille1</object-name>
+    <object-name>R-bar</object-name>
+    <object-name>1-R-bar-door</object-name>
+    <object-name>2-R-bar-door</object-name>
+    <object-name>3-R-bar-door</object-name>
+    <object-name>4-R-bar-door</object-name>
+    <object-name>R-bar-UL</object-name>
+    <object-name>R-bar-UR</object-name>
+    <object-name>R-bar-DL</object-name>
+    <object-name>R-bar-DR</object-name>
+    <object-name>bar-L</object-name>
+    <object-name>H-bar-door</object-name>
+    <object-name>R-H-bar-door</object-name>
+    <object-name>L-H-bar-door</object-name>
+    <object-name>L-Low-bar-door</object-name>
+    <object-name>R-Low-bar-door</object-name>
+    <object-name>meubles</object-name>
+    <object-name>meubles4</object-name>
+    <object-name>L-cabin-door</object-name>
+    <object-name>R-cabin-door</object-name>
+    <object-name>L-toilet-door</object-name>
+    <object-name>R-toilet-door</object-name>
+    <object-name>plinthe</object-name>
+    <object-name>cache-table1</object-name>
+    <object-name>cache-table2</object-name>
+    <object-name>cache-table3</object-name>
+    <object-name>cache-table4</object-name>
+    <object-name>console-tablette</object-name>
+    <object-name>table1-1</object-name>
+    <object-name>table1-2</object-name>
+    <object-name>table2-1</object-name>
+    <object-name>table2-2</object-name>
+    <object-name>table3-1</object-name>
+    <object-name>table3-2</object-name>
+    <object-name>table4-1</object-name>
+    <object-name>table4-2</object-name>
+    <object-name>porte-gobelet</object-name>
+    <object-name>baguette</object-name>
+    <object-name>bouteille1</object-name>
+    <object-name>Bouteille</object-name>
+    <object-name>bouchon-bouteille</object-name>
+    <object-name>étiquette-bouteille</object-name>
+    <object-name>stock-Bouteille</object-name>
+    <object-name>block-annun.R</object-name>
+    <object-name>block-annun.L</object-name>
     </effect>
 
     <effect>
       <inherits-from>Aircraft/CitationX/Models/Effects/skin-reflect</inherits-from>
     <object-name>Cabin-LightsSup</object-name>
     <object-name>Sphere</object-name>
+    <object-name>seau</object-name>
+    <object-name>bouteille1</object-name>
+    <object-name>R-bar</object-name>
+    <object-name>1-R-bar-door</object-name>
+    <object-name>2-R-bar-door</object-name>
+    <object-name>3-R-bar-door</object-name>
+    <object-name>4-R-bar-door</object-name>
+    <object-name>R-bar-UL</object-name>
+    <object-name>R-bar-UR</object-name>
+    <object-name>R-bar-DL</object-name>
+    <object-name>R-bar-DR</object-name>
+    <object-name>bar-L</object-name>
+    <object-name>H-bar-door</object-name>
+    <object-name>R-H-bar-door</object-name>
+    <object-name>L-H-bar-door</object-name>
+    <object-name>L-Low-bar-door</object-name>
+    <object-name>R-Low-bar-door</object-name>
+    <object-name>meubles</object-name>
+    <object-name>meubles4</object-name>
+    <object-name>L-cabin-door</object-name>
+    <object-name>R-cabin-door</object-name>
+    <object-name>L-toilet-door</object-name>
+    <object-name>R-toilet-door</object-name>
+    <object-name>plinthe</object-name>
+    <object-name>cache-table1</object-name>
+    <object-name>cache-table2</object-name>
+    <object-name>cache-table3</object-name>
+    <object-name>cache-table4</object-name>
+    <object-name>console-tablette</object-name>
+    <object-name>table1-1</object-name>
+    <object-name>table1-2</object-name>
+    <object-name>table2-1</object-name>
+    <object-name>table2-2</object-name>
+    <object-name>table3-1</object-name>
+    <object-name>table3-2</object-name>
+    <object-name>table4-1</object-name>
+    <object-name>table4-2</object-name>
+    <object-name>porte-gobelet</object-name>
+    <object-name>baguette</object-name>
+    <object-name>bouteille1</object-name>
+    <object-name>Bouteille</object-name>
+    <object-name>bouchon-bouteille</object-name>
+    <object-name>étiquette-bouteille</object-name>
+    <object-name>stock-Bouteille</object-name>
+    <object-name>block-annun.R</object-name>
+    <object-name>block-annun.L</object-name>
     </effect>
+
+    <effect>
+      <inherits-from>Effects/model-transparent</inherits-from>
+    <object-name>Bouteille</object-name>
+      <condition>
+        <property>sim/rendering/rembrandt/enabled</property>
+      </condition>
+    </effect> 
+
+<!-- TELE -->
+
+    <model>
+        <path>Aircraft/CitationX/Models/Instruments/TABLET/tele.xml</path>
+        <offsets>
+            <x-m> -5.94715 </x-m>
+            <y-m> -0.43929 </y-m>
+            <z-m > 0.47313 </z-m>
+			<heading-deg>0</heading-deg>
+        </offsets>
+    </model>
+
+
+<!-- TABLETS -->
+
+    <model>
+        <path>Aircraft/CitationX/Models/Instruments/TABLET/tablet.xml</path>
+        <offsets>
+            <x-m> -4.10196 </x-m>
+            <y-m> -0.85682 </y-m>
+            <z-m > 0.03616 </z-m>
+			<heading-deg>180</heading-deg>
+        </offsets>
+    </model>
+    <model>
+        <path>Aircraft/CitationX/Models/Instruments/TABLET/tablet.xml</path>
+        <offsets>
+            <x-m> -4.10196 </x-m>
+            <y-m>  0.85441 </y-m>
+            <z-m > 0.03616 </z-m>
+			<heading-deg>0.00</heading-deg>
+        </offsets>
+    </model>
+    <model>
+        <path>Aircraft/CitationX/Models/Instruments/TABLET/tablet.xml</path>
+        <offsets>
+            <x-m> -1.80114 </x-m>
+            <y-m>  0.85441 </y-m>
+            <z-m > 0.03616 </z-m>
+			<heading-deg>0.00</heading-deg>
+        </offsets>
+    </model>
+    <model>
+        <path>Aircraft/CitationX/Models/Instruments/TABLET/tablet.xml</path>
+        <offsets>
+            <x-m> -1.80114 </x-m>
+            <y-m> -0.85441 </y-m>
+            <z-m > 0.03616 </z-m>
+			<heading-deg>180</heading-deg>
+        </offsets>
+    </model>
+
 
 <!-- EXT CABIN DOOR -->
 
@@ -219,7 +429,870 @@
         </axis>
     </animation>
 
+<!-- Bar doors -->
+
+    <animation>
+        <type>rotate</type>
+        <object-name>1-R-bar-door</object-name>
+        <property>controls/bar/bar-door-1</property>
+				<factor>-120</factor>
+    <axis>
+      <x1-m> -5.745 </x1-m>
+      <y1-m>  0.489 </y1-m>
+      <z1-m>  0.488 </z1-m>
+      <x2-m> -5.745  </x2-m>
+      <y2-m>  0.511 </y2-m>
+      <z2-m>  0.123 </z2-m>
+    </axis>
+    </animation>
+
+		<animation>
+			<type>pick</type>
+			<object-name>1-R-bar-door</object-name>
+			<visible>true</visible>
+			<action>
+				<button>0</button>
+				<repeatable>false</repeatable>
+				<binding>
+					<condition>
+						<equals>
+				      <property>controls/bar/bar-door-1</property>						
+							<value>0.0</value>
+						</equals>
+					</condition>
+				  <command>property-interpolate</command>
+				  <property>controls/bar/bar-door-1</property>
+					<value type="double">1.0</value>
+					<time>2</time>
+				</binding>
+				<binding>
+					<condition>
+						<equals>
+				      <property>controls/bar/bar-door-1</property>						
+							<value>1.0</value>
+						</equals>
+					</condition>
+				     <command>property-interpolate</command>
+				      <property>controls/bar/bar-door-1</property>
+							<value type="double">0.0</value>
+					<time>2</time>
+				</binding>
+			</action>
+    	<hovered>
+				<binding>
+          <command>set-tooltip</command>
+            <tooltip-id>Bar-door-1</tooltip-id>
+            <label>Bar door 1: %s</label>
+            <mapping>open-close</mapping>
+       			<property>controls/bar/bar-door-1</property>
+        </binding>
+      </hovered>
+		</animation> 
+
+    <animation>
+        <type>rotate</type>
+        <object-name>2-R-bar-door</object-name>
+        <property>controls/bar/bar-door-2</property>
+				<factor>120</factor>
+    <axis>
+      <x1-m> -5.959 </x1-m>
+      <y1-m>  0.236 </y1-m>
+      <z1-m>  0.587 </z1-m>
+      <x2-m> -5.959  </x2-m>
+      <y2-m>  0.237 </y2-m>
+      <z2-m>  0.144 </z2-m>
+    </axis>
+    </animation>
+
+		<animation>
+			<type>pick</type>
+			<object-name>2-R-bar-door</object-name>
+			<visible>true</visible>
+			<action>
+				<button>0</button>
+				<repeatable>false</repeatable>
+				<binding>
+					<condition>
+						<equals>
+				      <property>controls/bar/bar-door-2</property>						
+							<value>0.0</value>
+						</equals>
+					</condition>
+				  <command>property-interpolate</command>
+				  <property>controls/bar/bar-door-2</property>
+					<value type="double">1.0</value>
+					<time>2</time>
+				</binding>
+				<binding>
+					<condition>
+						<equals>
+				      <property>controls/bar/bar-door-2</property>						
+							<value>1.0</value>
+						</equals>
+					</condition>
+				     <command>property-interpolate</command>
+				      <property>controls/bar/bar-door-2</property>
+							<value type="double">0.0</value>
+					<time>2</time>
+				</binding>
+			</action>
+    	<hovered>
+				<binding>
+          <command>set-tooltip</command>
+            <tooltip-id>Bar-door-2</tooltip-id>
+            <label>Bar door 2: %s</label>
+            <mapping>open-close</mapping>
+       			<property>controls/bar/bar-door-2</property>
+        </binding>
+      </hovered>
+		</animation> 
+
+    <animation>
+        <type>rotate</type>
+        <object-name>3-R-bar-door</object-name>
+        <property>controls/bar/bar-door-3</property>
+				<factor>-120</factor>
+        <center>
+            <x-m>-6.075</x-m>
+            <y-m>0.230</y-m>
+            <z-m>0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0.01</y>
+            <z>-0.8</z>
+        </axis>
+    </animation>
+
+		<animation>
+			<type>pick</type>
+			<object-name>3-R-bar-door</object-name>
+			<visible>true</visible>
+			<action>
+				<button>0</button>
+				<repeatable>false</repeatable>
+				<binding>
+					<condition>
+						<equals>
+				      <property>controls/bar/bar-door-3</property>						
+							<value>0.0</value>
+						</equals>
+					</condition>
+				  <command>property-interpolate</command>
+				  <property>controls/bar/bar-door-3</property>
+					<value type="double">1.0</value>
+					<time>2</time>
+				</binding>
+				<binding>
+					<condition>
+						<equals>
+				      <property>controls/bar/bar-door-3</property>						
+							<value>1.0</value>
+						</equals>
+					</condition>
+				     <command>property-interpolate</command>
+				      <property>controls/bar/bar-door-3</property>
+							<value type="double">0.0</value>
+					<time>2</time>
+				</binding>
+			</action>
+    	<hovered>
+				<binding>
+          <command>set-tooltip</command>
+            <tooltip-id>Bar-door-3</tooltip-id>
+            <label>Bar door 3: %s</label>
+            <mapping>open-close</mapping>
+       			<property>controls/bar/bar-door-3</property>
+        </binding>
+      </hovered>
+		</animation> 
+
+    <animation>
+        <type>rotate</type>
+        <object-name>4-R-bar-door</object-name>
+        <property>controls/bar/bar-door-4</property>
+				<factor>100</factor>
+        <center>
+            <x-m>-6.532</x-m>
+            <y-m>0.230</y-m>
+            <z-m>0</z-m>
+        </center>
+        <axis>
+            <x>0</x>
+            <y>0.02</y>
+            <z>-0.8</z>
+        </axis>
+    </animation>
+
+		<animation>
+			<type>pick</type>
+			<object-name>4-R-bar-door</object-name>
+			<visible>true</visible>
+			<action>
+				<button>0</button>
+				<repeatable>false</repeatable>
+				<binding>
+					<condition>
+						<equals>
+				      <property>controls/bar/bar-door-4</property>						
+							<value>0.0</value>
+						</equals>
+					</condition>
+				  <command>property-interpolate</command>
+				  <property>controls/bar/bar-door-4</property>
+					<value type="double">1.0</value>
+					<time>2</time>
+				</binding>
+				<binding>
+					<condition>
+						<equals>
+				      <property>controls/bar/bar-door-4</property>						
+							<value>1.0</value>
+						</equals>
+					</condition>
+				     <command>property-interpolate</command>
+				      <property>controls/bar/bar-door-4</property>
+							<value type="double">0.0</value>
+					<time>2</time>
+				</binding>
+			</action>
+    	<hovered>
+				<binding>
+          <command>set-tooltip</command>
+            <tooltip-id>Bar-door-4</tooltip-id>
+            <label>Bar door 4: %s</label>
+            <mapping>open-close</mapping>
+       			<property>controls/bar/bar-door-4</property>
+        </binding>
+      </hovered>
+		</animation> 
+
+    <animation>
+        <type>rotate</type>
+        <object-name>R-bar-UL</object-name>
+        <property>controls/bar/bar-door-5</property>
+				<factor>90</factor>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0.215</y-m>
+            <z-m>-0.278</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+		<animation>
+			<type>pick</type>
+			<object-name>R-bar-UL</object-name>
+			<visible>true</visible>
+			<action>
+				<button>0</button>
+				<repeatable>false</repeatable>
+				<binding>
+					<condition>
+						<equals>
+				      <property>controls/bar/bar-door-5</property>						
+							<value>0.0</value>
+						</equals>
+					</condition>
+				  <command>property-interpolate</command>
+				  <property>controls/bar/bar-door-5</property>
+					<value type="double">1.0</value>
+					<time>2</time>
+				</binding>
+				<binding>
+					<condition>
+						<equals>
+				      <property>controls/bar/bar-door-5</property>						
+							<value>1.0</value>
+						</equals>
+					</condition>
+				     <command>property-interpolate</command>
+				      <property>controls/bar/bar-door-5</property>
+							<value type="double">0.0</value>
+					<time>2</time>
+				</binding>
+			</action>
+    	<hovered>
+				<binding>
+          <command>set-tooltip</command>
+            <tooltip-id>Bar-door-5</tooltip-id>
+            <label>Bar door 5: %s</label>
+            <mapping>open-close</mapping>
+       			<property>controls/bar/bar-door-5</property>
+        </binding>
+      </hovered>
+		</animation> 
+
+    <animation>
+        <type>rotate</type>
+        <object-name>R-bar-UR</object-name>
+        <property>controls/bar/bar-door-6</property>
+				<factor>90</factor>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0.215</y-m>
+            <z-m>-0.278</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+		<animation>
+			<type>pick</type>
+			<object-name>R-bar-UR</object-name>
+			<visible>true</visible>
+			<action>
+				<button>0</button>
+				<repeatable>false</repeatable>
+				<binding>
+					<condition>
+						<equals>
+				      <property>controls/bar/bar-door-6</property>						
+							<value>0.0</value>
+						</equals>
+					</condition>
+				  <command>property-interpolate</command>
+				  <property>controls/bar/bar-door-6</property>
+					<value type="double">1.0</value>
+					<time>2</time>
+				</binding>
+				<binding>
+					<condition>
+						<equals>
+				      <property>controls/bar/bar-door-6</property>						
+							<value>1.0</value>
+						</equals>
+					</condition>
+				     <command>property-interpolate</command>
+				      <property>controls/bar/bar-door-6</property>
+							<value type="double">0.0</value>
+					<time>2</time>
+				</binding>
+			</action>
+    	<hovered>
+				<binding>
+          <command>set-tooltip</command>
+            <tooltip-id>Bar-door-6</tooltip-id>
+            <label>Bar door 6: %s</label>
+            <mapping>open-close</mapping>
+       			<property>controls/bar/bar-door-6</property>
+        </binding>
+      </hovered>
+		</animation> 
+
+    <animation>
+        <type>rotate</type>
+        <object-name>R-bar-DL</object-name>
+        <property>controls/bar/bar-door-7</property>
+				<factor>90</factor>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0.215</y-m>
+            <z-m>-0.457</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+		<animation>
+			<type>pick</type>
+			<object-name>R-bar-DL</object-name>
+			<visible>true</visible>
+			<action>
+				<button>0</button>
+				<repeatable>false</repeatable>
+				<binding>
+					<condition>
+						<equals>
+				      <property>controls/bar/bar-door-7</property>						
+							<value>0.0</value>
+						</equals>
+					</condition>
+				  <command>property-interpolate</command>
+				  <property>controls/bar/bar-door-7</property>
+					<value type="double">1.0</value>
+					<time>2</time>
+				</binding>
+				<binding>
+					<condition>
+						<equals>
+				      <property>controls/bar/bar-door-7</property>						
+							<value>1.0</value>
+						</equals>
+					</condition>
+				     <command>property-interpolate</command>
+				      <property>controls/bar/bar-door-7</property>
+							<value type="double">0.0</value>
+					<time>2</time>
+				</binding>
+			</action>
+    	<hovered>
+				<binding>
+          <command>set-tooltip</command>
+            <tooltip-id>Bar-door-7</tooltip-id>
+            <label>Bar door 7: %s</label>
+            <mapping>open-close</mapping>
+       			<property>controls/bar/bar-door-7</property>
+        </binding>
+      </hovered>
+		</animation> 
+
+    <animation>
+        <type>rotate</type>
+        <object-name>R-bar-DR</object-name>
+        <property>controls/bar/bar-door-8</property>
+				<factor>90</factor>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0.215</y-m>
+            <z-m>-0.460</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+		<animation>
+			<type>pick</type>
+			<object-name>R-bar-DR</object-name>
+			<visible>true</visible>
+			<action>
+				<button>0</button>
+				<repeatable>false</repeatable>
+				<binding>
+					<condition>
+						<equals>
+				      <property>controls/bar/bar-door-8</property>						
+							<value>0.0</value>
+						</equals>
+					</condition>
+				  <command>property-interpolate</command>
+				  <property>controls/bar/bar-door-8</property>
+					<value type="double">1.0</value>
+					<time>2</time>
+				</binding>
+				<binding>
+					<condition>
+						<equals>
+				      <property>controls/bar/bar-door-8</property>						
+							<value>1.0</value>
+						</equals>
+					</condition>
+				     <command>property-interpolate</command>
+				      <property>controls/bar/bar-door-8</property>
+							<value type="double">0.0</value>
+					<time>2</time>
+				</binding>
+			</action>
+    	<hovered>
+				<binding>
+          <command>set-tooltip</command>
+            <tooltip-id>Bar-door-8</tooltip-id>
+            <label>Bar door 8: %s</label>
+            <mapping>open-close</mapping>
+       			<property>controls/bar/bar-door-8</property>
+        </binding>
+      </hovered>
+		</animation> 
+
+<!-- TABLE 1 -->
+
+   <animation>
+      <type>pick</type>
+      <object-name>cache-table1</object-name>
+      <object-name>table1-1</object-name>
+      <object-name>table1-2</object-name>
+      <visible>true</visible>
+			<action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+         	<command>property-toggle</command>
+          <property>controls/tables/table1/extend</property>
+        </binding>
+				<binding>
+					<command>nasal</command>
+					<script>citation.tables_anim(1);</script>
+				</binding>
+			</action>
+    	<hovered>
+				<binding>
+          <command>set-tooltip</command>
+            <tooltip-id>Tables</tooltip-id>
+            <label>Table 1 : %s</label>
+            <mapping>open-close</mapping>
+       			<property>controls/tables/table1/extend</property>
+        </binding>
+      </hovered>
+    </animation> 
+
+    <animation>
+        <type>rotate</type>
+        <object-name>cache-table1</object-name>
+        <property>controls/tables/table1/cache/position-norm</property>
+				<factor>160</factor>
+        <center>
+            <x-m>0</x-m>
+            <y-m>-0.710</y-m>
+            <z-m>0.022</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>translate</type>
+        <object-name>table1-1</object-name>	
+        <object-name>table1-2</object-name>	
+        <property>controls/tables/table1/tab0/position-norm</property>
+				<factor>0.19</factor>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>table1-1</object-name>	
+        <object-name>table1-2</object-name>	
+        <property>controls/tables/table1/tab1/position-norm</property>
+				<factor>90</factor>
+        <center>
+            <x-m>0</x-m>
+            <y-m>-0.662</y-m>
+            <z-m>-0.227</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>rotate</type>	
+        <object-name>table1-2</object-name>	
+        <property>controls/tables/table1/tab2/position-norm</property>
+				<factor>180</factor>
+        <center>
+            <x-m>0</x-m>
+            <y-m>-0.6758</y-m>
+            <z-m>0</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+<!-- TABLE 2 -->
+
+   <animation>
+      <type>pick</type>
+      <object-name>cache-table2</object-name>
+      <object-name>table2-1</object-name>
+      <object-name>table2-2</object-name>
+      <visible>true</visible>
+			<action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+         	<command>property-toggle</command>
+          <property>controls/tables/table2/extend</property>
+        </binding>
+				<binding>
+					<command>nasal</command>
+					<script>citation.tables_anim(2);</script>
+				</binding>
+			</action>
+    	<hovered>
+				<binding>
+          <command>set-tooltip</command>
+            <tooltip-id>Tables</tooltip-id>
+            <label>Table 2 : %s</label>
+            <mapping>open-close</mapping>
+       			<property>controls/tables/table2/extend</property>
+        </binding>
+      </hovered>
+    </animation> 
+
+    <animation>
+        <type>rotate</type>
+        <object-name>cache-table2</object-name>
+        <property>controls/tables/table2/cache/position-norm</property>
+				<factor>160</factor>
+        <center>
+            <x-m>0</x-m>
+            <y-m>-0.710</y-m>
+            <z-m>0.022</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>translate</type>
+        <object-name>table2-1</object-name>	
+        <object-name>table2-2</object-name>	
+        <property>controls/tables/table2/tab0/position-norm</property>
+				<factor>0.19</factor>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>table2-1</object-name>	
+        <object-name>table2-2</object-name>	
+        <property>controls/tables/table2/tab1/position-norm</property>
+				<factor>90</factor>
+        <center>
+            <x-m>0</x-m>
+            <y-m>-0.662</y-m>
+            <z-m>-0.227</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>rotate</type>	
+        <object-name>table2-2</object-name>	
+        <property>controls/tables/table2/tab2/position-norm</property>
+				<factor>180</factor>
+        <center>
+            <x-m>0</x-m>
+            <y-m>-0.6758</y-m>
+            <z-m>0</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+<!-- TABLE 3 -->
+
+   <animation>
+      <type>pick</type>
+      <object-name>cache-table3</object-name>
+      <object-name>table3-1</object-name>
+      <object-name>table3-2</object-name>
+      <visible>true</visible>
+			<action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+         	<command>property-toggle</command>
+          <property>controls/tables/table3/extend</property>
+        </binding>
+				<binding>
+					<command>nasal</command>
+					<script>citation.tables_anim(3);</script>
+				</binding>
+			</action>
+    	<hovered>
+				<binding>
+          <command>set-tooltip</command>
+            <tooltip-id>Tables</tooltip-id>
+            <label>Table 3 : %s</label>
+            <mapping>open-close</mapping>
+       			<property>controls/tables/table3/extend</property>
+        </binding>
+      </hovered>
+    </animation> 
+
+    <animation>
+        <type>rotate</type>
+        <object-name>cache-table3</object-name>
+        <property>controls/tables/table3/cache/position-norm</property>
+				<factor>160</factor>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0.710</y-m>
+            <z-m>0.022</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>translate</type>
+        <object-name>table3-1</object-name>	
+        <object-name>table3-2</object-name>	
+        <property>controls/tables/table3/tab0/position-norm</property>
+				<factor>0.19</factor>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>table3-1</object-name>	
+        <object-name>table3-2</object-name>	
+        <property>controls/tables/table3/tab1/position-norm</property>
+				<factor>90</factor>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0.662</y-m>
+            <z-m>-0.227</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>rotate</type>	
+        <object-name>table3-2</object-name>	
+        <property>controls/tables/table3/tab2/position-norm</property>
+				<factor>180</factor>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0.6754</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+<!-- TABLE 4 -->
+
+   <animation>
+      <type>pick</type>
+      <object-name>cache-table4</object-name>
+      <object-name>table4-1</object-name>
+      <object-name>table4-2</object-name>
+      <visible>true</visible>
+			<action>
+        <button>0</button>
+        <repeatable>false</repeatable>
+        <binding>
+         	<command>property-toggle</command>
+          <property>controls/tables/table4/extend</property>
+        </binding>
+				<binding>
+					<command>nasal</command>
+					<script>citation.tables_anim(4);</script>
+				</binding>
+			</action>
+    	<hovered>
+				<binding>
+          <command>set-tooltip</command>
+            <tooltip-id>Tables</tooltip-id>
+            <label>Table 4 : %s</label>
+            <mapping>open-close</mapping>
+       			<property>controls/tables/table4/extend</property>
+        </binding>
+      </hovered>
+    </animation> 
+
+    <animation>
+        <type>rotate</type>
+        <object-name>cache-table4</object-name>
+        <property>controls/tables/table4/cache/position-norm</property>
+				<factor>160</factor>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0.710</y-m>
+            <z-m>0.022</z-m>
+        </center>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>translate</type>
+        <object-name>table4-1</object-name>	
+        <object-name>table4-2</object-name>	
+        <property>controls/tables/table4/tab0/position-norm</property>
+				<factor>0.19</factor>
+        <axis>
+            <x>0</x>
+            <y>0</y>
+            <z>1</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>table4-1</object-name>	
+        <object-name>table4-2</object-name>	
+        <property>controls/tables/table4/tab1/position-norm</property>
+				<factor>90</factor>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0.662</y-m>
+            <z-m>-0.227</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
+    <animation>
+        <type>rotate</type>	
+        <object-name>table4-2</object-name>	
+        <property>controls/tables/table4/tab2/position-norm</property>
+				<factor>180</factor>
+        <center>
+            <x-m>0</x-m>
+            <y-m>0.6754</y-m>
+            <z-m>0.0</z-m>
+        </center>
+        <axis>
+            <x>1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
+
 <!-- CABIN SEATS -->
+
     <model>
         <name>Cabin-seats</name>
         <path>Aircraft/CitationX/Models/Seats/Cabin-seats.xml</path>
@@ -230,5 +1303,85 @@
             <pitch-deg>0</pitch-deg>
         </offsets>
     </model>
+
+<!-- EXIT -->
+
+    <animation>
+        <type>material</type>
+        <object-name>Exit</object-name>
+        <condition>
+					<and>
+						<equals>
+							<property>controls/electric/seat-belts-switch</property>
+							<value>-1</value>
+						</equals>
+						<or>
+		          <greater-than>
+		            <property>systems/electrical/left-bus</property>
+		            <value>15</value>
+		          </greater-than>
+		          <greater-than>
+		            <property>systems/electrical/right-bus</property>
+		            <value>15</value>
+		          </greater-than>
+						</or>
+					</and>
+        </condition>
+				<emission>
+            <red>1</red>
+            <green>1</green>
+            <blue>1</blue>
+				</emission>
+    </animation>
+
+<!-- NO SMOKING - FASTEN SEAT BELTS -->
+
+    <animation>
+        <type>select</type>
+        <object-name>seatbelt-R.on</object-name>
+        <object-name>seatbelt-L.on</object-name>
+				<condition>
+					<and>
+						<not-equals>
+							<property>controls/electric/seat-belts-switch</property>					
+							<value>0</value>
+						</not-equals>
+						<or>
+		          <greater-than>
+		            <property>systems/electrical/left-bus</property>
+		            <value>15</value>
+		          </greater-than>
+		          <greater-than>
+		            <property>systems/electrical/right-bus</property>
+		            <value>15</value>
+		          </greater-than>
+						</or>
+					</and>
+				</condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>smoke-L.on</object-name>
+        <object-name>smoke-R.on</object-name> 
+				<condition>
+					<and>
+						<equals>
+							<property>controls/electric/seat-belts-switch</property>					
+							<value>-1</value>
+						</equals>
+						<or>
+		          <greater-than>
+		            <property>systems/electrical/left-bus</property>
+		            <value>15</value>
+		          </greater-than>
+		          <greater-than>
+		            <property>systems/electrical/right-bus</property>
+		            <value>15</value>
+		          </greater-than>
+						</or>
+					</and>
+				</condition>
+    </animation>
 
 </PropertyList>

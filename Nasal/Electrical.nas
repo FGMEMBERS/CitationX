@@ -1,5 +1,6 @@
 ####    jet engine electrical system    ####
 ####    Syd Adams    ####
+
 var count=0;
 var ammeter_ave = 0.0;
 var Lbus = props.globals.initNode("/systems/electrical/left-bus",0,"DOUBLE");
@@ -7,6 +8,7 @@ var Rbus = props.globals.initNode("/systems/electrical/right-bus",0,"DOUBLE");
 var Amps = props.globals.initNode("/systems/electrical/amps",0,"DOUBLE");
 #var EXT  = props.globals.initNode("/controls/electric/external-power",1,"DOUBLE");
 var XTie  = props.globals.initNode("/systems/electrical/xtie",0,"BOOL");
+props.globals.initNode("controls/lighting/anti-coll",0,"INT");
 var lbus_volts = 0.0;
 var rbus_volts = 0.0;
 
@@ -21,6 +23,9 @@ var rbus_load=[];
 var lights_input=[];
 var lights_output=[];
 var lights_load=[];
+
+
+
 
 var strobe_switch = props.globals.getNode("controls/lighting/strobe", 1);
 aircraft.light.new("controls/lighting/strobe-state", [0.05, 1.30], strobe_switch);
@@ -146,22 +151,22 @@ var alternator2 = Alternator.new(1,"controls/electric/engine[1]/generator","/eng
 setlistener("/sim/signals/fdm-initialized", func {
     init_switches();
     settimer(update_electrical,5);
-    print("Electrical System ... ok");
+    print("Electrical System ... Ok");
 });
 
 var init_switches = func{
     var AVswitch=props.globals.initNode("controls/electric/avionics-switch",0,"INT");
-    setprop("controls/lighting/instruments-norm",0.8);
+    setprop("controls/lighting/instruments-norm",0.0);
     setprop("controls/lighting/engines-norm",0.8);
     props.globals.initNode("controls/electric/ammeter-switch",0,"BOOL");
+    props.globals.initNode("controls/electric/seat-belts-switch",0,"INT");
     props.globals.getNode("systems/electrical/serviceable",0,"BOOL");
     props.globals.getNode("controls/electric/external-power",0,"BOOL");
 		setprop("controls/electric/std-by-pwr",0);
-    setprop("controls/lighting/instrument-lights-norm",0.8);
     setprop("controls/lighting/efis-norm",0.8);
     setprop("controls/lighting/cdu",0.6);
     setprop("controls/lighting/cdu1",0.6);
-    setprop("controls/lighting/panel-norm",0.8);
+#    setprop("controls/lighting/panel-norm",0.8);
     setprop("controls/lighting/nav-lights",0);
 
     append(lights_input,props.globals.initNode("controls/lighting/landing-light[0]",0,"BOOL"));
@@ -176,12 +181,12 @@ var init_switches = func{
     append(lights_input,props.globals.initNode("controls/lighting/cabin-lights",0,"BOOL"));
     append(lights_output,props.globals.initNode("systems/electrical/outputs/cabin-lights",0,"DOUBLE"));
     append(lights_load,1);
-    append(lights_input,props.globals.initNode("controls/lighting/instrument-lights",0,"BOOL"));
-    append(lights_output,props.globals.initNode("systems/electrical/outputs/instrument-lights",0,"DOUBLE"));
-    append(lights_load,1);
-    append(lights_input,props.globals.initNode("controls/lighting/map-lights",0,"BOOL"));
-    append(lights_output,props.globals.initNode("systems/electrical/outputs/map-lights",0,"DOUBLE"));
-    append(lights_load,1);
+#    append(lights_input,props.globals.initNode("controls/lighting/instrument-lights",0,"BOOL"));
+#    append(lights_output,props.globals.initNode("systems/electrical/outputs/instrument-lights",0,"DOUBLE"));
+#    append(lights_load,1);
+#    append(lights_input,props.globals.initNode("controls/lighting/map-light",0,"BOOL"));
+#    append(lights_output,props.globals.initNode("systems/electrical/outputs/map-light",0,"DOUBLE"));
+#    append(lights_load,1);
     append(lights_input,props.globals.initNode("controls/lighting/wing-lights",0,"BOOL"));
     append(lights_output,props.globals.initNode("systems/electrical/outputs/wing-lights",0,"DOUBLE"));
     append(lights_load,1);
@@ -260,12 +265,15 @@ var init_switches = func{
 
 update_virtual_bus = func( dt ) {
     var PWR = getprop("systems/electrical/serviceable");
+		var apu_volts = getprop("controls/APU/battery");
     var xtie=0;
     load = 0.0;
     power_source = nil;
     if(count==0){
         var battery_volts = battery.get_output_volts();
-        lbus_volts = battery_volts;
+				if (apu_volts > battery_volts) {
+					lbus_volts = apu_volts;
+				} else {lbus_volts = battery_volts}
         power_source = "battery";
         var alternator1_volts = alternator1.get_output_volts();
         if (alternator1_volts > lbus_volts) {
@@ -277,7 +285,9 @@ update_virtual_bus = func( dt ) {
         load += lh_bus(lbus_volts);
     }else{
         var battery1_volts = battery1.get_output_volts();
-        rbus_volts = battery1_volts;
+				if (apu_volts > battery1_volts) {
+					rbus_volts = apu_volts;
+				} else {rbus_volts = battery1_volts}
         power_source = "battery1";
         var alternator2_volts = alternator2.get_output_volts();
         if (alternator2_volts > rbus_volts) {
@@ -393,12 +403,25 @@ var batt_switch=func{
 			setprop(r_norm,0);
 			setprop(r_emer,0);
 	}			
+}
 
+var anticoll_switch = func {
+	if (getprop("controls/lighting/anti-coll")==1) {
+		setprop("controls/lighting/beacon",1);
+		setprop("controls/lighting/strobe",0);
+	} else if (getprop("controls/lighting/anti-coll")==2) {
+		setprop("controls/lighting/beacon",0);
+		setprop("controls/lighting/strobe",1);
+	} else {
+		setprop("controls/lighting/beacon",0);
+		setprop("controls/lighting/strobe",0);
+	}
 }
 
 update_electrical = func {
     var scnd = getprop("sim/time/delta-sec");
     update_virtual_bus( scnd );
 		batt_switch();
+		anticoll_switch();
 settimer(update_electrical, 0);
 }
