@@ -23,6 +23,19 @@ Started Oct 2005  Syd Adams
             <tag>twin-engine</tag>
             <tag>glass-cockpit</tag>
         </tags>
+
+	<previews>
+	    <preview>
+		<type>exterior</type>
+		<splash type="bool">true</splash>
+		<path>Pics/citationx-exterior.jpg</path>
+	    </preview>
+	    <preview>
+		<type>panel</type>
+		<splash type="bool">true</splash>
+		<path>Pics/citationx-interior.jpg</path>
+	    </preview>
+	</previews>
         
         <startup>
             <splash-texture>Aircraft/CitationX/Splash.png</splash-texture>
