@@ -68,7 +68,7 @@ var JetEngine = {
         m.fuel_pph=m.eng.initNode("fuel-flow_pph",0,"DOUBLE");
         m.fuel_gph=m.eng.initNode("fuel-flow-gph");
         m.Lfuel = setlistener(m.fuel_out, func m.shutdown(m.fuel_out.getValue()),0,0);
-        m.CutOff = setlistener(m.cutoff, func (ct){m.engine_off=ct.getValue()},1,0);
+        m.CutOff = setlistener(m.cutoff, func (ct){m.engine_off=ct.getValue()},0,0);
     return m;
     },
 
@@ -143,6 +143,8 @@ props.globals.initNode("sim/model/show-yoke_L",1,"BOOL");
 props.globals.initNode("sim/model/show-yoke_R",1,"BOOL");
 props.globals.initNode("sim/model/mem-yoke_L",1,"BOOL");
 props.globals.initNode("sim/model/mem-yoke_R",1,"BOOL");
+props.globals.initNode("controls/flight/vref",131,"DOUBLE");
+props.globals.initNode("controls/flight/va",200,"DOUBLE");
 props.globals.initNode("controls/separation-door/open",1,"DOUBLE");
 props.globals.initNode("controls/toilet-door/open",0,"DOUBLE");
 props.globals.initNode("controls/bar/bar-door-1",0,"DOUBLE");
@@ -166,16 +168,52 @@ props.globals.initNode("instrumentation/primus2000/dc840/etx",0,"INT");
 props.globals.initNode("instrumentation/checklists/norm",0,"BOOL");
 props.globals.initNode("instrumentation/checklists/nr-page",0,"INT");
 props.globals.initNode("instrumentation/checklists/nr-voice",0,"INT");
-props.globals.initNode("instrumentation/transponder/id-code",7777,"DOUBLE");
-props.globals.initNode("instrumentation/transponder/id-code[1]",77,"INT");
-props.globals.initNode("instrumentation/transponder/id-code[2]",77,"INT");
-props.globals.initNode("instrumentation/transponder/inputs/display-mode","STANDBY");
-props.globals.initNode("instrumentation/transponder/inputs/knob-mode",1,"INT");
+props.globals.initNode("instrumentation/transponder/unit/id-code",7777,"INT");
+props.globals.initNode("instrumentation/transponder/unit/id-code[1]",77,"INT");
+props.globals.initNode("instrumentation/transponder/unit/id-code[2]",77,"INT");
+props.globals.initNode("instrumentation/transponder/unit/display-mode","STANDBY");
+props.globals.initNode("instrumentation/transponder/unit/knob-mode",1,"INT");
+props.globals.initNode("instrumentation/transponder/unit[1]/id-code",7777,"INT");
+props.globals.initNode("instrumentation/transponder/unit[1]/id-code[1]",77,"INT");
+props.globals.initNode("instrumentation/transponder/unit[1]/id-code[2]",77,"INT");
+props.globals.initNode("instrumentation/transponder/unit[1]/display-mode","STANDBY");
+props.globals.initNode("instrumentation/transponder/unit[1]/knob-mode",1,"INT");
+props.globals.initNode("instrumentation/rmu/unit/dim",0,"BOOL");
+props.globals.initNode("instrumentation/rmu/unit[1]/dim",0,"BOOL");
+props.globals.initNode("instrumentation/rmu/unit/mem-com",0,"INT");
+props.globals.initNode("instrumentation/rmu/unit[1]/mem-com",0,"INT");
+props.globals.initNode("instrumentation/rmu/unit/mem-nav",0,"INT");
+props.globals.initNode("instrumentation/rmu/unit[1]/mem-nav",0,"INT");
+props.globals.initNode("instrumentation/rmu/unit/more",0,"INT");
+props.globals.initNode("instrumentation/rmu/unit[1]/more",0,"INT");
+props.globals.initNode("instrumentation/rmu/unit/mem-dsp",-1,"INT");
+props.globals.initNode("instrumentation/rmu/unit[1]/mem-dsp",-1,"INT");
+props.globals.initNode("instrumentation/rmu/unit/mem-freq",0,"DOUBLE");
+props.globals.initNode("instrumentation/rmu/unit[1]/mem-freq",0,"DOUBLE");
+props.globals.initNode("instrumentation/rmu/unit/insert",0,"BOOL");
+props.globals.initNode("instrumentation/rmu/unit[1]/insert",0,"BOOL");
+props.globals.initNode("instrumentation/rmu/unit/test",0,"BOOL");
+props.globals.initNode("instrumentation/rmu/unit[1]/test",0,"BOOL");
+props.globals.initNode("instrumentation/rcu/selected","COM","STRING");
+props.globals.initNode("instrumentation/rcu/mode",0,"BOOL");
+props.globals.initNode("instrumentation/rcu/squelch",0,"BOOL");
 props.globals.initNode("autopilot/locks/alt-mach",0,"BOOL");
-props.globals.initNode("autopilot/locks/fms-status",0,"BOOL");
 props.globals.initNode("autopilot/settings/nav-btn",0,"BOOL");
 props.globals.initNode("autopilot/settings/fms-btn",0,"BOOL");
 props.globals.initNode("sim/sound/startup",0,"INT");
+props.globals.initNode("instrumentation/primus2000/mfd/s-menu",0,"INT");
+props.globals.initNode("instrumentation/primus2000/mfd/cdr-tot",0,"INT");
+props.globals.initNode("instrumentation/clock/chrono-hour",0,"INT");
+props.globals.initNode("instrumentation/clock/chrono-min",0,"INT");
+props.globals.initNode("instrumentation/clock/chrono-sec",0,"INT");
+props.globals.initNode("instrumentation/cdu/init",0,"BOOL");
+
+for (var i=0;i<5;i+=1) {
+	props.globals.initNode("instrumentation/primus2000/mfd/cdr"~i,0,"INT");
+}
+for (var i=0;i<6;i+=1) {
+	props.globals.initNode("instrumentation/primus2000/mfd/btn"~i,0,"INT");
+}
 
 var PWR2 =0;
 aircraft.livery.init("Aircraft/CitationX/Models/Liveries");
@@ -202,7 +240,13 @@ setlistener("/sim/signals/fdm-initialized", func {
 		setprop("instrumentation/clock/flight-meter-sec",0);
 #		setprop("sim/sound/startup",int(10*rand()));
 		FH_load();
-});
+		var v_speed = func() {		
+			Vspeed_update();
+		}
+		var timer = maketimer(10,v_speed);
+		timer.singleShot = 1;
+		timer.start();
+},0,0);
 
 setlistener("/sim/signals/reinit", func {
     fdm_init();
@@ -211,7 +255,7 @@ setlistener("/sim/signals/reinit", func {
 setlistener("/sim/crashed", func(cr){
     if(cr.getBoolValue()){
     }
-},1,0);
+},0,0);
 
 setlistener("sim/model/autostart", func(strt){
     if(strt.getBoolValue()){
@@ -221,18 +265,23 @@ setlistener("sim/model/autostart", func(strt){
     }
 },0,0);
 
-setlistener("/engines/engine[0]/turbine",func(turb) {
-		if(turb.getValue() >20) {setprop("/controls/engines/engine[0]/starter",0)}
+var turb0_stl = setlistener("/engines/engine[0]/turbine",func(turb) {
+		if(turb.getValue() >20) {
+			setprop("/controls/engines/engine[0]/starter",0);
+			removelistener(turb0_stl);
+		}
 },0,0);
 
-setlistener("/engines/engine[1]/turbine",func(turb) {
-		if(turb.getValue() >20) {setprop("/controls/engines/engine[1]/starter",0)}
+var turb1_stl = setlistener("/engines/engine[1]/turbine",func(turb) {
+		if(turb.getValue() >20) {
+			setprop("/controls/engines/engine[1]/starter",0);
+			removelistener(turb1_stl);
+		}
 },0,0);
 
 setlistener("/controls/gear/antiskid", func(as){
-	print(as);
-    var test=as.getBoolValue();
-    if(!test){
+	#print(as);
+    if(!as.getValue()){
     MstrCaution.setBoolValue(1 * PWR2);
     Annun.getNode("antiskid").setBoolValue(1 * PWR2);
     }else{
@@ -241,12 +290,11 @@ setlistener("/controls/gear/antiskid", func(as){
 },0,0);
 
 setlistener("instrumentation/altimeter/setting-inhg", func(inhg){
-    setprop("instrumentation/altimeter/setting-kpa",inhg.getValue()*3.386389)
-},1,0);
+    setprop("instrumentation/altimeter/setting-kpa",inhg.getValue()*3.386389);
+},0,0);
 
 setlistener("/sim/freeze/fuel", func(ffr){
-    var test=ffr.getBoolValue();
-    if(test){
+    if(ffr.getValue()){
     MstrCaution.setBoolValue(1 * PWR2);
     Annun.getNode("fuel-gauge").setBoolValue(1 * PWR2);
     }else{
@@ -254,20 +302,20 @@ setlistener("/sim/freeze/fuel", func(ffr){
     }
 },0,0);
 
-setlistener("/sim/current-view/internal", func {
+setlistener("/sim/current-view/internal", func(cv) {
 		var mem_yokeL = getprop("sim/model/mem-yoke_L");
 		var mem_yokeR = getprop("sim/model/mem-yoke_R");
-		if (getprop("/sim/current-view/internal") == 0) {
-			setprop("sim/model/show-yoke_L",1);
-			setprop("sim/model/show-yoke_R",1);
-			setprop("sim/model/show-pilot",1);
-			setprop("sim/model/show-copilot",1);
-		} 
-		else {
+		if (cv.getValue()) {
 			setprop("sim/model/show-yoke_L",mem_yokeL);
 			setprop("sim/model/show-pilot",mem_yokeL);
 			setprop("sim/model/show-yoke_R",mem_yokeR);
 			setprop("sim/model/show-copilot",mem_yokeR);
+		} 
+		else {
+			setprop("sim/model/show-yoke_L",1);
+			setprop("sim/model/show-yoke_R",1);
+			setprop("sim/model/show-pilot",1);
+			setprop("sim/model/show-copilot",1);
 		}
 },0,0);
 
@@ -296,7 +344,7 @@ var tables_anim = func(i) {
 				}			
 			}
 		});
-		if (getprop("controls/tables/table"~i~"/extend") and !cc.getBoolValue()) {
+		if (getprop("controls/tables/table"~i~"/extend") and !cc.getValue()) {
 			Cache.open();			
 			timer_open.start();
 		}
@@ -309,7 +357,7 @@ var tables_anim = func(i) {
 					if (getprop("controls/tables/table"~i~"/tab1/position-norm")==0.0) {
 						Table_0.close();
 						if (getprop("controls/tables/table"~i~"/tab0/position-norm")==0.0) {
-							cc.setBoolValue(0);
+							cc.setValue(0);
 							Cache.close();
 							timer_close.stop();
 						}
@@ -317,7 +365,7 @@ var tables_anim = func(i) {
 				}
 			}
 		});
-		if (!getprop("controls/tables/table"~i~"/extend") and cc.getBoolValue()) {
+		if (!getprop("controls/tables/table"~i~"/extend") and cc.getValue()) {
 			Cache.open();
 			timer_close.start();
 		}
@@ -327,7 +375,7 @@ var tables_anim = func(i) {
 
 setlistener("instrumentation/primus2000/dc840/et", func(xx){
 	if(getprop("systems/electrical/right-bus-norm") and getprop("controls/electric/avionics-switch")==2) {
-		if(xx.getBoolValue()){
+		if(xx.getValue()){
 			if(et <= 2){et +=1}
 			else{et = 0}
 			setprop("instrumentation/primus2000/dc840/etx",et);
@@ -337,15 +385,15 @@ setlistener("instrumentation/primus2000/dc840/et", func(xx){
 			chrono_update();
 		}
 	}
-});
+},0,0);
 
-setlistener("/gear/gear[1]/wow", func(ww){
-    if(ww.getBoolValue()){
+setlistener("/gear/gear[0]/wow", func(ww){
+    if(ww.getValue()){
         FHmeter.stop();
-        Grd_Idle.setBoolValue(1);			
+        Grd_Idle.setValue(1);			
 				FH_write();
     }else{
-        Grd_Idle.setBoolValue(0);
+        Grd_Idle.setValue(0);
         FHmeter.start();
 				### raz clock to prevent restart on bounce ###
 				setprop("/instrumentation/clock/flight-meter-sec",0);
@@ -405,7 +453,7 @@ var FH_write = func {
 		fl_tot = getprop("instrumentation/clock/flight-meter-tot");
 		var data = io.read_properties(FH_path);
 		var name = data.getChild("TotalFlight");
-		name.setDoubleValue(fl_tot);
+		name.setValue(fl_tot);
 		io.write_properties(FH_path,data);
 }
 
@@ -500,6 +548,7 @@ var Startup = func{
     setprop("controls/lighting/beacon",1);
     setprop("controls/lighting/strobe",1);
     setprop("controls/lighting/recog-lights",1);
+    setprop("controls/lighting/anti-coll",2);
     setprop("controls/engines/engine[0]/cutoff",1);
     setprop("controls/engines/engine[1]/cutoff",1);
     setprop("controls/engines/engine[0]/ignit",-1);
@@ -514,11 +563,12 @@ var Startup = func{
 		setprop("controls/anti-ice/pitot-heat[1]",1);
 		setprop("controls/anti-ice/window-heat",1);
 		setprop("controls/anti-ice/window-heat[1]",1);
-		setlistener("systems/electrical/right-bus",func {
+ 		var startup_stl = setlistener("systems/electrical/right-bus",func {
 			if (getprop("systems/electrical/right-bus") > 27) {
 				setprop("controls/electric/external-power",0);
+				removelistener(startup_stl);
 			}
-		});
+		},0,0);
 }
 
 var Shutdown = func{
@@ -533,6 +583,7 @@ var Shutdown = func{
     setprop("controls/lighting/beacon",0);
     setprop("controls/lighting/strobe",0);
     setprop("controls/lighting/recog-lights",0);
+    setprop("controls/lighting/anti-coll",0);
     setprop("controls/engines/engine[0]/cutoff",1);
     setprop("controls/engines/engine[1]/cutoff",1);
     setprop("controls/engines/engine[0]/ignit",0);
@@ -550,102 +601,83 @@ var Shutdown = func{
 		setprop("controls/anti-ice/window-heat[1]",0);
 }
 
-var speed_ref = func {
-		var Wtot = getprop("yasim/gross-weight-lbs");
-		var Flaps = getprop("controls/flight/flaps");
-		var v1=0;
-		var vr=0;
-		var v2=0;
-		var vref=0;
+var Vspeed_update = func {
+	var Wtot = getprop("yasim/gross-weight-lbs");
+	var Flaps = getprop("controls/flight/flaps");
+	var v1=0;
+	var vr=0;
+	var v2=0;
+	var vref=0;
 
-		setprop("controls/flight/va",200);
+	if (Wtot <27000) {v1=122;vr=126;v2=139}
+	if (Wtot >=27000 and Wtot <29000) {v1=123;vr=126;v2=139}
+	if (Wtot >=29000 and Wtot <31000) {v1=125;vr=126;v2=138}
+	if (Wtot >=31000 and Wtot <33000) {v1=126;vr=126;v2=138}
+	if (Wtot >=33000 and Wtot <34000) {v1=127;vr=127;v2=138}
+	if (Wtot >=34000 and Wtot <35000) {v1=130;vr=130;v2=140}
+	if (Wtot >=35000 and Wtot <36100) {v1=132;vr=132;v2=143}
+	if (Wtot >=36100) {v1=134;vr=134;v2=144}
+	if (Wtot == nil or Flaps == nil) {return}
+
+	if (Flaps > 0.142) {
+		if (Wtot <31000) {v1=115;vr=118;v2=129}
+		if (Wtot >=31000 and Wtot <33000) {v1=116;vr=120;v2=128}
+		if (Wtot >=33000 and Wtot <34000) {v1=121;vr=126;v2=131}
+		if (Wtot >=34000 and Wtot <35000) {v1=124;vr=128;v2=133}
+		if (Wtot >=35000 and Wtot <36100) {v1=126;vr=131;v2=135}
+		if (Wtot >=36100) {v1=129;vr=133;v2=137}
+	}
+	else {
+		if (Wtot <27000) {v1=122;vr=126;v2=139}
+		if (Wtot >=27000 and Wtot <29000) {v1=123;vr=126;v2=139}
+		if (Wtot >=29000 and Wtot <31000) {v1=125;vr=126;v2=138}
+		if (Wtot >=31000 and Wtot <33000) {v1=126;vr=126;v2=138}
+		if (Wtot >=33000 and Wtot <34000) {v1=127;vr=127;v2=138}
+		if (Wtot >=34000 and Wtot <35000) {v1=130;vr=130;v2=140}
+		if (Wtot >=35000 and Wtot <36100) {v1=132;vr=132;v2=143}
+		if (Wtot >=36100) {v1=134;vr=134;v2=144}
+	}
+
+		setprop("controls/flight/v1",v1);
+		setprop("controls/flight/vr",vr);
+		setprop("controls/flight/v2",v2);
 		setprop("controls/flight/vf5",180);
 		setprop("controls/flight/vf15",160);
 		setprop("controls/flight/vf35",140);
 
-		if (getprop("velocities/airspeed-kt")> 20) {
-			if (Flaps <= 0.142) {
-				if (Wtot <27000) {v1=122;vr=126;v2=139}
-				if (Wtot >=27000 and Wtot <29000) {v1=123;vr=126;v2=139}
-				if (Wtot >=29000 and Wtot <31000) {v1=125;vr=126;v2=138}
-				if (Wtot >=31000 and Wtot <33000) {v1=126;vr=126;v2=138}
-				if (Wtot >=33000 and Wtot <34000) {v1=127;vr=127;v2=138}
-				if (Wtot >=34000 and Wtot <35000) {v1=130;vr=130;v2=140}
-				if (Wtot >=35000 and Wtot <36100) {v1=132;vr=132;v2=143}
-				if (Wtot >=36100) {v1=134;vr=134;v2=144}
-			} else if (Flaps > 0.142) {
-				if (Wtot <31000) {v1=115;vr=118;v2=129}
-				if (Wtot >=31000 and Wtot <33000) {v1=116;vr=120;v2=128}
-				if (Wtot >=33000 and Wtot <34000) {v1=121;vr=126;v2=131}
-				if (Wtot >=34000 and Wtot <35000) {v1=124;vr=128;v2=133}
-				if (Wtot >=35000 and Wtot <36100) {v1=126;vr=131;v2=135}
-				if (Wtot >=36100) {v1=129;vr=133;v2=137}
-			}
-			setprop("controls/flight/v1",v1);
-			setprop("controls/flight/vr",vr);
-			setprop("controls/flight/v2",v2);
-		}
-		if (!getprop("gear/gear[1]/wow")) {
-			if (Wtot >=23000 and Wtot <24000) {vref=108}
-			if (Wtot >=24000 and Wtot <25000) {vref=110}
-			if (Wtot >=25000 and Wtot <26000) {vref=113}
-			if (Wtot >=26000 and Wtot <28000) {vref=115}
-			if (Wtot >=28000 and Wtot <30000) {vref=121}
-			if (Wtot >=30000 and Wtot <31000) {vref=125}
-			if (Wtot >=31000 and Wtot <31800) {vref=129}
-			if (Wtot >=31800) {vref=131}
-			setprop("controls/flight/vref",vref);
-		}
+		if (Wtot >=23000 and Wtot <24000) {vref=108}
+		if (Wtot >=24000 and Wtot <25000) {vref=110}
+		if (Wtot >=25000 and Wtot <26000) {vref=113}
+		if (Wtot >=26000 and Wtot <28000) {vref=115}
+		if (Wtot >=28000 and Wtot <30000) {vref=121}
+		if (Wtot >=30000 and Wtot <31000) {vref=125}
+		if (Wtot >=31000 and Wtot <31800) {vref=129}
+		if (Wtot >=31800) {vref=131}
+		setprop("controls/flight/vref",vref);
 }
 
 var atc_id = func {
-	var diz = getprop("instrumentation/transponder/id-code[1]");
-	var cent = getprop("instrumentation/transponder/id-code[2]");
-	var dwn_1 = getprop("instrumentation/transponder/down-1");
-	var dwn_2 = getprop("instrumentation/transponder/down-2");
-	var dg_1 = diz-int(diz/10)*10;
-	var dg_2 = int(diz/10);
-	var dg_3 = cent-int(cent/10)*10;
-	var dg_4 = int(cent/10);	
-	var dg = [dg_1,dg_2,dg_3,dg_4];
-	for (var i=0;i<4;i+=1) {
-		if (i<2 and !dwn_1 and dg[i] >7) {dg[i]=0;dg[i+1]+=1}
-		if (i<2 and dwn_1 and dg[i] >7) {dg[i]=7}
-		if (i>1 and !dwn_2 and dg[i] >7) {dg[i]=0;dg[i+1]+=1}
-		if (i>1 and dwn_2 and dg[i] >7) {dg[i]=7}
-	}	
-	diz = dg[0]+dg[1]*10;
-	cent = dg[2]+dg[3]*10;
-	setprop("instrumentation/transponder/id-code[1]",diz);
-	setprop("instrumentation/transponder/id-code[2]",cent);
-	setprop("instrumentation/transponder/id-code",diz + (cent*100));
-}
-
-setlistener("instrumentation/transponder/inputs/knob-mode", func {
-	var knob_mode = getprop("instrumentation/transponder/inputs/knob-mode");
-	var mode_display = "";
-	if (knob_mode == 0) {mode_display = ""}
-	if (knob_mode == 1) {mode_display = "STANDBY"}
-	if (knob_mode == 2) {mode_display = "TEST"}
-	if (knob_mode == 3) {mode_display = "GROUND"}
-	if (knob_mode == 4) {mode_display = "ON"}
-	if (knob_mode == 5) {mode_display = "ALT"}
-	setprop("instrumentation/transponder/inputs/display-mode",mode_display);
-});
-
-var mfd_wx = func {
-	var wx_set = getprop("instrumentation/primus2000/dc840/mfd-wx-set");
-	if (wx_set == "APT") {
-		setprop("instrumentation/efis/inputs/arpt",1);
-		setprop("instrumentation/efis/inputs/lh-vor-adf",0);
-	}
-	if (wx_set == "VOR") {
-		setprop("instrumentation/efis/inputs/arpt",0);
-		setprop("instrumentation/efis/inputs/lh-vor-adf",1);
-	}
-	if (wx_set == "BOTH") {
-		setprop("instrumentation/nd/display/arpt",1);
-		setprop("instrumentation/nd/display/vor",1);
+	for (var n = 0;n<2;n+=1){
+		var diz = getprop("instrumentation/transponder/unit["~n~"]/id-code[1]");
+		var cent = getprop("instrumentation/transponder/unit["~n~"]/id-code[2]");
+		var dwn_1 = getprop("instrumentation/transponder/unit["~n~"]/down-1");
+		var dwn_2 = getprop("instrumentation/transponder/unit["~n~"]/down-2");
+		var dg_1 = diz-int(diz/10)*10;
+		var dg_2 = int(diz/10);
+		var dg_3 = cent-int(cent/10)*10;
+		var dg_4 = int(cent/10);	
+		var dg = [dg_1,dg_2,dg_3,dg_4];
+		for (var i=0;i<4;i+=1) {
+			if (i<2 and !dwn_1 and dg[i] >7) {dg[i]=0;dg[i+1]+=1}
+			if (i<2 and dwn_1 and dg[i] >7) {dg[i]=7}
+			if (i>1 and !dwn_2 and dg[i] >7) {dg[i]=0;dg[i+1]+=1}
+			if (i>1 and dwn_2 and dg[i] >7) {dg[i]=7}
+		}	
+		diz = dg[0]+dg[1]*10;
+		cent = dg[2]+dg[3]*10;
+		setprop("instrumentation/transponder/unit["~n~"]/id-code[1]",diz);
+		setprop("instrumentation/transponder/unit["~n~"]/id-code[2]",cent);
+		setprop("instrumentation/transponder/unit["~n~"]/id-code",diz + (cent*100));
 	}
 }
 
@@ -654,7 +686,15 @@ var freq_limits = func {
 	var nav_freq = "instrumentation/nav/frequencies/standby-mhz";
 	if (getprop(com_freq)<117.975) {setprop(com_freq,117.975)}
 	if (getprop(com_freq)>137.000) {setprop(com_freq,137.000)}
+	if (getprop(nav_freq)<108.000) {setprop(nav_freq,108.000)}
 	if (getprop(nav_freq)>117.950) {setprop(nav_freq,117.950)}
+
+	var com_freq1 = "instrumentation/comm[1]/frequencies/standby-mhz";
+	var nav_freq1 = "instrumentation/nav[1]/frequencies/standby-mhz";
+	if (getprop(com_freq1)<117.975) {setprop(com_freq1,117.975)}
+	if (getprop(com_freq1)>137.000) {setprop(com_freq1,137.000)}
+	if (getprop(nav_freq1)<108.000) {setprop(nav_freq1,108.000)}
+	if (getprop(nav_freq1)>117.950) {setprop(nav_freq1,117.950)}
 }
 ########## MAIN ##############
 
@@ -662,12 +702,12 @@ var update_systems = func{
     LHeng.update();
     RHeng.update();
 		chrono_update();
-		mfd_wx();
+#		mfd_setup();
+#		mfd_wx();
 		atc_id();
 		freq_limits();
     FHupdate(0);
     tire.get_rotation("yasim");
-		speed_ref();
     if(getprop("velocities/airspeed-kt")>40)setprop("controls/cabin-door/open",0);
     var grspd =getprop("velocities/groundspeed-kt");
     var wspd = (45-grspd) * 0.022222;

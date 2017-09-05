@@ -14,31 +14,28 @@ var tyresmoke_2 = aircraft.tyresmoke.new(2);
 
 ### Listeners ###
 
-setlistener("gear/gear[0]/position-norm", func {
-	var gear = getprop("gear/gear[0]/position-norm");
-	if (gear == 1 ){run_tyresmoke0 = 1}
+setlistener("gear/gear[0]/position-norm", func(n) {
+	if (n.getValue()){run_tyresmoke0 = 1}
 	else {run_tyresmoke0 = 0}
-},1,0);
+},0,0);
 
-setlistener("gear/gear[1]/position-norm", func {
-	var gear = getprop("gear/gear[1]/position-norm");
-	if (gear == 1 ){run_tyresmoke1 = 1}
+setlistener("gear/gear[1]/position-norm", func(n) {
+	if (n.getValue()){run_tyresmoke1 = 1}
 	else {run_tyresmoke1 = 0}
-},1,0);
+},0,0);
 
-setlistener("gear/gear[2]/position-norm", func {
-	var gear = getprop("gear/gear[2]/position-norm");
-	if (gear == 1 ){run_tyresmoke2 = 1}
-	else{run_tyresmoke2 = 0}
-},1,0);
+setlistener("gear/gear[2]/position-norm", func(n) {
+	if (n.getValue()){run_tyresmoke2 = 1}
+	else {run_tyresmoke2 = 0}
+},0,0);
 
 ### Tyre Smoke ###
 
 var tyresmoke = func {
-	if (run_tyresmoke0) {tyresmoke_0.update()}
-	if (run_tyresmoke1) {tyresmoke_1.update()}
-	if (run_tyresmoke2) {tyresmoke_2.update()}
-	settimer(tyresmoke, 0);
+		if (run_tyresmoke0) {tyresmoke_0.update()}
+		if (run_tyresmoke1) {tyresmoke_1.update()}
+		if (run_tyresmoke2) {tyresmoke_2.update()}
+		settimer(tyresmoke, 0);
 }
 tyresmoke();
 

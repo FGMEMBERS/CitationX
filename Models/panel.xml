@@ -7,7 +7,7 @@
   <!-- Instruments -->
 
     <model>
-        <path>Aircraft/CitationX/Models/Instruments/NAV/nav1.xml</path>
+        <path>Models/Instruments/NAV/nav1.xml</path>
         <offsets>
             <x-m>0.00</x-m>
             <y-m>0.00</y-m>
@@ -16,7 +16,7 @@
     </model>
 
     <model>
-        <path>Aircraft/CitationX/Models/Instruments/NAV/nav2.xml</path>
+        <path>Models/Instruments/NAV/nav2.xml</path>
         <offsets>
             <x-m>0.00</x-m>
             <y-m>0.00</y-m>
@@ -25,7 +25,7 @@
     </model>
 
     <model>
-        <path>Aircraft/CitationX/Models/Instruments/AOA/aoa.xml</path>
+        <path>Models/Instruments/AOA/aoa.xml</path>
         <offsets>
             <x-m>0.002</x-m>
             <y-m>-0.506</y-m>
@@ -34,7 +34,7 @@
     </model>
 
     <model>
-        <path>Aircraft/CitationX/Models/Instruments/AOA/aoa.xml</path>
+        <path>Models/Instruments/AOA/aoa.xml</path>
         <offsets>
             <x-m>0.002</x-m>
             <y-m>0.515</y-m>
@@ -43,7 +43,7 @@
     </model>
 
     <model>
-        <path>Aircraft/CitationX/Models/Instruments/ALT/alt.xml</path>
+        <path>Models/Instruments/ALT/alt.xml</path>
         <offsets>
             <x-m>0.002</x-m>
             <y-m>-0.230</y-m>
@@ -52,7 +52,7 @@
     </model>
 
     <model>
-        <path>Aircraft/CitationX/Models/Instruments/STBYai/STBYai.xml</path>
+        <path>Models/Instruments/STBYai/STBYai.xml</path>
         <offsets>
             <x-m>0.001</x-m>
             <y-m>-0.137</y-m>
@@ -61,7 +61,7 @@
     </model>
 
     <model>
-        <path>Aircraft/CitationX/Models/Instruments/HSI/hsi.xml</path>
+        <path>Models/Instruments/HSI/hsi.xml</path>
         <offsets>
             <x-m>0.002</x-m>
             <y-m>-0.044</y-m>
@@ -71,7 +71,7 @@
 
     <model>
         <name>EICAS1</name>
-        <path>Aircraft/CitationX/Models/Instruments/EICAS/EICAS3d.xml</path>
+        <path>Models/Instruments/EICAS/EICAS3d.xml</path>
         <offsets>
             <x-m>0.002</x-m>
             <y-m>0.005</y-m>
@@ -80,18 +80,68 @@
     </model>
 
     <model>
-        <name>MFD2</name>
-        <path>Aircraft/CitationX/Models/Instruments/MFD/MFD3d.xml</path>
+        <name>ND_L</name>
+        <path>Models/Instruments/MFD/ND_F.xml</path>
+        <offsets>
+            <x-m>0.0011</x-m>
+            <y-m>-0.1865</y-m>
+            <z-m>0.136</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <name>Layers_L</name>
+        <path>Models/Instruments/MFD/ND_B.xml</path>
+        <offsets>
+            <x-m>0.0010</x-m>
+            <y-m>-0.1865</y-m>
+            <z-m>0.136</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <name>Vsd_L</name>
+        <path>Models/Instruments/MFD/Vsd.xml</path>
+        <offsets>
+            <x-m>0.0010</x-m>
+            <y-m>-0.1890</y-m>
+            <z-m>0.155</z-m>
+        </offsets>
+    </model>
+    <model>
+        <name>ND_R</name>
+        <path>Models/Instruments/MFD/ND_F.xml</path>
+        <offsets>
+            <x-m>0.0011</x-m>
+            <y-m>0.195</y-m>
+            <z-m>0.136</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <name>Layers_R</name>
+        <path>Models/Instruments/MFD/ND_B.xml</path>
+        <offsets>
+            <x-m>0.0010</x-m>
+            <y-m>0.195</y-m>
+            <z-m>0.136</z-m>
+        </offsets>
+    </model>
+
+
+    <model>
+        <name>PFD1</name>
+        <path>Models/Instruments/PFD/PFD3d.xml</path>
         <offsets>
             <x-m>0.002</x-m>
-            <y-m>0.195</y-m>
+            <y-m>-0.375</y-m>
             <z-m>0.138</z-m>
         </offsets>
     </model>
 
     <model>
         <name>PFD2</name>
-        <path>Aircraft/CitationX/Models/Instruments/PFD/PFD3d.xml</path>
+        <path>Models/Instruments/PFD/PFD3d.xml</path>
         <offsets>
             <x-m>0.002</x-m>
             <y-m>0.384</y-m>
@@ -101,12 +151,31 @@
 
     <model>
         <name>CabPress</name>
-        <path>Aircraft/CitationX/Models/Instruments/Press/CabPress.xml</path>
+        <path>Models/Instruments/Press/CabPress.xml</path>
         <offsets>
           <x-m>0.027</x-m>
           <y-m>0.542</y-m>
           <z-m>-0.029</z-m>
 					<pitch-deg>-45</pitch-deg>
+        </offsets>
+    </model>
+
+    <model>
+        <name>RCU</name>
+        <path>Models/Instruments/RCU/RCU.xml</path>
+        <offsets>
+          <x-m>0.000</x-m>
+          <y-m>0.00</y-m>
+          <z-m>0.000</z-m>
+        </offsets>
+    </model>
+
+    <model>
+        <path>Models/Instruments/RCU/screen.xml</path>
+        <offsets>
+          <x-m>0.003</x-m>
+          <y-m>0</y-m>
+          <z-m>0</z-m>
         </offsets>
     </model>
 
@@ -125,15 +194,10 @@
         <object-name>FD.flc-annun</object-name>
         <object-name>FD.co-annun</object-name>
         <object-name>FD.vs-annun</object-name>
+        <object-name>FD.spd-annun</object-name>
         <object-name>FD.bank-annun</object-name>
         <condition>
-          <and>
-         		<property>systems/electrical/right-bus-norm</property>
-						<equals>
-              <property>controls/electric/avionics-switch</property>
-								<value>2</value>
-						</equals>
-					</and>
+          <property>controls/electric/avionics-power</property>
 				</condition>
     </animation>
 
@@ -151,6 +215,7 @@
         <object-name>FD.flc</object-name>
         <object-name>FD.co</object-name>
         <object-name>FD.vs</object-name>
+        <object-name>FD.spd</object-name>
         <object-name>FD.AP</object-name>
         <object-name>FD.PFDSEL</object-name>
         <object-name>FD.bank</object-name>
@@ -173,6 +238,8 @@
         <object-name>norm.btn</object-name>
         <object-name>abn.btn</object-name>
         <object-name>emer.btn</object-name>
+        <object-name>Emer.btnG</object-name>
+        <object-name>Emer.btnD</object-name>
         <object-name>skp.btn</object-name>
         <object-name>page.btn</object-name>
         <object-name>rcl.btn</object-name>
@@ -228,51 +295,8 @@
         <object-name>PFD1</object-name>
         <object-name>PFD2</object-name>
         <condition>
-					<and>
-           <property>systems/electrical/right-bus-norm</property>
-						<equals>
-                <property>controls/electric/avionics-switch</property>
-									<value>2</value>
-						</equals>
-					</and>
-        </condition>
-    </animation>
-
-    <animation>
-        <type>select</type>
-        <object-name>MFD1</object-name>
-        <condition>
-					<and>
-           <property>systems/electrical/right-bus-norm</property>
-						<equals>
-                <property>controls/electric/avionics-switch</property>
-									<value>2</value>
-						</equals>
-<!--						<not>
-                <property>instrumentation/checklists/norm</property>
-						</not>
--->						<not>
-                <property>instrumentation/checklists/chklst-pilot</property>
-						</not>
-				</and>
-        </condition>
-    </animation>
-
-    <animation>
-        <type>select</type>
-        <object-name>MFD2</object-name>
-        <condition>
-					<and>
-           <property>systems/electrical/right-bus-norm</property>
-						<equals>
-                <property>controls/electric/avionics-switch</property>
-									<value>2</value>
-						</equals>
-						<not>
-                <property>instrumentation/checklists/norm</property>
-						</not>
-					</and>
-        </condition>
+          <property>controls/electric/avionics-power</property>
+				</condition>
     </animation>
 
     <animation>
@@ -2342,16 +2366,6 @@
 
 <!-- PFD -->
 
-    <model>
-        <name>PFD1</name>
-        <path>Aircraft/CitationX/Models/Instruments/PFD/PFD3d.xml</path>
-        <offsets>
-            <x-m>0.002</x-m>
-            <y-m>-0.375</y-m>
-            <z-m>0.138</z-m>
-        </offsets>
-    </model>
-
     <animation>
         <type>translate</type>
         <object-name>PFD.std</object-name>
@@ -2514,6 +2528,14 @@
                 <max>1000</max>
                 <wrap>false</wrap>
             </binding>
+            <binding>
+                <command>property-adjust</command>
+                <property>instrumentation/mk-viii/inputs/arinc429/decision-height</property>
+                <step>50</step>
+                <min>0</min>
+                <max>1000</max>
+                <wrap>false</wrap>
+            </binding>
         </action>
         <action>
             <button>4</button>
@@ -2522,6 +2544,14 @@
             <binding>
                 <command>property-adjust</command>
                 <property>autopilot/settings/minimums</property>
+                <step>-50</step>
+                <min>0</min>
+                <max>1000</max>
+                <wrap>false</wrap>
+            </binding>
+            <binding>
+                <command>property-adjust</command>
+                <property>instrumentation/mk-viii/inputs/arinc429/decision-height</property>
                 <step>-50</step>
                 <min>0</min>
                 <max>1000</max>
@@ -2587,16 +2617,6 @@
 <!-- MFD -->
 
     <model>
-        <name>MFD1</name>
-        <path>Aircraft/CitationX/Models/Instruments/MFD/MFD3d.xml</path>
-        <offsets>
-            <x-m>0.002</x-m>
-            <y-m>-0.187</y-m>
-            <z-m>0.138</z-m>
-        </offsets>
-    </model>
-
-    <model>
         <name>chklst1</name>
         <path>Aircraft/CitationX/Models/Instruments/MFD/checklist.xml</path>
         <offsets>
@@ -2630,8 +2650,8 @@
     <animation>
         <type>rotate</type>
         <object-name>MFD_L.knob</object-name>
-        <property>instrumentation/nd/range</property>
-        <factor>10</factor>
+        <property>instrumentation/efis/inputs/range-nm</property>
+        <factor>5</factor>
         <axis>
             <x>-1.0</x>
             <y>0.0</y>
@@ -2644,11 +2664,12 @@
         </center>
     </animation>
 
+
     <animation>
         <type>rotate</type>
         <object-name>MFD_R.knob</object-name>
-        <property>instrumentation/nd/range</property>
-        <factor>10</factor>
+        <property>instrumentation/efis/inputs/range-nm</property>
+        <factor>5</factor>
         <axis>
             <x>-1.0</x>
             <y>0.0</y>
@@ -2667,26 +2688,11 @@
         <object-name>MFD_R.knob</object-name>
         <action>
             <button>0</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>nasal</command>
-                <script>citation.set_range(1);</script>
-            </binding>
-        </action>
-        <action>
-            <button>1</button>
-            <repeatable>false</repeatable>
-            <binding>
-                <command>nasal</command>
-                <script>citation.set_range(-1);</script>
-            </binding>
-        </action>
-        <action>
             <button>3</button>
             <repeatable>false</repeatable>
             <binding>
                 <command>nasal</command>
-                <script>citation.set_range(1);</script>
+                <script>mfd.set_range(1);</script>
             </binding>
         </action>
         <action>
@@ -2694,8 +2700,236 @@
             <repeatable>false</repeatable>
             <binding>
                 <command>nasal</command>
-                <script>citation.set_range(-1);</script>
+                <script>mfd.set_range(-1);</script>
             </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>translate</type>
+        <object-name>MFD.btn0</object-name>	
+        <property>instrumentation/primus2000/mfd/btn0</property>
+				<factor>0.0032</factor>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+				</axis>
+    </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>MFD.btn0</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+				    <binding>
+				        <command>property-assign</command>
+				        <property>instrumentation/primus2000/mfd/btn0</property>
+									<value>1</value>
+				    </binding>
+            <binding>
+                <command>property-cycle</command>
+                <property>instrumentation/primus2000/mfd/menu-num</property>
+                <value>0</value>
+                <value>1</value>
+            </binding>
+            <binding>
+                <command>nasal</command>
+                <script>mfd.menu();</script>
+            </binding>
+						<mod-up>
+							<binding>
+								<command>property-assign</command>
+									<property>instrumentation/primus2000/mfd/btn0</property>
+									<value>0</value>
+							</binding>
+						</mod-up>
+        </action>
+    </animation>
+
+    <animation>
+        <type>translate</type>
+        <object-name>MFD.btn1</object-name>	
+        <property>instrumentation/primus2000/mfd/btn1</property>
+				<factor>0.0032</factor>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+				</axis>
+    </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>MFD.btn1</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+				    <binding>
+				        <command>property-assign</command>
+				        <property>instrumentation/primus2000/mfd/btn1</property>
+									<value>1</value>
+				    </binding>
+            <binding>
+                <command>nasal</command>
+                <script>mfd.menu();</script>
+            </binding>
+						<mod-up>
+							<binding>
+								<command>property-assign</command>
+									<property>instrumentation/primus2000/mfd/btn1</property>
+									<value>0</value>
+							</binding>
+						</mod-up>
+        </action>
+    </animation>
+
+    <animation>
+        <type>translate</type>
+        <object-name>MFD.btn2</object-name>	
+        <property>instrumentation/primus2000/mfd/btn2</property>
+				<factor>0.0032</factor>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+				</axis>
+    </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>MFD.btn2</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+				    <binding>
+				        <command>property-assign</command>
+				        <property>instrumentation/primus2000/mfd/btn2</property>
+									<value>1</value>
+				    </binding>
+            <binding>
+                <command>nasal</command>
+                <script>mfd.menu();</script>
+            </binding>
+						<mod-up>
+							<binding>
+								<command>property-assign</command>
+									<property>instrumentation/primus2000/mfd/btn2</property>
+									<value>0</value>
+							</binding>
+						</mod-up>
+        </action>
+    </animation>
+
+    <animation>
+        <type>translate</type>
+        <object-name>MFD.btn3</object-name>	
+        <property>instrumentation/primus2000/mfd/btn3</property>
+				<factor>0.0032</factor>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+				</axis>
+    </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>MFD.btn3</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+				    <binding>
+				        <command>property-assign</command>
+				        <property>instrumentation/primus2000/mfd/btn3</property>
+									<value>1</value>
+				    </binding>
+            <binding>
+                <command>nasal</command>
+                <script>mfd.menu();</script>
+            </binding>
+						<mod-up>
+							<binding>
+								<command>property-assign</command>
+									<property>instrumentation/primus2000/mfd/btn3</property>
+									<value>0</value>
+							</binding>
+						</mod-up>
+        </action>
+    </animation>
+
+    <animation>
+        <type>translate</type>
+        <object-name>MFD.btn4</object-name>	
+        <property>instrumentation/primus2000/mfd/btn4</property>
+				<factor>0.0032</factor>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+				</axis>
+    </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>MFD.btn4</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+				    <binding>
+				        <command>property-assign</command>
+				        <property>instrumentation/primus2000/mfd/btn4</property>
+									<value>1</value>
+				    </binding>
+            <binding>
+                <command>nasal</command>
+                <script>mfd.menu();</script>
+            </binding>
+						<mod-up>
+							<binding>
+								<command>property-assign</command>
+									<property>instrumentation/primus2000/mfd/btn4</property>
+									<value>0</value>
+							</binding>
+						</mod-up>
+        </action>
+    </animation>
+
+    <animation>
+        <type>translate</type>
+        <object-name>MFD.btn5</object-name>	
+        <property>instrumentation/primus2000/mfd/btn5</property>
+				<factor>0.0032</factor>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+				</axis>
+    </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>MFD.btn5</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+				    <binding>
+				        <command>property-assign</command>
+				        <property>instrumentation/primus2000/mfd/btn5</property>
+									<value>1</value>
+				    </binding>
+            <binding>
+                <command>nasal</command>
+                <script>mfd.menu();</script>
+            </binding>
+						<mod-up>
+							<binding>
+								<command>property-assign</command>
+									<property>instrumentation/primus2000/mfd/btn5</property>
+									<value>0</value>
+							</binding>
+						</mod-up>
         </action>
     </animation>
 
@@ -2705,10 +2939,10 @@
         <type>select</type>
         <object-name>FD.AP-annun</object-name>
         <condition>
-            <not-equals>
+            <equals>
                 <property>autopilot/locks/AP-status</property>
-                <value></value>
-            </not-equals>
+                <value>AP</value>
+            </equals>
         </condition>
     </animation>
 
@@ -2716,12 +2950,8 @@
         <type>select</type>
         <object-name>FD.stby-annun</object-name>
         <condition>
-          <and>
-         		<property>systems/electrical/right-bus-norm</property>
-						<equals>
-              <property>controls/electric/avionics-switch</property>
-								<value>2</value>
-						</equals>
+					<and>
+	          <property>controls/electric/avionics-power</property>
 						<equals>
 							<property>autopilot/locks/heading</property>
 								<value>ROLL</value>
@@ -2811,10 +3041,12 @@
                     <property>autopilot/locks/altitude</property>
                     <value>VFLC</value>
                 </equals>
+<!--
                 <equals>
                     <property>autopilot/locks/altitude</property>
                     <value>VPTH</value>
                 </equals>
+-->
             </or>
         </condition>
     </animation>
@@ -2880,6 +3112,19 @@
                 <property>autopilot/locks/altitude</property>
                 <value>VS</value>
             </equals>
+        </condition>
+    </animation>
+
+    <animation>
+        <type>select</type>
+        <object-name>FD.spd-annun</object-name>
+        <condition>
+					<and>
+		        <property>autopilot/locks/speed</property>
+						<not>
+							<property>autopilot/settings/fms</property>
+						</not>
+					</and>
         </condition>
     </animation>
 
@@ -3024,16 +3269,40 @@
 
     <animation>
         <type>pick</type>
-        <object-name>FD.bc</object-name>
+        <object-name>FD.spd</object-name>
         <visible>true</visible>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
             <binding>
+              <command>property-toggle</command>
+                <property>autopilot/locks/speed</property>
+            </binding>
+        </action>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>FD.bc</object-name>
+        <visible>true</visible>
+				<condition>
+          <equals>
+              <property>autopilot/locks/heading</property>
+              <value>VOR</value>
+          </equals>
+				</condition>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+						<binding>
+              <command>property-toggle</command>
+            		<property>instrumentation/nav/back-course-btn</property>
+						</binding>
+<!--            <binding>
                 <command>nasal</command>
                 <script>citation.FD_set_mode("bc")</script>
             </binding>
-        </action>
+-->        </action>
     </animation>
 
     <animation>
@@ -3411,20 +3680,46 @@
         </hovered>
    </animation>
 
-<!-- MFD -->
+<!-- Audio -->
+
+    <animation>
+        <type>translate</type>
+        <object-name>Emer.btnG</object-name>	
+        <object-name>Emer.btnD</object-name>	
+        <property>instrumentation/rcu/emrg</property>
+				<factor>0.0027</factor>
+        <axis>
+            <x>-1</x>
+            <y>0</y>
+            <z>0</z>
+        </axis>
+    </animation>
 
     <animation>
         <type>pick</type>
-        <object-name>MFD.btn5</object-name>
-        <visible>true</visible>
+        <object-name>Emer.btnG</object-name>
+        <object-name>Emer.btnD</object-name>
         <action>
             <button>0</button>
             <repeatable>false</repeatable>
             <binding>
-                <command>nasal</command>
-                <script>citation.mfd_vspeed;</script>
+              <command>property-toggle</command>
+	            <property>instrumentation/rcu/emrg</property>
             </binding>
-        </action>
+						<binding>
+						    <command>property-toggle</command>
+						    <property>sim/sound/click</property>
+						</binding>
+		    </action>
+				<hovered>
+				    <binding>
+				        <command>set-tooltip</command>
+				        <tooltip-id>AudEmer</tooltip-id>
+				        <label>RCU emergency : %s</label>
+					      <property>instrumentation/rcu/emrg</property>
+				        <mapping>on-off</mapping>
+				    </binding>
+				</hovered>
     </animation>
 
 <!-- DC850 -->
@@ -3511,7 +3806,7 @@
     <animation>
         <type>translate</type>
         <object-name>tcas.btn</object-name>	
-        <property>instrumentation/primus2000/dc840/tcas</property>
+        <property>instrumentation/efis/inputs/tfc</property>
 				<factor>0.0027</factor>
         <axis>
             <x>-1</x>
@@ -3527,12 +3822,17 @@
             <repeatable>false</repeatable>
             <binding>
                 <command>property-toggle</command>
-                <property>instrumentation/primus2000/dc840/tcas</property>
+                <property>instrumentation/efis/inputs/tfc</property>
+            </binding>
+            <binding>
+                <command>property-assign</command>
+                <property>sim/traffic-manager/enabled</property>
+                <property>instrumentation/efis/inputs/tfc</property>
             </binding>
             <binding>
                 <condition>
                     <not>
-                        <property>instrumentation/primus2000/dc840/tcas</property>
+                        <property>instrumentation/efis/inputs/tfc</property>
                     </not>
                 </condition>
                 <command>property-assign</command>
@@ -3541,7 +3841,7 @@
             </binding>
             <binding>
                 <condition>
-                    <property>instrumentation/primus2000/dc840/tcas</property>
+                    <property>instrumentation/efis/inputs/tfc</property>
                 </condition>
                 <command>property-assign</command>
                 <property>instrumentation/tcas/inputs/mode</property>
@@ -3592,21 +3892,22 @@
             <button>0</button>
             <repeatable>false</repeatable>
             <binding>
+                <command>property-cycle</command>
+                <property>instrumentation/efis/mfd/display-mode</property>
+								<value type="string">PLAN</value>
+								<value type="string">MAP</value>
+            </binding>
+            <binding>
                 <command>property-toggle</command>
                 <property>instrumentation/primus2000/dc840/mfd-map</property>
             </binding>
-            <binding>
-                <command>property-assign</command>
-                <property>instrumentation/nd/aircraft-heading-up</property>
-                <property>instrumentation/primus2000/dc840/mfd-map</property>
-            </binding>
-        </action>
+       </action>
     </animation>
 
     <animation>
         <type>translate</type>
         <object-name>mfdwx.btn</object-name>	
-        <property>instrumentation/primus2000/dc840/mfd-wx</property>
+        <property>instrumentation/efis/inputs/wxr</property>
 				<factor>0.0027</factor>
         <axis>
             <x>-1</x>
@@ -3623,30 +3924,28 @@
             <repeatable>false</repeatable>
             <binding>
               <command>property-toggle</command>
-	            <property>instrumentation/primus2000/dc840/mfd-wx</property>
+	            <property>instrumentation/efis/inputs/wxr</property>
             </binding>
             <binding>
-              <command>property-cycle</command>
-	            <property>instrumentation/primus2000/dc840/mfd-wx-set</property>
-							<value type="string">APT</value>
-							<value type="string">VOR</value>
-							<value type="string">BOTH</value>
+							<condition>
+		            <property>instrumentation/efis/inputs/wxr</property>
+							</condition>								
+              <command>nasal</command>
+              <script>weather.mfd_wx(1);</script>
             </binding>
-						<binding>
-							<command>nasal</command>
-							<script>citation.mfd_wx();</script>
-						</binding>
+            <binding>
+							<condition>
+								<not>
+			            <property>instrumentation/efis/inputs/wxr</property>
+								</not>
+							</condition>								
+              <command>nasal</command>
+              <script>weather.mfd_wx(0);</script>
+            </binding>
 						<binding>
 						    <command>property-toggle</command>
 						    <property>sim/sound/click</property>
 						</binding>
-						<mod-up>
-		          <binding>
-		            <command>property-assign</command>
-			          <property>instrumentation/primus2000/dc840/mfd-wx</property>
-								<value>0</value>
-		          </binding>					
-						</mod-up>
         </action>
     </animation>
 
@@ -3689,6 +3988,7 @@
 				    </binding>
 				</hovered>
     </animation>
+
 
     <animation>
         <type>pick</type>
@@ -4151,7 +4451,7 @@
         <binding>
             <command>set-tooltip</command>
             <tooltip-id>DayNightSwitch</tooltip-id>
-            <label>Anti Ice Lights : %s</label>
+            <label>Day / Night : %s</label>
 	          <property>controls/lighting/day-night</property>
             <mapping>on-off</mapping>
         </binding>
@@ -4947,7 +5247,7 @@
             <alignment>center-center</alignment>
             <axis-alignment>yz-plane</axis-alignment>
             <type type="string">text-value</type>
-            <property type="string">sim/multiplay/generic/string[0]</property>
+            <property type="string">sim/multiplay/callsign</property>
             <format type="string">%.7s</format>
             <font>arial_black.txf</font>
             <character-size>0.02</character-size>
@@ -4957,6 +5257,17 @@
             <height type="int">64</height>
         </font-resolution>
     </text>
+
+<!-- Hide callsign if nav module present -->
+
+    <animation>
+        <type>select</type>
+        <object-name>Pilot-reg</object-name>
+        <condition>
+          <not><property>sim/model/nav1-visible</property></not>
+        </condition>
+    </animation>
+
 
     <text>
         <name>CoPilot-reg</name>
@@ -4968,7 +5279,7 @@
             <alignment>center-center</alignment>
             <axis-alignment>yz-plane</axis-alignment>
             <type type="string">text-value</type>
-            <property type="string">sim/multiplay/generic/string[0]</property>
+            <property type="string">sim/multiplay/callsign</property>
             <format type="string">%.7s</format>
             <font>arial_black.txf</font>
             <character-size>0.02</character-size>
