@@ -738,10 +738,37 @@ Started Oct 2005  Syd Adams
             <file>Aircraft/CitationX/Nasal/CitationX.nas</file>
             <file>Aircraft/CitationX/Nasal/Electrical.nas</file>
             <file>Aircraft/CitationX/Nasal/flightdirector.nas</file>
+            <file>Aircraft/Generic/limits.nas</file>
         </citation>
         <dialogs>
             <file>Aircraft/CitationX/Nasal/dialogs.nas</file>
         </dialogs>
     </nasal>
+
+    <limits>
+      <!-- http://www.smartcockpit.com/docs/CESSNA_Citation_X-Limitations.pdf -->
+      <mass-and-balance>
+        <maximum-takeoff-mass-lbs type="double">36100</maximum-takeoff-mass-lbs>
+        <maximum-landing-mass-lbs type="double">31800</maximum-landing-mass-lbs>
+      </mass-and-balance>
+      <max-flap-extension-speed>
+        <flaps type="double">0.142</flaps> <!-- 0, slats, flaps 5 -->
+        <speed type="double">250</speed>
+      </max-flap-extension-speed>
+      <max-flap-extension-speed>
+        <flaps type="double">0.428</flaps> <!-- flaps 15 -->
+        <speed type="double">210</speed>
+      </max-flap-extension-speed>
+      <max-flap-extension-speed>
+        <flaps type="double">1.0</flaps> <!-- flaps 35 -->
+        <speed type="double">180</speed>
+      </max-flap-extension-speed>
+      <max-gear-extension-speed type="double">250</max-gear-extension-speed>
+      <max-negative-g type="double">-1.00</max-negative-g> <!-- -0.0 if flaps or slats down -->
+      <max-positive-g type="double">2.7</max-positive-g> <!-- 2.0 if flaps or slats down -->
+      <vne type="double">270</vne> <!-- indicated airspeed in knots; 350 above 8000 ft -->
+      <message-inhibited type="bool">0</message-inhibited>
+      <mmo type="double">0.92</mmo>
+    </limits>
 
 </PropertyList>

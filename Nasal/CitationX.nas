@@ -286,6 +286,10 @@ var stall_horn = func{
 
 ########## MAIN ##############
 
+var message_inhibited_node = props.globals.getNode ("limits/message-inhibited");
+var indicated_alt_node = props.globals.getNode ("instrumentation/altimeter/indicated-altitude-ft");
+var vne_node = props.globals.getNode ("limits/vne");
+
 var update_systems = func{
     LHeng.update();
     RHeng.update();
@@ -302,5 +306,13 @@ var update_systems = func{
     var str=-(rudder_pos*wspd);
 
     setprop("/controls/gear/steering",str);
+
+    vne_node.setValue (indicated_alt_node.getValue () > 8000 ? 350 : 270);
+    if (getprop ("velocities/mach") > getprop ("limits/mmo")
+        and ! message_inhibited_node.getBoolValue()) {
+       screen.log.write ("Mach number exceeds Mmo!");
+       message_inhibited_node.setBoolValue (1);
+       settimer (func () { message_inhibited_node.setBoolValue (0); }, 10);
+    }
 settimer(update_systems,0);
 }
