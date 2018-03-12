@@ -334,34 +334,16 @@ var get_ETE= func{
     var hr=0;
     if(NAVSRC == "NAV1"){
         setprop("instrumentation/dme/frequencies/source","instrumentation/nav/frequencies/selected-mhz");
-        min = int(getprop("instrumentation/dme/indicated-time-min"));
-        if(min>60){
-            var tmphr=(min*0.016666);
-            hr=int(tmphr);
-            var tmpmin=(tmphr-hr)*100;
-            min=int(tmpmin);
-        }
-        ttw=sprintf("ETE %i:%02i",hr,min);
+        min = getprop("instrumentation/dme/indicated-time-min");
     }elsif(NAVSRC == "NAV2"){
         setprop("instrumentation/dme/frequencies/source","instrumentation/nav[1]/frequencies/selected-mhz");
-        min = int(getprop("instrumentation/dme/indicated-time-min"));
-        if(min>60){
-            var tmphr=(min*0.016666);
-            hr=int(tmphr);
-            var tmpmin=(tmphr-hr)*100;
-            min=int(tmpmin);
-        }
-        ttw=sprintf("ETE %s:%02i",hr,min);
+        min = getprop("instrumentation/dme/indicated-time-min");
     }elsif(NAVSRC == "FMS"){
-        min = getprop("autopilot/route-manager/ete");
-        min=int(min * 0.016666);
-        if(min>60){
-            var tmphr=(min*0.016666);
-            hr=int(tmphr);
-            var tmpmin=(tmphr-hr)*100;
-            min=int(tmpmin);
-        }
-         ttw=sprintf("ETE %s:%02i",hr,min);
+        min = getprop("autopilot/route-manager/ete") / 60;
+    }
+    hr = int (min / 60);
+    if (min > 0 and min < 48*60) {
+      ttw=sprintf("ETE %i:%02i", hr, math.mod (int (min), 60));
     }
     setprop("autopilot/internal/nav-ttw",ttw);
 }
