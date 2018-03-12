@@ -230,8 +230,8 @@ Started Oct 2005  Syd Adams
     </config>
     </view>
 
-        <allow-toggle-cockpit>true</allow-toggle-cockpit>
-        <chase-distance-m type="double">-40.0</chase-distance-m>
+    <allow-toggle-cockpit>true</allow-toggle-cockpit>
+    <chase-distance-m type="double">-40.0</chase-distance-m>
 
     <airport>
         <runways>
@@ -239,16 +239,18 @@ Started Oct 2005  Syd Adams
         </runways>
     </airport>
 
-        <instrumentation>
-            <path>Aircraft/CitationX/Systems/instrumentation.xml</path>
-        </instrumentation>
-
+    <instrumentation>
+        <path>Aircraft/CitationX/Systems/instrumentation.xml</path>
+    </instrumentation>
 
     <systems>
         <path>Aircraft/CitationX/Systems/systems.xml</path>
         <autopilot>
             <path>Aircraft/CitationX/Systems/Citation-autopilot.xml</path>
         </autopilot>
+        <property-rule n="100">
+            <path>Models/Instruments/instrument-filters.xml</path>
+        </property-rule>
     </systems>
 
     <sound>
@@ -617,6 +619,13 @@ Started Oct 2005  Syd Adams
         <S type="string" n="0"></S>
         <S type="string" n="1"></S>
     </cdu>
+
+        <transponder>
+            <inputs>
+                <knob-mode type="int">5</knob-mode>
+                <ident-run type="double">0.0</ident-run>
+            </inputs>
+        </transponder>
 
     </instrumentation>
 
