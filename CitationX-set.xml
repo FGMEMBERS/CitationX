@@ -49,6 +49,7 @@ Started Oct 2005  Syd Adams
 
         <model>
             <path>Aircraft/CitationX/Models/Citation-X.xml</path>
+            <fallback-model-index type="int">101</fallback-model-index>
             <livery>
                 <file type="string">Blackstripes</file>
             </livery>
