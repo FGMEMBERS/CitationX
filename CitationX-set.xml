@@ -1,25 +1,18 @@
-<?xml version="1.0" encoding="ISO-8859-1"?> 
+<?xml version = '1.0' encoding = 'UTF-8' ?>
 <!--
 ************************************************************************
 Cessna Citation-X
 Started Oct 2005  Syd Adams
-Completed 2015 C. Le Moigne (clm76), C-Thiriot (PATTEN).
 ************************************************************************
 -->
 <PropertyList>
     <sim>
         <description>Cessna Citation-X</description>
-        <author>Syd Adams, C. Le Moigne(clm76), C-Thiriot (PATTEN), PAF TEAM, Szymon Acedanski (accek)</author>
+        <author>Syd Adams</author>
         <status>devel</status>
-        <rating>
-            <FDM type="int">3</FDM>
-            <systems type="int">3</systems>
-            <cockpit type="int">3</cockpit>
-            <model type="int">3</model>
-        </rating>
         <flight-model>yasim</flight-model>
-        <aero>CitationX-yasim</aero>
-        <fuel-fraction>0.65</fuel-fraction>
+        <aero>CitationX</aero>
+        <fuel-fraction>0.5</fuel-fraction>
 
         <tags>
             <tag>bizjet</tag>
@@ -30,57 +23,66 @@ Completed 2015 C. Le Moigne (clm76), C-Thiriot (PATTEN).
             <tag>twin-engine</tag>
             <tag>glass-cockpit</tag>
         </tags>
+
+	<previews>
+	    <preview>
+		<type>exterior</type>
+		<splash type="bool">true</splash>
+		<path>Pics/citationx-exterior.jpg</path>
+	    </preview>
+	    <preview>
+		<type>panel</type>
+		<splash type="bool">true</splash>
+		<path>Pics/citationx-interior.jpg</path>
+	    </preview>
+	</previews>
         
         <startup>
             <splash-texture>Aircraft/CitationX/Splash.png</splash-texture>
         </startup>
 
+
         <tutorials>
-            <tutorial include="Tutorials/APU_start.xml"/>
-            <tutorial include="Tutorials/startup.xml"/>
-            <tutorial include="Tutorials/cdu.xml"/>
+            <tutorial include="Tutorials/startup_tutorial.xml"/>
             <tutorial include="Tutorials/navigation.xml"/>
         </tutorials>
-				<checklists include="Tutorials/checklists.xml"/>
 
         <model>
             <path>Aircraft/CitationX/Models/Citation-X.xml</path>
+            <fallback-model-index type="int">101</fallback-model-index>
             <livery>
                 <file type="string">Blackstripes</file>
             </livery>
             <gctest type="bool">1</gctest>
             <shadow-2d  type="bool" userarchive="y">0</shadow-2d>
             <shadeless  type="bool" userarchive="y">0</shadeless>
-						<nav1-visible type="bool" userarchive="y">1</nav1-visible>
-						<nav2-visible type="bool" userarchive="y">1</nav2-visible>
         </model>
 
         <view n="0">
-          <name>Pilot</name>
-          <type>lookfrom</type>
-          <internal type="bool">true</internal>
-          <config>
-            <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
-            <x-offset-m type="double">-0.375</x-offset-m>
-            <y-offset-m type="double">0.41</y-offset-m>
-            <z-offset-m type="double">-7.0</z-offset-m>
-            <pitch-offset-deg>-12</pitch-offset-deg>
-			      <default-field-of-view-deg>90</default-field-of-view-deg>
-            <limits>
-              <enabled type="bool">false</enabled>
-              <left>
-                  <heading-max-deg type="double">120</heading-max-deg>
-                  <x-offset-max-m type="double">0.10</x-offset-max-m>
-                  <x-offset-threshold-deg type="double">45</x-offset-threshold-deg>
-              </left>
-              <right>
-                  <heading-max-deg type="double">160</heading-max-deg>
-                  <x-offset-max-m type="double">0.20</x-offset-max-m>
-                  <x-offset-threshold-deg type="double">65</x-offset-threshold-deg>
-              </right>
-          </limits>
-        </config>
-      </view>
+            <name>Pilot</name>
+            <type>lookfrom</type>
+            <internal type="bool">true</internal>
+            <config>
+                <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
+                <x-offset-m type="double">-0.375</x-offset-m>
+                <y-offset-m type="double">0.41</y-offset-m>
+                <z-offset-m type="double">-7.0</z-offset-m>
+                <pitch-offset-deg>-12</pitch-offset-deg>
+                <limits>
+                    <enabled type="bool">false</enabled>
+                    <left>
+                        <heading-max-deg type="double">120</heading-max-deg>
+                        <x-offset-max-m type="double">0.10</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">45</x-offset-threshold-deg>
+                    </left>
+                    <right>
+                        <heading-max-deg type="double">160</heading-max-deg>
+                        <x-offset-max-m type="double">0.20</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">65</x-offset-threshold-deg>
+                    </right>
+                </limits>
+            </config>
+        </view>
 
         <view n="1">
             <config>
@@ -132,19 +134,19 @@ Completed 2015 C. Le Moigne (clm76), C-Thiriot (PATTEN).
       <z-offset-m archive="y" type="double">-3.33</z-offset-m>
       <default-heading-offset-deg>0</default-heading-offset-deg>
       <pitch-offset-deg>0</pitch-offset-deg>
-        <limits>
-            <enabled type="bool">false</enabled>
-            <left>
-                <heading-max-deg type="double">120</heading-max-deg>
-                <x-offset-max-m type="double">0.28</x-offset-max-m>
-                <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
-            </left>
-            <right>
-                <heading-max-deg type="double">170</heading-max-deg>
-                <x-offset-max-m type="double">0.25</x-offset-max-m>
-                <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
-            </right>
-        </limits>
+                <limits>
+                    <enabled type="bool">false</enabled>
+                    <left>
+                        <heading-max-deg type="double">120</heading-max-deg>
+                        <x-offset-max-m type="double">0.28</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
+                    </left>
+                    <right>
+                        <heading-max-deg type="double">170</heading-max-deg>
+                        <x-offset-max-m type="double">0.25</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
+                    </right>
+                </limits>
       <dynamic-view type="bool">false</dynamic-view>
     </config>
     </view>
@@ -161,20 +163,20 @@ Completed 2015 C. Le Moigne (clm76), C-Thiriot (PATTEN).
       <y-offset-m archive="y" type="double">0.4</y-offset-m>
       <z-offset-m archive="y" type="double">-1.04</z-offset-m>
       <default-heading-offset-deg>0</default-heading-offset-deg>
-	    <pitch-offset-deg>0</pitch-offset-deg>
-        <limits>
-            <enabled type="bool">true</enabled>
-            <left>
-                <heading-max-deg type="double">120</heading-max-deg>
-                <x-offset-max-m type="double">0.25</x-offset-max-m>
-                <x-offset-threshold-deg type="double">45</x-offset-threshold-deg>
-            </left>
-            <right>
-                <heading-max-deg type="double">120</heading-max-deg>
-                <x-offset-max-m type="double">0.28</x-offset-max-m>
-                <x-offset-threshold-deg type="double">45</x-offset-threshold-deg>
-            </right>
-        </limits>
+    <pitch-offset-deg>0</pitch-offset-deg>
+                <limits>
+                    <enabled type="bool">true</enabled>
+                    <left>
+                        <heading-max-deg type="double">120</heading-max-deg>
+                        <x-offset-max-m type="double">0.25</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">45</x-offset-threshold-deg>
+                    </left>
+                    <right>
+                        <heading-max-deg type="double">120</heading-max-deg>
+                        <x-offset-max-m type="double">0.28</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">45</x-offset-threshold-deg>
+                    </right>
+                </limits>
       <dynamic-view type="bool">false</dynamic-view>
     </config>
     </view>
@@ -192,23 +194,22 @@ Completed 2015 C. Le Moigne (clm76), C-Thiriot (PATTEN).
       <z-offset-m archive="y" type="double">-7.0</z-offset-m>
       <default-heading-offset-deg>0</default-heading-offset-deg>
       <pitch-offset-deg>-12.0</pitch-offset-deg>
-      <default-field-of-view-deg>90</default-field-of-view-deg>
-      <limits>
-          <enabled type="bool">false</enabled>
-          <left>
-              <heading-max-deg type="double">120</heading-max-deg>
-              <x-offset-max-m type="double">0.28</x-offset-max-m>
-              <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
-          </left>
-          <right>
-              <heading-max-deg type="double">170</heading-max-deg>
-              <x-offset-max-m type="double">0.25</x-offset-max-m>
-              <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
-          </right>
-      </limits>
+                <limits>
+                    <enabled type="bool">false</enabled>
+                    <left>
+                        <heading-max-deg type="double">120</heading-max-deg>
+                        <x-offset-max-m type="double">0.28</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
+                    </left>
+                    <right>
+                        <heading-max-deg type="double">170</heading-max-deg>
+                        <x-offset-max-m type="double">0.25</x-offset-max-m>
+                        <x-offset-threshold-deg type="double">0</x-offset-threshold-deg>
+                    </right>
+                </limits>
       <dynamic-view type="bool">false</dynamic-view>
     </config>
-  </view>
+    </view>
 
   <view n="103">
     <name>Panel</name>
@@ -218,21 +219,20 @@ Completed 2015 C. Le Moigne (clm76), C-Thiriot (PATTEN).
       <from-model type="bool">true</from-model>
       <ground-level-nearplane-m type="double">0.5f</ground-level-nearplane-m>
       <heading-offset-deg type="double">0</heading-offset-deg>
-      <x-offset-m archive="y" type="double">0</x-offset-m>
+      <x-offset-m archive="y" type="double">-0.2</x-offset-m>
       <y-offset-m archive="y" type="double">0.2</y-offset-m>
-      <z-offset-m archive="y" type="double">-7.10</z-offset-m>
+      <z-offset-m archive="y" type="double">-7.20</z-offset-m>
       <default-heading-offset-deg>0</default-heading-offset-deg>
       <pitch-offset-deg>-12.0</pitch-offset-deg>
-      <default-field-of-view-deg>90</default-field-of-view-deg>
-      <limits>
-          <enabled type="bool">false</enabled>
-      </limits>
+                <limits>
+                    <enabled type="bool">false</enabled>
+                </limits>
       <dynamic-view type="bool">false</dynamic-view>
     </config>
-  </view>
+    </view>
 
-        <allow-toggle-cockpit>true</allow-toggle-cockpit>
-        <chase-distance-m type="double">-40.0</chase-distance-m>
+    <allow-toggle-cockpit>true</allow-toggle-cockpit>
+    <chase-distance-m type="double">-40.0</chase-distance-m>
 
     <airport>
         <runways>
@@ -242,25 +242,15 @@ Completed 2015 C. Le Moigne (clm76), C-Thiriot (PATTEN).
 
     <instrumentation>
         <path>Aircraft/CitationX/Systems/instrumentation.xml</path>
-				<mk-viii>
-					<name>mk-viii</name>
-					<number>0</number>
-				</mk-viii>
     </instrumentation>
 
     <systems>
         <path>Aircraft/CitationX/Systems/systems.xml</path>
         <autopilot>
-          <path>Aircraft/CitationX/Systems/Citation-autopilot.xml</path>
+            <path>Aircraft/CitationX/Systems/Citation-autopilot.xml</path>
         </autopilot>
         <property-rule n="100">
-            <path>Aircraft/CitationX/Systems/pfd.xml</path>
-        </property-rule>
-        <property-rule n="101">
-            <path>Aircraft/CitationX/Models/Lights/Lights.xml</path>
-        </property-rule>
-        <property-rule n="102">
-            <path>Aircraft/CitationX/Systems/pressurization.xml</path>
+            <path>Models/Instruments/instrument-filters.xml</path>
         </property-rule>
     </systems>
 
@@ -272,22 +262,15 @@ Completed 2015 C. Le Moigne (clm76), C-Thiriot (PATTEN).
 
         <weight n="0">
             <name>Crew</name>
-            <weight-lb>340</weight-lb>
-            <max-lb>340</max-lb>
-            <min-lb>170</min-lb>
+            <weight-lb>400</weight-lb>
+            <max-lb>400</max-lb>
+            <min-lb>180</min-lb>
         </weight>
 
         <weight n="1">
             <name>Passengers</name>
-            <weight-lb>1360</weight-lb>
-            <max-lb>1360</max-lb>
-            <min-lb>0</min-lb>
-        </weight>
-
-        <weight n="2">
-            <name>Cargo</name>
-            <weight-lb>4000</weight-lb>
-            <max-lb>8000</max-lb>
+            <weight-lb>6400</weight-lb>
+            <max-lb>14300</max-lb>
             <min-lb>0</min-lb>
         </weight>
 
@@ -332,11 +315,6 @@ Completed 2015 C. Le Moigne (clm76), C-Thiriot (PATTEN).
                 <name>Control B</name>
                 <desc>Speedbrakes</desc>
             </key>
-            <key>
-                <name>Control D</name>
-                <desc>Cabin Door</desc>
-            </key>
-
         </help>
 
         <flaps>
@@ -357,42 +335,13 @@ Completed 2015 C. Le Moigne (clm76), C-Thiriot (PATTEN).
             <int n="4" alias="/systems/electrical/outputs/landing-light[1]"/>
             <int n="5" alias="/systems/electrical/outputs/recog-lights"/>
             <int n="6" alias="/systems/electrical/outputs/nav-lights"/>
-            <float n="0" alias="/controls/cabin-door/position-norm"/>
-            <float n="1" alias="/surface-positions/speedbrake-pos-norm"/>
-						<float n="2" alias="/surface-positions/reverser-norm"/>
-				<!-- <string  alias="/sim/multiplay/callsign"/> -->
+            <float  alias="/controls/cabin-door/position-norm"/>
+            <float  n="1" alias="/surface-positions/speedbrake-pos-norm"/>
+            <float  n="2" alias="/surface-positions/reverser-norm"/>
+            <string  alias="/sim/multiplay/callsign"/>
         </generic>
-				<callsign>""</callsign>
     </multiplay>
 
-    <flight-recorder include="Systems/flight-recorder.xml"/>
-<!--
-      <replay-config type="int">0</replay-config>
-      <config n="0" include="/Aircraft/Generic/flightrecorder/generic-jet.xml">
-        <name type="string">CitationX - Flight Recorder</name>
-        <signal>
-          <type>bool</type>
-          <property type="string">/controls/engines/engine[%i]/reverser</property>
-        </signal>
-        <signal>
-          <type>float</type>
-	 				 <property type="string">/surface-positions/reverser-norm[%i]</property>
-        </signal>
-        <signal>
-          <type>float</type>
-          <property type="string">/controls/cabin-door/position-norm</property>
-        </signal>
-        <signal>
-          <type>float</type>
-          <property type="string">surface-positions/slat-pos-norm</property>
-        </signal>
-        <signal>
-          <type>int</type>
-          <property type="string">controls/electric/avionics-switch</property>
-        </signal>
-     </config>
-    </flight-recorder>
--->
     <color-set>
         <white>
             <r type="float">0.9</r>
@@ -452,65 +401,52 @@ Completed 2015 C. Le Moigne (clm76), C-Thiriot (PATTEN).
         </electrical>
     </systems>
 
-<!--
+
     <consumables>
         <fuel>
             <tank n="0">
                 <name>LH tank</name>
-                <level-lbs>2100.0</level-lbs>
+                <level-lbs>2000.0</level-lbs>
                 <selected type="bool">1</selected>
             </tank>
             <tank n="1">
                 <name>RH tank</name>
-                <level-lbs>2100.0</level-lbs>
+                <level-lbs>2000.0</level-lbs>
                 <selected type="bool">1</selected>
             </tank>
             <tank n="2">
-                <name>CTR tank1</name>
-                <level-lbs>1800.0</level-lbs>
-                <selected type="bool">1</selected>
-            </tank>
-            <tank n="3">
-                <name>CTR tank2</name>
-                <level-lbs>1800.0</level-lbs>
+                <name>CTR tank</name>
+                <level-lbs>2000.0</level-lbs>
                 <selected type="bool">1</selected>
             </tank>
         </fuel>
     </consumables>
--->
-    <instrumentation>
-				<pfd>
-					<minimums-baro type="int">200</minimums-baro>
-					<minimums-radio type="int">200</minimums-radio>
-				</pfd>
 
-        <mk-viii>
-           <serviceable>true</serviceable>
+    <instrumentation>
+
+        <mk-viii>                             <!-- http://wiki.flightgear.org/index.php/GPWS -->
+           <serviceable>true</serviceable>    <!-- EGPWS_ENABLE -->
            <configuration-module>
-              <category-1> 1 </category-1>  <!-- AIRCRAFT_MODE_TYPE_SELECT -->
-							<category-4> 13 </category-4> <!-- ALTITUDE CALLOUTS -->
-              <category-8> 3 </category-8> <!-- RADIO ALTITUDE YASIM-->
+              <category-1>   1 </category-1>  <!-- AIRCRAFT_MODE_TYPE_SELECT -->
+              <category-8>                    <!-- RADIO_ALTITUDE_INPUT_SELECT -->
+                 3 <!-- YASim --> 
+              </category-8>
            </configuration-module>
-           <inputs> 
+           <inputs>                           <!-- Module I/O -->
             <arinc429>
                <decision-height-ncd> false </decision-height-ncd>
-               <decision-height> 200 </decision-height>
+               <decision-height> 250 </decision-height>
             </arinc429>
            </inputs>
            <speaker>
-					    <max-dist> 2 </max-dist>   <!-- Max. distance where speaker is heard -->
-					    <reference-dist> 1 </reference-dist> <!-- Distance to pilot -->
               <volume>0.4</volume>
            </speaker>
-					 <voice>
-						   <file-prefix type="string">Sounds/mk-viii/</file-prefix>
-					 </voice>
         </mk-viii>
 
         <tcas>
             <serviceable type="bool">true</serviceable>
             <inputs>
-                <mode type="int">0</mode> <!-- 0=off, 1=standby, 2=TA-only, 3=auto(TA/RA) -->
+                <mode type="int">0</mode>       <!-- 0=off, 1=standby, 2=TA-only, 3=auto(TA/RA) -->
             </inputs>
             <!--voice>
                 <file-prefix type="string">Sounds/tcas/</file-prefix>
@@ -545,7 +481,7 @@ Completed 2015 C. Le Moigne (clm76), C-Thiriot (PATTEN).
             <y-center type="float">0.5</y-center>
             <display>
                 <arpt type="bool">1</arpt>
-                <vor type="bool">0</vor>
+                <vor type="bool">1</vor>
                 <fix type="bool">0</fix>
                 <tcas type="bool">0</tcas>
             </display>
@@ -578,35 +514,36 @@ Completed 2015 C. Le Moigne (clm76), C-Thiriot (PATTEN).
         </tcas-display>
 
         <alerts>
+            <gear-horn type="bool">0</gear-horn>
             <master-warning type="bool">0</master-warning>
             <master-caution type="bool">0</master-caution>
         </alerts>
-<!--
-		<gps n="0">
-			<serviceable type="bool">true</serviceable>
-			<config>
-         <turn-anticipation type="bool">true</turn-anticipation>
-         <drive-autopilot type="bool">true</drive-autopilot>
-         <follow-leg-track-to-fix type="bool">true</follow-leg-track-to-fix>
-      </config>
-    </gps>
--->
+
     <rmu>
-			<trsp-num type="string">1</trsp-num>
-		  <unit n="0">
-		      <serviceable type="bool">1</serviceable>
-		      <selected type="int">0</selected>
-		  </unit>
-		  <unit n="1">
-		      <serviceable type="bool">1</serviceable>
-		      <selected type="int">0</selected>
-		  </unit>
+    <unit n="0">
+        <serviceable type="bool">1</serviceable>
+        <selected type="int">0</selected>
+        <selected-xoffset type="int">0</selected-xoffset>
+        <selected-yoffset type="int">0</selected-yoffset>
+        <com-num type="int">0</com-num>
+        <nav-num type="int">0</nav-num>
+        <adf-num type="int">0</adf-num>
+    </unit>
+    <unit n="1">
+        <serviceable type="bool">1</serviceable>
+        <selected type="int">0</selected>
+        <selected-xoffset type="int">0</selected-xoffset>
+        <selected-yoffset type="int">0</selected-yoffset>
+        <com-num type="int">1</com-num>
+        <nav-num type="int">1</nav-num>
+        <adf-num type="int">1</adf-num>
+    </unit>
     </rmu>
 
     <airspeed-indicator>
         <index n="0" type="double">100</index>
         <index n="1" type="double">120</index>
-        <ias-limit>560</ias-limit>	<!--old = 350 -->
+        <ias-limit>350.0</ias-limit>
         <mach-limit>0.85</mach-limit>
         <alt-threshold>8000.0</alt-threshold>
     </airspeed-indicator>
@@ -617,51 +554,85 @@ Completed 2015 C. Le Moigne (clm76), C-Thiriot (PATTEN).
         </inputs>
     </kr-87>
 
-		<primus2000>
-				<dc840>
-				    <hsi type="bool">0</hsi>
-				    <wx type="bool">0</wx>
-				    <et type="bool">0</et>
-				    <tcas type="bool">0</tcas>
-				    <acft-sys type="bool">0</acft-sys>
-				    <mfd-map type="bool">1</mfd-map>
-				    <mfd-wx type="bool">0</mfd-wx>
-				    <norm type="bool">0</norm>
-				    <abn type="bool">0</abn>
-				    <emer type="bool">0</emer>
-				    <skp type="bool">0</skp>
-				    <pag type="bool">0</pag>
-				    <rcl type="bool">0</rcl>
-				    <ent type="bool">0</ent>
-				</dc840>
-				<sc840>
-				    <nav1ptr type="double">0</nav1ptr>
-				    <nav2ptr type="double">0</nav2ptr>
-				</sc840>
-				<eicas>
-				    <serviceable type="bool">1</serviceable>
-				</eicas>
-				<mfd>
-				    <menu-num type="int">0</menu-num>
-				</mfd>
-				<pfd>
-				</pfd>
-		</primus2000>
+<primus2000>
+    <dc840>
+        <hsi type="bool">0</hsi>
+        <wx type="bool">0</wx>
+        <et type="bool">0</et>
+        <tcas type="bool">0</tcas>
+        <acft-sys type="bool">0</acft-sys>
+        <mfd-map type="bool">1</mfd-map>
+        <mfd-wx type="bool">0</mfd-wx>
+        <norm type="bool">0</norm>
+        <abn type="bool">0</abn>
+        <emer type="bool">0</emer>
+        <skp type="bool">0</skp>
+        <pag type="bool">0</pag>
+        <rcl type="bool">0</rcl>
+        <ent type="bool">0</ent>
+    </dc840>
+    <sc840>
+        <nav1ptr type="double">0</nav1ptr>
+        <nav2ptr type="double">0</nav2ptr>
+    </sc840>
+    <eicas>
+        <serviceable type="bool">1</serviceable>
+    </eicas>
+    <mfd>
+        <menu-num type="int">0</menu-num>
+    </mfd>
+    <pfd>
+    </pfd>
+</primus2000>
 
-    <cdu>
-			<input type="string"/>
-      <serviceable type="bool">1</serviceable>
-      <display>NAVIDENT[0]</display>
-      <ident>
-        <model>Citation X</model>
-      </ident>
+    <cdu n="0">
+        <page type="string">PROGRESS</page>
+        <L type="string" n="0"></L>
+        <L type="string" n="1"></L>
+        <L type="string" n="2"></L>
+        <L type="string" n="3"></L>
+        <L type="string" n="4"></L>
+        <L type="string" n="5"></L>
+        <R type="string" n="0"></R>
+        <R type="string" n="1"></R>
+        <R type="string" n="2"></R>
+        <R type="string" n="3"></R>
+        <R type="string" n="4"></R>
+        <R type="string" n="5"></R>
+        <S type="string" n="0"></S>
+        <S type="string" n="1"></S>
     </cdu>
-   </instrumentation>
+
+    <cdu n="1">
+        <page type="string">ACTIVE FLT PLAN</page>
+        <L type="string" n="0"></L>
+        <L type="string" n="1"></L>
+        <L type="string" n="2"></L>
+        <L type="string" n="3"></L>
+        <L type="string" n="4"></L>
+        <L type="string" n="5"></L>
+        <R type="string" n="0"></R>
+        <R type="string" n="1"></R>
+        <R type="string" n="2"></R>
+        <R type="string" n="3"></R>
+        <R type="string" n="4"></R>
+        <R type="string" n="5"></R>
+        <S type="string" n="0"></S>
+        <S type="string" n="1"></S>
+    </cdu>
+
+        <transponder>
+            <inputs>
+                <knob-mode type="int">5</knob-mode>
+                <ident-run type="double">0.0</ident-run>
+            </inputs>
+        </transponder>
+
+    </instrumentation>
 
     <controls>
         <gear>
-            <brake-parking type="double">1.0</brake-parking>
-            <emer-brake type="double">0.0</emer-brake>						
+            <brake-parking>1</brake-parking>
         </gear>
         <engines>
             <engine n="0">
@@ -672,62 +643,33 @@ Completed 2015 C. Le Moigne (clm76), C-Thiriot (PATTEN).
             </engine>
         </engines>
         <flight>
-            <speedbrake type="bool">0</speedbrake>
-						<v1 type="double">124</v1>
-						<vr type="double">128</vr>
-						<v2 type="double">133</v2>
-						<ve type="double">190</ve>
+            <speedbrake type="double">0</speedbrake>
         </flight>
         <cabin-door>
             <open type="bool">0</open>
         </cabin-door>
         <APU>
             <master type="bool">0</master>
-            <battery type="double">0</battery>
+            <battery type="double">28.0</battery>
             <running type="bool">0</running>
-            <start-stop type="double">0</start-stop>
-						<test type="bool">0</test>
-						<bleed type="int">0</bleed>
+            <off-start-run type="int">1</off-start-run>
         </APU>
     </controls>
 
-    <gear>
-		<gear n="0">
-			<tyre-smoke type="int">0</tyre-smoke>
-			<sprayspeed-ms type="double">0</sprayspeed-ms>
-			<spray-density type="double">0</spray-density>
-			<caster-angle-deg-damped type="double">0</caster-angle-deg-damped>
-			<position-norm type="double">1</position-norm>
-		</gear>
-		<gear n="1">
-			<tyre-smoke type="int">0</tyre-smoke>
-			<sprayspeed-ms type="double">0</sprayspeed-ms>
-			<spray-density type="double">0</spray-density>
-			<caster-angle-deg-damped type="double">0</caster-angle-deg-damped>
-			<position-norm type="double">1</position-norm>
-		</gear>
-		<gear n="2">
-			<tyre-smoke type="int">0</tyre-smoke>
-			<sprayspeed-ms type="double">0</sprayspeed-ms>
-			<spray-density type="double">0</spray-density>
-			<caster-angle-deg-damped type="double">0</caster-angle-deg-damped>
-			<position-norm type="double">1</position-norm>
-		</gear>
-	</gear>
-
     <autopilot>
         <settings>
-						<minimums-mode type="string">RA</minimums-mode>
             <minimums type="int">200</minimums>
             <target-roll-deg type="double">0</target-roll-deg>
             <target-pitch-deg type="double">0</target-pitch-deg>
+            <vertical-speed-fpm type="int">0</vertical-speed-fpm>
             <nav-source type="string">NAV1</nav-source>
-            <bank-limit type="int">30</bank-limit>
-            <target-speed-kt type="int">250</target-speed-kt>
-            <target-speed-mc type="double">0.88</target-speed-mc>
+            <bank-limit type="int">27</bank-limit>
+            <target-speed-kt type="int">80</target-speed-kt>
+            <target-speed-mach type="double">0.40</target-speed-mach>
             <changeover type="bool">0</changeover>
             <heading-bug-deg type="int">0</heading-bug-deg>
             <vertical-speed-fpm type="int">0</vertical-speed-fpm>
+            <asel type="int">100</asel>
         </settings>
         <locks>
             <heading>ROLL</heading>
@@ -740,16 +682,18 @@ Completed 2015 C. Le Moigne (clm76), C-Thiriot (PATTEN).
             <m-trim type="bool">0</m-trim>
         </locks>
         <internal>
-            <selected-crs type="double">0</selected-crs>
+            <selected-crs type="int">0</selected-crs>
             <nav-distance type="double">0</nav-distance>
             <nav-type type="string"></nav-type>
             <nav-id type="string"></nav-id>
             <course-deflection type="double">0.0</course-deflection>
+            <gs-valid type="bool">0</gs-valid>
             <gs-deflection type="double">0.0</gs-deflection>
             <in-range type="bool">0</in-range>
             <gs-in-range type="bool">0</gs-in-range>
         </internal>
     </autopilot>
+
 
     <input>
         <keyboard>
@@ -796,98 +740,45 @@ Completed 2015 C. Le Moigne (clm76), C-Thiriot (PATTEN).
                     <script>dialogs.Radio.toggle()</script>
                 </binding>
             </key>
-						<key n="60">
-							<name>less-than</name>
-							<desc>Spoken ATC</desc>
-							<binding>
-							 <command>nasal</command>
-							 <script>atc.speak(15);</script>
-							</binding>
-						</key>
-<!--
-            <key n="62">
-                <name>greater-than</name>
-                <desc>Spoken GCA</desc>
-                <binding>
-                  <command>nasal</command>
-                  <script><![CDATA[gca.Control();]]></script>
-                </binding>
-            </key>
--->
         </keyboard>
     </input>
 
     <nasal>
         <citation>
-          <file>Aircraft/CitationX/Nasal/CitationX.nas</file>
-          <file>Aircraft/CitationX/Nasal/Electrical.nas</file>
-          <file>Aircraft/CitationX/Nasal/Fuel.nas</file>
-          <file>Aircraft/CitationX/Nasal/Flightdirector.nas</file>
-					<file>Aircraft/CitationX/Nasal/Warnings.nas</file>
-
+            <file>Aircraft/CitationX/Nasal/CitationX.nas</file>
+            <file>Aircraft/CitationX/Nasal/Electrical.nas</file>
+            <file>Aircraft/CitationX/Nasal/flightdirector.nas</file>
+            <file>Aircraft/Generic/limits.nas</file>
         </citation>
-				<atc>
-					<file>Aircraft/CitationX/Nasal/spoken_atc/init.nas</file>
-					<file>Aircraft/CitationX/Nasal/spoken_atc/atc_tools.nas</file>
-					<file>Aircraft/CitationX/Nasal/spoken_atc/phraseology.nas</file>
-					<file>Aircraft/CitationX/Nasal/spoken_atc/voice.nas</file>
-				</atc>
         <dialogs>
-          <file>Aircraft/CitationX/Nasal/Dialogs.nas</file>
+            <file>Aircraft/CitationX/Nasal/dialogs.nas</file>
         </dialogs>
-				<procedures>
-					<file>Aircraft/CitationX/Models/Instruments/CDU/Procedures/fmsDB.nas</file>
-					<file>Aircraft/CitationX/Models/Instruments/CDU/Procedures/fmsWP.nas</file>
-					<file>Aircraft/CitationX/Models/Instruments/CDU/Procedures/fmsTP.nas</file>
-					<file>Aircraft/CitationX/Models/Instruments/CDU/Procedures/fmsTransition.nas</file>
-				</procedures>
-				<displaypages>
-					<file>Aircraft/CitationX/Models/Instruments/CDU/DispPages/CduStart.nas</file>
-					<file>Aircraft/CitationX/Models/Instruments/CDU/DispPages/FltPlan.nas</file>
-					<file>Aircraft/CitationX/Models/Instruments/CDU/DispPages/FltList.nas</file>
-					<file>Aircraft/CitationX/Models/Instruments/CDU/DispPages/FltDeparture.nas</file>
-					<file>Aircraft/CitationX/Models/Instruments/CDU/DispPages/FltDestination.nas</file>
-					<file>Aircraft/CitationX/Models/Instruments/CDU/DispPages/NavPages.nas</file>
-					<file>Aircraft/CitationX/Models/Instruments/CDU/DispPages/Performance.nas</file>
-					<file>Aircraft/CitationX/Models/Instruments/CDU/DispPages/Progress.nas</file>
-				</displaypages>
-				<cdu>
-					<file>Aircraft/CitationX/Nasal/CDU.nas</file>
-				</cdu>
-				<mfd>
-					<file>Aircraft/CitationX/Nasal/Mfd.nas</file>
-					<file>Aircraft/CitationX/Models/Instruments/MFD/canvas/NDcanvas.nas</file>
-				</mfd>
-				<fms>
-          <file>Aircraft/CitationX/Nasal/Fms.nas</file>
-				</fms>
-				<vsd>
-					<file>Aircraft/CitationX/Nasal/Vsd.nas</file> 
-				</vsd>
-				<irs>
-					<file>Aircraft/CitationX/Nasal/IRS.nas</file>
-				</irs>
-				<rmu1>
-					<file>Aircraft/CitationX/Models/Instruments/RMU/RMU1.nas</file>
-				</rmu1>
-				<rmu2>
-					<file>Aircraft/CitationX/Models/Instruments/RMU/RMU2.nas</file>
-				</rmu2>
-				<rcu>
-					<file>Aircraft/CitationX/Models/Instruments/RCU/RCU.nas</file>
-				</rcu>
-				<tyresmoke>
-					<file>Aircraft/CitationX/Nasal/Tyresmoke.nas</file>
-				</tyresmoke>
-				<pressurization>
-					<file>Aircraft/CitationX/Nasal/Pressurization.nas</file>
-				</pressurization>
-				<checklist>
-					<file>Aircraft/CitationX/Nasal/Checklist.nas</file>
-				</checklist>
-				<weather>
-					<file>Aircraft/CitationX/Nasal/Weather.nas</file>
-				</weather>
     </nasal>
+
+    <limits>
+      <!-- http://www.smartcockpit.com/docs/CESSNA_Citation_X-Limitations.pdf -->
+      <mass-and-balance>
+        <maximum-takeoff-mass-lbs type="double">36100</maximum-takeoff-mass-lbs>
+        <maximum-landing-mass-lbs type="double">31800</maximum-landing-mass-lbs>
+      </mass-and-balance>
+      <max-flap-extension-speed>
+        <flaps type="double">0.142</flaps> <!-- 0, slats, flaps 5 -->
+        <speed type="double">250</speed>
+      </max-flap-extension-speed>
+      <max-flap-extension-speed>
+        <flaps type="double">0.428</flaps> <!-- flaps 15 -->
+        <speed type="double">210</speed>
+      </max-flap-extension-speed>
+      <max-flap-extension-speed>
+        <flaps type="double">1.0</flaps> <!-- flaps 35 -->
+        <speed type="double">180</speed>
+      </max-flap-extension-speed>
+      <max-gear-extension-speed type="double">250</max-gear-extension-speed>
+      <max-negative-g type="double">-1.00</max-negative-g> <!-- -0.0 if flaps or slats down -->
+      <max-positive-g type="double">2.7</max-positive-g> <!-- 2.0 if flaps or slats down -->
+      <vne type="double">270</vne> <!-- indicated airspeed in knots; 350 above 8000 ft -->
+      <message-inhibited type="bool">0</message-inhibited>
+      <mmo type="double">0.92</mmo>
+    </limits>
 
 </PropertyList>

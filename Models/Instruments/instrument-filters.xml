@@ -1,0 +1,65 @@
+<PropertyList>
+
+    <filter>
+        <debug>false</debug>
+        <type>gain</type>
+        <input>
+            <condition>
+                <greater-than>
+                    <property>instrumentation/transponder/inputs/ident-run</property>
+                    <value>1.0</value>
+                </greater-than>
+            </condition>
+            <value>1</value>
+        </input>
+        <value>0</value>
+        <output>instrumentation/transponder/inputs/ident-btn</output>
+    </filter>
+
+    <filter>
+        <debug>false</debug>
+        <type>gain</type>
+
+        <input>
+            <condition>
+                <and>
+                    <greater-than>
+                        <property>instrumentation/transponder/inputs/ident-run</property>
+                        <value>1.0</value>
+                    </greater-than>
+                    <less-than>
+                        <property>instrumentation/transponder/inputs/ident-run</property>
+                        <value>3.0</value>
+                    </less-than>
+                </and>
+            </condition>
+            <expression>
+                <sum>
+                    <property>sim/time/elapsed-sec</property>
+                    <value>2.0</value>
+                </sum>
+            </expression>
+        </input>
+
+        <input>
+            <condition>
+                <and>
+                    <greater-than>
+                        <property>instrumentation/transponder/inputs/ident-run</property>
+                        <value>6.0</value>
+                    </greater-than>
+                    <less-than>
+                        <property>instrumentation/transponder/inputs/ident-run</property>
+                        <property>sim/time/elapsed-sec</property>
+                    </less-than>
+                </and>
+            </condition>
+            <value>0.0</value>
+        </input>
+
+        <input>instrumentation/transponder/inputs/ident-run</input>
+
+        <output>instrumentation/transponder/inputs/ident-run</output>
+    </filter>
+
+</PropertyList>

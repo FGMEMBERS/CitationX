@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0"?>
 
 <PropertyList>
     <name>options</name>
@@ -18,25 +18,13 @@
         </binding>
     </checkbox>
 
+
     <checkbox>
         <halign>left</halign>
         <label>Shadeless Cockpit</label>
         <property>sim/model/shadeless</property>
         <binding>
             <command>dialog-apply</command>
-        </binding>
-    </checkbox>
-
-    <checkbox>
-        <halign>left</halign>
-        <label>Show Nav Modules</label>
-        <property>sim/model/nav1-visible</property>
-        <binding>
-          <command>property-toggle</command>
-        	<property>sim/model/nav2-visible</property> 
-       </binding>
-        <binding>
-          <command>dialog-apply</command>
         </binding>
     </checkbox>
 

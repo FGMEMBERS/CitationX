@@ -1,5 +1,3 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-
 <PropertyList>
 
 <text>
@@ -118,7 +116,7 @@
         <alignment>center-center</alignment>
         <axis-alignment>yz-plane</axis-alignment>
         <type type="string">number-value</type>
-        <property>consumables/fuel/total-ctrtk-lbs</property>
+        <property>consumables/fuel/tank[2]/level-lbs</property>
         <format>%04.0f</format>
         <font>helvetica_bold.txf</font>
         <character-size>0.006</character-size>
@@ -385,87 +383,6 @@
         </font-resolution>
     </text>
 
-
-    <text>
-        <name>Msg_l0</name>
-        <offsets>
-            <x-m>0.0</x-m>
-            <y-m>-0.044</y-m>
-            <z-m>0.008</z-m>
-        </offsets>
-        <alignment>left-baseline</alignment>
-        <axis-alignment>yz-plane</axis-alignment>
-        <type type="string">text-value</type>
-				<property>instrumentation/eicas/level-0</property>
-        <font>helvetica_bold.txf</font>
-        <character-size>0.006</character-size>
-        <character-aspect-ratio type="double">1.2</character-aspect-ratio>
-        <font-resolution>
-            <width type="int">64</width>
-            <height type="int">64</height>
-        </font-resolution>
-    </text>
-
-    <text>
-        <name>Msg_l1</name>
-        <offsets>
-            <x-m>0.0</x-m>
-            <y-m>-0.044</y-m>
-            <z-m>0.008</z-m>
-        </offsets>
-        <alignment>left-baseline</alignment>
-        <axis-alignment>yz-plane</axis-alignment>
-        <type type="string">text-value</type>
-				<property>instrumentation/eicas/level-1</property>
-        <font>helvetica_bold.txf</font>
-        <character-size>0.006</character-size>
-        <character-aspect-ratio type="double">1.2</character-aspect-ratio>
-        <font-resolution>
-            <width type="int">64</width>
-            <height type="int">64</height>
-        </font-resolution>
-    </text>
-
-    <text>
-        <name>Msg_l2</name>
-        <offsets>
-            <x-m>0.0</x-m>
-            <y-m>-0.044</y-m>
-            <z-m>0.008</z-m>
-        </offsets>
-        <alignment>left-baseline</alignment>
-        <axis-alignment>yz-plane</axis-alignment>
-        <type type="string">text-value</type>
-				<property>instrumentation/eicas/level-2</property>
-        <font>helvetica_bold.txf</font>
-        <character-size>0.006</character-size>
-        <character-aspect-ratio type="double">1.2</character-aspect-ratio>
-        <font-resolution>
-            <width type="int">64</width>
-            <height type="int">64</height>
-        </font-resolution>
-    </text>
-
-    <text>
-        <name>Msg_l3</name>
-        <offsets>
-            <x-m>0.0</x-m>
-            <y-m>-0.044</y-m>
-            <z-m>0.008</z-m>
-        </offsets>
-        <alignment>left-baseline</alignment>
-        <axis-alignment>yz-plane</axis-alignment>
-        <type type="string">text-value</type>
-				<property>instrumentation/eicas/level-3</property>
-        <font>helvetica_bold.txf</font>
-        <character-size>0.006</character-size>
-        <character-aspect-ratio type="double">1.20</character-aspect-ratio>
-        <font-resolution>
-            <width type="int">64</width>
-            <height type="int">64</height>
-        </font-resolution>
-    </text>
-
 <!-- COLORS -->
 
     <animation>
@@ -511,97 +428,15 @@
     </animation>
 
     <animation>
-        <name>white</name>
-        <type>material</type>
-        <object-name>Msg_l0</object-name>
-        <emission>
-            <red-prop>sim/color-set/white/r</red-prop>
-            <green-prop>sim/color-set/white/g</green-prop>
-            <blue-prop>sim/color-set/white/b</blue-prop>
-            <alpha-prop>sim/color-set/white/a</alpha-prop>
-        </emission>
-        <ambient>
-            <red>0</red>
-            <green>0</green>
-            <blue>0</blue>
-        </ambient>
-        <diffuse>
-            <red>0</red>
-            <green>0</green>
-            <blue>0</blue>
-        </diffuse>
-        <specular>
-            <red>0</red>
-            <green>0</green>
-            <blue>0</blue>
-        </specular>
-    </animation>
-
-    <animation>
         <name>cyan</name>
         <type>material</type>
         <object-name>Governor</object-name>
         <object-name>RAT</object-name>
-        <object-name>Msg_l1</object-name>
         <emission>
             <red-prop>sim/color-set/cyan/r</red-prop>
             <green-prop>sim/color-set/cyan/g</green-prop>
             <blue-prop>sim/color-set/cyan/b</blue-prop>
             <alpha-prop>sim/color-set/cyan/a</alpha-prop>
-        </emission>
-        <ambient>
-            <red>0</red>
-            <green>0</green>
-            <blue>0</blue>
-        </ambient>
-        <diffuse>
-            <red>0</red>
-            <green>0</green>
-            <blue>0</blue>
-        </diffuse>
-        <specular>
-            <red>0</red>
-            <green>0</green>
-            <blue>0</blue>
-        </specular>
-    </animation>
-
-    <animation>
-        <name>amber</name>
-        <type>material</type>
-        <object-name>Msg_l2</object-name>
-        <emission>
-            <red-prop>sim/color-set/amber/r</red-prop>
-            <green-prop>sim/color-set/amber/g</green-prop>
-            <blue-prop>sim/color-set/amber/b</blue-prop>
-            <alpha-prop>sim/color-set/amber/a</alpha-prop>
-        </emission>
-        <ambient>
-            <red>0</red>
-            <green>0</green>
-            <blue>0</blue>
-        </ambient>
-        <diffuse>
-            <red>0</red>
-            <green>0</green>
-            <blue>0</blue>
-        </diffuse>
-        <specular>
-            <red>0</red>
-            <green>0</green>
-            <blue>0</blue>
-        </specular>
-    </animation>
-
-    <animation>
-        <name>red</name>
-        <type>material</type>
-        <object-name>Msg_l3</object-name>
-        <emission>
-            <red-prop>sim/color-set/red/r</red-prop>
-            <green-prop>sim/color-set/red/g</green-prop>
-            <blue-prop>sim/color-set/red/b</blue-prop>
-            <alpha-prop>sim/color-set/red/a</alpha-prop>
         </emission>
         <ambient>
             <red>0</red>

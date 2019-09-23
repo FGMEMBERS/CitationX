@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-
+<?xml version="1.0"?>
 <!--
 Author : Syd Adams
 Primus 2000 MFD
@@ -84,16 +83,7 @@ Primus 2000 MFD
         <type>select</type>
         <object-name>MFD.vor</object-name>
         <condition>
-					<or>
-						<equals>
-		          <property>instrumentation/primus2000/dc840/mfd-wx-set</property>
-							<value>VOR</value>
-						</equals>
-						<equals>
-		          <property>instrumentation/primus2000/dc840/mfd-wx-set</property>
-							<value>BOTH</value>
-						</equals>
-					</or>
+            <property>instrumentation/primus2000/dc840/mfd-wx</property>
         </condition>
     </animation>
 
@@ -101,16 +91,7 @@ Primus 2000 MFD
         <type>select</type>
         <object-name>MFD.apt</object-name>
         <condition>
-					<or>
-						<equals>
-		          <property>instrumentation/primus2000/dc840/mfd-wx-set</property>
-							<value>APT</value>
-						</equals>
-						<equals>
-		          <property>instrumentation/primus2000/dc840/mfd-wx-set</property>
-							<value>BOTH</value>
-						</equals>
-					</or>
+            <property>instrumentation/primus2000/dc840/mfd-wx</property>
         </condition>
     </animation>
 
